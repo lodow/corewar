@@ -1,6 +1,7 @@
 Thumbs.db
 .fuse_hidden*
 fatal.txt
+*~
 *.out
 *.o
 *.layout*
