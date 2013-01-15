@@ -1,14 +1,15 @@
 ##
 ## Makefile for Make in /home/moriss_h//afs/rendu/lib/my
-## 
+##
 ## Made by hugues morisset
 ## Login   <moriss_h@epitech.net>
-## 
+##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
 ## Last update Tue Jan 15 13:26:45 2013 adrien dellamaggiora
 ##
 
-SRC= 	main.c
+SRC= 	main.c \
+	liste.c
 
 OBJ= $(SRC:.c=.o)
 

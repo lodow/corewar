@@ -29,9 +29,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile" />
+		<Unit filename="liste.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="liste.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="vmstats.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />
