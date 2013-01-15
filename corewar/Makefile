@@ -9,7 +9,9 @@
 ##
 
 SRC= 	main.c \
-	liste.c
+	../misc/liste.c \
+	../misc/get_file.c \
+	../misc/get_next_line.c
 
 OBJ= $(SRC:.c=.o)
 

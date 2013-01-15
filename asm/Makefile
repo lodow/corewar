@@ -8,7 +8,9 @@
 ## Last update Tue Jan 15 13:26:30 2013 adrien dellamaggiora
 ##
 
-SRC= 	main.c
+SRC= 	main.c \
+	../misc/get_file.c \
+	../misc/get_next_line.c
 
 OBJ= $(SRC:.c=.o)
 
