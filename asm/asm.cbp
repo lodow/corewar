@@ -44,6 +44,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../misc/liste.h" />
+		<Unit filename="../misc/str_func.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../misc/str_func.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />

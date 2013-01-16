@@ -10,6 +10,7 @@
 
 SRC= 	main.c \
 	../misc/liste.c \
+	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c
 

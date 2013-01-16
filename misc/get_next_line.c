@@ -10,16 +10,6 @@
 
 #include	"get_next_line.h"
 
-int	my_strlen(char *str)
-{
-  int i;
-
-  i = 0;
-  while ((str != NULL) && (str[i] != '\0'))
-    i++;
-  return (i);
-}
-
 char	*my_stradd(char *str, char *add, int size_add)
 {
   char	*res;
