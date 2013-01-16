@@ -11,31 +11,27 @@
 #ifndef _VMSTATS_H_
 # define _VMSTATS_H_
 
-# define MEM_SIZE		(6 * 1024)
-# define IDX_MOD		512
-/*
-** Registres
-*/
-# define REG_NUMBER		16
-/*
-** size in Bytes
-*/
-# define IND_SIZE		2
-# define REG_SIZE		4
-# define DIR_SIZE		REG_SIZE
-/*
-** Cycle things
-*/
-# define CYCLE_TO_DIE	1536
-# define CYCLE_DELTA	5
-# define NBR_LIVE		40
+# include "../misc/op.h"
+
+typedef struct		s_champ
+{
+  header_t		header;
+  unsigned char	*champcode;
+  int			number;
+  int			alive;
+}		t_champ;
+
+typedef unsigned char	t_vmmem;
 
 typedef char	t_reg[REG_SIZE];
 
 typedef struct	s_process
 {
   unsigned int	pc;
+  int		carry;
   t_reg		reg[REG_NUMBER];
 }		t_process;
+
+int	load_champ(const char *filename, t_champ *champ);
 
 #endif

@@ -9,7 +9,10 @@
 ##
 
 SRC= 	main.c \
+	my_memset.c \
+	champ_load.c \
 	../misc/liste.c \
+	../misc/op.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c

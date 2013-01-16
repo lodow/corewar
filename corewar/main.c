@@ -8,7 +8,18 @@
 ** Last update Tue Jan 15 17:02:37 2013 adrien dellamaggiora
 */
 
-int	main(int argc, char **argv, char **envp)
+#include	"include.h"
+
+int		main(int argc, char **argv, char **envp)
 {
+  t_vmmem	*vmmem;
+  t_champ	prog;
+
+  if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
+  return (-1);
+  my_memset(vmmem, MEM_SIZE, 0x0);
+  load_champ(argv[1], &prog);
+
+  free(vmmem);
   return (0);
 }

@@ -8,8 +8,8 @@
 ** Last update Sat Dec 15 14:55:38 2012 Hugues
 */
 
-#ifndef GET_FILE_H_
-# define GET_FILE_H_
+#ifndef _GET_FILE_H_
+# define _GET_FILE_H_
 
 # include	<stdlib.h>
 # include	<sys/types.h>

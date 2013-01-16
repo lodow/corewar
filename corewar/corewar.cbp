@@ -29,7 +29,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile" />
+		<Unit filename="champ_load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="include.h" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="my_memset.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="vmstats.h" />
@@ -45,6 +52,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../misc/liste.h" />
+		<Unit filename="../misc/op.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../misc/op.h" />
 		<Unit filename="../misc/str_func.c">
 			<Option compilerVar="CC" />
 		</Unit>
