@@ -17,5 +17,6 @@
 # include	"vmstats.h"
 
 void	my_memset(void *ptr, int osize, char value);
+char	*switch_endian(char *var, int varsize);
 
 #endif

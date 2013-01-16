@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="corewar" />
+				<Option parameters="../Sky.cor" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -31,6 +31,9 @@
 		</Compiler>
 		<Unit filename="Makefile" />
 		<Unit filename="champ_load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="endianess.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="get_bin_file.c">

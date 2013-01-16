@@ -12,6 +12,7 @@ SRC= 	main.c \
 	my_memset.c \
 	champ_load.c \
 	get_bin_file.c \
+	endianess.c \
 	../misc/liste.c \
 	../misc/op.c \
 	../misc/str_func.c \

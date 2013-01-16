@@ -16,10 +16,13 @@ int		main(int argc, char **argv, char **envp)
   t_champ	prog;
 
   if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
-  return (-1);
+    return (-1);
   my_memset(vmmem, MEM_SIZE, 0x0);
   load_champ(argv[1], &prog);
+  my_putstr(prog.header.prog_name);
+  printf("\n%d\n", prog.header.prog_size);
 
+  free(prog.freeme);
   free(vmmem);
   return (0);
 }

@@ -10,11 +10,25 @@
 
 #include	"include.h"
 
+/*
+**Load a champ from a file filename and fill struct champ passed
+** return 0 if everything good, negatif value elsewhere
+*/
 int	load_champ(const char *filename, t_champ *champ)
 {
   char	*file;
   int	size;
 
-  size = get_bin_file(filename, &file);
+  if ((size = get_bin_file(filename, &file)) < sizeof(header_t))
+    return (-1);
+  champ->freeme = file;
+  if ((champ->header.magic = ((int*)switch_endian(file, sizeof(int)))[0])
+      != COREWAR_EXEC_MAGIC)
+    return (-2);
+  file = &(file[sizeof(int)]);
+  my_strncpy(champ->header.prog_name, file, PROG_NAME_LENGTH);
+  file = &(file[PROG_NAME_LENGTH]);
+  champ->header.prog_size = ((int*)switch_endian(file, sizeof(int)))[0];
   return (0);
 }
+
