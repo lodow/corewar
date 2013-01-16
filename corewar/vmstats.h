@@ -15,7 +15,7 @@
 
 typedef struct		s_champ
 {
-  char		*freeme;
+  char			*freeme;
   header_t		header;
   unsigned char	*champcode;
   int			number;

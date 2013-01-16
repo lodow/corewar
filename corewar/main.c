@@ -19,9 +19,8 @@ int		main(int argc, char **argv, char **envp)
     return (-1);
   my_memset(vmmem, MEM_SIZE, 0x0);
   load_champ(argv[1], &prog);
-  my_putstr(prog.header.prog_name);
-  printf("\n%d\n", prog.header.prog_size);
-
+  printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
+  write(1, &prog.champcode, prog.header.prog_size);
   free(prog.freeme);
   free(vmmem);
   return (0);

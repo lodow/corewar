@@ -27,8 +27,13 @@ int	load_champ(const char *filename, t_champ *champ)
     return (-2);
   file = &(file[sizeof(int)]);
   my_strncpy(champ->header.prog_name, file, PROG_NAME_LENGTH);
-  file = &(file[PROG_NAME_LENGTH]);
+  file = &(file[PROG_NAME_LENGTH + 4]);
   champ->header.prog_size = ((int*)switch_endian(file, sizeof(int)))[0];
+  file = &(file[sizeof(int)]);
+  my_strncpy(champ->header.comment, file, COMMENT_LENGTH);
+  file = &(file[COMMENT_LENGTH + 4]);
+  champ->champcode = ((unsigned char*)file);
+  file = &(file[champ->header.prog_size]);
   return (0);
 }
 
