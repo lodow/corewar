@@ -10,6 +10,20 @@
 
 #include	"str_func.h"
 
+char	*my_strncpy(char *dest, char *src, int n)
+{
+  int	i;
+
+  i = 0;
+  if ((src != NULL) && (dest != NULL))
+    while (i < n)
+      {
+        dest[i] = src[i];
+        i++;
+      }
+  return (dest);
+}
+
 int	my_strlen(char *str)
 {
   int	i;
@@ -32,3 +46,4 @@ void	my_putstr(char *str)
     while (str[i++] != '\0');
   i = write(1, str, i);
 }
+

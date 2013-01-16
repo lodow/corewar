@@ -13,6 +13,8 @@
 int	load_champ(const char *filename, t_champ *champ)
 {
   char	*file;
+  int	size;
 
+  size = get_bin_file(filename, &file);
   return (0);
 }

@@ -32,6 +32,7 @@ typedef struct	s_process
   t_reg		reg[REG_NUMBER];
 }		t_process;
 
+int	get_bin_file(const char *filename, char **file);
 int	load_champ(const char *filename, t_champ *champ);
 
 #endif

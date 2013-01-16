@@ -12,6 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="corewar" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -30,6 +31,9 @@
 		</Compiler>
 		<Unit filename="Makefile" />
 		<Unit filename="champ_load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />

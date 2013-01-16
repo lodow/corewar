@@ -16,5 +16,6 @@
 
 int	my_strlen(char *str);
 void	my_putstr(char *str);
+char	*my_strncpy(char *dest, char *src, int n);
 
 #endif
