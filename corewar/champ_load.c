@@ -19,7 +19,7 @@ int	load_champ(const char *filename, t_champ *champ)
   char	*file;
   int	size;
 
-  if ((size = get_bin_file(filename, &file)) < sizeof(header_t))
+  if ((size = get_bin_file(filename, &file)) <= ((int)sizeof(header_t)))
     return (-1);
   champ->freeme = file;
   if ((champ->header.magic = ((int*)switch_endian(file, sizeof(int)))[0])
@@ -32,7 +32,7 @@ int	load_champ(const char *filename, t_champ *champ)
   file = &(file[sizeof(int)]);
   my_strncpy(champ->header.comment, file, COMMENT_LENGTH);
   file = &(file[COMMENT_LENGTH + 4]);
-  champ->champcode = ((unsigned char*)file);
+  champ->champcode = file;
   file = &(file[champ->header.prog_size]);
   return (0);
 }

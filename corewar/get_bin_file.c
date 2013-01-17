@@ -21,7 +21,7 @@ int	get_bin_file(const char *filename, char **file)
   (*file) = NULL;
   tsize = 0;
   nbread = 1;
-  if ((fd = open(filename, O_RDONLY)) == -1)
+  if ((filename == NULL) || ((fd = open(filename, O_RDONLY)) == -1))
     return (-1);
   while (nbread > 0)
     {

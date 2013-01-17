@@ -10,6 +10,30 @@
 
 #include	"include.h"
 
+void my_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+void			print_hexa(char *mem, int nb)
+{
+  int			i;
+  char			hexa[] = "0123456789ABCDEF";
+  unsigned char	tmp;
+
+  i = 0;
+  while (i < nb)
+    {
+      tmp = mem[i];
+      my_putstr("0x");
+      my_putchar(hexa[tmp / 16]);
+      my_putchar(hexa[tmp % 16]);
+      if (i != nb - 1)
+        my_putstr(",");
+      i++;
+    }
+}
+
 int		main(int argc, char **argv, char **envp)
 {
   t_vmmem	*vmmem;
@@ -18,10 +42,12 @@ int		main(int argc, char **argv, char **envp)
   if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
     return (-1);
   my_memset(vmmem, MEM_SIZE, 0x0);
-  load_champ(argv[1], &prog);
-  printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
-  write(1, &prog.champcode, prog.header.prog_size);
-  free(prog.freeme);
+  if (load_champ(argv[1], &prog) != -1)
+    {
+      printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
+      print_hexa(prog.champcode, prog.header.prog_size);
+      free(prog.freeme);
+    }
   free(vmmem);
   return (0);
 }

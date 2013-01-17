@@ -15,11 +15,11 @@
 
 typedef struct		s_champ
 {
-  char			*freeme;
-  header_t		header;
-  unsigned char	*champcode;
-  int			number;
-  int			alive;
+  char		*freeme;
+  header_t	header;
+  char		*champcode;
+  int		number;
+  int		alive;
 }		t_champ;
 
 typedef unsigned char	t_vmmem;
