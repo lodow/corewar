@@ -13,6 +13,13 @@
 
 # include "../misc/op.h"
 
+typedef struct	s_op
+{
+  op_t		opcode;
+  int		currentcycle;
+  char		param[MAX_ARGS_NUMBER];
+}		t_op;
+
 typedef struct		s_champ
 {
   char		*freeme;
@@ -22,7 +29,7 @@ typedef struct		s_champ
   int		alive;
 }		t_champ;
 
-typedef unsigned char	t_vmmem;
+typedef char	t_vmmem;
 
 typedef char	t_reg[REG_SIZE];
 
