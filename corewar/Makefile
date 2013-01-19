@@ -13,6 +13,8 @@ SRC= 	main.c \
 	champ_load.c \
 	get_bin_file.c \
 	endianess.c \
+	opcodefirstset.c \
+	op_utilities.c \
 	../misc/liste.c \
 	../misc/op.c \
 	../misc/str_func.c \
