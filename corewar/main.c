@@ -12,7 +12,9 @@
 
 void my_putchar(char c)
 {
-  write(1, &c, 1);
+  if (write(1, &c, 1) == -1)
+    if (write(2, "Write error\n", 12) == -1)
+      exit(0);
 }
 
 void			print_hexa(char *mem, int nb)
