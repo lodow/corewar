@@ -20,10 +20,11 @@ void my_putchar(char c)
 void			print_hexa(char *mem, int nb)
 {
   int			i;
-  char			hexa[] = "0123456789ABCDEF";
+  char    *hexa;
   unsigned char	tmp;
 
   i = 0;
+  hexa = "0123456789ABCDEF";
   while (i < nb)
     {
       tmp = mem[i];
