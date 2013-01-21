@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 16:04:53 2013 luc sinet
+** Last update Mon Jan 21 16:27:33 2013 luc sinet
 */
 
 #ifndef _OP_H_
@@ -72,7 +72,7 @@
 ** extern op_t	g_op_tab[];
 */
 
-typedef struct	op_s
+typedef struct	s_op
 {
   char		*mnemonique;
   char		nbr_args;
@@ -80,14 +80,14 @@ typedef struct	op_s
   char		code;
   int		nbr_cycles;
   char		*comment;
-}		op_t;
+}		t_op;
 
-typedef struct	header_s
+typedef struct	s_header
 {
   int		magic;
   char		prog_name[PROG_NAME_LENGTH + 1];
   int		prog_size;
   char		comment[COMMENT_LENGTH + 1];
-}		header_t;
+}		t_header;
 
 #endif
