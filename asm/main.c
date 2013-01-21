@@ -5,23 +5,31 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 16 13:03:07 2013 maxime lavandier
+** Last update Fri Jan 18 19:14:23 2013 adrien dellamaggiora
 */
 
 #include "../misc/op.h"
 #include "../misc/get_file.h"
+#include "asm.h"
 
 int	main(int argc, char **argv, char **envp)
 {
   int	fd;
   char	**file;
 
-  if (argc < 2 && ((fd = open(file, O_RDONLY)) == -1))
+  if (argc > 1)
     {
-      my_putstr("file error\n");
-      return (0);
+      if ((fd = open(argv[1], O_RDONLY)) == -1)
+	{
+	  my_putstr("File ");
+	  my_putstr(argv[1]);
+	  my_putstr(" not accessible\n");
+	  return (0);
+	}
+      file = get_data_ffile(fd);
+      if (parse(file) == -1)
+	my_putstr("parse error\n");
     }
-  file = get_data_ffile(fd);
-  if (parse(file) == -1)
-    my_putstr("parse error\n");
+  else
+    my_putstr("No file\n");
 }
