@@ -1,8 +1,8 @@
 Thumbs.db
 .fuse_hidden*
 fatal.txt
-asm
-corewar
+asm/asm
+corewar/corewar
 *~
 *#
 *.cbp
