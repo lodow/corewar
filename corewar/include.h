@@ -16,6 +16,8 @@
 # include	"../misc/str_func.h"
 # include	"vmstats.h"
 
+# define MAX(x, y) (((x) > (y)) ? (x) : (y))
+
 void	my_memset(void *ptr, int osize, char value);
 char	*switch_endian(char *var, int varsize);
 

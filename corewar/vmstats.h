@@ -13,12 +13,8 @@
 
 # include "../misc/op.h"
 
-typedef struct	s_op
-{
-  op_t		opcode;
-  int		currentcycle;
-  char		param[MAX_ARGS_NUMBER];
-}		t_op;
+# define MOD_MEM(x) ((x) % MEM_SIZE)
+# define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 3)
 
 typedef struct		s_champ
 {
@@ -35,12 +31,16 @@ typedef char	t_reg[REG_SIZE];
 
 typedef struct	s_process
 {
-  unsigned int	pc;
-  int		carry;
-  t_reg		reg[REG_NUMBER];
-}		t_process;
+  int	pc;
+  int	carry;
+  t_reg	reg[REG_NUMBER];
+  int	nb_cycle_t_next;
+  t_vmmem	*mem;
+}	t_process;
 
 int	get_bin_file(const char *filename, char **file);
 int	load_champ(const char *filename, t_champ *champ);
+int	op_param_size(char type);
+char	*get_value_f_param_type(char type, int off_pos, t_process *proc);
 
 #endif
