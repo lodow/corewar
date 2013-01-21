@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Fri Jan 18 16:31:20 2013 adrien dellamaggiora
 */
 
 #include	"str_func.h"
@@ -47,3 +47,15 @@ void	my_putstr(char *str)
   i = write(1, str, i);
 }
 
+int	my_strcmp(char *src, char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i] == src[i] && src[i] != 0 && str[i] != 0)
+    i++;
+  if (str[i] == src[i])
+    return (1);
+  else
+    return (0);
+}
