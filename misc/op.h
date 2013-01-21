@@ -43,30 +43,30 @@
 # define DIRECT_CHAR		'%'
 # define SEPARATOR_CHAR		','
 
-# define LABEL_CHARS             "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING         ".name"
-# define COMMENT_CMD_STRING      ".comment"
+# define NAME_CMD_STRING		".name"
+# define COMMENT_CMD_STRING	".comment"
 
 /*
 ** typedef char	args_type_t;
 */
 
-# define T_REG			1       /* registre */
-# define T_DIR			2       /* directe  (ld  #1,r1  met 1 dans r1) */
-# define T_IND			4       /* indirecte toujours relatif
+# define T_REG			1	/* registre */
+# define T_DIR			2	/* directe  (ld  #1,r1  met 1 dans r1) */
+# define T_IND			4	/* indirecte toujours relatif
 					** ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
 					** dans r1 (4 octecs ))
 					*/
-# define T_LAB			8       /* LABEL */
+# define T_LAB			8	/* LABEL */
 
 /*
 ** header
 */
 
-# define PROG_NAME_LENGTH        128
-# define COMMENT_LENGTH          2048
-# define COREWAR_EXEC_MAGIC      0xea83f3
+# define PROG_NAME_LENGTH	128
+# define COMMENT_LENGTH		2048
+# define COREWAR_EXEC_MAGIC	0xea83f3
 
 /*
 ** extern op_t	g_op_tab[];
