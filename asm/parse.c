@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Mon Jan 21 14:07:38 2013 maxime lavandier
+** Last update Mon Jan 21 18:22:38 2013 adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -13,7 +13,7 @@
 #include "../misc/op.h"
 #include "../misc/str_func.h"
 
-int	recup_name(char *line, header_t *header)
+int	recup_name(char *line, t_header *header)
 {
   int	i_line;
   int	i_name;
@@ -41,7 +41,7 @@ int	recup_name(char *line, header_t *header)
   return (0);
 }
 
-int	recup_comment(char *line, header_t *header)
+int	recup_comment(char *line, t_header *header)
 {
   int	i_line;
   int	i_comment;
@@ -85,7 +85,7 @@ int	next_the_header(char **file)
 int		parse(char **file)
 {
   int		i;
-  header_t	header;
+  t_header	header;
 
   i = next_the_header(file);
   if (i == 0)
@@ -100,6 +100,6 @@ int		parse(char **file)
 	parse_cmd(file[i], &header);
       i++;
     }
-  printf ("NAME :%s\nCOMMENT :%s", header.prog_name, header.comment);
+  printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
   return (0);
 }

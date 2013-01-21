@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 16:27:33 2013 luc sinet
+** Last update Mon Jan 21 17:08:59 2013 adrien dellamaggiora
 */
 
 #ifndef _OP_H_
@@ -48,9 +48,7 @@
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING	".comment"
 
-/*
-** typedef char	args_type_t;
-*/
+typedef char	args_type_t;
 
 # define T_REG			1	/* registre */
 # define T_DIR			2	/* directe  (ld  #1,r1  met 1 dans r1) */

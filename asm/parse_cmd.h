@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Fri Jan 18 16:35:15 2013 adrien dellamaggiora
+** Last update Mon Jan 21 17:12:46 2013 adrien dellamaggiora
 */
 
 #ifndef PARSE_CMD
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	parse_cmd(char *line, header_t *header);
+int	parse_cmd(char *line, t_header *header);
 
 struct	s_cmd
 {
