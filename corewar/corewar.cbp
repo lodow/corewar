@@ -46,13 +46,13 @@
 		<Unit filename="my_memset.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="op/op_live.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="op_useful.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op_utilities.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="opcodefirstset.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="vmstats.h" />
