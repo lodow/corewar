@@ -60,7 +60,7 @@ char	*tab_file_tstr(char **tab_file)
   int	ii;
   int	tlen;
 
-  if (((tlen = 0) == 0) && ((i = 0) == 0))
+  tlen = i = 0;
   if ((tab_file == NULL))
     return (NULL);
   while (tab_file[i] != NULL && ((ii = 0) == 0))

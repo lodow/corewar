@@ -5,16 +5,15 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Jan 20 14:54:39 2013 luc sinet
+** Last update Mon Jan 21 14:00:07 2013 luc sinet
 */
 
 #include	"include.h"
 
-void my_putchar(char c)
+void	my_putchar(char c)
 {
   if (write(1, &c, 1) == -1)
-    if (write(2, "Write error\n", 12) == -1)
-      exit(0);
+    write(2, "Write error\n", 12);
 }
 
 void			print_hexa(char *mem, int nb)
@@ -49,6 +48,7 @@ int		main(int argc, char **argv, char **envp)
     {
       printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
       print_hexa(prog.champcode, prog.header.prog_size);
+      printf("\n");
       free(prog.freeme);
     }
   free(vmmem);
