@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Mon Jan 21 13:19:23 2013 maxime lavandier
+** Last update Mon Jan 21 14:07:38 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -22,7 +22,9 @@ int	recup_name(char *line, header_t *header)
     return (-1);
   i_name = 0;
   i_line = my_strlen(NAME_CMD_STRING);
-  while (line[i_line] == ' ' || line[i_line] == '"')
+  while (line[i_line] != '"' && line[i_line] != 0)
+    i_line++;
+  if (line[i_line] != 0)
     i_line++;
   while (line[i_line] != 0 && line[i_line] != '"' && i_name < PROG_NAME_LENGTH)
     {
@@ -48,7 +50,9 @@ int	recup_comment(char *line, header_t *header)
     return (-1);
   i_comment = 0;
   i_line = my_strlen(COMMENT_CMD_STRING);
-  while (line[i_line] == ' ' || line[i_line] == '"')
+  while (line[i_line] != '"' && line[i_line] != 0)
+    i_line++;
+  if (line[i_line] != 0)
     i_line++;
   while (line[i_line] != 0 && line[i_line] != '"' && i_comment < COMMENT_LENGTH)
     {
@@ -70,12 +74,12 @@ int	next_the_header(char **file)
   int	i;
 
   i = 0;
-  while ((file[i] != 0) && (file[i] != 0) &&
+  while ((file[i] != 0) && (file[i + 1] != 0) &&
 	 ((file[i][0] == COMMENT_CHAR) || (file[i + 1][0] == COMMENT_CHAR)))
     {
       i++;
     }
-  return (0);
+  return (i);
 }
 
 int		parse(char **file)
@@ -94,6 +98,8 @@ int		parse(char **file)
 	recup_comment(file[i], &header);
       else
 	parse_cmd(file[i], &header);
+      i++;
     }
+  printf ("NAME :%s\nCOMMENT :%s", header.prog_name, header.comment);
   return (0);
 }
