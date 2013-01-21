@@ -53,9 +53,9 @@ char	*get_ind_value(t_vmmem *mem, int pc, int off_pos)
     {
       while (i < IND_SIZE)
         {
-          if (mod)
-            value[i] = mem[MOD_MEM(pc + off_pos + i)];
-          else
+          /*if (mod)
+            value[i] = mem[MOD_MEM(pc + (off_pos % IDX) + i)];
+          else*/
             value[i] = mem[MOD_MEM(pc + off_pos + i)];
           i++;
         }
