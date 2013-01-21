@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 17:08:59 2013 adrien dellamaggiora
+** Last update Mon Jan 21 19:52:20 2013 luc sinet
 */
 
 #ifndef _OP_H_
@@ -46,7 +46,7 @@
 # define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
 # define NAME_CMD_STRING		".name"
-# define COMMENT_CMD_STRING	".comment"
+# define COMMENT_CMD_STRING		".comment"
 
 typedef char	args_type_t;
 
