@@ -5,11 +5,11 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Fri Jan 18 16:09:52 2013 adrien dellamaggiora
+## Last update Mon Jan 21 13:25:05 2013 maxime lavandier
 ##
 
 SRC= 	main.c \
-	parce.c \
+	parse.c \
 	parse_cmd.c \
 	../misc/str_func.c \
 	../misc/get_file.c \

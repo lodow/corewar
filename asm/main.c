@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Jan 18 19:14:23 2013 adrien dellamaggiora
+** Last update Mon Jan 21 13:24:47 2013 maxime lavandier
 */
 
 #include "../misc/op.h"
@@ -32,4 +32,5 @@ int	main(int argc, char **argv, char **envp)
     }
   else
     my_putstr("No file\n");
+  return (0);
 }

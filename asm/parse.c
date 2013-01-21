@@ -1,11 +1,11 @@
 /*
-** parce.c for corewar in /home/lavand_m//projet/actu/corewar/asm
+** parse.c for corewar in /home/lavand_m//projet/actu/corewar/asm
 **
 ** Made by maxime lavandier
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Fri Jan 18 16:35:40 2013 adrien dellamaggiora
+** Last update Mon Jan 21 13:19:23 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -26,7 +26,7 @@ int	recup_name(char *line, header_t *header)
     i_line++;
   while (line[i_line] != 0 && line[i_line] != '"' && i_name < PROG_NAME_LENGTH)
     {
-      header->prog_name[i_name];
+      header->prog_name[i_name] = line[i_line];
       i_line++;
       i_name++;
     }
@@ -52,7 +52,7 @@ int	recup_comment(char *line, header_t *header)
     i_line++;
   while (line[i_line] != 0 && line[i_line] != '"' && i_comment < COMMENT_LENGTH)
     {
-      header->comment[i_comment];
+      header->comment[i_comment] = line[i_line];
       i_line++;
       i_comment++;
     }
