@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 16:04:53 2013 luc sinet
+** Last update Mon Jan 21 16:27:33 2013 luc sinet
 */
 
 #ifndef _OP_H_
@@ -43,36 +43,36 @@
 # define DIRECT_CHAR		'%'
 # define SEPARATOR_CHAR		','
 
-# define LABEL_CHARS             "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING         ".name"
-# define COMMENT_CMD_STRING      ".comment"
+# define NAME_CMD_STRING		".name"
+# define COMMENT_CMD_STRING	".comment"
 
 /*
 ** typedef char	args_type_t;
 */
 
-# define T_REG			1       /* registre */
-# define T_DIR			2       /* directe  (ld  #1,r1  met 1 dans r1) */
-# define T_IND			4       /* indirecte toujours relatif
+# define T_REG			1	/* registre */
+# define T_DIR			2	/* directe  (ld  #1,r1  met 1 dans r1) */
+# define T_IND			4	/* indirecte toujours relatif
 					** ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
 					** dans r1 (4 octecs ))
 					*/
-# define T_LAB			8       /* LABEL */
+# define T_LAB			8	/* LABEL */
 
 /*
 ** header
 */
 
-# define PROG_NAME_LENGTH        128
-# define COMMENT_LENGTH          2048
-# define COREWAR_EXEC_MAGIC      0xea83f3
+# define PROG_NAME_LENGTH	128
+# define COMMENT_LENGTH		2048
+# define COREWAR_EXEC_MAGIC	0xea83f3
 
 /*
 ** extern op_t	g_op_tab[];
 */
 
-typedef struct	op_s
+typedef struct	s_op
 {
   char		*mnemonique;
   char		nbr_args;
@@ -80,14 +80,14 @@ typedef struct	op_s
   char		code;
   int		nbr_cycles;
   char		*comment;
-}		op_t;
+}		t_op;
 
-typedef struct	header_s
+typedef struct	s_header
 {
   int		magic;
   char		prog_name[PROG_NAME_LENGTH + 1];
   int		prog_size;
   char		comment[COMMENT_LENGTH + 1];
-}		header_t;
+}		t_header;
 
 #endif
