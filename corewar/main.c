@@ -10,28 +10,22 @@
 
 #include	"include.h"
 
-void	my_putchar(char c)
-{
-  if (write(1, &c, 1) == -1)
-    write(2, "Write error\n", 12);
-}
-
 void			print_hexa(char *mem, int nb)
 {
   int			i;
   char			*hexa;
-  unsigned char		tmp;
+  unsigned char	tmp;
 
   i = 0;
   hexa = "0123456789ABCDEF";
   while (i < nb)
     {
       tmp = mem[i];
-      my_putstr("0x");
-      my_putchar(hexa[tmp / 16]);
-      my_putchar(hexa[tmp % 16]);
+      my_putstr("0x", 1, 2);
+      my_putstr(&hexa[tmp / 16], 1, 1);
+      my_putstr(&hexa[tmp % 16], 1, 1);
       if (i != nb - 1)
-        my_putstr(",");
+        my_putstr(",", 1, 1);
       i++;
     }
 }
