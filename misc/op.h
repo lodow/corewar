@@ -17,13 +17,11 @@
 /*
 ** Registres
 */
-
 # define REG_NUMBER		16
 
 /*
 ** size in Bytes
 */
-
 # define IND_SIZE		2
 # define REG_SIZE		4
 # define DIR_SIZE		REG_SIZE
@@ -31,7 +29,6 @@
 /*
 ** Cycle things
 */
-
 # define CYCLE_TO_DIE		1536
 # define CYCLE_DELTA		5
 # define NBR_LIVE		40
@@ -61,7 +58,6 @@ typedef char	args_type_t;
 /*
 ** header
 */
-
 # define PROG_NAME_LENGTH	128
 # define COMMENT_LENGTH		2048
 # define COREWAR_EXEC_MAGIC	0xea83f3
@@ -69,7 +65,6 @@ typedef char	args_type_t;
 /*
 ** extern op_t	g_op_tab[];
 */
-
 typedef struct	s_op
 {
   char		*mnemonique;

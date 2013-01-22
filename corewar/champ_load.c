@@ -19,7 +19,7 @@ int	load_champ(const char *filename, t_champ *champ)
   char	*file;
   int	size;
 
-  if ((size = get_bin_file(filename, &file)) <= ((int)sizeof(header_t)))
+  if ((size = get_bin_file(filename, &file)) <= ((int)sizeof(t_header)))
     return (-1);
   champ->freeme = file;
   if ((champ->header.magic = ((int*)switch_endian(file, sizeof(int)))[0])

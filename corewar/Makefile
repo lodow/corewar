@@ -16,7 +16,6 @@ SRC= 	main.c \
 	op_utilities.c \
 	op/op_live.c \
 	../misc/liste.c \
-	../misc/op.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c
