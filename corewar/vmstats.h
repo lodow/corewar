@@ -38,6 +38,13 @@ typedef struct	s_process
   t_vmmem	*mem;
 }	t_process;
 
+typedef struct	s_param
+{
+  char	type;
+  int	size;
+  char	*value;
+}	t_param;
+
 int	get_bin_file(const char *filename, char **file);
 int	load_champ(const char *filename, t_champ *champ);
 int	op_param_size(char type);
