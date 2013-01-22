@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Tue Jan 22 15:36:17 2013 adrien dellamaggiora
+** Last update Tue Jan 22 15:56:11 2013 adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -41,6 +41,9 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
 {
   if (line == NULL || header == NULL)
     return (-1);
-
+  line = sub_space(line);
+  if (line[0] == 0)
+    return;
+  printf("%s\n", line);
   return (0);
 }

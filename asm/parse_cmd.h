@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Tue Jan 22 15:28:02 2013 adrien dellamaggiora
+** Last update Tue Jan 22 15:59:43 2013 adrien dellamaggiora
 */
 
 #ifndef PARSE_CMD
@@ -22,6 +22,7 @@ typedef struct	s_cmd
   char	*opocode;
   char	*param[MAX_ARGS_NUMBER + 1];
   void	*file;
+  int	pc;
 }		t_cmd;
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd);
