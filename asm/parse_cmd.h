@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Mon Jan 21 17:12:46 2013 adrien dellamaggiora
+** Last update Tue Jan 22 13:55:37 2013 maxime lavandier
 */
 
 #ifndef PARSE_CMD
@@ -23,6 +23,7 @@ struct	s_cmd
   char	*opt_label;
   char	*opocode;
   char	*param[MAX_ARGS_NUMBER + 1];
+  void	*file;
 }	t_cmd;
 
 #endif
