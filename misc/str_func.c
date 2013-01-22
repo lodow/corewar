@@ -35,14 +35,20 @@ int	my_strlen(char *str)
   return (i);
 }
 
-void	my_putstr(char *str)
+void	my_putstr(char *str, int fd, int strlen)
 {
-  int	i;
+  int	len;
 
-  i = 0;
+  len = 0;
   if (str != NULL)
-    while (str[i++] != '\0');
-  i = write(1, str, i);
+    {
+      if (strlen == -1)
+        {
+          while (str[len++] != '\0');
+          strlen = len;
+        }
+      len = write(fd, str, strlen);
+    }
 }
 
 int	my_strcmp(char *str1, char *str2)
@@ -53,7 +59,7 @@ int	my_strcmp(char *str1, char *str2)
   while (str1[i] != 0 && str2[i] != 0)
     {
       if (str1[i] != str2[i])
-	return (0);
+        return (0);
       i++;
     }
   if (str2[i] != 0)
