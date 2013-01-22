@@ -38,7 +38,7 @@ int		main(int argc, char **argv, char **envp)
   if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
     return (-1);
   my_memset(vmmem, MEM_SIZE, 0x0);
-  if (load_champ(argv[1], &prog) >= 0)
+  if (load_champ(argv[1], &prog, 1) >= 0)
     {
       printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
       print_hexa(prog.champcode, prog.header.prog_size);

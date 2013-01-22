@@ -40,6 +40,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />
+		<Unit filename="init_vm.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
