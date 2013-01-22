@@ -12,6 +12,7 @@
 # define _INCLUDE_H_
 
 # include	<unistd.h>
+# include	"../misc/liste.h"
 # include	"../misc/get_file.h"
 # include	"../misc/str_func.h"
 # include	"vmstats.h"

@@ -9,12 +9,12 @@
 ##
 
 SRC= 	main.c \
-	my_memset.c \
 	champ_load.c \
 	get_bin_file.c \
 	endianess.c \
 	op_utilities.c \
 	op/op_live.c \
+	../misc/my_memset.c \
 	../misc/liste.c \
 	../misc/str_func.c \
 	../misc/get_file.c \

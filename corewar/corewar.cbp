@@ -40,10 +40,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />
-		<Unit filename="main.c">
+		<Unit filename="init_vm.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="my_memset.c">
+		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op/op_live.c">
@@ -68,6 +68,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../misc/liste.h" />
+		<Unit filename="../misc/my_memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../misc/op.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -14,7 +14,7 @@
 **Load a champ from a file filename and fill struct champ passed
 ** return 0 if everything good, negatif value elsewhere
 */
-int	load_champ(const char *filename, t_champ *champ)
+int	load_champ(const char *filename, t_champ *champ, int number)
 {
   char	*file;
   int	size;
@@ -33,7 +33,8 @@ int	load_champ(const char *filename, t_champ *champ)
   my_strncpy(champ->header.comment, file, COMMENT_LENGTH);
   file = &(file[COMMENT_LENGTH + 4]);
   champ->champcode = file;
-  file = &(file[champ->header.prog_size]);
+  champ->number = number;
+  champ->alive = 0;
   return (0);
 }
 

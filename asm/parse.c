@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Tue Jan 22 15:35:37 2013 adrien dellamaggiora
+** Last update Tue Jan 22 16:04:52 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -89,7 +89,7 @@ int		parse(char **file)
   t_cmd		cmd;
 
   i = next_the_header(file);
-  if ((cmd.file = malloc(4 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
+  if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
     return (-1);
   while (file[i])
     {
@@ -101,7 +101,7 @@ int		parse(char **file)
 	parse_cmd(file[i], &header, &cmd);
       i++;
     }
-  magic(&cmd, &header);
+  put_header(&cmd, &header);
   printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
   return (0);
 }

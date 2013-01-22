@@ -46,7 +46,7 @@ typedef struct	s_param
 }	t_param;
 
 int	get_bin_file(const char *filename, char **file);
-int	load_champ(const char *filename, t_champ *champ);
+int	load_champ(const char *filename, t_champ *champ, int number);
 int	op_param_size(char type);
 char	*get_value_f_param_type(char type, int off_pos, t_process *proc);
 
