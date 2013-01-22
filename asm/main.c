@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 22 15:34:03 2013 adrien dellamaggiora
+** Last update Tue Jan 22 21:44:40 2013 maxime lavandier
 */
 
 #include "../misc/op.h"
@@ -24,13 +24,18 @@ int	main(int argc, char **argv, char **envp)
 	  my_putstr("File ", 2, 5);
 	  my_putstr(argv[1], 2, -1);
 	  my_putstr(" not accessible\n", 2, 16);
-	  return (0);
+	  return (-1);
 	}
       file = get_data_ffile(fd);
+      if (file == 0 || file[0] == 0)
+	{
+	  my_putstr("error file\n", 2, 11);
+	  return (-1);
+	}
       if (parse(file) == -1)
 	my_putstr("parse error\n", 2, 12);
     }
   else
-    my_putstr("No file\n", 2, 7);
+    my_putstr("No file\n", 2, 8);
   return (0);
 }
