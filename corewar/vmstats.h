@@ -19,7 +19,7 @@
 typedef struct		s_champ
 {
   char		*freeme;
-  header_t	header;
+  t_header	header;
   char		*champcode;
   int		number;
   int		alive;
