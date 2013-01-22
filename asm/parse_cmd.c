@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Tue Jan 22 15:25:59 2013 adrien dellamaggiora
+** Last update Tue Jan 22 15:36:17 2013 adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -29,7 +29,7 @@ char	*sub_space(char *str)
 	res[j++] = str[i];
       i++;
     }
-   if (res[j - 1] = ' ')
+   if (res[j - 1] == ' ')
      res[j - 1] = 0;
    else
      res[j] = 0;

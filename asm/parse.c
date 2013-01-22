@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Tue Jan 22 14:58:09 2013 maxime lavandier
+** Last update Tue Jan 22 15:35:37 2013 adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -34,7 +34,7 @@ int	recup_name(char *line, t_header *header)
     }
   if (i_name == PROG_NAME_LENGTH || line[i_line] == 0)
     {
-      my_putstr("Name parse error\n");
+      my_putstr("Name parse error\n", 2, 17);
       exit(0);
     }
   header->prog_name[i_name] = 0;
@@ -62,7 +62,7 @@ int	recup_comment(char *line, t_header *header)
     }
   if (i_comment == COMMENT_CHAR || line[i_line] == 0)
     {
-      my_putstr("Comment parse error\n");
+      my_putstr("Comment parse error\n", 2, 20);
       exit(0);
     }
   header->comment[i_comment] = 0;
