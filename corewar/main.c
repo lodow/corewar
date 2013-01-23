@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 14:00:07 2013 luc sinet
+** Last update Wed Jan 23 14:21:23 2013 luc sinet
 */
 
 #include	"include.h"
@@ -35,7 +35,8 @@ int		main(int argc, char **argv, char **envp)
   t_vmmem	*vmmem;
   t_champ	prog;
 
-  if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
+
+  if (pars(argv, argc) == -1 || (vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
     return (-1);
   my_memset(vmmem, MEM_SIZE, 0x0);
   if (load_champ(argv[1], &prog) >= 0)
