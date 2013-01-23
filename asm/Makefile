@@ -5,16 +5,19 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue Jan 22 14:47:58 2013 maxime lavandier
+## Last update Wed Jan 23 20:37:26 2013 maxime lavandier
 ##
 
 SRC= 	main.c \
 	parse.c \
+	check_func.c \
+	check_cmd.c \
 	parse_cmd.c \
 	header.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
-	../misc/get_next_line.c
+	../misc/get_next_line.c \
+	../misc/nb_func.c
 
 OBJ= $(SRC:.c=.o)
 

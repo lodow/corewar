@@ -5,13 +5,14 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Jan 23 14:41:02 2013 maxime lavandier
+** Last update Wed Jan 23 20:28:54 2013 maxime lavandier
 */
 
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
 #include "../misc/str_func.h"
+#include "../misc/nb_func.h"
 
 int	recup_name(char *line, t_header *header)
 {
@@ -100,7 +101,7 @@ int		parse(char **file)
       else if (parse_cmd(file[i], &header, &cmd) == -1)
 	  {
 	    my_putstr("Error : line ", 2, -1);
-	    my_putnbr(i + 1, 2, -1);
+	    my_put_nbr(i + 1, 2);
 	  }
       i++;
     }

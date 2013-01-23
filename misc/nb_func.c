@@ -5,10 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Wed Jan 23 17:33:55 2013 luc sinet
+** Last update Wed Jan 23 20:42:21 2013 maxime lavandier
 */
 
 #include <stdlib.h>
+#include "str_func.h"
 
 int	my_getnbr(char *s1)
 {
@@ -44,7 +45,7 @@ int	my_put_nbr(int nb, int fd)
     }
   if (nb < 0)
     {
-      my_putstr('-', fd, 1);
+      my_putstr("-", fd, 1);
       nb = -nb;
     }
   if (nb >= 10)

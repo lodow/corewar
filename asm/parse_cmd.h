@@ -5,16 +5,18 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Wed Jan 23 14:38:37 2013 Welanor
+** Last update Wed Jan 23 20:38:31 2013 maxime lavandier
 */
 
 #ifndef PARSE_CMD
 # define PARSE_CMD
 
-#include "../misc/op.h"
-#include "../misc/str_func.h"
-#include <stdlib.h>
-#include <stdio.h>
+# include "../misc/op.h"
+# include "../misc/str_func.h"
+# include <stdlib.h>
+# include <stdio.h>
+
+# define TYPE(x, y) (x == 1 ? y : 1)
 
 typedef	struct	s_tablabel
 {
@@ -33,7 +35,14 @@ typedef struct	s_cmd
   t_tablabel	*lab;
 }		t_cmd;
 
+int	live_ldi_lldi(char *line, int i);
+int	ld_st_lld(char *line, int i);
+int	add_sub_and_or_xor_sti(char *line, int i);
+int	zjmp_fork_lfork(char *line, int i);
+int	aff(char *line, int i);
+int	check_cmd(char *line);
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd);
 int	put_header(t_cmd *cmd, t_header *header);
+void	my_putstr(char *str, int fd, int lenght);
 
 #endif
