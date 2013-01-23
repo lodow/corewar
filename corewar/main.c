@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 23 15:15:20 2013 luc sinet
+** Last update Wed Jan 23 18:30:41 2013 luc sinet
 */
 
 #include	"include.h"
@@ -40,7 +40,8 @@ int		main(int argc, char **argv, char **envp)
   vm.champs = NULL;
   vm.cycle_count = 0;
   vm.cycle_to_die = CYCLE_TO_DIE;
-  if (/*pars(argv, argc) == -1 || */((vm.mem = malloc(MEM_SIZE * sizeof(char))) == NULL))
+  if (pars(&(argv[1]), argc - 1) == -1 ||
+      ((vm.mem = malloc(MEM_SIZE * sizeof(char))) == NULL))
     return (-1);
   my_memset(vm.mem, MEM_SIZE, 0x0);
   tmpfd = open(argv[1], O_RDONLY);
