@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Wed Jan 23 14:46:12 2013 luc sinet
+** Last update Wed Jan 23 17:33:55 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -48,7 +48,7 @@ int	my_put_nbr(int nb, int fd)
       nb = -nb;
     }
   if (nb >= 10)
-    my_put_nbr(nb / 10);
+    my_put_nbr(nb / 10, fd);
   my_putstr(nb % 10 + 48, fd, 1);
   return (0);
 }
