@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Wed Jan 23 17:01:59 2013 luc sinet
+** Last update Wed Jan 23 18:55:16 2013 luc sinet
 */
 
 #include "include.h"
@@ -15,7 +15,7 @@ void	error_msg(int type)
   if (type == 0)
     my_putstr("Error, please verifie your arguments\n"
               "./corewar [-dump nbr_cycle][[-n prog_number]"
-              "[-a load_address ] prog_name]", 1, -1);
+              "[-a load_address ] prog_name]\n", 1, -1);
 }
 
 int	check_args(char **av, int nb_arg)
@@ -23,11 +23,12 @@ int	check_args(char **av, int nb_arg)
   int	i;
   int	error;
 
+  i = 0;
   while (i < nb_arg)
     {
-      if (!(error = check_opt(av, av[i], &i, nb_arg)))
+      if ((error = check_opt(av, av[i], &i, nb_arg)) < 0)
         {
-          if (error == -2 || !check_champ(av[i]))
+          if (error == -2 || check_champ(av[i]) == -1)
             {
               error_msg(0);
               return (-1);
@@ -40,7 +41,8 @@ int	check_args(char **av, int nb_arg)
 
 int	pars(char **av, int ac)
 {
-  if (ac == 1 || check_args(av, ac - 1) == -1)
+  if (ac == 0 || check_args(av, ac) == -1)
     return (-1);
-
+  return (0);
 }
+

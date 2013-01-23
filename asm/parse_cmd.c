@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 23 15:12:22 2013 Welanor
+** Last update Wed Jan 23 18:52:28 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -37,6 +37,34 @@ char	*sub_space(char *str)
    return (res);
 }
 
+int	findlabel(char *line)
+{
+  char	*labelchar;
+  int	i;
+  int	k;
+  int	j;
+
+  i = 0;
+  while(line[i] != LABEL_CHAR && line[i] != '\0')
+    i++;
+  if (line[i] == LABEL_CHAR)
+    {
+      k = i;
+      while (k >= 0)
+	{
+	  labelchar = LABEL_CHARS;
+	  j = 0;
+	  while (line[k] != labelchar[j] && labelchar[j] != '\0')
+	    j++;
+	  if (labelchar[j] == '\0')
+	    return (0);
+	  k--;
+	}
+      return (1);
+    }
+  return (0);
+}
+
 t_cmd	*addlabel(char *line, t_cmd *cmd)
 {
   int	i;
@@ -44,7 +72,7 @@ t_cmd	*addlabel(char *line, t_cmd *cmd)
   char	*str;
 
   i = 0;
-  while (str[i] != LABEL_CHAR && str[i] != '\0')
+  while (line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
   if ((str = malloc(i + 1)) == NULL)
     exit(0);
@@ -54,6 +82,9 @@ t_cmd	*addlabel(char *line, t_cmd *cmd)
       str[j] = line[j];
       j++;
     }
+  if ((cmd->lab = realloc(cmd->lab, sizeof(t_tablabel) * cmd->lablengh))
+      == NULL)
+    exit(0);
   cmd->lab[cmd->lablengh].label = str;
   cmd->lab[cmd->lablengh].adress = cmd->pc;
   cmd->lablengh += 1;
@@ -70,6 +101,8 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
   line = sub_space(line);
   if (line[0] == '\0')
     return (0);
+  if (findlabel(line) == 1)
+    cmd = addlabel(line, cmd);
   printf("%s\n", line);
   return (0);
 }
