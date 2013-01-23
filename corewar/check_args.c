@@ -18,7 +18,7 @@ int	is_a_num(char *nb)
   while (nb[i])
     {
       if (nb[i] < '0' || nb[i] > '9')
-	return (-1);
+        return (-1);
     }
   return (1);
 }
