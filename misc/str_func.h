@@ -17,7 +17,7 @@
 int	my_strlen(char *str);
 void	my_putstr(char *str, int fd, int strlen);
 char	*my_strncpy(char *dest, char *src, int n);
-int	my_strcmp(char *src, char *str);
+int	my_begincmp(char *str1, char *str2);
 void	my_memset(void *ptr, int osize, char value);
 
 #endif

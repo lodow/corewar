@@ -51,7 +51,7 @@ void	my_putstr(char *str, int fd, int strlen)
     }
 }
 
-int	my_strcmp(char *str1, char *str2)
+int	my_begincmp(char *str1, char *str2)
 {
   int	i;
 
