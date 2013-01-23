@@ -50,6 +50,8 @@ typedef struct	s_vm
   t_champ	*all_champ;
   t_list	*process_list;
   t_vmmem	*mem;
+  int	cycle_count;
+  int	cycle_to_die;
 }		t_vm;
 
 int		delete_process(void *ptr);

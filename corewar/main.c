@@ -37,6 +37,8 @@ int		main(int argc, char **argv, char **envp)
   int	tmpfd;
 
   vm.process_list = NULL;
+  vm.cycle_count = 0;
+  vm.cycle_to_die = CYCLE_TO_DIE;
   if (((vm.mem = malloc(MEM_SIZE * sizeof(char))) == NULL))
     return (-1);
   my_memset(vm.mem, MEM_SIZE, 0x0);
