@@ -10,7 +10,7 @@
 
 #include	"include.h"
 
-t_process	*up_champ_t_mem(t_vmem *mem, t_champ *champ, int pc)
+t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc)
 {
   t_process	*champ_proc;
   int		i;
@@ -27,7 +27,7 @@ t_process	*up_champ_t_mem(t_vmem *mem, t_champ *champ, int pc)
       my_memset(champ_proc->reg[i], REG_SIZE, 0x00);
       i++;
     }
-  champ_proc->reg[0][REG_SIZE - 1] = ((char)(champ_proc->number));
+  champ_proc->reg[0][REG_SIZE - 1] = ((char)(champ->number));
   i = 0;
   while (i < champ->header.prog_size)
     {

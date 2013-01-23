@@ -45,9 +45,12 @@ typedef struct	s_param
   char	*value;
 }	t_param;
 
-int	get_bin_file(const char *filename, char **file);
-int	load_champ(const char *filename, t_champ *champ, int number);
-int	op_param_size(char type);
-char	*get_value_f_param_type(char type, int off_pos, t_process *proc);
+int		delete_process(void *ptr);
+int		get_bin_file(const char *filename, char **file);
+int		load_champ(const char *filename, t_champ *champ, int number);
+int		op_param_size(char type);
+t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);
+t_process	*create_new_process(t_process *src);
+char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
 
 #endif

@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../Sky.cor" />
+				<Option parameters="../champ/Sky.cor" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -53,6 +53,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op_utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="process_util.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="vmstats.h" />
