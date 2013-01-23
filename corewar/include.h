@@ -18,6 +18,7 @@
 # include	"vmstats.h"
 # include	"pars.h"
 # include	"check_args.h"
+# include	"op/operation.h"
 
 # define MAX(x, y) (((x) > (y)) ? (x) : (y))
 

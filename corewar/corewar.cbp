@@ -33,6 +33,10 @@
 		<Unit filename="champ_load.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="check_args.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="check_args.h" />
 		<Unit filename="endianess.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,13 +50,66 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="op/op_add.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_aff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_and.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_fork.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_ldi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_lfork.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="op/op_live.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="op/op_lld.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_lldi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_load.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_or.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_st.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_sti.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_store.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_sub.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_xor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_zjmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/operation.h" />
 		<Unit filename="op_useful.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op_utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pars.h" />
+		<Unit filename="pars_args.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="process_util.c">

@@ -10,7 +10,7 @@
 
 #include	"operation.h"
 
-int	op_live(t_process *proc, t_vm *vm)
+int	op_fork(t_process *proc, t_vm *vm)
 {
   return (0);
 }

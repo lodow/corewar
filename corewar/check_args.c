@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Wed Jan 23 17:15:28 2013 luc sinet
+** Last update Wed Jan 23 18:55:02 2013 luc sinet
 */
 
 #include "include.h"
@@ -18,7 +18,7 @@ int	is_a_num(char *nb)
   while (nb[i])
     {
       if (nb[i] < '0' || nb[i] > '9')
-	return (-1);
+        return (-1);
     }
   return (1);
 }
@@ -52,7 +52,7 @@ int	check_opt(char **av, char *opt, int *pos, int max)
     i++;
   if (i == 3)
     return (-1);
-  if (i == 0 && ((*pos + 1) == max || !is_a_num(av[*pos + 1])))
+  if (i == 0 && ((*pos + 1) == max || is_a_num(av[*pos + 1]) == -1))
     return (-2);
   else if (i == 0)
     *pos += 1;
