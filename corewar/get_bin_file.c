@@ -14,7 +14,7 @@ int	get_bin_file(int fd, char **file)
 {
   char	*tmp;
   int	tsize;
-  char	buff[4096];
+  char	buff[BIN_BUFFER];
   int	nbread;
 
   (*file) = NULL;
@@ -24,7 +24,7 @@ int	get_bin_file(int fd, char **file)
     return (0);
   while (nbread > 0)
     {
-      nbread = read(fd, buff, 4096);
+      nbread = read(fd, buff, BIN_BUFFER);
       if ((tmp = malloc((tsize + nbread) * sizeof(char))) == NULL)
         return (-1);
       my_strncpy(tmp, (*file), tsize);
