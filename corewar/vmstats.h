@@ -47,7 +47,7 @@ typedef struct	s_param
 
 typedef struct	s_vm
 {
-  t_champ	*all_champ;
+  t_champ	**champs;
   t_list	*process_list;
   t_vmmem	*mem;
   int	cycle_count;
@@ -55,7 +55,7 @@ typedef struct	s_vm
 }		t_vm;
 
 int		delete_process(void *ptr);
-int		get_bin_file(int fd, char **file);
+t_champ	**add_champ_t_tab(t_champ **tab, t_champ *add);
 t_champ	*load_champ(int fd, int number);
 int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);

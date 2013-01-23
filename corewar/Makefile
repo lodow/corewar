@@ -5,10 +5,12 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue Jan 15 13:26:45 2013 adrien dellamaggiora
+## Last update Wed Jan 23 14:34:48 2013 luc sinet
 ##
 
 SRC= 	main.c \
+	pars_args.c \
+	check_args.c \
 	champ_load.c \
 	get_bin_file.c \
 	endianess.c \
