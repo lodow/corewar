@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 23 17:13:47 2013 Welanor
+** Last update Wed Jan 23 17:22:40 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -45,16 +45,16 @@ int	findlabel(char *line)
   int	j;
 
   i = 0;
-  while(str[i] != LABEL_CHAR && str[i] != '\0')
+  while(line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
-  if (str[i] == LABEL_CHAR)
+  if (line[i] == LABEL_CHAR)
     {
       k = i;
       while (k >= 0)
 	{
-	  labelchar = LABEL_CHAR;
+	  labelchar = LABEL_CHARS;
 	  j = 0;
-	  while (str[k] != labelchar[j] && labelchar[j] != '\0')
+	  while (line[k] != labelchar[j] && labelchar[j] != '\0')
 	    j++;
 	  if (labelchar[j] == '\0')
 	    return (0);
@@ -72,7 +72,7 @@ t_cmd	*addlabel(char *line, t_cmd *cmd)
   char	*str;
 
   i = 0;
-  while (str[i] != LABEL_CHAR && str[i] != '\0')
+  while (line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
   if ((str = malloc(i + 1)) == NULL)
     exit(0);
