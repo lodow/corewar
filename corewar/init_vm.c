@@ -10,6 +10,29 @@
 
 #include	"include.h"
 
+t_champ	**add_champ_t_tab(t_champ **tab, t_champ *add)
+{
+  t_champ	**newtab;
+  int	i;
+
+  i = 0;
+  if (tab != NULL)
+    while (tab[i] != NULL)
+      i++;
+  if ((newtab = malloc((i + 2) * sizeof(t_champ))) == NULL)
+    return (NULL);
+  i = 0;
+  if (tab != NULL)
+    while (tab[i] != NULL)
+      {
+        newtab[i] = tab[i];
+        i++;
+      }
+  newtab[i] = add;
+  newtab[i + 1] = NULL;
+  return (newtab);
+}
+
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc)
 {
   t_process	*champ_proc;
@@ -36,3 +59,4 @@ t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc)
     }
   return (champ_proc);
 }
+
