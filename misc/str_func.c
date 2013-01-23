@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 23 14:25:02 2013 luc sinet
+** Last update Wed Jan 23 14:30:52 2013 luc sinet
 */
 
 #include	"str_func.h"
