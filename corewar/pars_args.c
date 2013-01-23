@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Wed Jan 23 18:55:16 2013 luc sinet
+** Last update Wed Jan 23 20:41:21 2013 luc sinet
 */
 
 #include "include.h"
@@ -39,9 +39,30 @@ int	check_args(char **av, int nb_arg)
   return (0);
 }
 
+int	pars_args(char **av, int nb_arg)
+{
+  int	i;
+
+  i = 0;
+  while (i < nb_args)
+    {
+      if (pars_opt(av, &i, nb_arg) < 0)
+	{
+	  if (pars_champ(av[i]) == -1)
+	    {
+	      error_msg(1);
+	      return (-1);
+	    }
+	}
+    }
+  return (0);
+}
+
 int	pars(char **av, int ac)
 {
   if (ac == 0 || check_args(av, ac) == -1)
+    return (-1);
+  if (pars_args(av, ac) == -1)
     return (-1);
   return (0);
 }
