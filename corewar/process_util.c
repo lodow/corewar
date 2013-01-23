@@ -10,17 +10,19 @@
 
 #include	"include.h"
 
-int		exe_process(void *ptr)
+int		exe_process(void *ptrproc, void *ptrvm)
 {
   t_process	*proc;
+  t_vm		*vmstat;
 
-  proc = ptr;
-if (proc->nb_cycle_t_next == 1)
-{
-/* Do the operande */
-/*proc->pc =  Move to next instruction*/
-}
-proc->nb_cycle_t_next--;
+  proc = ptrproc;
+  vmstat = ptrvm;
+  if (proc->nb_cycle_t_next == 1)
+    {
+      /* Do the operande */
+      /*proc->pc +=  Move to next instruction*/
+    }
+  proc->nb_cycle_t_next--;
   return (0);
 }
 

@@ -56,6 +56,7 @@ typedef struct	s_vm
 
 int		delete_process(void *ptr);
 t_champ	**add_champ_t_tab(t_champ **tab, t_champ *add);
+
 t_champ	*load_champ(int fd, int number);
 int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);

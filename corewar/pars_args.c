@@ -14,8 +14,8 @@ void	error_msg(int type)
 {
   if (type == 0)
     my_putstr("Error, please verifie your arguments\n"
-	      "./corewar [-dump nbr_cycle][[-n prog_number]"
-	      "[-a load_address ] prog_name]", 1, -1);
+              "./corewar [-dump nbr_cycle][[-n prog_number]"
+              "[-a load_address ] prog_name]", 1, -1);
 }
 
 int	check_args(char **av, int nb_arg)
@@ -26,13 +26,13 @@ int	check_args(char **av, int nb_arg)
   while (i < nb_arg)
     {
       if (!(error = check_opt(av, av[i], &i, nb_arg)))
-	{
-	  if (error == -2 || !check_champ(av[i]))
-	    {
-	      error_msg(0);
-	      return (-1);
-	    }
-	}
+        {
+          if (error == -2 || !check_champ(av[i]))
+            {
+              error_msg(0);
+              return (-1);
+            }
+        }
       i += 1;
     }
   return (0);
@@ -42,4 +42,5 @@ int	pars(char **av, int ac)
 {
   if (ac == 1 || check_args(av, ac - 1) == -1)
     return (-1);
+
 }
