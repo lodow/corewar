@@ -93,9 +93,9 @@ int		parse(char **file)
     return (-1);
   while (file[i])
     {
-      if (my_strcmp(file[i], NAME_CMD_STRING))
+      if (my_begincmp(file[i], NAME_CMD_STRING))
 	recup_name(file[i], &header);
-      else if (my_strcmp(file[i], COMMENT_CMD_STRING))
+      else if (my_begincmp(file[i], COMMENT_CMD_STRING))
 	recup_comment(file[i], &header);
       else
 	parse_cmd(file[i], &header, &cmd);
