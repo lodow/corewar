@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 23 14:34:48 2013 luc sinet
+## Last update Wed Jan 23 17:32:39 2013 luc sinet
 ##
 
 SRC= 	main.c \
@@ -18,6 +18,7 @@ SRC= 	main.c \
 	process_util.c \
 	op_utilities.c \
 	op/op_live.c \
+	../misc/nb_func.c \
 	../misc/my_memset.c \
 	../misc/liste.c \
 	../misc/str_func.c \
