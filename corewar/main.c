@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 14:00:07 2013 luc sinet
+** Last update Wed Jan 23 14:30:09 2013 luc sinet
 */
 
 #include	"include.h"
@@ -32,23 +32,26 @@ void			print_hexa(char *mem, int nb)
 
 int		main(int argc, char **argv, char **envp)
 {
-  t_vmmem	*vmmem;
-  t_list	*process_list;
-  t_champ	prog;
+  t_vm	vm;
+  t_champ	*prog;
+  int	tmpfd;
 
-  process_list = NULL;
-  if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
+  vm.process_list = NULL;
+  vm.cycle_count = 0;
+  vm.cycle_to_die = CYCLE_TO_DIE;
+  if (pars(argv, argc) == -1 || ((vm.mem = malloc(MEM_SIZE * sizeof(char))) == NULL))
     return (-1);
-  my_memset(vmmem, MEM_SIZE, 0x0);
-  if (load_champ(argv[1], &prog, 1) >= 0)
+  my_memset(vm.mem, MEM_SIZE, 0x0);
+  tmpfd = open(argv[1], O_RDONLY);
+  if ((prog = load_champ(tmpfd, 1)) != NULL)
     {
-      my_add_to_list(&process_list, up_champ_t_mem(vmmem, &prog, 0));
-      printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
-      print_hexa(prog.champcode, prog.header.prog_size);
+      my_add_to_list(&(vm.process_list), up_champ_t_mem(vm.mem, prog, 0));
+      printf("%s\n%d\n%s\nProgram Binary is :\n", prog->header.prog_name, prog->header.prog_size, prog->header.comment);
+      print_hexa(prog->champcode, prog->header.prog_size);
       printf("\n");
-      free(prog.freeme);
-      my_rm_list(process_list, &delete_process);
+      free(prog->freeme);
+      my_rm_list(vm.process_list, &delete_process);
     }
-  free(vmmem);
+  free(vm.mem);
   return (0);
 }

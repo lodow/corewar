@@ -45,12 +45,21 @@ typedef struct	s_param
   char	*value;
 }	t_param;
 
+typedef struct	s_vm
+{
+  t_champ	*all_champ;
+  t_list	*process_list;
+  t_vmmem	*mem;
+  int	cycle_count;
+  int	cycle_to_die;
+}		t_vm;
+
 int		delete_process(void *ptr);
-int		get_bin_file(const char *filename, char **file);
-int		load_champ(const char *filename, t_champ *champ, int number);
+int		get_bin_file(int fd, char **file);
+t_champ	*load_champ(int fd, int number);
 int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);
-t_process	*create_new_process(t_process *src);
+t_process	*create_new_process(t_process *src, int pc);
 char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
 
 #endif
