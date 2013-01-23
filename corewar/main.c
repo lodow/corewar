@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 23 14:30:09 2013 luc sinet
+** Last update Wed Jan 23 15:15:20 2013 luc sinet
 */
 
 #include	"include.h"
@@ -32,9 +32,9 @@ void			print_hexa(char *mem, int nb)
 
 int		main(int argc, char **argv, char **envp)
 {
-  t_vm	vm;
+  t_vm		vm;
   t_champ	*prog;
-  int	tmpfd;
+  int		tmpfd;
 
   vm.process_list = NULL;
   vm.champs = NULL;
