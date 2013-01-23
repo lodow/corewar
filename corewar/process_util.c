@@ -15,8 +15,12 @@ int		exe_process(void *ptr)
   t_process	*proc;
 
   proc = ptr;
-
-
+if (proc->nb_cycle_t_next == 1)
+{
+/* Do the operande */
+/*proc->pc =  Move to next instruction*/
+}
+proc->nb_cycle_t_next--;
   return (0);
 }
 
