@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Wed Jan 23 18:37:08 2013 luc sinet
+** Last update Wed Jan 23 18:55:16 2013 luc sinet
 */
 
 #include "include.h"
@@ -34,8 +34,6 @@ int	check_args(char **av, int nb_arg)
 	      return (-1);
 	    }
 	}
-      my_put_nbr(error, 1);
-      my_putstr("\n", 1, 1);
       i += 1;
     }
   return (0);
