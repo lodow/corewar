@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Wed Jan 23 20:48:58 2013 luc sinet
+** Last update Thu Jan 24 11:36:43 2013 luc sinet
 */
 
 #include "include.h"
@@ -46,7 +46,7 @@ int	pars_args(char **av, int nb_arg)
   int	i;
 
   i = 0;
-  while (i < nb_args)
+  while (i < nb_arg)
     {
       if (pars_opt(av, &i, nb_arg) < 0)
 	{
