@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Jan 24 15:40:08 2013 maxime lavandier
+** Last update Thu Jan 24 17:59:11 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -99,7 +99,6 @@ t_cmd		*addlabel(char *line, t_cmd *cmd)
   int		i;
   int		j;
   char		*str;
-  t_tablabel	*tmp;
 
   i = 0;
   while (line[i] != LABEL_CHAR && line[i] != '\0')

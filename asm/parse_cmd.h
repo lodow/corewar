@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Wed Jan 23 20:38:31 2013 maxime lavandier
+** Last update Thu Jan 24 17:31:29 2013 Welanor
 */
 
 #ifndef PARSE_CMD
@@ -30,6 +30,7 @@ typedef struct	s_cmd
   char		*opocode;
   char		*param[MAX_ARGS_NUMBER + 1];
   void		*file;
+  int		sizefile;
   int		pc;
   int		lablengh;
   t_tablabel	*lab;
