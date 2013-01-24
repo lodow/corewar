@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Thu Jan 24 14:48:51 2013 maxime lavandier
+** Last update Thu Jan 24 14:51:57 2013 maxime lavandier
 */
 
 int	live_ldi_lldi(char *line, int i)
@@ -23,7 +23,7 @@ int	ld_st_lld(char *line, int i)
     i++;
   if (line[i] == 0)
     return (0);
-  while (line[i] != ',' &&  && line[i] != ':' && line[i] != 0)
+  while (line[i] != ',' && line[i] != ':' && line[i] != 0)
     i++;
   if (line[i] != 0)
     return (0);
