@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 23 20:30:05 2013 maxime lavandier
+** Last update Wed Jan 23 20:47:34 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -93,9 +93,6 @@ t_cmd	*addlabel(char *line, t_cmd *cmd)
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
 {
-  int	i;
-
-  i = 0;
   if (line == NULL || header == NULL || cmd == NULL)
     return (-1);
   line = sub_space(line);
