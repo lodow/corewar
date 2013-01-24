@@ -5,19 +5,38 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 23 14:34:48 2013 luc sinet
+## Last update Wed Jan 23 20:47:51 2013 luc sinet
 ##
 
 SRC= 	main.c \
-	pars_args.c \
+	pars.c \
 	check_args.c \
+	pars_args.c \
 	champ_load.c \
 	get_bin_file.c \
 	endianess.c \
 	init_vm.c \
 	process_util.c \
-	op_utilities.c \
+	op/op_useful.c \
+	op/op_utilities.c \
+	op/op_add.c \
+	op/op_aff.c \
+	op/op_and.c \
+	op/op_fork.c \
+	op/op_ldi.c \
+	op/op_lfork.c \
 	op/op_live.c \
+	op/op_lld.c \
+	op/op_lldi.c \
+	op/op_load.c \
+	op/op_or.c \
+	op/op_st.c \
+	op/op_sti.c \
+	op/op_store.c \
+	op/op_sub.c \
+	op/op_xor.c \
+	op/op_zjmp.c \
+	../misc/nb_func.c \
 	../misc/my_memset.c \
 	../misc/liste.c \
 	../misc/str_func.c \

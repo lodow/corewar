@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 23 14:30:52 2013 luc sinet
+** Last update Thu Jan 24 12:00:40 2013 luc sinet
 */
 
 #include	"str_func.h"
@@ -47,7 +47,8 @@ void	my_putstr(char *str, int fd, int strlen)
           while (str[len++] != '\0');
           strlen = len;
         }
-      len = write(fd, str, strlen);
+      if ((len = write(fd, str, strlen)) == -1)
+	write(2, "Write error\n", 12);
     }
 }
 

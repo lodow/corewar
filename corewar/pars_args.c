@@ -4,45 +4,48 @@
 ** Made by luc sinet
 ** Login   <sinet_l@epitech.net>
 **
-** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Wed Jan 23 18:37:08 2013 luc sinet
+** Started on  Wed Jan 23 20:47:09 2013 luc sinet
+** Last update Thu Jan 24 13:30:08 2013 luc sinet
 */
 
 #include "include.h"
 
-void	error_msg(int type)
+void	dump_opt(int nb_cycle)
 {
-  if (type == 0)
-    my_putstr("Error, please verifie your arguments\n"
-	      "./corewar [-dump nbr_cycle][[-n prog_number]"
-	      "[-a load_address ] prog_name]\n", 1, -1);
+
 }
 
-int	check_args(char **av, int nb_arg)
+void	prog_num_opt(int nb)
+{
+
+}
+
+void	load_addr_opt(int addr)
+{
+
+}
+
+int	pars_opt(char **av, int *pos, int max)
 {
   int	i;
-  int	error;
+  char	*opt_list[3];
 
   i = 0;
-  while (i < nb_arg)
+  opt_list[0] = "dump";
+  opt_list[1] = "-n";
+  opt_list[2] = "-a";
+  while (i < 3 && my_strcmp(opt_list[i], av[*pos]) != 0)
+    i++;
+  if (i == 0)
+    dump_opt(my_getnbr(av[*pos + 1]));
+  else if (i == 1)
+    prog_num_opt(my_getnbr(av[*pos + 1]));
+  else
     {
-      if ((error = check_opt(av, av[i], &i, nb_arg)) < 0)
-	{
-	  if (error == -2 || check_champ(av[i]) == -1)
-	    {
-	      error_msg(0);
-	      return (-1);
-	    }
-	}
-      my_put_nbr(error, 1);
-      my_putstr("\n", 1, 1);
-      i += 1;
+      if (*pos + 1 == max)
+	load_addr_opt(-1);
+      else
+	load_addr_opt(my_getnbr(av[*pos + 1]));
     }
   return (0);
-}
-
-int	pars(char **av, int ac)
-{
-  if (ac == 0 || check_args(av, ac) == -1)
-    return (-1);
 }

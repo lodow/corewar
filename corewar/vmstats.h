@@ -35,7 +35,6 @@ typedef struct	s_process
   int	carry;
   t_reg	reg[REG_NUMBER];
   int	nb_cycle_t_next;
-  t_vmmem	*mem;
 }	t_process;
 
 typedef struct	s_param
@@ -47,15 +46,19 @@ typedef struct	s_param
 
 typedef struct	s_vm
 {
+  int	instr_nb_cycle[16];
+  int	(*f[16])(t_process *proc, struct s_vm *vm);
   t_champ	**champs;
   t_list	*process_list;
   t_vmmem	*mem;
   int	cycle_count;
   int	cycle_to_die;
+  int	cycle_to_dump;
 }		t_vm;
 
 int		delete_process(void *ptr);
 t_champ	**add_champ_t_tab(t_champ **tab, t_champ *add);
+t_vm	*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm);
 t_champ	*load_champ(int fd, int number);
 int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);

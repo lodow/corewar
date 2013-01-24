@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Jan 24 15:02:58 2013 Welanor
+** Last update Thu Jan 24 15:20:19 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -45,7 +45,7 @@ int	findlabel(char *line)
   int	j;
 
   i = 0;
-  while(line[i] != LABEL_CHAR && line[i] != '\0')
+  while (line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
   if (line[i] == LABEL_CHAR && line[i + 1] == ' ')
     {
@@ -70,8 +70,7 @@ t_cmd		*my_realloc(t_cmd *cmd, int size)
   int		i;
   t_tablabel	*tmp;
 
-  tmp = malloc(size);
-  if (tmp == NULL)
+  if ((tmp = malloc(size)) == NULL)
     return (NULL);
   if (cmd->lablengh == 0)
     {
@@ -118,9 +117,9 @@ t_cmd		*addlabel(char *line, t_cmd *cmd)
       == NULL)
     exit(0);
   cmd->lab[cmd->lablengh].label = str;
-  cmd->lab[cmd->lablengh].adress = cmd->pc; 
+  cmd->lab[cmd->lablengh].adress = cmd->pc;
   cmd->lablengh += 1;
-  return(cmd);
+  return (cmd);
 }
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
@@ -134,9 +133,6 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
   if (line[0] == '\0')
     return (0);
   if (findlabel(line) == 1)
-    {
-      /*printf("%s\n", line);*/
-      cmd = addlabel(line, cmd);
-    }
+    cmd = addlabel(line, cmd);
   return (0);
 }

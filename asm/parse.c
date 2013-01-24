@@ -5,13 +5,14 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Jan 23 19:26:15 2013 Welanor
+** Last update Thu Jan 24 15:18:55 2013 Welanor
 */
 
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
 #include "../misc/str_func.h"
+#include "../misc/nb_func.h"
 
 int	recup_name(char *line, t_header *header)
 {
@@ -54,7 +55,8 @@ int	recup_comment(char *line, t_header *header)
     i_line++;
   if (line[i_line] != 0)
     i_line++;
-  while (line[i_line] != 0 && line[i_line] != '"' && i_comment < COMMENT_LENGTH)
+  while (line[i_line] != 0 && line[i_line] != '"'
+	 && i_comment < COMMENT_LENGTH)
     {
       header->comment[i_comment] = line[i_line];
       i_line++;
@@ -98,8 +100,11 @@ int		parse(char **file)
 	recup_name(file[i], &header);
       else if (my_begincmp(file[i], COMMENT_CMD_STRING))
 	recup_comment(file[i], &header);
-      else
-	parse_cmd(file[i], &header, &cmd);
+      else if (parse_cmd(file[i], &header, &cmd) == -1)
+	  {
+	    my_putstr("Error : line ", 2, -1);
+	    my_put_nbr(i + 1, 2);
+	  }
       i++;
     }
   put_header(&cmd, &header);
