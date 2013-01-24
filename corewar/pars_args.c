@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Thu Jan 24 11:54:46 2013 luc sinet
+** Last update Thu Jan 24 13:30:08 2013 luc sinet
 */
 
 #include "include.h"
@@ -37,15 +37,15 @@ int	pars_opt(char **av, int *pos, int max)
   while (i < 3 && my_strcmp(opt_list[i], av[*pos]) != 0)
     i++;
   if (i == 0)
-    dump_opt(my_get_nbr(av[*pos + 1]));
+    dump_opt(my_getnbr(av[*pos + 1]));
   else if (i == 1)
-    prog_num_opt(my_get_nbr(av[*pos + 1]));
+    prog_num_opt(my_getnbr(av[*pos + 1]));
   else
     {
       if (*pos + 1 == max)
 	load_addr_opt(-1);
       else
-	load_addr_opt(my_get_nbr(av[*pos + 1]));
+	load_addr_opt(my_getnbr(av[*pos + 1]));
     }
   return (0);
 }
