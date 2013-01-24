@@ -14,15 +14,21 @@ int		exe_process(void *ptrproc, void *ptrvm)
 {
   t_process	*proc;
   t_vm		*vmstat;
+  char		instr;
 
   proc = ptrproc;
   vmstat = ptrvm;
-  if (proc->nb_cycle_t_next == 1)
+  if (proc->nb_cycle_t_next <= 1)
     {
-      /* Do the operande */
-      /*proc->pc +=  Move to next instruction*/
+      instr = vmstat->mem[MOD_MEM(proc->pc)] - 1;
+      if ((instr >= 0) && (instr <= 15))
+        {
+          proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
+          proc->pc = MOD_MEM(vmstat->f[(int)instr](proc, vmstat) + proc->pc);
+        }
     }
-  proc->nb_cycle_t_next--;
+  else
+    proc->nb_cycle_t_next--;
   return (0);
 }
 
@@ -47,7 +53,6 @@ t_process	*create_new_process(t_process *src, int pc)
   newp->pc = pc;
   newp->carry = src->carry;
   newp->nb_cycle_t_next = 0;
-  newp->mem = src->mem;
   while (i < REG_NUMBER)
     {
       j = 0;

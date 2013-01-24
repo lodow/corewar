@@ -17,7 +17,8 @@ SRC= 	main.c \
 	endianess.c \
 	init_vm.c \
 	process_util.c \
-	op_utilities.c \
+	op/op_useful.c \
+	op/op_utilities.c \
 	op/op_add.c \
 	op/op_aff.c \
 	op/op_and.c \
