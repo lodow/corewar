@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Wed Jan 23 18:55:02 2013 luc sinet
+** Last update Thu Jan 24 22:12:32 2013 luc sinet
 */
 
 #include "include.h"
@@ -23,7 +23,7 @@ int	is_a_num(char *nb)
   return (1);
 }
 
-int	check_champ(char *name)
+int	check_champ(char *name, t_arg *parg)
 {
   int	fd;
   char	buf[1];
@@ -36,10 +36,18 @@ int	check_champ(char *name)
       return (-1);
     }
   close(fd);
+  if (my_strcmp(".cor", &(name[my_strlen(name) - 4])) != 0)
+    {
+      my_putstr("Bad file extension\n", 2, -1);
+      return (-2);
+    }
+  parg->num = 0;
+  parg->addr = 0;
   return (1);
 }
 
-int	check_opt(char **av, char *opt, int *pos, int max)
+
+int	opt_compare(char **av, t_arg *parg)
 {
   int	i;
   char	*opt_list[3];
@@ -48,13 +56,14 @@ int	check_opt(char **av, char *opt, int *pos, int max)
   opt_list[0] = "-dump";
   opt_list[1] = "-n";
   opt_list[2] = "-a";
-  while (i < 3 && my_strcmp(opt_list[i], opt) != 0)
+  while (i < 3 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
     i++;
   if (i == 3)
     return (-1);
-  if (i == 0 && ((*pos + 1) == max || is_a_num(av[*pos + 1]) == -1))
-    return (-2);
-  else if (i == 0)
-    *pos += 1;
-  return (1);
+  if (i == 0)
+    return (check_dump(av, parg));
+  else if (i == 1)
+    return (check_numproc(av, parg));
+  else
+    return (check_addr(av, parg));
 }
