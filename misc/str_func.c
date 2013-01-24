@@ -35,6 +35,12 @@ int	my_strlen(char *str)
   return (i);
 }
 
+/*
+** \param[in] str The string to output
+** \param[in] fd The file descriptor where to ouptut the string
+** \param[in] strlen If you want to override the size of str tab tpo output
+** \return nothing
+*/
 void	my_putstr(char *str, int fd, int strlen)
 {
   int	len;
@@ -48,7 +54,7 @@ void	my_putstr(char *str, int fd, int strlen)
           strlen = len;
         }
       if ((len = write(fd, str, strlen)) == -1)
-	write(2, "Write error\n", 12);
+        write(2, "Write error\n", 12);
     }
 }
 
@@ -60,7 +66,7 @@ int	my_strcmp(char *s1, char *s2)
   while (s1[i] || s2[i])
     {
       if (s1[i] != s2[i])
-	return (s1[i] - s2[i]);
+        return (s1[i] - s2[i]);
       i += 1;
     }
   return (0);
