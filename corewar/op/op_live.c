@@ -10,7 +10,35 @@
 
 #include	"operation.h"
 
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction !
+*/
 int	op_live(t_process *proc, t_vm *vm)
 {
-  return (0);
+  int	i;
+  int	j;
+  char	*tmp;
+  int	number;
+
+  i = 0;
+  tmp = ((char*)(&number));
+  j = sizeof(int) - 1;
+  while (i < sizeof(int))
+    {
+      tmp[i] = vm->mem[MOD_MEM(proc->pc + 1 + j)];
+      j--;
+      i++;
+    }
+  i = 0;
+  while (vm->champs[i] != NULL)
+    {
+      if ((vm->champs[i])->number == number)
+        (vm->champs[i])->alive = 1;
+
+      i++;
+    }
+  return (5);
 }
