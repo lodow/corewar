@@ -5,16 +5,28 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Thu Jan 24 14:51:57 2013 maxime lavandier
+** Last update Thu Jan 24 16:02:49 2013 maxime lavandier
 */
 
 int	live_ldi_lldi(char *line, int i)
 {
+  while (line[i] != ' ' && line[i] != 0)
+    i++;
+  if (line[i] == ' ')
+    i++;
+  if (line[i] != '%')
+    return (0);
+  while (line[i] != ',' && line[i] != ':' && line[i] != 0)
+    i++;
+  if (line[i] != 0)
+    return (0);
   return (1);
 }
 
 int	ld_st_lld(char *line, int i)
 {
+  while (line[i] != ' ' && line[i] != 0)
+    i++;
   if (line[i] == ' ')
     i++;
   if (line[i] != '%')
@@ -32,6 +44,30 @@ int	ld_st_lld(char *line, int i)
 
 int	add_sub_and_or_xor_sti(char *line, int i)
 {
+  while (line[i] != ' ' && line[i] != 0)
+    i++;
+  if (line[i] == ' ')
+    i++;
+  if (line[i] != 'r')
+    return (0);
+  while (line[i] != ',' && line[i] != 0)
+    i++;
+  if (line[i] == 0)
+    return (0);
+  i++;
+  if (line[i] != 'r')
+    return (0);
+  while (line[i] != ',' && line[i] != 0)
+    i++;
+  if (line[i] == 0)
+    return (0);
+  i++;
+  if (line[i] != 'r')
+    return (0);
+  while (line[i] != ',' && line[i] != ':' && line[i] != 0)
+    i++;
+  if (line[i] != 0)
+    return (0);
   return (1);
 }
 
