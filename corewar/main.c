@@ -36,14 +36,8 @@ int		main(int argc, char **argv, char **envp)
   t_champ	*prog;
   int		tmpfd;
 
-  vm.process_list = NULL;
-  vm.champs = NULL;
-  vm.cycle_count = 0;
-  vm.cycle_to_die = CYCLE_TO_DIE;
-  if (pars(&(argv[1]), argc - 1) == -1 ||
-      ((vm.mem = malloc(MEM_SIZE * sizeof(char))) == NULL))
+  if (pars(&(argv[1]), argc - 1) == -1)
     return (-1);
-  my_memset(vm.mem, MEM_SIZE, 0x0);
   tmpfd = open(argv[1], O_RDONLY);
   if ((vm.champs = add_champ_t_tab(vm.champs, load_champ(tmpfd, 1))) != NULL)
     {
@@ -60,3 +54,4 @@ int		main(int argc, char **argv, char **envp)
   free(vm.mem);
   return (0);
 }
+

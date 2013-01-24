@@ -15,9 +15,9 @@ void	error_msg(int type)
   if (type == 0)
     my_putstr("Error, please verifie your arguments\n"
               "./corewar [-dump nbr_cycle][[-n prog_number]"
-              "[-a load_address ] prog_name]\n", 1, -1);
+              "[-a load_address ] prog_name]\n", 2, -1);
   else if (type == 1)
-    my_putstr("Error while laoding the champ file\n");
+    my_putstr("Error while laoding the champ file\n", 2, -1);
 }
 
 int	check_args(char **av, int nb_arg)
@@ -49,13 +49,13 @@ int	pars_args(char **av, int nb_arg)
   while (i < nb_args)
     {
       if (pars_opt(av, &i, nb_arg) < 0)
-	{
-	  if (pars_champ(av[i]) == -1)
-	    {
-	      error_msg(1);
-	      return (-1);
-	    }
-	}
+        {
+          if (pars_champ(av[i]) == -1)
+            {
+              error_msg(1);
+              return (-1);
+            }
+        }
       i += 1;
     }
   return (0);
