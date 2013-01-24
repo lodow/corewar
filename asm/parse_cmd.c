@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 23 20:47:34 2013 maxime lavandier
+** Last update Thu Jan 24 15:40:08 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -16,7 +16,7 @@ char	*sub_space(char *str)
   int	j;
   char	*res;
 
-  if ((res = malloc(my_strlen(str))) == NULL)
+  if ((res = malloc(my_strlen(str) + 1)) == NULL)
     exit(0);
   i = 0;
   j = 0;
@@ -45,14 +45,14 @@ int	findlabel(char *line)
   int	j;
 
   i = 0;
-  while(line[i] != LABEL_CHAR && line[i] != '\0')
+  while (line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
-  if (line[i] == LABEL_CHAR)
+  if (line[i] == LABEL_CHAR && line[i + 1] == ' ')
     {
-      k = i;
-      while (k >= 0)
+      labelchar = LABEL_CHARS;
+      k = i - 1;
+      while (k > 0)
 	{
-	  labelchar = LABEL_CHARS;
 	  j = 0;
 	  while (line[k] != labelchar[j] && labelchar[j] != '\0')
 	    j++;
@@ -65,11 +65,41 @@ int	findlabel(char *line)
   return (0);
 }
 
-t_cmd	*addlabel(char *line, t_cmd *cmd)
+t_cmd		*my_realloc(t_cmd *cmd, int size)
 {
-  int	i;
-  int	j;
-  char	*str;
+  int		i;
+  t_tablabel	*tmp;
+
+  if ((tmp = malloc(size)) == NULL)
+    return (NULL);
+  if (cmd->lablengh == 0)
+    {
+      cmd->lab = tmp;
+      return (cmd);
+    }
+  i = 0;
+  while (i < cmd->lablengh)
+    {
+      tmp[i].label = my_strdup((cmd->lab[i]).label);
+      tmp[i].adress = cmd->lab[i].adress;
+      i++;
+    }
+  i = 0;
+  while (i < cmd->lablengh)
+    {
+      free(cmd->lab[i].label);
+      i++;
+    }
+  cmd->lab = tmp;
+  return (cmd);
+}
+
+t_cmd		*addlabel(char *line, t_cmd *cmd)
+{
+  int		i;
+  int		j;
+  char		*str;
+  t_tablabel	*tmp;
 
   i = 0;
   while (line[i] != LABEL_CHAR && line[i] != '\0')
@@ -82,13 +112,14 @@ t_cmd	*addlabel(char *line, t_cmd *cmd)
       str[j] = line[j];
       j++;
     }
-  if ((cmd->lab = realloc(cmd->lab, sizeof(t_tablabel) * cmd->lablengh))
+  str[j] = 0;
+  if ((cmd = my_realloc(cmd, sizeof(t_tablabel) * (cmd->lablengh + 2)))
       == NULL)
     exit(0);
   cmd->lab[cmd->lablengh].label = str;
   cmd->lab[cmd->lablengh].adress = cmd->pc;
   cmd->lablengh += 1;
-  return(cmd);
+  return (cmd);
 }
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
@@ -100,6 +131,5 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
     return (0);
   if (findlabel(line) == 1)
     cmd = addlabel(line, cmd);
-  printf("%s\n", line);
   return (0);
 }
