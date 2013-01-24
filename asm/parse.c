@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Jan 23 20:28:54 2013 maxime lavandier
+** Last update Thu Jan 24 15:18:55 2013 Welanor
 */
 
 #include "asm.h"
@@ -55,7 +55,8 @@ int	recup_comment(char *line, t_header *header)
     i_line++;
   if (line[i_line] != 0)
     i_line++;
-  while (line[i_line] != 0 && line[i_line] != '"' && i_comment < COMMENT_LENGTH)
+  while (line[i_line] != 0 && line[i_line] != '"'
+	 && i_comment < COMMENT_LENGTH)
     {
       header->comment[i_comment] = line[i_line];
       i_line++;
@@ -92,6 +93,7 @@ int		parse(char **file)
   i = next_the_header(file);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
     return (-1);
+  cmd.lablengh = 0;
   while (file[i])
     {
       if (my_begincmp(file[i], NAME_CMD_STRING))
@@ -106,6 +108,9 @@ int		parse(char **file)
       i++;
     }
   put_header(&cmd, &header);
+  int	j = 0;
+  while (j < cmd.lablengh)
+    printf("%s\n", (cmd.lab[j++]).label);
   printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
   return (0);
 }

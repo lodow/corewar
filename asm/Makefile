@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 23 20:37:26 2013 maxime lavandier
+## Last update Thu Jan 24 17:50:46 2013 Welanor
 ##
 
 SRC= 	main.c \
@@ -14,9 +14,11 @@ SRC= 	main.c \
 	check_cmd.c \
 	parse_cmd.c \
 	header.c \
+	fillfile.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c \
+	../misc/my_strdup.c \
 	../misc/nb_func.c
 
 OBJ= $(SRC:.c=.o)

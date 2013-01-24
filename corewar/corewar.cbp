@@ -95,6 +95,12 @@
 		<Unit filename="op/op_sub.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="op/op_useful.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="op/op_utilities.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="op/op_xor.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -102,12 +108,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op/operation.h" />
-		<Unit filename="op_useful.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="op_utilities.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="pars.h" />
 		<Unit filename="pars_args.c">
 			<Option compilerVar="CC" />

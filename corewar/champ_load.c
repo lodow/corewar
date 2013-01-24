@@ -11,7 +11,7 @@
 #include	"include.h"
 
 /*
-**Load a champ from a file filename and fill struct champ passed
+** Load a champ from a file filename and fill struct champ passed
 ** return 0 if everything good, negatif value elsewhere
 */
 t_champ	*load_champ(int fd, int number)
@@ -32,7 +32,7 @@ t_champ	*load_champ(int fd, int number)
   file = &(file[PROG_NAME_LENGTH + 4]);
   champ->header.prog_size = ((int*)switch_endian(file, sizeof(int)))[0];
   if ((size - ((int)sizeof(t_header))) != champ->header.prog_size)
-    my_putstr("Champ code size differ from size indicated\n", 2, -1);
+    my_putstr("Champ code size differ from size in header\n", 2, -1);
   file = &(file[sizeof(int)]);
   my_strncpy(champ->header.comment, file, COMMENT_LENGTH);
   file = &(file[COMMENT_LENGTH + 4]);
