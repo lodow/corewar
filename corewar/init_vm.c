@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Thu Jan 24 19:29:07 2013 luc sinet
 */
 
 #include	"include.h"
@@ -23,10 +23,10 @@ t_vm		*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm)
   return (vm);
 }
 
-t_champ	**add_champ_t_tab(t_champ **tab, t_champ *add)
+t_champ		**add_champ_t_tab(t_champ **tab, t_champ *add)
 {
   t_champ	**newtab;
-  int	i;
+  int		i;
 
   i = 0;
   if (tab != NULL)
