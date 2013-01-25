@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Jan 24 18:13:57 2013 maxime lavandier
+** Last update Fri Jan 25 13:34:55 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -29,8 +29,8 @@ char	*sub_space(char *str)
 	res[j++] = str[i];
       i++;
     }
-   if (res[j - 1] == ' ')
-     res[j - 1] = 0;
+   if (res[j] == ' ')
+     res[j] = 0;
    else
      res[j] = 0;
    free(str);
@@ -130,5 +130,7 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
     return (0);
   if (findlabel(line) == 1)
     cmd = addlabel(line, cmd);
+  if (line[0] != '#')
+    fillcmdfile(cmd, line);
   return (0);
 }

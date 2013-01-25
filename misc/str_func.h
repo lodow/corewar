@@ -21,5 +21,6 @@ int	my_strcmp(char *s1, char *s2);
 int	my_begincmp(char *str1, char *str2);
 void	my_memset(void *ptr, int osize, char value);
 char	*my_strdup(char *str);
+char	*switch_endian(char *var, int varsize);
 
 #endif

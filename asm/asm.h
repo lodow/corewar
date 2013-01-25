@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Jan 18 16:00:21 2013 adrien dellamaggiora
-** Last update Thu Jan 24 17:36:54 2013 Welanor
+** Last update Fri Jan 25 11:18:14 2013 Welanor
 */
 
 #ifndef _ASM_H_
@@ -17,6 +17,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int	parse(char **file);
+int	parse(char **file, char *name);
 
 #endif
