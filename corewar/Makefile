@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu Jan 24 19:22:53 2013 luc sinet
+## Last update Fri Jan 25 16:11:03 2013 luc sinet
 ##
 
 SRC= 	main.c \

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Fri Jan 25 01:33:07 2013 luc sinet
+** Last update Fri Jan 25 15:51:30 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -22,6 +22,7 @@ typedef struct	s_arg
   int		dump_val;
   int		num_val;
   int		addr_val;
+  int		*num_used;
 }		t_arg;
 
 int	pars(char **av, int ac);
