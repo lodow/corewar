@@ -5,9 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Fri Jan 25 01:29:03 2013 luc sinet
+** Last update Fri Jan 25 15:44:36 2013 luc sinet
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "include.h"
 
 int	is_a_num(char *nb)
@@ -29,18 +32,18 @@ int	check_champ(char *name, t_arg *parg)
   int	fd;
   char	buf[1];
 
-  if ((fd = open(name, O_RDONLY)) == -1)
-    return (-1);
-  if (read(fd, buf, 1) == -1)
+  if ((fd = open(name, O_RDONLY)) == -1 || read(fd, buf, 1) == -1)
     {
       close(fd);
-      return (-1);
+      my_putstr(name, 2, -1);
+      my_putstr(" is not a corewar executable\n", 2, -1);
+      return (-2);
     }
-  close(fd);
-  if (my_strlen(name) < 4 ||
+  if (my_strlen(name) <= 4 ||
       my_strcmp(".cor", &(name[my_strlen(name) - 4])) != 0)
     {
-      my_putstr("Bad file extension\n", 2, -1);
+      my_putstr(name, 2, -1);
+      my_putstr(" is not a corewar executable\n", 2, -1);
       return (-2);
     }
   parg->num = 0;
@@ -48,7 +51,6 @@ int	check_champ(char *name, t_arg *parg)
   parg->nb_champ += 1;
   return (1);
 }
-
 
 int	opt_compare(char **av, t_arg *parg)
 {

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Fri Jan 25 01:32:17 2013 luc sinet
+** Last update Fri Jan 25 15:42:28 2013 luc sinet
 */
 
 #include "include.h"
@@ -19,7 +19,7 @@ void	error_msg(int type)
   else if (type == 1)
     my_putstr("Error while laoding the champ file\n", 2, -1);
   else if (type == 2)
-    my_putstr("Error while using the function malloc", 2, -1);
+    my_putstr("Can’t perform malloc", 2, -1);
 }
 
 int	check_args(char **av, t_arg *parg)
@@ -61,7 +61,7 @@ int	pars(char **av, int ac)
   parg->addr = 0;
   parg->nb_champ = 0;
   parg->nb_arg = ac;
-  if (ac == 0 || check_args(av, parg) == -1)
+  if (check_args(av, parg) == -1)
     return (-1);
   free(parg);
   return (0);
