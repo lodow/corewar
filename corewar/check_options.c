@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Fri Jan 25 01:00:47 2013 luc sinet
+** Last update Fri Jan 25 01:31:34 2013 luc sinet
 */
 
 #include "include.h"
@@ -16,6 +16,7 @@ int	check_dump(char **av, t_arg *parg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == -1)
     return (-1);
+  parg->pos += 1;
   parg->dump = 1;
   parg->dump_val = my_getnbr(av[parg->pos + 1]);
   return (0);

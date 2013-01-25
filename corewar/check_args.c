@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Fri Jan 25 00:59:48 2013 luc sinet
+** Last update Fri Jan 25 01:29:03 2013 luc sinet
 */
 
 #include "include.h"
@@ -45,6 +45,7 @@ int	check_champ(char *name, t_arg *parg)
     }
   parg->num = 0;
   parg->addr = 0;
+  parg->nb_champ += 1;
   return (1);
 }
 
