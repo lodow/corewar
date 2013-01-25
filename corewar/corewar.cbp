@@ -37,9 +37,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="check_args.h" />
-		<Unit filename="endianess.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -116,6 +113,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="vmstats.h" />
+		<Unit filename="../misc/endianess.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../misc/get_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
