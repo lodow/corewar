@@ -48,6 +48,9 @@ int		main(int argc, char **argv, char **envp)
       print_hexa(prog->champcode, prog->header.prog_size);
       printf("\n");
       my_apply_on_list(vm.process_list, &exe_process, &vm);
+      printf("\n");
+      print_hexa(vm.mem, MEM_SIZE);
+      printf("\n");
       free(prog->freeme);
       free(vm.champs[0]);
       my_rm_list(vm.process_list, &delete_process);

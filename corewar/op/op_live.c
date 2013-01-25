@@ -28,7 +28,7 @@ int	op_live(t_process *proc, t_vm *vm)
   j = sizeof(int) - 1;
   while (i < sizeof(int))
     {
-      tmp[i] = vm->mem[MOD_MEM(proc->pc + 1 + j)];
+      tmp[i] = VM_MEM(proc->pc + 1 + j);
       j--;
       i++;
     }
@@ -36,7 +36,7 @@ int	op_live(t_process *proc, t_vm *vm)
   while (vm->champs[i] != NULL)
     {
       if ((vm->champs[i])->number == number)
-        (vm->champs[i])->alive = 1;
+        (vm->champs[i])->alive += 1;
 
       i++;
     }
