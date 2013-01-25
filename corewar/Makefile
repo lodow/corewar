@@ -16,7 +16,6 @@ SRC= 	main.c \
 	pars_champ.c \
 	champ_load.c \
 	get_bin_file.c \
-	endianess.c \
 	init_vm.c \
 	process_util.c \
 	op/op_useful.c \
@@ -38,6 +37,7 @@ SRC= 	main.c \
 	op/op_sub.c \
 	op/op_xor.c \
 	op/op_zjmp.c \
+	../misc/endianess.c \
 	../misc/nb_func.c \
 	../misc/my_memset.c \
 	../misc/liste.c \

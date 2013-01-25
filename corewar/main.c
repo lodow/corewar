@@ -39,6 +39,7 @@ int		main(int argc, char **argv, char **envp)
   if (pars(&(argv[1]), argc - 1) == -1)
     return (-1);
   tmpfd = open(argv[1], O_RDONLY);
+  init_vm_stats(CYCLE_TO_DIE, -1, &vm);
   if ((vm.champs = add_champ_t_tab(vm.champs, load_champ(tmpfd, 1))) != NULL)
     {
       prog = vm.champs[0];
@@ -46,6 +47,7 @@ int		main(int argc, char **argv, char **envp)
       printf("%s\n%d\n%s\nProgram Binary is :\n", prog->header.prog_name, prog->header.prog_size, prog->header.comment);
       print_hexa(prog->champcode, prog->header.prog_size);
       printf("\n");
+      my_apply_on_list(vm.process_list, &exe_process, &vm);
       free(prog->freeme);
       free(vm.champs[0]);
       my_rm_list(vm.process_list, &delete_process);
