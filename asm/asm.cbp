@@ -29,6 +29,18 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Makefile" />
+		<Unit filename="check_cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="check_func.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fillfile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="header.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

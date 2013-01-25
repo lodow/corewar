@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Thu Jan 24 15:18:55 2013 Welanor
+** Last update Fri Jan 25 11:52:09 2013 Welanor
 */
 
 #include "asm.h"
@@ -84,13 +84,14 @@ int	next_the_header(char **file)
   return (i);
 }
 
-int		parse(char **file)
+int		parse(char **file, char *name)
 {
   int		i;
   t_header	header;
   t_cmd		cmd;
 
   i = next_the_header(file);
+  my_memset(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
     return (-1);
   cmd.lablengh = 0;
@@ -112,5 +113,6 @@ int		parse(char **file)
   while (j < cmd.lablengh)
     printf("%s\n", (cmd.lab[j++]).label);
   printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
+  fillfile(&header, &cmd, name);
   return (0);
 }

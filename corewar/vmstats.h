@@ -64,5 +64,6 @@ int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);
 t_process	*create_new_process(t_process *src, int pc);
 char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
+int		exe_process(void *ptrproc, void *ptrvm);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Jan 24 12:00:40 2013 luc sinet
+** Last update Thu Jan 24 19:40:07 2013 Welanor
 */
 
 #include	"str_func.h"
@@ -41,6 +41,7 @@ int	my_strlen(char *str)
 ** \param[in] strlen If you want to override the size of str tab tpo output
 ** \return nothing
 */
+
 void	my_putstr(char *str, int fd, int strlen)
 {
   int	len;
