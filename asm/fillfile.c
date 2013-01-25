@@ -5,7 +5,7 @@
 ** Login   <adrien dellamaggiora@epitech.eu>
 **
 ** Started on  Thu Jan 24 16:58:24 2013 adrien dellamaggiora
-** Last update Fri Jan 25 10:26:03 2013 Welanor
+** Last update Fri Jan 25 11:37:38 2013 Welanor
 */
 
 #include "asm.h"
@@ -59,17 +59,17 @@ char	*getname(char *name)
   return (res);
 }
 
-void	fillfile(t_header *header, t_cmd *cmd)
+void	fillfile(t_header *header, t_cmd *cmd, char *name)
 {
   int	fd;
   int	flag;
-  int	end;
 
   flag = (O_CREAT & ~S_IRUSR & ~S_IWUSR & ~S_IRGRP & ~S_IROTH) | O_WRONLY;
-  end = sizeof(t_header) + cmd->sizefile;
   header->prog_size = cmd->pc;
-  if ((fd = open(getname(header->prog_name), flag)) == -1)
+  if ((fd = open(getname(name), flag)) == -1)
     exit(0);
-  my_putstr(cmd->file, fd, end);
+  header->magic = COREWAR_EXEC_MAGIC;
+  my_putstr((char*)header, fd, sizeof(t_header));
+  my_putstr(cmd->file, fd, cmd->sizefile);
   return ;
 }

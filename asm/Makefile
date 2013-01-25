@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu Jan 24 20:02:18 2013 Welanor
+## Last update Fri Jan 25 11:44:51 2013 Welanor
 ##
 
 SRC= 	main.c \
@@ -19,6 +19,7 @@ SRC= 	main.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c \
 	../misc/my_strdup.c \
+	../misc/my_memset.c \
 	../misc/op.c \
 	../misc/nb_func.c
 

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 22 21:44:40 2013 maxime lavandier
+** Last update Fri Jan 25 11:17:23 2013 Welanor
 */
 
 #include "../misc/op.h"
@@ -32,7 +32,7 @@ int	main(int argc, char **argv, char **envp)
 	  my_putstr("error file\n", 2, 11);
 	  return (-1);
 	}
-      if (parse(file) == -1)
+      if (parse(file, argv[1]) == -1)
 	my_putstr("parse error\n", 2, 12);
     }
   else
