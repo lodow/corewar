@@ -5,15 +5,10 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morissetňňňŅņŇ
+** Last update Mon Oct  8 16:20:21 2012 hugues morisset
 */
 
 #include	"operation.h"
-
-char	*load_param1(char type)
-{
-
-}
 
 /*
 ** \param[in] proc A ptr on the process executing the instrcution !
@@ -24,22 +19,17 @@ char	*load_param1(char type)
 int	op_load(t_process *proc, t_vm *vm)
 {
   char	*src;
-  char	tmpchar;
-  char	typep1;
+  int	regp2;
 
-  typep1 = GET_TYPE_PARAMX(VM_MEM(proc->pc + 1), 0);
+  src = get_paramx(vm, proc, VM_MEM(proc->pc + 2), 1);
+  regp2 = *((int*)src);
+  free(src);
   src = NULL;
-  if (typep1 == T_REG)
-    {
-      tmpchar = VM_MEM(proc->pc + NBPBYTE(VM_MEM(proc->pc + 1), 0) + 2) - 1;
-      if (tmpchar < REG_NUMBER)
-        src = proc->reg[(int)tmpchar];
-cpy_t_registre(src, )
-    }
-  else if (typep1 == T_DIR)
-  {
-src =
-  }
-
-    return (NBPBYTE(VM_MEM(proc->pc + 1), MAX_ARGS_NUMBER) + 2);
+  if (VM_MEM(proc->pc + 1) == 3)
+    src = resolve_ind_value(vm, proc->pc + 2, proc->pc, 1);
+  else
+    src = get_paramx(vm, proc, VM_MEM(proc->pc + 2), 0);
+  cpy_t_registre(src, &(proc->reg[regp2]));
+  free(src);
+  return (NBPBYTE(VM_MEM(proc->pc + 2), MAX_ARGS_NUMBER) + 2);
 }

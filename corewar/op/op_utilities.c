@@ -53,3 +53,40 @@ int	is_byte_zero(char *src, int size)
     }
   return (1);
 }
+
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \param[in] parambyte The param byte of the instruction
+** \param[in] x The parma number x
+** \return A malloc byte tab cpy of the param (Resovle ind param)
+*/
+char	*get_paramx(t_vm *vm, t_process *proc, char parambyte, int x)
+{
+  char	type;
+  int	off;
+  char	tmpchar;
+  char	*res;
+
+  type = GET_TYPE_PARAMX(parambyte, x);
+  off = NBPBYTE(parambyte, x);
+  if (type != T_REG && type != T_DIR)
+    return (NULL);
+  if (type == T_REG)
+    {
+      if ((res = malloc(REG_SIZE * sizeof(char))) == NULL)
+        return (NULL);
+      tmpchar = VM_MEM(proc->pc + 2 + off) - 1;
+      if (tmpchar < REG_NUMBER)
+        cpy_t_registre(proc->reg[(int)tmpchar], (t_reg*)&res);
+    }
+  else
+    {
+      if ((res = malloc(IND_SIZE * sizeof(char))) == NULL)
+        return (NULL);
+      cpy_t_registre((char*)&VM_MEM(proc->pc + 2 + off), (t_reg*)&res);
+    }
+  switch_endian(res, REG_SIZE);
+  return (res);
+}
