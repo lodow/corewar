@@ -5,17 +5,17 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Fri Jan 25 18:55:41 2013 maxime lavandier
+** Last update Sat Jan 26 21:30:20 2013 maxime lavandier
 */
 
 int	live_ldi_lldi(char *line, int i, t_param *param)
 {
   if (line[i + 1] == 'i')
-    param->type = 0x1;
+    param->param[0] = 0x1;
   else if (line[i + 1] == 'd')
-    param->type = 0xa;
+    param->param[0] = 0xa;
   else if (line[i + 1] == 'l')
-    param->type = 0xe;
+    param->param[0] = 0xe;
   while (line[i] != ' ' && line[i] != 0)
     i++;
   if (line[i] == ' ')
@@ -32,11 +32,11 @@ int	live_ldi_lldi(char *line, int i, t_param *param)
 int	ld_st_lld(char *line, int i, t_param *param)
 {
   if (line[i] == 'l' && line[i + 1] == 'l')
-    param->type = 0xd;
+    param->param[0] = 0xd;
   else if (line[i] == 'l')
-    param->type = 0x2;
+    param->param[0] = 0x2;
   else if (line[i] == 's')
-    param->type = 0x3;
+    param->param[0] = 0x3;
   while (line[i] != ' ' && line[i] != 0)
     i++;
   if (line[i] == ' ')
@@ -86,16 +86,16 @@ int	add_sub_and_or_xor_sti(char *line, int i, t_param *param)
 int	zjmp_fork_lfork(char *line, int i, t_param *param)
 {
   if (line[i] == 'z')
-    param->type = 0x9;
+    param->param[0] = 0x9;
   else if (line[i] == 'f')
-    param->type = 0xc;
+    param->param[0] = 0xc;
   else if (line[i] == 'l')
-    param->type = 0xf;
+    param->param[0] = 0xf;
   return (1);
 }
 
 int	aff(char *line, int i, t_param *param)
 {
-  param->type = 0x10;
+  param->param[0] = 0x10;
   return (1);
 }
