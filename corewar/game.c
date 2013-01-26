@@ -73,6 +73,7 @@ void			dump_memory(t_vmmem *mem, int size)
         my_putstr(",", 1, 1);
       i++;
     }
+  my_putstr("\n", 1, 1);
 }
 
 int	handle_game(t_vm *vm)
@@ -86,7 +87,7 @@ int	handle_game(t_vm *vm)
       end_game = 1;
   if (vm->nbr_live >= NBR_LIVE)
     vm->cycle_to_die -= CYCLE_DELTA;
-  if (vm->cycle_count == vm->cycle_to_dump)
+  if ((vm->cycle_count >= vm->cycle_to_dump) && (vm->cycle_to_dump != -1))
     {
       dump_memory(vm->mem, MEM_SIZE);
       end_game = 1;
