@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Fri Jan 25 18:40:05 2013 maxime lavandier
+** Last update Sat Jan 26 16:03:25 2013 maxime lavandier
 */
 
 char	put_to_param(char param, char str)
@@ -36,9 +36,9 @@ char	put_to_param(char param, char str)
 char	params(char *str, int i)
 {
   char	param;
-  int	i;
+  int	j;
 
-  i = 3;
+  j = 3;
   param = 0;
   while (str[i] != 0)
     {
@@ -47,7 +47,7 @@ char	params(char *str, int i)
 	i++;
       if (str[i] != 0)
 	i++;
-      i--;
+      j--;
     }
   param <<= (2 * i);
   return (param)
