@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sat Jan 26 19:28:50 2013 luc sinet
 */
 
 #include	"include.h"
@@ -59,7 +59,7 @@ void			dump_memory(t_vmmem *mem, int size)
 {
   int			i;
   char			*hexa;
-  unsigned char	tmp;
+  unsigned char		tmp;
 
   i = 0;
   hexa = "0123456789ABCDEF";
