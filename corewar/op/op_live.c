@@ -40,6 +40,6 @@ int	op_live(t_process *proc, t_vm *vm)
         (vm->champs[i])->alive += 1;
       i++;
     }
-  printf("%ld executed instruction live %d at pc %d\n", proc, i, proc->pc);
+  printf("%p executed instruction live %+.10d at pc %d\n", (void*)proc, number, proc->pc);
   return (5);
 }

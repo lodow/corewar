@@ -18,7 +18,7 @@
 */
 int	op_load(t_process *proc, t_vm *vm)
 {
-  char	*src;
+  /*char	*src;
   int	regp2;
 
   if ((src = get_paramx(vm, proc, VM_MEM(proc->pc + 2), 1)) != NULL)
@@ -34,5 +34,6 @@ int	op_load(t_process *proc, t_vm *vm)
     proc->carry = 1;
   printf("%ld executed instruction ld %d at pc %d\n", proc, ((char*)&(regp2)), proc->pc);
   free(src);
-  return (NBPBYTE(VM_MEM(proc->pc + 2), MAX_ARGS_NUMBER) + 2);
+  return (NBPBYTE(VM_MEM(proc->pc + 2), MAX_ARGS_NUMBER) + 2);*/
+  return (1);
 }
