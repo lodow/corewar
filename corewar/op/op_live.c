@@ -36,9 +36,10 @@ int	op_live(t_process *proc, t_vm *vm)
   while (vm->champs[i] != NULL)
     {
       if ((vm->champs[i])->number == number)
-        (vm->champs[i])->alive += 1;
 
+        (vm->champs[i])->alive += 1;
       i++;
     }
+  printf("%ld executed instruction live %d at pc %d\n", proc, i, proc->pc);
   return (5);
 }

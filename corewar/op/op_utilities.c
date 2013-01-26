@@ -45,12 +45,13 @@ int	is_byte_zero(char *src, int size)
   int	i;
 
   i = 0;
-  while (i < size)
-    {
-      if (src[i] != 0)
-        return (0);
-      i++;
-    }
+  if (src != NULL)
+    while (i < size)
+      {
+        if (src[i] != 0)
+          return (0);
+        i++;
+      }
   return (1);
 }
 

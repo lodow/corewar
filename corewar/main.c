@@ -47,7 +47,6 @@ int		main(int argc, char **argv, char **envp)
       printf("%s\n%d\n%s\nProgram Binary is :\n", prog->header.prog_name, prog->header.prog_size, prog->header.comment);
       print_hexa(prog->champcode, prog->header.prog_size);
       printf("\n");
-      while(1)
       my_apply_on_list(vm.process_list, &exe_process, &vm);
       printf("\n");
       print_hexa(vm.mem, MEM_SIZE);
