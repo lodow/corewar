@@ -5,8 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Sat Jan 26 21:30:20 2013 maxime lavandier
+** Last update Sat Jan 26 21:38:39 2013 luc sinet
 */
+
+#include "parse_cmd.h"
 
 int	live_ldi_lldi(char *line, int i, t_param *param)
 {
@@ -53,6 +55,8 @@ int	ld_st_lld(char *line, int i, t_param *param)
     return (0);
   return (1);
 }
+
+# define CHECKR(val) (val != 'r') ? (return (0);) : 0
 
 int	add_sub_and_or_xor_sti(char *line, int i, t_param *param)
 {
