@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sat Jan 26 02:11:54 2013 luc sinet
+** Last update Sat Jan 26 13:16:03 2013 luc sinet
 */
 
 #include "include.h"
@@ -17,7 +17,7 @@ void	error_msg(int type)
               "./corewar [-dump nbr_cycle][[-n prog_number]"
               "[-a load_address ] prog_name ...]\n", 2, -1);
   else if (type == 1)
-    my_putstr("Error while laoding the champ file\n", 2, -1);
+    my_putstr("Error while loading the champ file\n", 2, -1);
   else if (type == 2)
     my_putstr("Can’t perform malloc", 2, -1);
 }
@@ -40,7 +40,7 @@ int	check_args(char **av, t_arg *parg)
         }
       parg->pos += 1;
     }
-  if (parg->nb_champ == 0)
+  if (parg->nb_champ == 0 || parg->num == 1 || parg->addr == 1)
     {
       error_msg(0);
       return (-1);
@@ -73,8 +73,10 @@ int	pars(char **av, int ac)
 {
   t_arg	*parg;
 
+  my_put_nbr(ac, 1);
   if ((parg = init_arg(ac)) == NULL || check_args(av, parg) == -1)
     return (-1);
+  free(parg->num_used);
   free(parg);
   return (0);
 }
