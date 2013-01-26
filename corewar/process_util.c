@@ -26,6 +26,8 @@ int		exe_process(void *ptrproc, void *ptrvm)
           proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
           proc->pc = MOD_MEM(vmstat->f[(int)instr](proc, vmstat) + proc->pc);
         }
+      else
+        proc->pc++;
     }
   else
     proc->nb_cycle_t_next--;

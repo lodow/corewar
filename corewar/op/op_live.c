@@ -56,11 +56,12 @@ int	op_live(t_process *proc, t_vm *vm)
   j = sizeof(int) - 1;
   while (i < sizeof(int))
     {
-      tmp[i] = vm->mem[MOD_MEM(proc->pc + 1 + j)];
+      tmp[i] = VM_MEM(proc->pc + 1 + j);
       j--;
       i++;
     }
   vm->nbr_live++;
   op_live_set_alive(vm, number);
+  printf("%p executed instruction live %+.10d at pc %d\n", (void*)proc, number, proc->pc);
   return (5);
 }

@@ -20,7 +20,7 @@ int		main(int argc, char **argv, char **envp)
     return (-1);
   tmpfd = open(argv[1], O_RDONLY);
   init_vm_stats(CYCLE_TO_DIE, -1, &vm);
-  if ((vm.champs = add_champ_t_tab(vm.champs, load_champ(tmpfd, 1))) != NULL)
+  if ((vm.champs = add_champ_t_tab(vm.champs, load_champ(tmpfd, 42))) != NULL)
     {
       prog = vm.champs[0];
       my_add_to_list(&(vm.process_list), up_champ_t_mem(vm.mem, prog, 0));

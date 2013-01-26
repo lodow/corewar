@@ -13,6 +13,8 @@
 
 # include "../include.h"
 
+# define NBPBYTE(x, y) calc_instr_len_f_param_byte((x), (y))
+
 int	op_add(t_process *proc, t_vm *vm);
 int	op_aff(t_process *proc, t_vm *vm);
 int	op_and(t_process *proc, t_vm *vm);
@@ -30,11 +32,12 @@ int	op_store(t_process *proc, t_vm *vm);
 int	op_sub(t_process *proc, t_vm *vm);
 int	op_xor(t_process *proc, t_vm *vm);
 int	op_zjmp(t_process *proc, t_vm *vm);
-char	*get_none_direct_value(char *value, char type, t_process *proc, int mod);
-char	* get_value_f_param_type(char type, int off_pos, t_process *proc);
-char	*get_reg_nb(t_vmmem *mem, int pc, int off_pos);
-char	*get_ind_value(t_vmmem *mem, int pc, int off_pos);
-char	*get_dir_value(t_vmmem *mem, int pc, int off_pos);
-int	op_param_size(char type);
+void	cpy_t_registre(char *src, t_reg *reg);
+void	calc_carry(t_process *proc, int is_zero);
+char	*resolve_ind_value(t_vm *vm, int pos, int pc, int modidx);
+int	is_byte_zero(char *src, int size);
+char	*get_paramx(t_vm *vm, t_process *proc, char parambyte, int x);
+int	calc_instr_len_f_param_byte(char type, int nbmax);
+char	*cpy_mem_value(t_vm *vm, int pos, int size);
 
 #endif

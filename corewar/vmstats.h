@@ -14,7 +14,8 @@
 # include "../misc/op.h"
 
 # define MOD_MEM(x) ((x) % MEM_SIZE)
-# define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 3)
+# define VM_MEM(x) vm->mem[MOD_MEM((x))]
+# define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 0x11)
 
 typedef struct		s_champ
 {
