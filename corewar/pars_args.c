@@ -5,10 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Sat Jan 26 14:17:57 2013 luc sinet
+** Last update Sat Jan 26 15:52:35 2013 luc sinet
 */
 
 #include "include.h"
+#include "../misc/op.h"
 
 int	dump_opt(char **av, t_arg *parg)
 {
@@ -38,11 +39,11 @@ int	addr_opt(char **av, t_arg *parg)
 {
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
-      parg->addr_val = my_getnbr(av[parg->pos + 1]);
+      parg->addr_val = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
       parg->pos += 1;
     }
   else
-    parg->addr_val = 456946456; /*have to change this */
+    parg->addr_val = 45694646; /*have to change this */
   return (0);
 }
 

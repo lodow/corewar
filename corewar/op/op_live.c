@@ -19,7 +19,7 @@ void	op_live_print_alive(t_champ *champ)
   my_put_nbr(champ->number, 1);
   my_putstr("(", 1, 1);
   my_putstr(champ->header.prog_name, 1, -1);
-  my_putstr(") est en vie\n", 1, 1);
+  my_putstr(") est en vie\n", 1, 13);
 }
 
 void	op_live_set_alive(t_vm *vm, int number)
