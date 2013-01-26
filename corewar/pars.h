@@ -5,11 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Fri Jan 25 15:51:30 2013 luc sinet
+** Last update Sat Jan 26 01:27:28 2013 luc sinet
 */
 
 #ifndef PARS_H_
 # define PARS_H_
+
+# define VTEST(x) (x < 0) ? 0 : x
 
 typedef struct	s_arg
 {
@@ -23,6 +25,7 @@ typedef struct	s_arg
   int		num_val;
   int		addr_val;
   int		*num_used;
+  int		num_pos;
 }		t_arg;
 
 int	pars(char **av, int ac);
