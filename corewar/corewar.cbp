@@ -37,6 +37,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="check_args.h" />
+		<Unit filename="game.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>

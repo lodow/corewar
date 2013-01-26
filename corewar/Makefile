@@ -16,6 +16,7 @@ SRC= 	main.c \
 	pars_champ.c \
 	champ_load.c \
 	get_bin_file.c \
+	game.c \
 	init_vm.c \
 	process_util.c \
 	op/op_useful.c \

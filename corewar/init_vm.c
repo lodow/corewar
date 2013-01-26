@@ -55,6 +55,7 @@ t_vm		*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm)
   vm->process_list = NULL;
   vm->champs = NULL;
   vm->cycle_count = 0;
+  vm->nbr_live = 0;
   vm->cycle_to_die = cycle_t_die;
   vm->cycle_to_dump = cycle_t_dump;
   if ((vm->mem = malloc(MEM_SIZE * sizeof(char))) == NULL)
