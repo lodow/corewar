@@ -33,6 +33,7 @@ int	op_sub(t_process *proc, t_vm *vm);
 int	op_xor(t_process *proc, t_vm *vm);
 int	op_zjmp(t_process *proc, t_vm *vm);
 void	cpy_t_registre(char *src, t_reg *reg);
+void	calc_carry(t_process *proc, int is_zero);
 char	*resolve_ind_value(t_vm *vm, int pos, int pc, int modidx);
 int	is_byte_zero(char *src, int size);
 char	*get_paramx(t_vm *vm, t_process *proc, char parambyte, int x);

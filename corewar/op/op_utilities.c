@@ -55,6 +55,14 @@ int	is_byte_zero(char *src, int size)
   return (1);
 }
 
+void	calc_carry(t_process *proc, int is_zero)
+{
+  if (is_zero == 0)
+    proc->carry = 1;
+  else
+    proc->carry = 0;
+}
+
 /*
 ** \param[in] proc A ptr on the process executing the instrcution !
 ** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
