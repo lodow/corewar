@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Sat Jan 26 13:06:38 2013 luc sinet
+** Last update Sat Jan 26 14:30:58 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -46,8 +46,8 @@ int	check_champ(char *name, t_arg *parg)
       my_putstr(" is not a corewar executable\n", 2, -1);
       return (-2);
     }
-  parg->num = 0;
-  parg->addr = 0;
+  parg->num = -1;
+  parg->addr = -1;
   parg->nb_champ += 1;
   return (1);
 }
