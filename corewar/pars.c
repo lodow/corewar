@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sat Jan 26 02:01:25 2013 luc sinet
+** Last update Sat Jan 26 02:11:54 2013 luc sinet
 */
 
 #include "include.h"
@@ -30,8 +30,9 @@ int	check_args(char **av, t_arg *parg)
   parg->num_val = -1;
   while (parg->pos < parg->nb_arg)
     {
-      if ((error = opt_compare(av, parg)) < 0 &&
-	  (error = check_champ(av[parg->pos], parg)) < 0)
+      if ((error = opt_compare(av, parg)) == -2)
+	return (-1);
+      else if (error < 0 && (error = check_champ(av[parg->pos], parg)) < 0)
         {
 	  if (error == -1)
 	    error_msg(0);
