@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Fri Jan 25 18:46:54 2013 maxime lavandier
+** Last update Sat Jan 26 17:10:19 2013 maxime lavandier
 */
 
 #ifndef PARSE_CMD
@@ -38,8 +38,8 @@ typedef struct	s_cmd
 
 typedef struct	s_param
 {
-  char		param;
-  char		type;
+  char		*param;
+  int		lenght
 }		t_param;
 
 int	live_ldi_lldi(char *line, int i, t_param *param);

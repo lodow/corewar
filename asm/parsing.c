@@ -5,65 +5,70 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Fri Jan 25 18:40:05 2013 maxime lavandier
+** Last update Sat Jan 26 17:49:40 2013 maxime lavandier
 */
 
-char	put_to_param(char param, char str)
+void	put_to_param(t_param *param, char *str, int i)
 {
   if (str[i] == 'r')
     {
-      param <<= 2;
-      param += 1;
+      param->param[1] <<= 2;
+      param->param[1] += 1;
+
       /*
 	registre
        */
     }
   else if (str[i] == '%')
     {
-      param <<= 2;
-      param += 2;
+      param->param[1] <<= 2;
+      param->param[1] += 2;
+      if (str[i + 1] == ':');
+      //fuuuuuuuuuuuuuuu
+      //ragequit
+      //fuck you
+      //sucide yourself (jock hugues)
+
       //direct
     }
   else
     {
-      param <<= 2;
-      param += 3;
+      param->param[1] <<= 2;
+      param->param[1] += 3;
       //indirect
     }
-  return (param);
 }
 
-char	params(char *str, int i)
+char	params(char *str, int i, t_param *param)
 {
-  char	param;
-  int	i;
+  int	j;
 
-  i = 3;
-  param = 0;
+  j = 3;
+  param->param[1] = 0;
   while (str[i] != 0)
     {
-      param = put_to_param(param, str[i])
+      put_to_param(param, str, i)
       while (str[i] != 0 && str[i] != ',')
 	i++;
       if (str[i] != 0)
 	i++;
-      i--;
+      j--;
     }
-  param <<= (2 * i);
-  return (param)
+  param.param[1] <<= (2 * j);
 }
 
-void	parsing(char *str)
+void		parsing(char *str)
 {
-  int	i;
+  int		i;
+  t_param	param;
 
+  if ((param.param = malloc(2)) == 0)
+    exit(0);
   if (str == 0)
     return (0);
   i = next_label(str);
   if (str[i] == ' ')
     i++;
+  params(str, i, param)
 
-  /*
-  ** recupéré le type de commande
-  */
 }

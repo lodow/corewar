@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../champ/Sky.cor" />
+				<Option parameters="../champ/old/arkyde49.cor" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -37,6 +37,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="check_args.h" />
+		<Unit filename="game.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>

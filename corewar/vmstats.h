@@ -14,7 +14,8 @@
 # include "../misc/op.h"
 
 # define MOD_MEM(x) ((x) % MEM_SIZE)
-# define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 3)
+# define VM_MEM(x) vm->mem[MOD_MEM((x))]
+# define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 0x11)
 
 typedef struct		s_champ
 {
@@ -52,6 +53,7 @@ typedef struct	s_vm
   t_list	*process_list;
   t_vmmem	*mem;
   int	cycle_count;
+  int	nbr_live;
   int	cycle_to_die;
   int	cycle_to_dump;
 }		t_vm;
@@ -65,5 +67,7 @@ t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc);
 t_process	*create_new_process(t_process *src, int pc);
 char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
 int		exe_process(void *ptrproc, void *ptrvm);
+int		handle_game(t_vm *vm);
+void		dump_memory(t_vmmem *mem, int size);
 
 #endif

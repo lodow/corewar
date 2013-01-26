@@ -12,5 +12,5 @@
 
 int	op_zjmp(t_process *proc, t_vm *vm)
 {
-  return (0);
+  return (1);
 }
