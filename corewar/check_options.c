@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Sat Jan 26 01:59:29 2013 luc sinet
+** Last update Sat Jan 26 13:39:14 2013 luc sinet
 */
 
 #include "include.h"
@@ -72,12 +72,7 @@ int	check_addr(char **av, t_arg *parg)
   if (parg->addr != 0 || (parg->pos + 1) >= parg->nb_arg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == 1)
-    {
-      parg->addr_val = my_getnbr(av[parg->pos + 1]);
-      parg->pos += 1;
-    }
-  else
-    parg->addr_val += 1;
+    parg->pos += 1;
   parg->addr = 1;
   return (0);
 }

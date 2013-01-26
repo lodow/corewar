@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sat Jan 26 13:16:03 2013 luc sinet
+** Last update Sat Jan 26 13:35:08 2013 luc sinet
 */
 
 #include "include.h"
@@ -26,8 +26,6 @@ int	check_args(char **av, t_arg *parg)
 {
   int	error;
 
-  parg->pos = 0;
-  parg->num_val = -1;
   while (parg->pos < parg->nb_arg)
     {
       if ((error = opt_compare(av, parg)) == -2)
@@ -48,6 +46,11 @@ int	check_args(char **av, t_arg *parg)
   return (0);
 }
 
+int	pars_args(char **av, t_arg *parg)
+{
+
+}
+
 t_arg	*init_arg(int ac)
 {
   t_arg	*parg;
@@ -59,12 +62,13 @@ t_arg	*init_arg(int ac)
       return (NULL);
     }
   my_memset(parg->num_used, ac / 2, -1);
+  parg->pos = 0;
   parg->dump = 0;
   parg->num = 0;
   parg->addr = 0;
   parg->nb_champ = 0;
   parg->num_pos = 0;
-  parg->num_val = 0;
+  parg->num_val = -1;
   parg->nb_arg = ac;
   return (parg);
 }
@@ -78,6 +82,8 @@ int	pars(char **av, int ac)
     return (-1);
   free(parg->num_used);
   free(parg);
+  if ((parg = init_arg(ac)) == NULL || pars_args(av, parg) == -1)
+    return (-1);
   return (0);
 }
 
