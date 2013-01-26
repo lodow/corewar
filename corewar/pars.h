@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Sat Jan 26 01:27:28 2013 luc sinet
+** Last update Sat Jan 26 14:18:54 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -35,5 +35,7 @@ int	check_addr(char **av, t_arg *parg);
 int	opt_compare(char **av, t_arg *parg);
 int	check_champ(char *name, t_arg *parg);
 int	is_a_num(char *opt);
+int	pars_opt(char **av, t_arg *parg);
+int	pars_champ(char *name, t_arg *parg);
 
 #endif

@@ -5,10 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Thu Jan 24 13:32:19 2013 luc sinet
+** Last update Sat Jan 26 14:21:23 2013 luc sinet
 */
 
-void	pars_champ(char *name)
-{
+#include "include.h"
 
+int	pars_champ(char *name, t_arg *parg)
+{
+  return (0);
 }
