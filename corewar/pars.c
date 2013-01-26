@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sat Jan 26 13:35:08 2013 luc sinet
+** Last update Sat Jan 26 13:41:25 2013 luc sinet
 */
 
 #include "include.h"
@@ -77,7 +77,6 @@ int	pars(char **av, int ac)
 {
   t_arg	*parg;
 
-  my_put_nbr(ac, 1);
   if ((parg = init_arg(ac)) == NULL || check_args(av, parg) == -1)
     return (-1);
   free(parg->num_used);
