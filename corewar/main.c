@@ -51,7 +51,7 @@ int		main(int argc, char **argv, char **envp)
       while (1)
         {
           my_apply_on_list(vm.process_list, &exe_process, &vm);
-          usleep(100);
+          usleep(1000);
         }
       printf("\n");
       free(prog->freeme);
