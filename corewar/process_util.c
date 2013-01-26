@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sat Jan 26 17:00:24 2013 luc sinet
 */
 
 #include	"include.h"
@@ -48,7 +48,7 @@ t_process	*create_new_process(t_process *src, int pc)
   int		j;
 
   i = 0;
-  if (((newp = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
+  if ((newp = malloc(sizeof(t_process))) == NULL || src == NULL)
     return (NULL);
   newp->pc = pc;
   newp->carry = src->carry;
