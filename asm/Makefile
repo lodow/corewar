@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Fri Jan 25 12:02:32 2013 Welanor
+## Last update Sun Jan 27 19:30:29 2013 maxime lavandier
 ##
 
 SRC= 	main.c \
@@ -13,6 +13,7 @@ SRC= 	main.c \
 	check_func.c \
 	check_cmd.c \
 	parse_cmd.c \
+	parsing.c \
 	header.c \
 	fillfile.c \
 	../misc/str_func.c \
