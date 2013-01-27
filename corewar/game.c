@@ -30,6 +30,21 @@ void	print_winner(t_vm *vm, int got_a_winner)
       }
 }
 
+void		rmv_dead_champ_proc(t_list **proc_list, t_champ *champ)
+{
+  t_list		*tmp_list;
+  t_process	*tmp;
+
+  tmp_list = *proc_list;
+  while (tmp_list != NULL)
+    {
+      tmp = tmp_list->data;
+      if (tmp->associated_champ == champ)
+        my_rm_from_list(proc_list, tmp_list, &delete_process);
+      tmp_list = tmp_list->next;
+    }
+}
+
 int	check_champs_alive_a_print(t_vm *vm)
 {
   int	i;
@@ -40,7 +55,10 @@ int	check_champs_alive_a_print(t_vm *vm)
   while (vm->champs[i] != NULL)
     {
       if (vm->champs[i]->alive == 0)
-        vm->champs[i]->alive = -1;
+        {
+          vm->champs[i]->alive = -1;
+          rmv_dead_champ_proc(&(vm->process_list), vm->champs[i]);
+        }
       else
         {
           if (got_a_winner == 1)

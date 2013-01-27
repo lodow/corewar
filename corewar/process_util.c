@@ -53,6 +53,7 @@ t_process	*create_new_process(t_process *src, int pc)
   if ((newp = malloc(sizeof(t_process))) == NULL || src == NULL)
     return (NULL);
   newp->pc = pc;
+  newp->associated_champ = src->associated_champ;
   newp->carry = src->carry;
   newp->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
