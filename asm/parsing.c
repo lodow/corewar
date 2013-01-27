@@ -5,8 +5,14 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Sat Jan 26 21:25:27 2013 maxime lavandier
+** Last update Sun Jan 27 19:45:52 2013 maxime lavandier
 */
+
+#include "asm.h"
+#include "parse_cmd.h"
+#include "../misc/op.h"
+#include "../misc/str_func.h"
+#include "../misc/nb_func.h"
 
 void	registre(t_param *param, char *str, int i)
 {
@@ -20,7 +26,7 @@ void	registre(t_param *param, char *str, int i)
       my_putstr("registre trop grand", 2, -1);
       exit(0);
     }
-  if ((param->param = realloc(param->lenght + 1)) == 0)
+  if ((param->param = realloc(param->param, param->lenght + 1)) == 0)
     exit(0);
   param->param[param->lenght] = nbr;
   param->lenght += 1;
@@ -36,7 +42,7 @@ void	direct(t_param *param, char *str, int i)
       exit(0);
     }
   nb = my_getnbr(&(str[i + 1]));
-  if ((param->param = realloc(param->lenght + DIR_SIZE)) == 0)
+  if ((param->param = realloc(param->param, param->lenght + DIR_SIZE)) == 0)
     exit(0);
   param->param[param->lenght + DIR_SIZE - 1] = 0;
   param->param[param->lenght + DIR_SIZE - 2] = 0;
@@ -57,9 +63,8 @@ void	indirect(t_param *param, char *str, int i)
   int	nb;
 
   nb = my_getnbr(&(str[i]));
-  if ((param->param = realloc(param->lenght + IND_SIZE)) == 0)
+  if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
     exit(0);
-  param->param[param->lenght] = nbr;
   param->param[param->lenght + DIR_SIZE - 1] = 0;
   param->param[param->lenght + DIR_SIZE - 2] = 0;
   param->param[param->lenght + DIR_SIZE - 1] |= nb;
@@ -93,7 +98,7 @@ void	put_to_param(t_param *param, char *str, int i)
     }
 }
 
-char	params(char *str, int i, t_param *param)
+void	params(char *str, int i, t_param *param)
 {
   int	j;
 
@@ -101,17 +106,17 @@ char	params(char *str, int i, t_param *param)
   param->param[1] = 0;
   while (str[i] != 0)
     {
-      put_to_param(param, str, i)
+      put_to_param(param, str, i);
       while (str[i] != 0 && str[i] != ',')
 	i++;
       if (str[i] != 0)
 	i++;
       j--;
     }
-  param.param[1] <<= (2 * j);
+  param->param[1] <<= (2 * j);
 }
 
-void		parsing(char *str)
+int		parsing(char *str)
 {
   int		i;
   t_param	param;
@@ -120,13 +125,14 @@ void		parsing(char *str)
     exit(0);
   if (str == 0)
     return (0);
-  if (check_cmd(str, param) == -1)
+  if (check_cmd(str, &param) == -1)
     {
-      my_putstr('error : le nombre de parametre est incorect');
+      my_putstr("error : le nombre de parametre est incorect", 2 , -1);
       exit(0);
     }
   i = next_label(str);
   if (str[i] == ' ')
     i++;
-  params(str, i, param)
+  params(str, i, &param);
+  return (0);
 }
