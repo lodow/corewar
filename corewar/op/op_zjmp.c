@@ -20,7 +20,7 @@ int	op_zjmp(t_process *proc, t_vm *vm)
 {
   int	i;
   int	j;
-  int	off_adrr;
+  short	off_adrr;
   char	*tmp;
 
   if (proc->carry == 1)
@@ -30,7 +30,7 @@ int	op_zjmp(t_process *proc, t_vm *vm)
       j = IND_SIZE - 1;
       while (i < IND_SIZE)
         {
-          tmp[i] = VM_MEM(proc->pc + j);
+          tmp[i] = VM_MEM(proc->pc + 1 + j);
           j--;
           i++;
         }
