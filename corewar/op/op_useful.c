@@ -70,15 +70,3 @@ char	*resolve_ind_value(t_vm *vm, int pos, int pc, int modidx)
     }
   return (res);
 }
-
-void	cpy_t_registre(char *src, t_reg *reg)
-{
-  int	i;
-
-  i = 0;
-  while (i < REG_SIZE)
-    {
-      (*reg)[i] = src[i];
-      i++;
-    }
-}

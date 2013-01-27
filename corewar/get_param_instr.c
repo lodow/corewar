@@ -31,6 +31,7 @@ void	delete_instr_params(t_params *params)
 void	fill_param_struct(t_vm *vm, t_process *proc)
 {
   t_params	*params;
+  void		(*(f[3]))(t_vm *vm, int offset, char **res);
 
   params = &(proc->params_next_instr);
   params->type = VM_MEM(proc->pc + 1);
