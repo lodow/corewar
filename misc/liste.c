@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Dec 13 13:14:01 2012 Hugues
+** Last update Sat Jan 26 21:35:42 2013 luc sinet
 */
 
 #include "liste.h"
@@ -68,16 +68,16 @@ void		my_add_to_list(t_list **begin, void *data)
 
   if (*begin == NULL)
     {
-      if ((*begin = malloc(1 * sizeof(t_list))) == NULL)
+      if ((*begin = malloc(sizeof(t_list))) == NULL)
         return ;
       (*begin)->data = data;
       (*begin)->next = NULL;
       return ;
     }
   tmp = *begin;
-  while ((tmp)->next != NULL)
-    tmp = (tmp)->next;
-  (tmp)->next = malloc(1 * sizeof(t_list));
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->next = malloc(1 * sizeof(t_list));
   if ((tmp)->next != NULL)
     {
       (tmp)->next->data = data;

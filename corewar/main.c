@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Jan 26 19:25:02 2013 luc sinet
+** Last update Sat Jan 26 21:20:57 2013 luc sinet
 */
 
 #include	"include.h"
@@ -13,7 +13,6 @@
 void		test(t_vm *vm, int fd, int num_p)
 {
   t_champ	*prog;
-
 
   if ((vm->champs = add_champ_t_tab(vm->champs, load_champ(fd, num_p))) != NULL)
     {
@@ -34,6 +33,7 @@ void		test(t_vm *vm, int fd, int num_p)
 int		main(int argc, char **argv, char **envp)
 {
   t_vm		vm;
+  t_champ	*prog;
   int		tmpfd;
 
   if (pars(&(argv[1]), argc - 1) == -1)

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Jan 24 19:29:07 2013 luc sinet
+** Last update Sat Jan 26 21:31:59 2013 luc sinet
 */
 
 #include	"include.h"
@@ -95,7 +95,7 @@ t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc)
   int		i;
 
   i = 0;
-  if ((champ_proc = malloc(1 * sizeof(t_process))) == NULL)
+  if ((champ_proc = malloc(sizeof(t_process))) == NULL)
     return (NULL);
   champ_proc->pc = pc;
   champ_proc->carry = 0;
