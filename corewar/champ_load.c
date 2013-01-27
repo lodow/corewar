@@ -41,4 +41,3 @@ t_champ	*load_champ(int fd, int number)
   champ->alive = 0;
   return (champ);
 }
-
