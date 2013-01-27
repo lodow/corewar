@@ -32,6 +32,7 @@ int	op_fork(t_process *proc, t_vm *vm)
       j--;
       i++;
     }
+    adrr %= IDX_MOD;
     my_add_to_list(&(vm->process_list), create_new_process(proc, adrr));
   return (3);
 }

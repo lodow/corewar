@@ -10,7 +10,28 @@
 
 #include	"operation.h"
 
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction and create a new process !
+*/
 int	op_lfork(t_process *proc, t_vm *vm)
 {
-  return (1);
+  int	i;
+  int	j;
+  short	adrr;
+  char	*tmp;
+
+  i = 0;
+  tmp = ((char*)(&adrr));
+  j = IND_SIZE - 1;
+  while (i < IND_SIZE)
+    {
+      tmp[i] = VM_MEM(proc->pc + 1 + j);
+      j--;
+      i++;
+    }
+  my_add_to_list(&(vm->process_list), create_new_process(proc, adrr));
+  return (3);
 }
