@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Sun Jan 27 21:09:57 2013 luc sinet
+** Last update Sun Jan 27 21:35:10 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -59,7 +59,7 @@ void	check_value(t_arg *parg)
     set_addrval(parg);
 }
 
-void	preload_champ(t_vm *vm)
+void	preload_champ(t_vm *vm, t_arg *parg)
 {
   int	i;
 
@@ -67,7 +67,8 @@ void	preload_champ(t_vm *vm)
   while (vm->champs[i])
     {
       my_add_to_list(&(vm->process_list),
-                     up_champ_t_mem(vm->mem, vm->champs[i], 0));
+                     up_champ_t_mem(vm->mem, vm->champs[i], parg->addr_val));
+
       i += 1;
     }
 }
@@ -86,6 +87,6 @@ int	pars_champ(char *name, t_arg *parg)
   parg->addr = -1;
   parg->added_champ += 1;
   if (parg->added_champ == parg->nb_champ)
-    preload_champ(parg->vm);
+    preload_champ(parg->vm, parg);
   return (0);
 }
