@@ -34,6 +34,7 @@ typedef struct	s_process
 {
   int	pc;
   int	carry;
+  t_champ	*associated_champ;
   t_reg	reg[REG_NUMBER];
   int	nb_cycle_t_next;
 }	t_process;

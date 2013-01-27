@@ -19,11 +19,11 @@ void		test(t_vm *vm, int fd, int num_p)
       prog = vm->champs[0];
       my_add_to_list(&(vm->process_list), up_champ_t_mem(vm->mem, prog, 0));
       printf("%s\n%d\n%s\nProgram Binary is :\n",
-	     prog->header.prog_name, prog->header.prog_size, prog->header.comment);
+             prog->header.prog_name, prog->header.prog_size, prog->header.comment);
       dump_memory(prog->champcode, prog->header.prog_size);
       printf("\n");
       while (handle_game(vm) == 0)
-	my_apply_on_list(vm->process_list, &exe_process, &vm);
+        my_apply_on_list(vm->process_list, &exe_process, &vm);
       free(prog->freeme);
       free(vm->champs[0]);
       my_rm_list(vm->process_list, &delete_process);

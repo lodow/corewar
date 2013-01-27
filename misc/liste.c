@@ -25,7 +25,7 @@ int	my_list_size(t_list *begin)
 
 void	my_rm_from_list(t_list **begin, t_list *trm, int (*f)(void*))
 {
-  if (begin != NULL)
+  if ((begin != NULL) && (trm != NULL))
     {
       if ((*begin) == trm)
         {

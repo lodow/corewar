@@ -99,6 +99,7 @@ t_process	*up_champ_t_mem(t_vmmem *mem, t_champ *champ, int pc)
     return (NULL);
   champ_proc->pc = pc;
   champ_proc->carry = 0;
+  champ_proc->associated_champ = champ;
   champ_proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
     {

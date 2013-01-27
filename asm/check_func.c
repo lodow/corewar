@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Sat Jan 26 21:38:39 2013 luc sinet
+** Last update Sat Jan 26 21:47:51 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -56,30 +56,44 @@ int	ld_st_lld(char *line, int i, t_param *param)
   return (1);
 }
 
-# define CHECKR(val) (val != 'r') ? (return (0);) : 0
+void	add_sub_and_or_xor_sti_to_param(char *line, int i, t_param *param)
+{
+  if (line[i] == 'a' && line[i + 1] == 'd')
+    param->param[0] = 0x4;
+  else if (line[i] == 's' && line[i + 1] == 'u')
+    param->param[0] = 0x5;
+  else if (line[i] == 'a' && line[i + 1] == 'n')
+    param->param[0] = 0x6;
+  else if (line[i] == 'o' && line[i + 1] == 'r')
+    param->param[0] = 0x7;
+  else if (line[i] == 'x' && line[i + 1] == 'o')
+    param->param[0] = 0x8;
+  else if (line[i] == 's' && line[i + 1] == 't')
+    param->param[0] = 0xb;
+}
 
 int	add_sub_and_or_xor_sti(char *line, int i, t_param *param)
 {
+  int	j;
+
+  j = -1;
+  add_sub_and_or_xor_sti_to_param(line, i, param);
   while (line[i] != ' ' && line[i] != 0)
     i++;
   if (line[i] == ' ')
     i++;
   if (line[i] != 'r')
     return (0);
-  while (line[i] != ',' && line[i] != 0)
-    i++;
-  if (line[i] == 0)
-    return (0);
-  i++;
-  if (line[i] != 'r')
-    return (0);
-  while (line[i] != ',' && line[i] != 0)
-    i++;
-  if (line[i] == 0)
-    return (0);
-  i++;
-  if (line[i] != 'r')
-    return (0);
+  while (++j != 2)
+    {
+      while (line[i] != ',' && line[i] != 0)
+	i++;
+      if (line[i] == 0)
+	return (0);
+      i++;
+      if (line[i] != 'r')
+	return (0);
+    }
   while (line[i] != ',' && line[i] != ':' && line[i] != 0)
     i++;
   if (line[i] != 0)
