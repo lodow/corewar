@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Wed Jan 23 20:54:18 2013 luc sinet
+** Last update Sat Jan 26 19:17:51 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -53,6 +53,26 @@ int	my_put_nbr(int nb, int fd)
   if (nb >= 10)
     my_put_nbr(nb / 10, fd);
   res = nb % 10 + 48;
-  write(fd, &res, 1);
+  my_putstr(&res, fd, 1);
   return (0);
+}
+
+void			print_hexa(char *mem, int nb)
+{
+  int                   i;
+  char                  *hexa;
+  unsigned char         tmp;
+
+  i = 0;
+  hexa = "0123456789ABCDEF";
+  while (i < nb)
+    {
+      tmp = mem[i];
+      my_putstr("0x", 1, 2);
+      my_putstr(&hexa[tmp / 16], 1, 1);
+      my_putstr(&hexa[tmp % 16], 1, 1);
+      if (i != nb - 1)
+	my_putstr(",", 1, 1);
+      i++;
+    }
 }

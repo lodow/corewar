@@ -36,7 +36,9 @@
 		<Unit filename="check_args.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="check_args.h" />
+		<Unit filename="game.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -108,8 +110,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="op/operation.h" />
+		<Unit filename="pars.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="pars.h" />
 		<Unit filename="pars_args.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pars_champ.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="process_util.c">

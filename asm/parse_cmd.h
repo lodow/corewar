@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Fri Jan 25 11:46:21 2013 Welanor
+** Last update Sun Jan 27 19:46:05 2013 maxime lavandier
 */
 
 #ifndef PARSE_CMD
@@ -36,12 +36,20 @@ typedef struct	s_cmd
   t_tablabel	*lab;
 }		t_cmd;
 
-int	live_ldi_lldi(char *line, int i);
-int	ld_st_lld(char *line, int i);
-int	add_sub_and_or_xor_sti(char *line, int i);
-int	zjmp_fork_lfork(char *line, int i);
-int	aff(char *line, int i);
-int	check_cmd(char *line);
+typedef struct	s_param
+{
+  char		*param;
+  int		lenght;
+}		t_param;
+
+int	next_label(char *line);
+int	parsing(char *str);
+int	live_ldi_lldi(char *line, int i, t_param *param);
+int	ld_st_lld(char *line, int i, t_param *param);
+int	add_sub_and_or_xor_sti(char *line, int i, t_param *param);
+int	zjmp_fork_lfork(char *line, int i, t_param *param);
+int	aff(char *line, int i, t_param *param);
+int	check_cmd(char *line, t_param *param);
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd);
 int	put_header(t_cmd *cmd, t_header *header);
 void	my_putstr(char *str, int fd, int lenght);

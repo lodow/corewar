@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Jan 24 19:29:07 2013 luc sinet
+** Last update Sun Jan 27 17:13:22 2013 luc sinet
 */
 
 #include	"include.h"
@@ -55,11 +55,12 @@ t_vm		*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm)
   vm->process_list = NULL;
   vm->champs = NULL;
   vm->cycle_count = 0;
+  vm->nbr_live = 0;
   vm->cycle_to_die = cycle_t_die;
   vm->cycle_to_dump = cycle_t_dump;
   if ((vm->mem = malloc(MEM_SIZE * sizeof(char))) == NULL)
     return (NULL);
-  my_memset(vm->mem, MEM_SIZE, 0x0);
+  my_memsetc(vm->mem, MEM_SIZE, 0x0);
   init_instr_f_tab(vm);
   init_instr_c_tab(vm);
   return (vm);
@@ -98,10 +99,11 @@ t_process	*up_champ_t_mem(t_vm *vmstat, t_champ *champ, int pc)
     return (NULL);
   proc->pc = pc;
   proc->carry = 0;
+  proc->associated_champ = champ;
   proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
     {
-      my_memset(proc->reg[i], REG_SIZE, 0x00);
+      my_memsetc(proc->reg[i], REG_SIZE, 0x00);
       i++;
     }
   proc->reg[0][REG_SIZE - 1] = ((char)(champ->number));

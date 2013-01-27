@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Fri Jan 25 01:32:17 2013 luc sinet
+** Last update Sun Jan 27 21:07:55 2013 luc sinet
 */
 
 #include "include.h"
@@ -17,21 +17,21 @@ void	error_msg(int type)
               "./corewar [-dump nbr_cycle][[-n prog_number]"
               "[-a load_address ] prog_name ...]\n", 2, -1);
   else if (type == 1)
-    my_putstr("Error while laoding the champ file\n", 2, -1);
+    my_putstr("Error while loading the champ file\n", 2, -1);
   else if (type == 2)
-    my_putstr("Error while using the function malloc", 2, -1);
+    my_putstr("Can’t perform malloc", 2, -1);
 }
 
 int	check_args(char **av, t_arg *parg)
 {
   int	error;
 
-  parg->pos = 0;
-  parg->num_val = -1;
+  parg->nb_champ = 0;
   while (parg->pos < parg->nb_arg)
     {
-      if ((error = opt_compare(av, parg)) < 0 &&
-	  (error = check_champ(av[parg->pos], parg)) < 0)
+      if ((error = opt_compare(av, parg)) == -2)
+	return (-1);
+      else if (error < 0 && (error = check_champ(av[parg->pos], parg)) < 0)
         {
 	  if (error == -1)
 	    error_msg(0);
@@ -39,7 +39,7 @@ int	check_args(char **av, t_arg *parg)
         }
       parg->pos += 1;
     }
-  if (parg->nb_champ == 0)
+  if (parg->nb_champ == 0 || parg->num == 1 || parg->addr == 1)
     {
       error_msg(0);
       return (-1);
@@ -47,22 +47,52 @@ int	check_args(char **av, t_arg *parg)
   return (0);
 }
 
-int	pars(char **av, int ac)
+int	pars_args(char **av, t_arg *parg)
+{
+  while (parg->pos < parg->nb_arg)
+    {
+      if (pars_opt(av, parg) < 0 && pars_champ(av[parg->pos], parg) < 0)
+	return (-1);
+      parg->pos += 1;
+    }
+  return (0);
+}
+
+t_arg	*init_arg(int ac, t_vm *vm)
 {
   t_arg	*parg;
 
-  if ((parg = malloc(sizeof(*parg))) == NULL)
+  parg = NULL;
+  if ((parg = malloc(sizeof(*parg))) == NULL ||
+	(parg->num_used = malloc(sizeof(int) * (ac / 2 + 1))) == NULL)
     {
       error_msg(2);
-      return (-1);
+      return (NULL);
     }
-  parg->dump = 0;
-  parg->num = 0;
-  parg->addr = 0;
-  parg->nb_champ = 0;
+  parg->num_used = my_memseti(parg->num_used, ac / 2 + 1, -1);
+  parg->pos = 0;
+  parg->added_champ = 0;
+  parg->dump = -1;
+  parg->num = -1;
+  parg->addr = -1;
+  parg->num_pos = 0;
+  parg->num_val = -1;
   parg->nb_arg = ac;
-  if (ac == 0 || check_args(av, parg) == -1)
+  parg->vm = vm;
+  return (parg);
+}
+
+int	pars(char **av, int ac, t_vm *vm)
+{
+  t_arg	*parg;
+
+  if ((parg = init_arg(ac, vm)) == NULL || check_args(av, parg) == -1)
     return (-1);
+  free(parg->num_used);
+  free(parg);
+  if ((parg = init_arg(ac, vm)) == NULL || pars_args(av, parg) == -1)
+    return (-1);
+  free(parg->num_used);
   free(parg);
   return (0);
 }

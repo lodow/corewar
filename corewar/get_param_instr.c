@@ -32,11 +32,11 @@ void	fill_param_struct(t_vm *vm, t_process *proc)
 {
   t_params	*params;
   char		tmp;
-  char		isntr;
+  char		instr;
   void		(*(f[3]))(t_vm * vm, int offset, char **res);
 
   params = &(proc->params_next_instr);
-  isntr = VM_MEM(proc->pc);
+  instr = VM_MEM(proc->pc);
   if ((instr >= 1) && (instr <= 16) && (instr != 0x0c) && (instr != 0x01)
       && (instr != 0x0f) && (instr != 0x09))
     {

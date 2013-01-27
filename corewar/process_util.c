@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Sat Jan 26 17:00:24 2013 luc sinet
 */
 
 #include	"include.h"
@@ -28,7 +28,7 @@ int		exe_process(void *ptrproc, void *ptrvm)
           fill_param_struct(vmstat, proc);
         }
       else
-        proc->pc++;
+        proc->pc = MOD_MEM(proc->pc + 1);
     }
   else
     proc->nb_cycle_t_next--;
@@ -55,6 +55,7 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
   if (((proc = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
     return (NULL);
   proc->pc = pc;
+  proc->associated_champ = src->associated_champ;
   proc->carry = src->carry;
   proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
@@ -71,5 +72,3 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
   fill_param_struct(vmstat, proc);
   return (proc);
 }
-
-
