@@ -34,9 +34,7 @@ int	op_zjmp(t_process *proc, t_vm *vm)
           j--;
           i++;
         }
-      printf("%p executed instruction zjmp %+.10d at pc %d\n", (void*)proc, off_adrr, proc->pc);
       return (off_adrr % IDX_MOD);
     }
-  printf("%p executed instruction zjmp -1 at pc %d\n", (void*)proc, proc->pc);
   return (1 + IND_SIZE);
 }

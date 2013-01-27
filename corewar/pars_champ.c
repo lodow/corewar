@@ -18,7 +18,6 @@
 ** (if no arguments were entered)
 ** to the next not already chosen number.
 */
-
 void	set_numval(t_arg *parg)
 {
   int	i;
