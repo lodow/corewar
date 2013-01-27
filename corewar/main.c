@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Jan 26 21:20:57 2013 luc sinet
+** Last update Sun Jan 27 20:37:42 2013 luc sinet
 */
 
 #include	"include.h"
@@ -36,7 +36,7 @@ int		main(int argc, char **argv, char **envp)
   t_champ	*prog;
   int		tmpfd;
 
-  if (pars(&(argv[1]), argc - 1) == -1)
+  if (pars(&(argv[1]), argc - 1, &vm) == -1)
     return (-1);
   tmpfd = open(argv[1], O_RDONLY);
   init_vm_stats(CYCLE_TO_DIE, -1, &vm);
