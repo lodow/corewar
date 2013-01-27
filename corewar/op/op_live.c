@@ -62,6 +62,5 @@ int	op_live(t_process *proc, t_vm *vm)
     }
   vm->nbr_live++;
   op_live_set_alive(vm, number);
-  printf("%p executed instruction live %+.10d at pc %d\n", (void*)proc, number, proc->pc);
   return (5);
 }

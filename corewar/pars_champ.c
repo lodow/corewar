@@ -39,9 +39,9 @@ void	set_numval(t_arg *parg)
       hit = 0;
       parg->num_val += 1;
       while (parg->num_used[i] != parg->num_val && parg->num_used[i] != -1)
-	i += 1;
+        i += 1;
       if (parg->num_used[i] == parg->num_val)
-	hit = 1;
+        hit = 1;
     }
   parg->num_used[(parg->num_pos)++] = parg->num_val;
 }
@@ -59,14 +59,15 @@ void	check_value(t_arg *parg)
     set_addrval(parg);
 }
 
-int	preload_champ(t_vm *vm)
+void	preload_champ(t_vm *vm)
 {
   int	i;
 
+  i = 0;
   while (vm->champs[i])
     {
       my_add_to_list(&(vm->process_list),
-		     up_champ_t_mem(vm->mem, vm->champs[i], 0));
+                     up_champ_t_mem(vm->mem, vm->champs[i], 0));
       i += 1;
     }
 }
@@ -79,7 +80,7 @@ int	pars_champ(char *name, t_arg *parg)
     return (-1);
   check_value(parg);
   if ((parg->vm->champs = add_champ_t_tab
-       (parg->vm->champs, load_champ(fd, parg->num_val))) == NULL)
+	 (parg->vm->champs, load_champ(fd, parg->num_val))) == NULL)
     return (-1);
   parg->num = -1;
   parg->addr = -1;
