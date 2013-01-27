@@ -10,7 +10,31 @@
 
 #include	"operation.h"
 
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction or the new adresse to jump to !
+*/
 int	op_zjmp(t_process *proc, t_vm *vm)
 {
-  return (1);
+  int	i;
+  int	j;
+  int	off_adrr;
+  char	*tmp;
+
+  if (proc->carry == 1)
+    {
+      i = 0;
+      tmp = ((char*)(&off_adrr));
+      j = IND_SIZE - 1;
+      while (i < IND_SIZE)
+        {
+          tmp[i] = VM_MEM(proc->pc + j);
+          j--;
+          i++;
+        }
+      return (off_adrr % IDX_MOD);
+    }
+  return (1 + IND_SIZE);
 }
