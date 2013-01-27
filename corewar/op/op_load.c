@@ -18,22 +18,5 @@
 */
 int	op_load(t_process *proc, t_vm *vm)
 {
-  /*char	*src;
-  int	regp2;
-
-  if ((src = get_paramx(vm, proc, VM_MEM(proc->pc + 2), 1)) != NULL)
-    regp2 = *((int*)src);
-  free(src);
-  src = NULL;
-  if (GET_TYPE_PARAMX(VM_MEM(proc->pc + 1), 0) == 3)
-    src = resolve_ind_value(vm, proc->pc + 2, proc->pc, 1);
-  else
-    src = get_paramx(vm, proc, VM_MEM(proc->pc + 2), 0);
-  cpy_t_registre(src, ((char*)&(regp2)));
-  if (is_byte_zero(src, REG_SIZE))
-    proc->carry = 1;
-  printf("%ld executed instruction ld %d at pc %d\n", proc, ((char*)&(regp2)), proc->pc);
-  free(src);
-  return (NBPBYTE(VM_MEM(proc->pc + 2), MAX_ARGS_NUMBER) + 2);*/
   return (1);
 }

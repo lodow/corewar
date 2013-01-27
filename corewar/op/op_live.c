@@ -36,7 +36,6 @@ int	op_live(t_process *proc, t_vm *vm)
   while (vm->champs[i] != NULL)
     {
       if ((vm->champs[i])->number == number)
-
         (vm->champs[i])->alive += 1;
       i++;
     }

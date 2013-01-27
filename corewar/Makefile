@@ -18,6 +18,7 @@ SRC= 	main.c \
 	get_bin_file.c \
 	init_vm.c \
 	process_util.c \
+	get_param_instr.c \
 	op/op_useful.c \
 	op/op_utilities.c \
 	op/op_add.c \

@@ -20,11 +20,12 @@ int		exe_process(void *ptrproc, void *ptrvm)
   vmstat = ptrvm;
   if (proc->nb_cycle_t_next <= 1)
     {
-      instr = vmstat->mem[MOD_MEM(proc->pc)] - 1;
+      instr = GET_INSTR;
       if ((instr >= 0) && (instr <= 15))
         {
-          proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
           proc->pc = MOD_MEM(vmstat->f[(int)instr](proc, vmstat) + proc->pc);
+          proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
+          fill_param_struct(vmstat, proc);
         }
       else
         proc->pc++;
@@ -39,31 +40,34 @@ int		delete_process(void *ptr)
   t_process	*proc;
 
   proc = ptr;
+  delete_instr_params(&(proc->params_next_instr));
   free(proc);
   return (0);
 }
 
-t_process	*create_new_process(t_process *src, int pc)
+t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
 {
-  t_process	*newp;
+  t_process	*proc;
   int		i;
   int		j;
 
   i = 0;
-  if (((newp = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
+  if (((proc = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
     return (NULL);
-  newp->pc = pc;
-  newp->carry = src->carry;
-  newp->nb_cycle_t_next = 0;
+  proc->pc = pc;
+  proc->carry = src->carry;
+  proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
     {
       j = 0;
       while (j < REG_SIZE)
         {
-          newp->reg[i][j] = src->reg[i][j];
+          proc->reg[i][j] = src->reg[i][j];
           j++;
         }
       i++;
     }
-  return (newp);
+  proc->nb_cycle_t_next = vmstat->instr_nb_cycle[GET_INSTR];
+  fill_param_struct(vmstat, proc);
+  return (proc);
 }

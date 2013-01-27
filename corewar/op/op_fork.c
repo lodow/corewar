@@ -33,6 +33,7 @@ int	op_fork(t_process *proc, t_vm *vm)
       i++;
     }
     adrr %= IDX_MOD;
-    my_add_to_list(&(vm->process_list), create_new_process(proc, adrr));
+    my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
+    printf("%p executed instruction fork %+.10d at pc %d\n", (void*)proc, adrr, proc->pc);
   return (3);
 }

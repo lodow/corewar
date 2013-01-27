@@ -40,6 +40,9 @@
 		<Unit filename="get_bin_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="get_param_instr.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="include.h" />
 		<Unit filename="init_vm.c">
 			<Option compilerVar="CC" />
