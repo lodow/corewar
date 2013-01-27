@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sat Jan 26 14:28:41 2013 luc sinet
+** Last update Sun Jan 27 17:12:00 2013 luc sinet
 */
 
 #include "include.h"
@@ -61,13 +61,14 @@ t_arg	*init_arg(int ac)
 {
   t_arg	*parg;
 
+  parg = NULL;
   if ((parg = malloc(sizeof(*parg))) == NULL ||
-      (parg->num_used = malloc(sizeof(int) * (ac / 2))) == NULL)
+	(parg->num_used = malloc(sizeof(int) * (ac / 2 + 1))) == NULL)
     {
       error_msg(2);
       return (NULL);
     }
-  my_memset(parg->num_used, ac / 2, -1);
+  parg->num_used = my_memseti(parg->num_used, ac / 2 + 1, -1);
   parg->pos = 0;
   parg->dump = -1;
   parg->num = -1;

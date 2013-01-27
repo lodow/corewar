@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Sat Jan 26 15:52:35 2013 luc sinet
+** Last update Sun Jan 27 15:52:37 2013 luc sinet
 */
 
 #include "include.h"
@@ -26,12 +26,6 @@ int	prog_num_opt(char **av, t_arg *parg)
       parg->num_used[parg->num_pos] = parg->num_val;
       parg->num_pos += 1;
     }
-  else
-    {
-      parg->num_val = parg->num_used[VTEST(parg->num_pos - 1)] + 1;
-      parg->num_used[parg->num_pos] = parg->num_val;
-      parg->num_pos += 1;
-    }
   return (0);
 }
 
@@ -42,8 +36,6 @@ int	addr_opt(char **av, t_arg *parg)
       parg->addr_val = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
       parg->pos += 1;
     }
-  else
-    parg->addr_val = 45694646; /*have to change this */
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Jan 25 00:47:41 2013 luc sinet
+** Last update Sun Jan 27 17:02:38 2013 luc sinet
 */
 
 #ifndef _INCLUDE_H_
@@ -26,7 +26,6 @@
 # define BIN_BUFFER 4096
 
 int	get_bin_file(int fd, char **file);
-void	my_memset(void *ptr, int osize, char value);
 char	*switch_endian(char *var, int varsize);
 
 #endif
