@@ -71,3 +71,5 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
   fill_param_struct(vmstat, proc);
   return (proc);
 }
+
+

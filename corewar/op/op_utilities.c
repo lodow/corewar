@@ -23,8 +23,10 @@ int	calc_instr_len_f_param_byte(char type, int nbmax)
 
   i = 0;
   tsize = 0;
+  tmpstype = GET_TYPE_PARAMX(type, i);
   while ((i < nbmax) && (i < MAX_ARGS_NUMBER) && (tmpstype != 0x0))
     {
+      tmpstype = GET_TYPE_PARAMX(type, i);
       if (tmpstype == T_REG)
         tsize += 1;
       else if (tmpstype == T_DIR)
@@ -32,7 +34,6 @@ int	calc_instr_len_f_param_byte(char type, int nbmax)
       else
         tsize += IND_SIZE;
       i++;
-      tmpstype = GET_TYPE_PARAMX(type, i);
     }
   return (tsize);
 }

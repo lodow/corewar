@@ -14,6 +14,7 @@
 # include "../misc/op.h"
 
 # define ABS(x) ((x) > 0 ? (x) : -(x))
+# define NBBP(x, y) calc_instr_len_f_param_byte(x, y)
 # define GET_INSTR (vmstat->mem[MOD_MEM(proc->pc)]) - 1
 # define MOD_MEM(x) ((ABS(x)) % MEM_SIZE)
 # define VM_MEM(x) vm->mem[MOD_MEM((x))]

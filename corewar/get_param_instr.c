@@ -44,10 +44,10 @@ void	fill_param_struct(t_vm *vm, t_process *proc)
       if ((tmp = GET_TYPE_PARAMX(params->type, 0)) != 0)
         f[tmp - 1](vm, proc->pc + 2, &(params->param1));
       if ((tmp = GET_TYPE_PARAMX(params->type, 1)) != 0)
-        f[tmp - 1](vm, proc->pc + 2, &(params->param1));
+        f[tmp - 1](vm, proc->pc + 2 + NBBP(tmp, 1), &(params->param1));
       if ((tmp = GET_TYPE_PARAMX(params->type, 2)) != 0)
-        f[tmp - 1](vm, proc->pc + 2, &(params->param1));
+        f[tmp - 1](vm, proc->pc + 2 + NBBP(tmp, 2), &(params->param1));
       if ((tmp = GET_TYPE_PARAMX(params->type, 3)) != 0)
-        f[tmp - 1](vm, proc->pc + 2, &(params->param1));
+        f[tmp - 1](vm, proc->pc + 2 + NBBP(tmp, 3), &(params->param1));
     }
 }
