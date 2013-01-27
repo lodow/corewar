@@ -10,7 +10,14 @@
 
 #include	"operation.h"
 
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction and create a new process !
+*/
 int	op_fork(t_process *proc, t_vm *vm)
 {
+t_process	*create_new_process(t_process *src, int pc);
   return (1);
 }
