@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Mon Jan 28 13:49:06 2013 luc sinet
+** Last update Mon Jan 28 14:11:36 2013 luc sinet
 */
 
 #include "include.h"
@@ -73,6 +73,7 @@ t_arg	*init_arg(t_arg *parg, int ac, t_vm *vm)
   parg->addr = -1;
   parg->num_pos = 0;
   parg->num_val = -1;
+  parg->addr_val = 0;
   parg->nb_arg = ac;
   parg->vm = vm;
   return (parg);
