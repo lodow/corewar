@@ -5,20 +5,19 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Mon Jan 28 18:14:55 2013 luc sinet
+** Last update Mon Jan 28 18:33:19 2013 luc sinet
 */
 
 #include "include.h"
 
 int	check_dump(char **av, t_arg *parg)
 {
-  if (parg->dump != -1 || parg->pos != 0 || parg->nb_arg == 1)
+  if (parg->vm->cycle_to_dump != -1 || parg->pos != 0 || parg->nb_arg == 1)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == -1)
     return (-1);
-  parg->dump_val = my_getnbr(av[parg->pos + 1]);
+  parg->vm->cycle_to_dump = my_getnbr(av[parg->pos + 1]);
   parg->pos += 1;
-  parg->dump = 1;
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Mon Jan 28 18:18:44 2013 luc sinet
+** Last update Mon Jan 28 18:50:13 2013 luc sinet
 */
 
 #include "include.h"
@@ -70,7 +70,6 @@ t_arg	*init_arg(t_arg *parg, int ac, t_vm *vm)
   parg->addr_used = my_memseti(parg->addr_used, ac, -1);
   parg->pos = 0;
   parg->added_champ = 0;
-  parg->dump = -1;
   parg->num = -1;
   parg->addr = -1;
   parg->num_pos = 0;
@@ -86,7 +85,10 @@ int	pars(char **av, int ac, t_vm *vm)
 
   if ((parg = malloc(sizeof(*parg))) == NULL ||
       (parg = init_arg(parg, ac, vm)) == NULL || check_args(av, parg) == -1)
-    return (-1);
+    {
+      printf("frgrtetyt(y)\n");
+      return (-1);
+    }
   free(parg->num_used);
   free(parg->addr_used);
   if ((parg = init_arg(parg, ac, vm)) == NULL || pars_args(av, parg) == -1)

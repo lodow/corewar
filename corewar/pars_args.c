@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Mon Jan 28 14:56:52 2013 luc sinet
+** Last update Mon Jan 28 18:49:58 2013 luc sinet
 */
 
 #include "include.h"
@@ -13,7 +13,8 @@
 
 int	dump_opt(char **av, t_arg *parg)
 {
-  parg->dump_val = my_getnbr(av[parg->pos + 1]);
+  parg->vm->cycle_to_dump = my_getnbr(av[parg->pos + 1]);
+  parg->pos += 1;
   return (0);
 }
 
@@ -47,7 +48,7 @@ int	pars_opt(char **av, t_arg *parg)
   char	*opt_list[3];
 
   i = 0;
-  opt_list[0] = "dump";
+  opt_list[0] = "-dump";
   opt_list[1] = "-n";
   opt_list[2] = "-a";
   while (i < 3 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
