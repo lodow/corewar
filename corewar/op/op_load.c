@@ -18,5 +18,10 @@
 */
 int	op_load(t_process *proc, t_vm *vm)
 {
+/*Cette instruction prend 2 paramètres le deuxième est forcement
+un registre (pas le PC). Elle load la valeur du premier paramètre
+dans le registre. Cette opération modifie le carry. ld 34,r3 charge
+les REG_SIZE octets a partir de l’adresse (PC + (34 %
+IDX_MOD)) dans le registre r3.*/
   return (1);
 }
