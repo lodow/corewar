@@ -142,6 +142,9 @@
 		<Unit filename="../misc/my_memset.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../misc/nb_func.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../misc/op.c">
 			<Option compilerVar="CC" />
 		</Unit>
