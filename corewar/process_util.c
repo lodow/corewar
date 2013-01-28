@@ -14,6 +14,7 @@ int		exe_process(void *ptrproc, void *ptrvm)
 {
   t_process	*proc;
   t_vm		*vmstat;
+  int		instrlen;
   char		instr;
 
   proc = ptrproc;
@@ -23,7 +24,8 @@ int		exe_process(void *ptrproc, void *ptrvm)
       instr = GET_INSTR;
       if ((instr >= 0) && (instr <= 15))
         {
-          proc->pc = MOD_MEM(vmstat->f[(int)instr](proc, vmstat) + proc->pc);
+          instrlen = vmstat->f[(int)instr](proc, vmstat);
+          proc->pc = MOD_MEM(instrlen + proc->pc);
           instr = GET_INSTR;
           if ((instr >= 0) && (instr <= 15))
             proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];

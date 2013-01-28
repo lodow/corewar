@@ -18,7 +18,10 @@ int		main(int argc, char **argv, char **envp)
   if (pars(&(argv[1]), argc - 1, &vm) == -1)
     return (-1);
   while (handle_game(&vm) == 0)
-    my_apply_on_list(vm.process_list, &exe_process, &vm);
+    {
+      my_apply_on_list(vm.process_list, &exe_process, &vm);
+      usleep(1000);
+    }
   my_rm_list(vm.process_list, &delete_process);
   free(vm.champs);
   free(vm.mem);
