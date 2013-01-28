@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Sun Jan 27 21:07:55 2013 luc sinet
+** Last update Mon Jan 28 13:49:06 2013 luc sinet
 */
 
 #include "include.h"
@@ -58,13 +58,9 @@ int	pars_args(char **av, t_arg *parg)
   return (0);
 }
 
-t_arg	*init_arg(int ac, t_vm *vm)
+t_arg	*init_arg(t_arg *parg, int ac, t_vm *vm)
 {
-  t_arg	*parg;
-
-  parg = NULL;
-  if ((parg = malloc(sizeof(*parg))) == NULL ||
-	(parg->num_used = malloc(sizeof(int) * (ac / 2 + 1))) == NULL)
+  if ((parg->num_used = malloc(sizeof(int) * (ac / 2 + 1))) == NULL)
     {
       error_msg(2);
       return (NULL);
@@ -86,11 +82,11 @@ int	pars(char **av, int ac, t_vm *vm)
 {
   t_arg	*parg;
 
-  if ((parg = init_arg(ac, vm)) == NULL || check_args(av, parg) == -1)
+  if ((parg = malloc(sizeof(*parg))) == NULL ||
+      (parg = init_arg(parg, ac, vm)) == NULL || check_args(av, parg) == -1)
     return (-1);
   free(parg->num_used);
-  free(parg);
-  if ((parg = init_arg(ac, vm)) == NULL || pars_args(av, parg) == -1)
+  if ((parg = init_arg(parg, ac, vm)) == NULL || pars_args(av, parg) == -1)
     return (-1);
   free(parg->num_used);
   free(parg);
