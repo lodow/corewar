@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Fri Jan 25 14:22:16 2013 maxime lavandier
+** Last update Mon Jan 28 16:26:35 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -132,5 +132,6 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
     cmd = addlabel(line, cmd);
   if (line[0] != '#')
     fillcmdfile(cmd, line);
+  parsing(line);
   return (0);
 }
