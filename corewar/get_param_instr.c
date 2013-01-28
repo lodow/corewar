@@ -17,10 +17,9 @@ void	fill_param_struct(t_vm *vm, t_process *proc)
 
   i = 0;
   params = &(proc->params_next_instr);
-  params->type = vm->mem[MOD_MEM(proc->pc + 1)];
-  while (i < (MAX_ARGS_NUMBER * 4))
+  while (i < (MAX_ARGS_NUMBER * 4 + 1))
     {
-      params->params[i] = vm->mem[MOD_MEM(proc->pc + 2)];
+      params->params[i] = vm->mem[MOD_MEM(proc->pc + 1 + i)];
       i++;
     }
 }

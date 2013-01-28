@@ -24,6 +24,7 @@ int		exe_process(void *ptrproc, void *ptrvm)
       instr = GET_INSTR;
       if ((instr >= 0) && (instr <= 15))
         {
+/*        dump_memory(proc->params_next_instr.params, MAX_ARGS_NUMBER * 4);*/
           instrlen = vmstat->f[(int)instr](proc, vmstat);
           proc->pc = MOD_MEM(instrlen + proc->pc);
           instr = GET_INSTR;
