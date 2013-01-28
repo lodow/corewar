@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Mon Jan 28 15:18:11 2013 luc sinet
+** Last update Mon Jan 28 16:40:14 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -27,7 +27,7 @@ void	set_numval(t_arg *parg)
   hit = 1;
   if (parg->num_used[0] == -1)
     {
-      parg->num_used[0] += 1;
+      parg->num_used[0] = 1;
       parg->num_pos = 1;
       return ;
     }
@@ -37,7 +37,7 @@ void	set_numval(t_arg *parg)
       i = 0;
       hit = 0;
       num_val += 1;
-      while (parg->num_used[i] != num_val && parg->num_used[i] != -1)
+      while (parg->num_used[i] != num_val && i < (parg->nb_arg / 2))
         i += 1;
       if (parg->num_used[i] == num_val)
         hit = 1;
