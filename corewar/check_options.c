@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Mon Jan 28 16:38:44 2013 luc sinet
+** Last update Mon Jan 28 18:14:55 2013 luc sinet
 */
 
 #include "include.h"
@@ -27,7 +27,7 @@ int	check_exist(char **av, t_arg *parg, int num)
   int	i;
 
   i = 0;
-  while (i < (parg->nb_arg / 2))
+  while (i < parg->nb_arg)
     {
       if (parg->num_used[i] == num)
 	{
