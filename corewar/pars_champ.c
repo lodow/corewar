@@ -63,12 +63,11 @@ void	preload_champ(t_vm *vm, t_arg *parg)
   int	i;
 
   i = 0;
-  while (vm->champs[i])
+  while (vm->champs[i] != NULL)
     {
       my_add_to_list(&(vm->process_list),
                      up_champ_t_mem(vm, vm->champs[i], parg->addr_val));
-
-      i += 1;
+      i++;
     }
 }
 
