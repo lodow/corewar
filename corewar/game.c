@@ -32,23 +32,16 @@ void	print_winner(t_vm *vm, int got_a_winner)
 
 void		rmv_dead_champ_proc(t_list **proc_list, t_champ *champ)
 {
-  t_list		*tmp_list;
-  t_process	*tmp_proc;
+  t_list    *tmp_list;
+  t_process  *tmp;
 
-  if ((proc_list != NULL) && (champ != NULL))
+  tmp_list = *proc_list;
+  while (tmp_list != NULL)
     {
-      tmp_list = *proc_list;
-      while (tmp_list != NULL)
-        {
-          tmp_proc = (t_process*)tmp_list->data;
-          if (tmp_proc->associated_champ == champ)
-            {
-              delete_process(tmp_proc);
-              free(tmp_list);
-            }
-          else
-            tmp_list = tmp_list->next;
-        }
+      tmp = tmp_list->data;
+      if (tmp->associated_champ == champ)
+        my_rm_from_list(proc_list, tmp_list, &delete_process);
+      tmp_list = tmp_list->next;
     }
 }
 
@@ -91,11 +84,10 @@ void			dump_memory(t_vmmem *mem, int size)
   while (i < size)
     {
       tmp = mem[i];
-      my_putstr("0x", 1, 2);
       my_putstr(&hexa[tmp / 16], 1, 1);
       my_putstr(&hexa[tmp % 16], 1, 1);
       if (i != size - 1)
-        my_putstr(",", 1, 1);
+        my_putstr(" ", 1, 1);
       i++;
     }
   my_putstr("\n", 1, 1);
@@ -112,7 +104,7 @@ int	handle_game(t_vm *vm)
       end_game = 1;
   if (vm->nbr_live >= NBR_LIVE)
     vm->cycle_to_die -= CYCLE_DELTA;
-  if ((vm->cycle_count >= vm->cycle_to_dump) && (vm->cycle_to_dump != -1))
+  if (vm->cycle_count >= vm->cycle_to_dump)
     {
       dump_memory(vm->mem, MEM_SIZE);
       end_game = 1;
