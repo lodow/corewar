@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Mon Jan 28 16:20:20 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -34,6 +34,6 @@ int	op_fork(t_process *proc, t_vm *vm)
     }
     adrr %= IDX_MOD;
     my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-    printf("%p fork %d\n", proc, adrr);
+    printf("%d: %p fork %d\n", proc->associated_champ->number, proc, adrr);
   return (3);
 }
