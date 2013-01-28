@@ -35,10 +35,7 @@ typedef char	t_reg[REG_SIZE];
 typedef struct	s_params
 {
   char	type;
-  char	*param1;
-  char	*param2;
-  char	*param3;
-  char	*param4;
+  char	params[MAX_ARGS_NUMBER * 4];
 }	t_params;
 
 typedef struct		s_process

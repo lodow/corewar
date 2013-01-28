@@ -24,7 +24,9 @@ int		exe_process(void *ptrproc, void *ptrvm)
       if ((instr >= 0) && (instr <= 15))
         {
           proc->pc = MOD_MEM(vmstat->f[(int)instr](proc, vmstat) + proc->pc);
-          proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
+          instr = GET_INSTR;
+          if ((instr >= 0) && (instr <= 15))
+            proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
           fill_param_struct(vmstat, proc);
         }
       else
@@ -40,7 +42,6 @@ int		delete_process(void *ptr)
   t_process	*proc;
 
   proc = ptr;
-  delete_instr_params(&(proc->params_next_instr));
   free(proc);
   return (0);
 }
