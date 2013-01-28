@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Mon Jan 28 16:54:37 2013 maxime lavandier
+** Last update Mon Jan 28 20:26:03 2013 Welanor
 */
 
 #ifndef PARSE_CMD
@@ -53,8 +53,11 @@ int	check_cmd(char *line, t_param *param);
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd);
 int	put_header(t_cmd *cmd, t_header *header);
 void	my_putstr(char *str, int fd, int lenght);
+t_cmd	*addlabel(char *line, t_cmd *cmd);
 void	fillcmdfile(t_cmd *cmd, char *line);
 int	findlabel(char *line);
 void	fillfile(t_header *header, t_cmd *cmd, char *name);
+char	*sub_space(char *line);
+t_cmd	*recuplabel(t_cmd *cmd, char **file);
 
 #endif

@@ -5,38 +5,12 @@
 ** Login   <adrien dellamaggiora@epitech.eu>
 **
 ** Started on  Thu Jan 24 16:58:24 2013 adrien dellamaggiora
-** Last update Mon Jan 28 16:22:06 2013 maxime lavandier
+** Last update Mon Jan 28 20:24:54 2013 Welanor
 */
 
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
-/*#include "../misc/str_func.c"*/
-
-extern	t_op	op_tab[];
-
-void	fillcmdfile(t_cmd *cmd, char *line)
-{
-  int	i;
-  int	j;
-
-  i = 0;
-  j = 0;
-  if (findlabel(line) == 1)
-    {
-      while (line[i] != LABEL_CHAR && line[i] != 0)
-	i++;
-      i += 2;
-    }
-  while (my_begincmp(&line[i], op_tab[j].mnemonique) == 0 && j < 16)
-    j++;
-  /*
-  ** Ecriture dans le void
-  */
-  while (line[i] != ' ' && line[i] != '\0')
-    i++;
-  return ;
-}
 
 char	*getname(char *name)
 {
