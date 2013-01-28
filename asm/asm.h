@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Jan 18 16:00:21 2013 adrien dellamaggiora
-** Last update Fri Jan 25 11:18:14 2013 Welanor
+** Last update Mon Jan 28 19:46:38 2013 Welanor
 */
 
 #ifndef _ASM_H_
@@ -18,5 +18,14 @@
 #include <fcntl.h>
 
 int	parse(char **file, char *name);
+void	adress_live(char *line, int *pc);
+void	adress_ldlld(char *line, int *pc);
+void	adress_add(char *line, int *pc);
+void	adress_zjump(char *line, int *pc);
+void	adress_and(char *line, int *pc);
+void	adress_sti(char *line, int *pc);
+void	adress_ldi(char *line, int *pc);
+void	adress_fork(char *line, int *pc);
+void	adress_aff(char *line, int *pc);
 
 #endif
