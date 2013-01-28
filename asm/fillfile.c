@@ -5,7 +5,7 @@
 ** Login   <adrien dellamaggiora@epitech.eu>
 **
 ** Started on  Thu Jan 24 16:58:24 2013 adrien dellamaggiora
-** Last update Fri Jan 25 12:08:49 2013 Welanor
+** Last update Mon Jan 28 16:22:06 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -30,7 +30,6 @@ void	fillcmdfile(t_cmd *cmd, char *line)
     }
   while (my_begincmp(&line[i], op_tab[j].mnemonique) == 0 && j < 16)
     j++;
-  printf("%s\n", op_tab[j].mnemonique);
   /*
   ** Ecriture dans le void
   */
