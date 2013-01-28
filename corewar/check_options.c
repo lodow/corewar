@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Sat Jan 26 14:27:32 2013 luc sinet
+** Last update Mon Jan 28 14:54:23 2013 luc sinet
 */
 
 #include "include.h"
@@ -47,17 +47,17 @@ int	check_numproc(char **av, t_arg *parg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
-      if ((parg->num_val = my_getnbr(av[parg->pos + 1])) < 0)
+      if (my_getnbr(av[parg->pos + 1]) < 0)
 	{
 	  my_putstr("Please enter a positive value for the -n option\n", 2, -1);
 	  return (-2);
 	}
-      else if (check_exist(av, parg, parg->num_val) == -1)
+      else if (check_exist(av, parg, my_getnbr(av[parg->pos + 1])) == -1)
 	return (-2);
       else
 	{
 	  parg->pos += 1;
-	  parg->num_used[parg->num_pos] = parg->num_val;
+	  parg->num_used[parg->num_pos] = my_getnbr(av[parg->pos + 1]);
 	}
     }
   else
@@ -72,7 +72,11 @@ int	check_addr(char **av, t_arg *parg)
   if (parg->addr != -1 || (parg->pos + 1) >= parg->nb_arg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == 1)
-    parg->pos += 1;
+    {
+      parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]);
+      parg->addr_pos += 1;
+      parg->pos += 1;
+    }
   parg->addr = 1;
   return (0);
 }
