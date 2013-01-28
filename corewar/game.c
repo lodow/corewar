@@ -121,4 +121,3 @@ int	handle_game(t_vm *vm)
     end_game = 1;
   return (end_game);
 }
-
