@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Mon Jan 28 13:01:50 2013 Welanor
+** Last update Mon Jan 28 20:26:03 2013 Welanor
 */
 
 #ifndef PARSE_CMD
@@ -38,7 +38,7 @@ typedef struct	s_cmd
 
 typedef struct	s_param
 {
-  char		*param;
+  unsigned char	*param;
   int		lenght;
 }		t_param;
 

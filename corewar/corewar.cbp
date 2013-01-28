@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../champ/old/arkyde49.cor" />
+				<Option parameters="-n 42 ../champ/old/arkyde49.cor" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -140,6 +140,9 @@
 		</Unit>
 		<Unit filename="../misc/liste.h" />
 		<Unit filename="../misc/my_memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../misc/nb_func.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../misc/op.c">

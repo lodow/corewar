@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 19:35:15 2013 maxime lavandier
-** Last update Sun Jan 27 19:44:41 2013 maxime lavandier
+** Last update Mon Jan 28 16:39:14 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -31,7 +31,7 @@ void	line_to_instruction(char *line, char *instruction, int i)
   j = 0;
   while (line[i] != ' ')
     {
-      line[i] = instruction[j];
+      instruction[j] = line[i];
       i++;
       j++;
     }

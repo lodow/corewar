@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Sun Jan 27 19:45:52 2013 maxime lavandier
+** Last update Mon Jan 28 16:53:27 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -36,6 +36,7 @@ void	direct(t_param *param, char *str, int i)
 {
   int	nb;
 
+  printf ("coucou\n");
   if (str[i + 1] == LABEL_CHAR)
     {
       my_putstr("cas special non géré", 2, -1);
@@ -78,22 +79,19 @@ void	put_to_param(t_param *param, char *str, int i)
   if (str[i] == 'r')
     {
       param->param[1] <<= 2;
-      param->param[1] += 1;
+      param->param[1] |= 1;
       registre(param, str, i);
-      /*
-	registre
-       */
     }
   else if (str[i] == '%')
     {
       param->param[1] <<= 2;
-      param->param[1] += 2;
+      param->param[1] |= 2;
       direct(param, str, i);
     }
   else
     {
       param->param[1] <<= 2;
-      param->param[1] += 3;
+      param->param[1] |= 3;
       indirect(param, str, i);
     }
 }
@@ -102,8 +100,12 @@ void	params(char *str, int i, t_param *param)
 {
   int	j;
 
-  j = 3;
+  j = 4;
   param->param[1] = 0;
+  printf ("i =%d\n", i);
+  while (str[i] != 0 && str[i] != ' ')
+    i++;
+  i++;
   while (str[i] != 0)
     {
       put_to_param(param, str, i);
@@ -113,7 +115,9 @@ void	params(char *str, int i, t_param *param)
 	i++;
       j--;
     }
+  printf ("j =%d\n", j);
   param->param[1] <<= (2 * j);
+  printf ("param =%d\n",(int) param->param[1]);
 }
 
 int		parsing(char *str)

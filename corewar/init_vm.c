@@ -86,6 +86,7 @@ t_champ		**add_champ_t_tab(t_champ **tab, t_champ *add)
       }
   newtab[i] = add;
   newtab[i + 1] = NULL;
+  free(tab);
   return (newtab);
 }
 

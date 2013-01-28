@@ -20,18 +20,21 @@ int	my_getnbr(char *s1)
   nb = 0;
   i = 0;
   sign = 1;
-  while (s1[i] == '-' || s1[i] == '+')
+  if (s1 != NULL)
     {
-      if (s1[i] == '-')
-	sign = -sign;
-      i++;
-    }
-  while (s1[i] >= '0' && s1[i] <= '9')
-    {
-      if (((nb * 10) / 10) != nb)
-	  return (0);
-      nb = nb * 10 + (s1[i] - 48);
-      i++;
+      while (s1[i] == '-' || s1[i] == '+')
+        {
+          if (s1[i] == '-')
+            sign = -sign;
+          i++;
+        }
+      while (s1[i] >= '0' && s1[i] <= '9')
+        {
+          if (((nb * 10) / 10) != nb)
+            return (0);
+          nb = nb * 10 + (s1[i] - 48);
+          i++;
+        }
     }
   return (nb * sign);
 }
@@ -72,7 +75,7 @@ void			print_hexa(char *mem, int nb)
       my_putstr(&hexa[tmp / 16], 1, 1);
       my_putstr(&hexa[tmp % 16], 1, 1);
       if (i != nb - 1)
-	my_putstr(",", 1, 1);
+        my_putstr(",", 1, 1);
       i++;
     }
 }

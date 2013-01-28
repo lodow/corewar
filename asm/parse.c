@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Mon Jan 28 15:58:42 2013 Welanor
+** Last update Mon Jan 28 20:25:21 2013 Welanor
 */
 
 #include "asm.h"
@@ -116,6 +116,7 @@ int		parse(char **file, char *name)
       printf("%s || %d\n", (cmd.lab[j]).label, (cmd.lab[j]).adress);
       j++;
     }
+  printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
   fillfile(&header, &cmd, name);
   return (0);
 }

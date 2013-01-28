@@ -32,8 +32,8 @@ void	print_winner(t_vm *vm, int got_a_winner)
 
 void		rmv_dead_champ_proc(t_list **proc_list, t_champ *champ)
 {
-  t_list		*tmp_list;
-  t_process	*tmp;
+  t_list    *tmp_list;
+  t_process  *tmp;
 
   tmp_list = *proc_list;
   while (tmp_list != NULL)
@@ -57,7 +57,7 @@ int	check_champs_alive_a_print(t_vm *vm)
       if (vm->champs[i]->alive == 0)
         {
           vm->champs[i]->alive = -1;
-          rmv_dead_champ_proc(&(vm->process_list), vm->champs[i]);
+/*          rmv_dead_champ_proc(&(vm->process_list), vm->champs[i]);*/
         }
       else
         {
@@ -84,11 +84,10 @@ void			dump_memory(t_vmmem *mem, int size)
   while (i < size)
     {
       tmp = mem[i];
-      my_putstr("0x", 1, 2);
       my_putstr(&hexa[tmp / 16], 1, 1);
       my_putstr(&hexa[tmp % 16], 1, 1);
       if (i != size - 1)
-        my_putstr(",", 1, 1);
+        my_putstr(" ", 1, 1);
       i++;
     }
   my_putstr("\n", 1, 1);

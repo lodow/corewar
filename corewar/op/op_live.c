@@ -56,11 +56,12 @@ int	op_live(t_process *proc, t_vm *vm)
   j = sizeof(int) - 1;
   while (i < sizeof(int))
     {
-      tmp[i] = VM_MEM(proc->pc + 1 + j);
+      tmp[i] = proc->params_next_instr.params[j];
       j--;
       i++;
     }
   vm->nbr_live++;
   op_live_set_alive(vm, number);
+  printf("live %d\n", number);
   return (5);
 }
