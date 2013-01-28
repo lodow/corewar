@@ -10,6 +10,19 @@
 
 #include	"include.h"
 
+void	delete_champ_tab(t_champ **tab)
+{
+  int	i;
+
+  i = 0;
+  while (tab[i] != NULL)
+    {
+      free(tab[i]->freeme);
+      free(tab[i]);
+      i++;
+    }
+}
+
 int		main(int argc, char **argv, char **envp)
 {
   t_vm		vm;
@@ -23,6 +36,7 @@ int		main(int argc, char **argv, char **envp)
       usleep(1000);
     }
   my_rm_list(vm.process_list, &delete_process);
+  delete_champ_tab(vm.champs);
   free(vm.champs);
   free(vm.mem);
   return (0);
