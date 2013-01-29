@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Tue Jan 29 17:08:33 2013 luc sinet
+** Last update Tue Jan 29 17:18:03 2013 luc sinet
 */
 
 #include "include.h"
@@ -95,7 +95,6 @@ int	pars(char **av, int ac, t_vm *vm)
   free(parg->addr_used);
   if ((parg = init_arg(parg, ac, vm)) == NULL || pars_args(av, parg) == -1)
     return (-1);
-  printf("fjerlgt \n");
   free(parg->num_used);
   free(parg->addr_used);
   free(parg);

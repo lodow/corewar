@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Tue Jan 29 17:16:34 2013 luc sinet
+** Last update Tue Jan 29 17:25:39 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -34,14 +34,13 @@ int	check_champ(char *name, t_arg *parg)
   int	sread;
 
   sread = -1;
-  if ((fd = open(name, O_RDONLY)) == -1 || (sread = read(fd, buf, 2)) <= 1)
+  if ((fd = open(name, O_RDONLY)) == -1 || (sread = read(fd, buf, 5)) <= 1)
     {
       my_putstr("File ", 2, -1);
       my_putstr(name, 2, -1);
       my_putstr(RDERROR(sread), 2, -1);
       return (-2);
     }
-  printf("\n%d\n", sread);
   if (my_strlen(name) <= 4 ||
       my_strcmp(".cor", &(name[my_strlen(name) - 4])) != 0)
     {
