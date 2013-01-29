@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Tue Jan 29 16:55:06 2013 luc sinet
 */
 
 #ifndef _OPERATION_H_
@@ -39,5 +39,6 @@ int	is_byte_zero(char *src, int size);
 char	*get_paramx(t_vm *vm, t_process *proc, char parambyte, int x);
 int	calc_instr_len_f_param_byte(char type, int nbmax);
 char	*cpy_mem_value(t_vm *vm, int pos, int size);
+int	toggle_val(int val);
 
 #endif

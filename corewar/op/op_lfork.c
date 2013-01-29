@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:43:24 2013 luc sinet
+** Last update Tue Jan 29 16:53:34 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -33,6 +33,6 @@ int	op_lfork(t_process *proc, t_vm *vm)
       i++;
     }
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  proc->carry = toggle_val(proc_carry);
+  proc->carry = toggle_val(proc->carry);
   return (3);
 }
