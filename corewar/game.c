@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Jan 26 20:59:46 2013 luc sinet
+** Last update Wed Jan 30 00:41:58 2013 luc sinet
 */
 
 #include	"include.h"
@@ -108,7 +108,7 @@ int	handle_game(t_vm *vm)
     }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
-      my_putstr("No winner, that's too bad !\n", 1, -1);
+      my_putstr("No winner, that's too bad !\n", 1, 28);
       end_game = 1;
     }
   return (end_game);
