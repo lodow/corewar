@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Tue Jan 29 22:47:44 2013 luc sinet
+** Last update Tue Jan 29 23:17:06 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -30,7 +30,7 @@ int	is_a_num(char *nb)
 int	check_champ(char *name, t_arg *parg)
 {
   int	fd;
-  char	buf[1];
+  char	buf[5];
   int	sread;
 
   sread = -1;
