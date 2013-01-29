@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Mon Jan 28 18:49:58 2013 luc sinet
+** Last update Tue Jan 29 19:10:29 2013 luc sinet
 */
 
 #include "include.h"
@@ -34,7 +34,8 @@ int	addr_opt(char **av, t_arg *parg)
 {
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
-      parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
+      parg->addr_used[parg->addr_pos] =
+	my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
       parg->addr_pos += 1;
       parg->addr = 1;
       parg->pos += 1;
