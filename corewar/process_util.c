@@ -15,27 +15,26 @@ int		exe_process(void *ptrproc, void *ptrvm)
   t_process	*proc;
   t_vm		*vmstat;
   int		instrlen;
-  char		instr;
 
   proc = ptrproc;
   vmstat = ptrvm;
   if (proc->nb_cycle_t_next <= 1)
     {
-      instr = GET_INSTR;
-      if ((instr >= 0) && (instr <= 15))
+      if ((proc->instr >= 0) && (proc->instr <= 15))
         {
-          instrlen = vmstat->f[(int)instr](proc, vmstat);
+          instrlen = vmstat->f[(int)proc->instr](proc, vmstat);
           proc->pc = MOD_MEM(instrlen + proc->pc);
-          instr = GET_INSTR;
-          if ((instr >= 0) && (instr <= 15))
-            proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)instr];
-          fill_param_struct(vmstat, proc);
         }
       else
-        proc->pc = MOD_MEM(proc->pc + 1);
+        {
+          proc->pc = MOD_MEM(proc->pc + 1);
+          fill_param_struct(vmstat, proc);
+        }
+      proc->instr = GET_INSTR;
+      if ((proc->instr >= 0) && (proc->instr <= 15))
+        proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr];
     }
-  else
-    proc->nb_cycle_t_next--;
+  proc->nb_cycle_t_next--;
   return (0);
 }
 
@@ -71,7 +70,9 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
         }
       i++;
     }
-  proc->nb_cycle_t_next = vmstat->instr_nb_cycle[GET_INSTR];
+  proc->instr = GET_INSTR;
+  if ((proc->instr >= 0) && (proc->instr <= 15))
+    proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr];
   fill_param_struct(vmstat, proc);
   return (proc);
 }
