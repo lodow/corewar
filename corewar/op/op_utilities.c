@@ -58,7 +58,7 @@ int	is_byte_zero(char *src, int size)
 
 void	calc_carry(t_process *proc, int is_zero)
 {
-  if (is_zero == 0)
+  if (is_zero)
     proc->carry = 1;
   else
     proc->carry = 0;
