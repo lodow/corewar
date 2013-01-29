@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Mon Jan 28 16:20:55 2013 maxime lavandier
+** Last update Mon Jan 28 20:25:21 2013 Welanor
 */
 
 #include "asm.h"
@@ -94,7 +94,6 @@ int		parse(char **file, char *name)
   my_memsetc(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
     return (-1);
-  cmd.lablengh = 0;
   while (file[i])
     {
       if (my_begincmp(file[i], NAME_CMD_STRING))
@@ -109,9 +108,14 @@ int		parse(char **file, char *name)
       i++;
     }
   put_header(&cmd, &header);
-  /*  int	j = 0;
+  cmd.pc = 0;
+  recuplabel(&cmd, file);
+  int	j = 0;
   while (j < cmd.lablengh)
-  printf("%s\n", (cmd.lab[j++]).label);*/
+    {
+      printf("%s || %d\n", (cmd.lab[j]).label, (cmd.lab[j]).adress);
+      j++;
+    }
   printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
   fillfile(&header, &cmd, name);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Mon Jan 28 18:20:02 2013 luc sinet
+** Last update Mon Jan 28 20:45:19 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -48,22 +48,34 @@ void	set_numval(t_arg *parg)
 
 void	set_addrval(t_arg *parg)
 {
+  int	i;
+
   if (parg->addr_used[0] == -1)
     {
       parg->addr_used[0] = 0;
       parg->addr_pos = 1;
       return ;
     }
-  parg->addr_used[parg->addr_pos] = MEM_SIZE / parg->added_champ;
+  if (parg->added_champ != 0)
+    parg->addr_used[parg->addr_pos] = MEM_SIZE / parg->added_champ -
+      parg->vm->champs[parg->added_champ]->header.prog_size;
   parg->addr_pos += 1;
+  for (i = 0; i < parg->addr_pos; i++)
+    printf("%d\n", parg->addr_used[i]);
 }
 
-void	check_value(t_arg *parg)
+void	check_value(t_arg *parg, char opt)
 {
-  if (parg->num == -1)
-    set_numval(parg);
-  if (parg->addr == -1)
-    set_addrval(parg);
+  if (opt == 1)
+    {
+      if (parg->num == -1)
+	set_numval(parg);
+    }
+  else
+    {
+      if (parg->addr == -1)
+	set_addrval(parg);
+    }
 }
 
 void	preload_champ(t_vm *vm, t_arg *parg)
@@ -85,11 +97,12 @@ int	pars_champ(char *name, t_arg *parg)
 
   if ((fd = open(name, O_RDONLY)) == -1)
     return (-1);
-  check_value(parg);
+  check_value(parg, 1);
   if ((parg->vm->champs = add_champ_t_tab
        (parg->vm->champs, load_champ
 	(fd, parg->num_used[parg->added_champ]))) == NULL)
     return (-1);
+  check_value(parg, 2);
   parg->num = -1;
   parg->addr = -1;
   parg->added_champ += 1;
