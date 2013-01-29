@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 ** 
 ** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Mon Jan 28 20:16:03 2013 Welanor
+** Last update Tue Jan 29 14:48:08 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -40,7 +40,6 @@ int	findlabel(char *line)
     }
   return (0);
 }
-
 
 t_cmd		*my_realloc(t_cmd *cmd, int size)
 {
@@ -94,38 +93,20 @@ t_cmd		*addlabel(char *line, t_cmd *cmd)
     exit(0);
   cmd->lab[cmd->lablengh].label = str;
   cmd->lab[cmd->lablengh].adress = cmd->pc;
-  cmd->lablengh += 1;  
+  cmd->lablengh += 1;
   return (cmd);
 }
 
-void	instruc(char *line, int *pc)
+int	my_instructcmp(char *s1, char *s2, char sep)
 {
   int	i;
 
   i = 0;
-  while (my_begincmp(line, op_tab[i].mnemonique) == 0 && i < 15)
+  while (s1[i] == s2[i] && s2[i] != 0 && s1[i] != 0)
     i++;
-  *pc += 0x2;
-  i = 0;
-  while (line[i] != ' ' && line[i] != '\0')
-    i++;
-  if (line[i] == 0)
-    return ;
-  i++;
-  while (line[i] != '\0')
-    {
-      if (line[i] == DIRECT_CHAR)
-	*pc += DIR_SIZE;
-      else if (line[i] == 'r')
-	*pc += 1;
-      else
-	*pc += IND_SIZE;
-      while (line[i] != SEPARATOR_CHAR && line[i] != 0)
-	i++;
-      if (line[i] == 0)
-	return ;
-      i++;
-    }
+  if (s2[i] == 0 && s1[i] == sep)
+    return (1);
+  return (0);
 }
 
 void	adress(int i, char *line, int *pc)
@@ -164,10 +145,8 @@ void	changepc(char *line, int *pc)
 	i++;
       i++;
     }
-  while (my_begincmp(&line[i], op_tab[j].mnemonique) == 0 && j < 15)
+  while (my_instructcmp(&line[i], op_tab[j].mnemonique, ' ') == 0 && j < 15)
     j++;
-  if (my_begincmp(&line[i], "sti") == 1)
-    j = 10;
   adress(j, &line[i], pc);
 }
 
@@ -181,7 +160,6 @@ t_cmd	*recuplabel(t_cmd *cmd, char **file)
   cmd->pc = 0;
   while (file[i])
     {
-      printf("%d\n", cmd->pc);
       line = sub_space(file[i]);
       if (line[0] != COMMENT_CHAR
 	  && line[0] != 0
