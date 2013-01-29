@@ -108,7 +108,7 @@ int	handle_game(t_vm *vm)
     }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
-      my_putstr("No winner, that's too bad !\n", 1, -1);
+      my_putstr("No winner, that's too bad !\n", 1, 28);
       end_game = 1;
     }
   return (end_game);
