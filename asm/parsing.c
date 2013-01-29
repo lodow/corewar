@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Mon Jan 28 16:53:27 2013 maxime lavandier
+** Last update Tue Jan 29 14:52:51 2013 Welanor
 */
 
 #include "asm.h"
@@ -32,17 +32,28 @@ void	registre(t_param *param, char *str, int i)
   param->lenght += 1;
 }
 
-void	direct(t_param *param, char *str, int i)
+void	direct(t_param *param, char *str, int i, t_cmd *cmd)
 {
+  int	j;
   int	nb;
 
   printf ("coucou\n");
   if (str[i + 1] == LABEL_CHAR)
     {
-      my_putstr("cas special non géré", 2, -1);
-      exit(0);
-    }
-  nb = my_getnbr(&(str[i + 1]));
+      j = 0;
+      i += 2;
+      my_putstr(&str[i], 1, -1);
+      while (my_strcmp(&str[i], cmd->lab[j].label) == 0
+	     && j < cmd->lablengh)
+	{
+	  my_put_nbr(j, 1);
+	  j++;
+	}
+      my_putstr("A", 1, 1);
+      nb = cmd->pc - cmd->lab[j].adress;
+    }  
+  else
+    nb = my_getnbr(&(str[i + 1]));
   if ((param->param = realloc(param->param, param->lenght + DIR_SIZE)) == 0)
     exit(0);
   param->param[param->lenght + DIR_SIZE - 1] = 0;
@@ -59,11 +70,21 @@ void	direct(t_param *param, char *str, int i)
   param->lenght += DIR_SIZE;
 }
 
-void	indirect(t_param *param, char *str, int i)
+void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
 {
+  int	j;
   int	nb;
 
-  nb = my_getnbr(&(str[i]));
+  if (str[i + 1] == LABEL_CHAR)
+    {
+      j = 0;
+      while (my_instructcmp(&str[i + 1], cmd->lab[i].label, SEPARATOR_CHAR) == 0
+	     && j < cmd->lablengh)
+	j++;
+      nb = cmd->pc - cmd->lab[j].adress;
+    }  
+  else
+    nb = my_getnbr(&(str[i]));
   if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
     exit(0);
   param->param[param->lenght + DIR_SIZE - 1] = 0;
@@ -74,7 +95,7 @@ void	indirect(t_param *param, char *str, int i)
   param->lenght += IND_SIZE;
 }
 
-void	put_to_param(t_param *param, char *str, int i)
+void	put_to_param(t_param *param, char *str, int i, t_cmd *cmd)
 {
   if (str[i] == 'r')
     {
@@ -86,17 +107,17 @@ void	put_to_param(t_param *param, char *str, int i)
     {
       param->param[1] <<= 2;
       param->param[1] |= 2;
-      direct(param, str, i);
+      direct(param, str, i, cmd);
     }
   else
     {
       param->param[1] <<= 2;
       param->param[1] |= 3;
-      indirect(param, str, i);
+      indirect(param, str, i, cmd);
     }
 }
 
-void	params(char *str, int i, t_param *param)
+void	params(char *str, int i, t_param *param, t_cmd *cmd)
 {
   int	j;
 
@@ -108,19 +129,19 @@ void	params(char *str, int i, t_param *param)
   i++;
   while (str[i] != 0)
     {
-      put_to_param(param, str, i);
+      put_to_param(param, str, i, cmd);
       while (str[i] != 0 && str[i] != ',')
 	i++;
       if (str[i] != 0)
 	i++;
       j--;
     }
-  printf ("j =%d\n", j);
+  printf("j =%d\n", j);
   param->param[1] <<= (2 * j);
-  printf ("param =%d\n",(int) param->param[1]);
+  printf("param =%d\n", (int) param->param[1]);
 }
 
-int		parsing(char *str)
+int		parsing(char *str, t_cmd *cmd)
 {
   int		i;
   t_param	param;
@@ -137,6 +158,6 @@ int		parsing(char *str)
   i = next_label(str);
   if (str[i] == ' ')
     i++;
-  params(str, i, &param);
+  params(str, i, &param, cmd);
   return (0);
 }

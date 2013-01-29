@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Mon Jan 28 20:26:03 2013 Welanor
+** Last update Tue Jan 29 13:08:00 2013 Welanor
 */
 
 #ifndef PARSE_CMD
@@ -43,7 +43,7 @@ typedef struct	s_param
 }		t_param;
 
 int	next_label(char *line);
-int	parsing(char *str);
+int	parsing(char *str, t_cmd *cmd);
 int	live_ldi_lldi(char *line, int i, t_param *param);
 int	ld_st_lld(char *line, int i, t_param *param);
 int	add_sub_and_or_xor_sti(char *line, int i, t_param *param);

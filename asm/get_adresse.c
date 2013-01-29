@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 ** 
 ** Started on  Mon Jan 28 17:30:34 2013 Welanor
-** Last update Mon Jan 28 19:52:16 2013 Welanor
+** Last update Tue Jan 29 14:32:05 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -26,7 +26,7 @@ void	adress_ldlld(char *line, int *pc)
   i++;
   if (line[i] == DIRECT_CHAR)
     *pc += DIR_SIZE;
-  if (line[i] == 'r')
+  else if (line[i] == 'r')
     *pc += 1;
   else
     *pc += IND_SIZE;

@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 ** 
 ** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Mon Jan 28 20:17:39 2013 Welanor
+** Last update Tue Jan 29 13:54:52 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -28,7 +28,7 @@ void	adress_ldi(char *line, int *pc)
   i++;
   if (line[i] == DIRECT_CHAR)
     *pc += DIR_SIZE;
-  if (line[i] == 'r')
+  else if (line[i] == 'r')
     *pc += 1;
   else
     *pc += IND_SIZE;
@@ -47,7 +47,7 @@ void	adress_sti(char *line, int *pc)
   i++;
   if (line[i] == DIRECT_CHAR)
       *pc += DIR_SIZE;
-  if (line[i] == 'r')
+  else if (line[i] == 'r')
     *pc += 1;
   else
     *pc += IND_SIZE;
@@ -62,3 +62,30 @@ void	adress_aff(char *line, int *pc)
 {
   *pc += 2;
 }
+
+void	instruc(char *line, int *pc)
+{
+  int   i;
+
+  *pc += 0x2;
+  i = 0;
+  while (line[i] != ' ' && line[i] != '\0')
+    i++;
+  if (line[i] == 0)
+    return ;
+  i++;
+  while (line[i] != '\0')
+    {
+      if (line[i] == DIRECT_CHAR)
+        *pc += DIR_SIZE;
+      else if (line[i] == 'r')
+        *pc += 1;
+      else        *pc += IND_SIZE;
+      while (line[i] != SEPARATOR_CHAR && line[i] != 0)
+        i++;
+      if (line[i] == 0)
+        return ;
+      i++;
+    }
+}
+
