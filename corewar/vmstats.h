@@ -32,7 +32,7 @@ typedef struct	s_champ
 }		t_champ;
 
 typedef char	t_vmmem;
-typedef char	t_reg[REG_SIZE];
+typedef int	t_reg;
 
 typedef struct	s_params
 {

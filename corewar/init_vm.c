@@ -103,8 +103,8 @@ t_process	*up_champ_t_mem(t_vm *vmstat, t_champ *champ, int pc)
   proc->associated_champ = champ;
   proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
-    my_memsetc(proc->reg[i++], REG_SIZE, 0x00);
-  proc->reg[0][REG_SIZE - 1] = ((char)(champ->number));
+    proc->reg[i++] = 0;
+  proc->reg[0] = (champ->number);
   i = 0;
   while (i < champ->header.prog_size)
     {

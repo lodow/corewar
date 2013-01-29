@@ -51,7 +51,6 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
 {
   t_process	*proc;
   int		i;
-  int		j;
 
   i = 0;
   if (((proc = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
@@ -62,12 +61,7 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
   proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
     {
-      j = 0;
-      while (j < REG_SIZE)
-        {
-          proc->reg[i][j] = src->reg[i][j];
-          j++;
-        }
+      proc->reg[i] = src->reg[i];
       i++;
     }
   proc->instr = GET_INSTR;
