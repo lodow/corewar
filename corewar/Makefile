@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Fri Jan 25 16:11:03 2013 luc sinet
+## Last update Tue Jan 29 22:39:11 2013 luc sinet
 ##
 
 SRC= 	main.c \
@@ -35,7 +35,7 @@ SRC= 	main.c \
 	op/op_or.c \
 	op/op_st.c \
 	op/op_sti.c \
-	op/op_store.c \
+	op/op_ld.c \
 	op/op_sub.c \
 	op/op_xor.c \
 	op/op_zjmp.c \
