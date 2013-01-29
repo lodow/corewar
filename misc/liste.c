@@ -23,19 +23,34 @@ int	my_list_size(t_list *begin)
   return (i);
 }
 
-void	my_rm_from_list(t_list **begin, t_list *trm, int (*f)(void*))
+void	my_rm_from_list(t_list **begin, int (*remove)(void*, void*),
+                      int (*f)(void*), void *arg)
 {
-  if ((begin != NULL) && (trm != NULL))
+  t_list	*ptr;
+  t_list	*prec;
+
+  while (remove((*begin)->data, arg))
     {
-      if ((*begin) == trm)
-        {
-          (*begin) = (*begin)->next;
-          (*f)(trm->data);
-          free(trm);
-        }
-      else
-        my_rm_from_list(&((*begin)->next), trm, f);
+      f((*begin)->data);
+      ptr = (*begin);
+      free(*begin);
+      (*begin) = ptr->next;
     }
+  prec = (*begin);
+  ptr = prec->next;
+  while (ptr != NULL)
+    if (remove(ptr->data, arg))
+      {
+        f(ptr->data);
+        prec->next = ptr->next;
+        free(ptr);
+        ptr = prec->next;
+      }
+    else
+      {
+        prec = ptr;
+        ptr = ptr->next;
+      }
 }
 
 void		my_apply_on_list(t_list *begin,
