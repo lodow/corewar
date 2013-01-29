@@ -29,16 +29,16 @@ void	my_rm_from_list(t_list **begin, int (*remove)(void*, void*),
   t_list	*ptr;
   t_list	*prec;
 
-  while (remove((*begin)->data, arg))
+  while (((*begin) != NULL) && (remove((*begin)->data, arg)))
     {
       f((*begin)->data);
       ptr = (*begin);
-      free(*begin);
       (*begin) = ptr->next;
+      free(ptr);
     }
-  prec = (*begin);
-  ptr = prec->next;
-  while (ptr != NULL)
+  if ((prec = (*begin)) != NULL)
+    ptr = prec->next;
+  while ((prec != NULL) && (ptr != NULL))
     if (remove(ptr->data, arg))
       {
         f(ptr->data);

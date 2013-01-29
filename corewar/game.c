@@ -59,12 +59,9 @@ int	check_champs_alive_a_print(t_vm *vm)
           my_rm_from_list(&(vm->process_list), &rmv_dead_champ_proc,
                           &delete_process, vm->champs[i]);
         }
-      else
+      else if (vm->champs[i]->alive != -1)
         {
-          if (got_a_winner == 1)
-            got_a_winner = 0;
-          else
-            got_a_winner = 1;
+          got_a_winner += 1;
           vm->champs[i]->alive = 0;
         }
       i++;
@@ -109,7 +106,10 @@ int	handle_game(t_vm *vm)
       dump_memory(vm->mem, MEM_SIZE);
       end_game = 1;
     }
-  if (vm->cycle_to_die <= 0)
-    end_game = 1;
+  if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
+    {
+      my_putstr("No winner, that's too bad !\n", 1, -1);
+      end_game = 1;
+    }
   return (end_game);
 }
