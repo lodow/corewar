@@ -114,7 +114,9 @@ t_process	*up_champ_t_mem(t_vm *vmstat, t_champ *champ, int pc)
       vmstat->mem[MOD_MEM(pc + i)] = champ->champcode[i];
       i++;
     }
-  proc->nb_cycle_t_next = vmstat->instr_nb_cycle[GET_INSTR];
+  proc->instr = GET_INSTR;
+  if ((proc->instr >= 0) && (proc->instr <= 15))
+    proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr];
   fill_param_struct(vmstat, proc);
   return (proc);
 }

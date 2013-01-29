@@ -44,6 +44,7 @@ typedef struct		s_process
   t_champ	*associated_champ;
   t_reg		reg[REG_NUMBER];
   int		nb_cycle_t_next;
+  char		instr;
   t_params	params_next_instr;
 }		t_process;
 
