@@ -5,10 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Wed Jan 30 19:55:59 2013 maxime lavandier
+** Last update Wed Jan 30 21:45:09 2013 Welanor
 */
 
 #include "parse_cmd.h"
+
+extern	t_op	op_tab[];
 
 int	nothing(char *str, int i, t_param *param, t_cmd *cmd)
 {
@@ -17,35 +19,28 @@ int	nothing(char *str, int i, t_param *param, t_cmd *cmd)
 
 int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
 {
-  int	(*ptr[11])(char *, int, t_param *, t_cmd *);
+  int	j;
+  int	(*ptr[16])(char *, int, t_param *, t_cmd *);
 
-  ptr[0] = &nothing;
-  ptr[1] = &live;
-  ptr[2] = &ld;
-  ptr[3] = &st;
+  j = 0;
+  ptr[0] = &live;
+  ptr[1] = &ld;
+  ptr[2] = &st;
+  ptr[3] = &add_sub;
   ptr[4] = &add_sub;
   ptr[5] = &and_or_xor;
-  ptr[6] = &zjump;
-  ptr[7] = &ldi_lldi;
-  ptr[8] = &sti;
-  ptr[9] = &lfork;
-  ptr[10] = &laff;
-  if ((*ptr[my_begincmp(str, "live")])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "ld") * 2])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "st") * 3])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "add") * 4])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "sub") * 4])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "and") * 5])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "or") * 5])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "xor") * 5])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "zjmp") * 6])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "ldi") * 7])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "sti") * 8])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "fork") * 9])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "lld") * 2])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "lldi") * 7])(str, i, param, cmd) &&
-      (ptr[my_begincmp(str, "lfork") * 9])(str, i, param, cmd) &&
-      (ptr[((my_begincmp(str, "aff")) * 10)])(str, i, param, cmd))
-    return (0);
-  return (-1);
+  ptr[6] = &and_or_xor;
+  ptr[7] = &and_or_xor;
+  ptr[8] = &zjump;
+  ptr[9] = &ldi;
+  ptr[10] = &sti;
+  ptr[11] = &lfork;
+  ptr[12] = &ld;
+  ptr[13] = &ldi;
+  ptr[14] = &lfork;
+  ptr[15] = &laff;
+  while (my_instructcmp(str, op_tab[j].mnemonique, ' ') == 0)
+    j++;
+  ptr[j](str, i ,param, cmd);
+  return (0);
 }
