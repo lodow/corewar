@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Jan 30 13:56:21 2013 Welanor
+** Last update Wed Jan 30 15:23:26 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -45,7 +45,7 @@ void	direct(t_param *param, char *str, int i, t_cmd *cmd)
 	     && j < cmd->lablengh)
 	j++;
       nb = cmd->lab[j].adress - cmd->pc;
-    }  
+    }
   else
     nb = my_getnbr(&(str[i + 1]));
   if ((param->param = realloc(param->param, param->lenght + DIR_SIZE)) == 0)
@@ -77,7 +77,7 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
 	     && j < cmd->lablengh)
 	j++;
       nb = cmd->lab[j].adress - cmd->pc;
-    }  
+    }
   else
     nb = my_getnbr(&(str[i]));
   if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
@@ -98,7 +98,7 @@ void	put_to_param(t_param *param, char *str, int i, t_cmd *cmd)
       param->param[1] |= 1;
       registre(param, str, i);
     }
-  else if (str[i] == '%')
+  else if (str[i] == '%' && str[i - 5] != 'z')
     {
       param->param[1] <<= 2;
       param->param[1] |= 2;

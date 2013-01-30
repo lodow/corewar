@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 20:16:10 2013 maxime lavandier
-** Last update Wed Jan 30 14:04:31 2013 Welanor
+** Last update Wed Jan 30 14:22:39 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -34,7 +34,7 @@ int	live_ldi_lldi(char *line, int i, t_param *param)
 
 int	ld_st_lld(char *line, int i, t_param *param)
 {
-  my_putstr("coucou\n", 1, -1);
+  my_putstr("dducou\n", 1, -1);
   if (line[i] == 'l' && line[i + 1] == 'l')
     param->param[0] = 0xd;
   else if (line[i] == 'l')
@@ -55,6 +55,7 @@ int	ld_st_lld(char *line, int i, t_param *param)
     i++;
   if (line[i] != 0)
     return (0);
+  my_putstr("fffff\n", 1, -1);
   return (1);
 }
 
