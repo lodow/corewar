@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Jan 30 13:44:42 2013 Welanor
+** Last update Wed Jan 30 13:46:25 2013 Welanor
 */
 
 #include "asm.h"
@@ -153,7 +153,7 @@ int		parsing(char *str, t_cmd *cmd)
   i = next_label(str);
   if (str[i] == ' ')
     i++;
-  param.lenght = 0;
+  param.lenght = 2;
   params(str, i, &param, cmd);
   printf("%d\n", param.lenght);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
