@@ -37,6 +37,6 @@ int	op_zjmp(t_process *proc, t_vm *vm)
         printf("zjmp %d\n", off_adrr % IDX_MOD);
       return (off_adrr % IDX_MOD);
     }
-    printf("zjmp -1\n");
+    printf("zjmp fail\n");
   return (1 + IND_SIZE);
 }
