@@ -13,4 +13,5 @@
 int	op_ld(t_process *proc, t_vm *vm)
 {
 
+  return (1);
 }

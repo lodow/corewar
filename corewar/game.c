@@ -20,11 +20,11 @@ void	print_winner(t_vm *vm, int got_a_winner)
       {
         if ((vm->champs[i]->alive) == 0)
           {
-            my_putstr("le joueur ", 1, 10);
+            my_putstr("le joueur ", 1, -1);
             my_put_nbr(vm->champs[i]->number, 1);
             my_putstr("(", 1, 1);
             my_putstr(vm->champs[i]->header.prog_name, 1, -1);
-            my_putstr(") a gagne\n", 1, 10);
+            my_putstr(") a gagne\n", 1, -1);
           }
         i++;
       }
@@ -108,7 +108,7 @@ int	handle_game(t_vm *vm)
     }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
-      my_putstr("No winner, that's too bad !\n", 1, 28);
+      my_putstr("No winner, that's too bad !\n", 1, -1);
       end_game = 1;
     }
   return (end_game);
