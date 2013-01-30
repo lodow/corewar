@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Tue Jan 29 14:52:51 2013 Welanor
+** Last update Wed Jan 30 13:42:19 2013 Welanor
 */
 
 #include "asm.h"
@@ -37,20 +37,14 @@ void	direct(t_param *param, char *str, int i, t_cmd *cmd)
   int	j;
   int	nb;
 
-  printf ("coucou\n");
   if (str[i + 1] == LABEL_CHAR)
     {
       j = 0;
       i += 2;
-      my_putstr(&str[i], 1, -1);
       while (my_strcmp(&str[i], cmd->lab[j].label) == 0
 	     && j < cmd->lablengh)
-	{
-	  my_put_nbr(j, 1);
-	  j++;
-	}
-      my_putstr("A", 1, 1);
-      nb = cmd->pc - cmd->lab[j].adress;
+	j++;
+      nb = cmd->lab[j].adress - cmd->pc;
     }  
   else
     nb = my_getnbr(&(str[i + 1]));
@@ -78,10 +72,11 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
   if (str[i + 1] == LABEL_CHAR)
     {
       j = 0;
-      while (my_instructcmp(&str[i + 1], cmd->lab[i].label, SEPARATOR_CHAR) == 0
+      i += 2;
+      while (my_strcmp(&str[i], cmd->lab[j].label) == 0
 	     && j < cmd->lablengh)
 	j++;
-      nb = cmd->pc - cmd->lab[j].adress;
+      nb = cmd->lab[j].adress - cmd->pc;
     }  
   else
     nb = my_getnbr(&(str[i]));
@@ -123,7 +118,7 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
 
   j = 4;
   param->param[1] = 0;
-  printf ("i =%d\n", i);
+  /*printf ("i =%d\n", i);*/
   while (str[i] != 0 && str[i] != ' ')
     i++;
   i++;
@@ -136,7 +131,7 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
 	i++;
       j--;
     }
-  printf("j =%d\n", j);
+  /*  printf("j =%d\n", j)*/
   param->param[1] <<= (2 * j);
   printf("param =%d\n", (int) param->param[1]);
 }
@@ -159,5 +154,7 @@ int		parsing(char *str, t_cmd *cmd)
   if (str[i] == ' ')
     i++;
   params(str, i, &param, cmd);
+  printf("%d\n", param.lenght);
+  my_putstr((char *)(param.param), cmd->fd, param.lenght);
   return (0);
 }

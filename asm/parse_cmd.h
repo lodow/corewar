@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Tue Jan 29 13:08:00 2013 Welanor
+** Last update Wed Jan 30 10:37:29 2013 Welanor
 */
 
 #ifndef PARSE_CMD
@@ -31,6 +31,7 @@ typedef struct	s_cmd
   char		*param[MAX_ARGS_NUMBER + 1];
   void		*file;
   int		sizefile;
+  int		fd;
   int		pc;
   int		lablengh;
   t_tablabel	*lab;
@@ -51,7 +52,7 @@ int	zjmp_fork_lfork(char *line, int i, t_param *param);
 int	aff(char *line, int i, t_param *param);
 int	check_cmd(char *line, t_param *param);
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd);
-int	put_header(t_cmd *cmd, t_header *header);
+int	put_header(t_header *header, t_cmd *cmd, char *name);
 void	my_putstr(char *str, int fd, int lenght);
 t_cmd	*addlabel(char *line, t_cmd *cmd);
 void	fillcmdfile(t_cmd *cmd, char *line);
@@ -59,5 +60,6 @@ int	findlabel(char *line);
 void	fillfile(t_header *header, t_cmd *cmd, char *name);
 char	*sub_space(char *line);
 t_cmd	*recuplabel(t_cmd *cmd, char **file);
+char	*getname(char *name);
 
 #endif

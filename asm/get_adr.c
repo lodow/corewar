@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 ** 
 ** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Tue Jan 29 13:54:52 2013 Welanor
+** Last update Wed Jan 30 12:57:18 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -15,23 +15,29 @@ void	adress_ldi(char *line, int *pc)
 {
   int	i;
 
+  int debug = *pc;
+  printf("%s", line);
   i = 0;
   *pc += IND_SIZE + IND_SIZE + 2;
   while (line[i] != 0 && line[i] != ' ')
     i++;
-  i++;
+  if (line[i++] == 0)
+    return ;
   while (line[i] != 0 && line[i] != SEPARATOR_CHAR)
     i++;
-  i++;
+  if (line[i++] == 0)
+    return ;
   while (line[i] != 0 && line[i] != SEPARATOR_CHAR)
     i++;
-  i++;
+  if (line[i++] == 0)
+    return ;
   if (line[i] == DIRECT_CHAR)
     *pc += DIR_SIZE;
   else if (line[i] == 'r')
     *pc += 1;
   else
     *pc += IND_SIZE;
+  printf(" || %d\n", *pc - debug);
 }
 
 void	adress_sti(char *line, int *pc)
@@ -39,6 +45,10 @@ void	adress_sti(char *line, int *pc)
   int	i;
 
   i = 0;
+
+  int debug = *pc;
+  printf("%s", line);
+
   *pc += IND_SIZE + IND_SIZE + 2;
   while (line[i] != 0 && line[i] != ' ')
     i++;
@@ -46,46 +56,49 @@ void	adress_sti(char *line, int *pc)
     return ;
   i++;
   if (line[i] == DIRECT_CHAR)
-      *pc += DIR_SIZE;
+    *pc += DIR_SIZE;
   else if (line[i] == 'r')
     *pc += 1;
   else
     *pc += IND_SIZE;
+  printf(" || %d\n", *pc - debug);
 }
 
 void	adress_fork(char *line, int *pc)
 {
+  int debug = *pc;
+  printf("%s", line);
+
   *pc += 1 + IND_SIZE;
+  printf(" || %d\n", *pc - debug);
 }
 
 void	adress_aff(char *line, int *pc)
 {
-  *pc += 2;
+  *pc += 3;
 }
 
 void	instruc(char *line, int *pc)
 {
   int   i;
 
-  *pc += 0x2;
+  *pc += 2;
   i = 0;
   while (line[i] != ' ' && line[i] != '\0')
     i++;
   if (line[i] == 0)
     return ;
   i++;
-  while (line[i] != '\0')
-    {
-      if (line[i] == DIRECT_CHAR)
-        *pc += DIR_SIZE;
-      else if (line[i] == 'r')
-        *pc += 1;
-      else        *pc += IND_SIZE;
-      while (line[i] != SEPARATOR_CHAR && line[i] != 0)
-        i++;
-      if (line[i] == 0)
-        return ;
-      i++;
-    }
+  while (line[i] != SEPARATOR_CHAR && line[i] != 0)
+    i++;
+  if (line[i] == 0)
+    return ;
+  i++;
+  if (line[i] == DIRECT_CHAR)
+    *pc += DIR_SIZE;
+  else if (line[i] == 'r')
+    *pc += 1;
+  else 
+    *pc += IND_SIZE;
 }
 

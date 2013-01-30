@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Tue Jan 22 16:07:19 2013 maxime lavandier
+** Last update Wed Jan 30 11:35:18 2013 Welanor
 */
 
 #include "asm.h"
@@ -13,7 +13,7 @@
 #include "../misc/op.h"
 #include "../misc/str_func.h"
 
-void	put_lenght(t_cmd *cmd, t_header *header)
+/*void	put_lenght(t_cmd *cmd, t_header *header)
 {
   int	*file;
   char	*name;
@@ -59,18 +59,43 @@ void	put_comment(t_cmd *cmd, t_header *header)
       name[i + PROG_NAME_LENGTH + 8] = 0;
       i++;
     }
+}*/
+
+char    *getname(char *name)
+{
+  char	*res;
+  int	i;
+
+  i = my_strlen(name);
+  printf("%s\n", name);
+  if ((res = malloc(i + 4)) == NULL)
+    return (NULL);
+  i = 0;
+  while (name[i] != '\0' && name[i] != 's')
+    {
+      res[i] = name[i];
+      i++;
+    }
+  res[i++] = 'c';
+  res[i++] = 'o';
+  res[i++] = 'r';
+  res[i] = 0;
+  return (res);
 }
 
-int	put_header(t_cmd *cmd, t_header *header)
+int		put_header(t_header *header, t_cmd *cmd, char *name)
 {
-  int	*file;
+  int		fd;
+  mode_t	flag;
+  int		magic;
 
-  file = (int *) (cmd->file);
-  if (file == 0)
+  flag = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+  /*flag = (((((O_CREAT & ~S_IRUSR) & ~S_IWUSR) & ~S_IRGRP) & ~S_IROTH) | O_WRONLY);*/
+  if ((fd = open(getname(name), O_WRONLY | O_CREAT | O_TRUNC, flag)) == -1)
     return (-1);
-  file[0] = COREWAR_EXEC_MAGIC;
-  put_name(cmd, header);
-  put_lenght(cmd, header);
-  put_comment(cmd, header);
-  return (0);
+  magic = COREWAR_EXEC_MAGIC;
+  header->magic = *((int*)switch_endian((char*)&(magic), sizeof(int)));
+  header->prog_size = *((int*)switch_endian((char*)&(header->prog_size), sizeof(int)));
+  my_putstr((char*)header, fd, sizeof(t_header));
+  return (fd);
 }
