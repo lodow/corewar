@@ -35,7 +35,6 @@ SRC= 	main.c \
 	op/op_or.c \
 	op/op_st.c \
 	op/op_sti.c \
-	op/op_ld.c \
 	op/op_sub.c \
 	op/op_xor.c \
 	op/op_zjmp.c \

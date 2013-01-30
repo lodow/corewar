@@ -91,9 +91,6 @@
 		<Unit filename="op/op_sti.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="op/op_store.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="op/op_sub.c">
 			<Option compilerVar="CC" />
 		</Unit>
