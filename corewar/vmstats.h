@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Jan 27 17:16:27 2013 luc sinet
+** Last update Tue Jan 29 19:26:03 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -19,6 +19,8 @@
 # define MOD_MEM(x) ((ABS(x)) % MEM_SIZE)
 # define VM_MEM(x) vm->mem[MOD_MEM((x))]
 # define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - (y)) * 2)) & 0x11)
+# define SHORTCUT vmstat->instr_nb_cycle[(int)proc->instr]
+# define CHECK_INST_CYCLE(x) (x >= 0 && x <= 15) ? SHORTCUT : x
 
 typedef struct	s_champ
 {
@@ -30,7 +32,7 @@ typedef struct	s_champ
 }		t_champ;
 
 typedef char	t_vmmem;
-typedef char	t_reg[REG_SIZE];
+typedef int	t_reg;
 
 typedef struct	s_params
 {

@@ -51,7 +51,8 @@ void	my_putstr(char *str, int fd, int strlen)
     {
       if (strlen == -1)
         {
-          while (str[len++] != '\0');
+          while (str[len] != '\0')
+            len++;
           strlen = len;
         }
       if ((len = write(fd, str, strlen)) == -1)

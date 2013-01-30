@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Tue Jan 29 16:42:42 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -58,8 +58,13 @@ int	is_byte_zero(char *src, int size)
 
 void	calc_carry(t_process *proc, int is_zero)
 {
-  if (is_zero == 0)
+  if (is_zero)
     proc->carry = 1;
   else
     proc->carry = 0;
+}
+
+int	toggle_val(int val)
+{
+  return ((val + 1) % 2);
 }

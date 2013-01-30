@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Jan 26 20:59:46 2013 luc sinet
+** Last update Wed Jan 30 00:41:58 2013 luc sinet
 */
 
 #include	"include.h"
@@ -20,29 +20,28 @@ void	print_winner(t_vm *vm, int got_a_winner)
       {
         if ((vm->champs[i]->alive) == 0)
           {
-            my_putstr("le joueur ", 1, 10);
+            my_putstr("le joueur ", 1, -1);
             my_put_nbr(vm->champs[i]->number, 1);
             my_putstr("(", 1, 1);
             my_putstr(vm->champs[i]->header.prog_name, 1, -1);
-            my_putstr(") a gagne\n", 1, 10);
+            my_putstr(") a gagne\n", 1, -1);
           }
         i++;
       }
 }
 
-void		rmv_dead_champ_proc(t_list **proc_list, t_champ *champ)
+int		rmv_dead_champ_proc(void *ptrproc, void *ptrchamp)
 {
-  t_list    *tmp_list;
-  t_process  *tmp;
+  t_process	*proc;
+  t_champ	*champ;
 
-  tmp_list = *proc_list;
-  while (tmp_list != NULL)
-    {
-      tmp = tmp_list->data;
-      if (tmp->associated_champ == champ)
-        my_rm_from_list(proc_list, tmp_list, &delete_process);
-      tmp_list = tmp_list->next;
-    }
+  proc = ptrproc;
+  champ = ptrchamp;
+
+  if ((proc != NULL) && (champ != NULL))
+    if (proc->associated_champ == champ)
+      return (1);
+  return (0);
 }
 
 int	check_champs_alive_a_print(t_vm *vm)
@@ -57,14 +56,12 @@ int	check_champs_alive_a_print(t_vm *vm)
       if (vm->champs[i]->alive == 0)
         {
           vm->champs[i]->alive = -1;
-/*          rmv_dead_champ_proc(&(vm->process_list), vm->champs[i]);*/
+          my_rm_from_list(&(vm->process_list), &rmv_dead_champ_proc,
+                          &delete_process, vm->champs[i]);
         }
-      else
+      else if (vm->champs[i]->alive != -1)
         {
-          if (got_a_winner == 1)
-            got_a_winner = 0;
-          else
-            got_a_winner = 1;
+          got_a_winner += 1;
           vm->champs[i]->alive = 0;
         }
       i++;
@@ -109,7 +106,10 @@ int	handle_game(t_vm *vm)
       dump_memory(vm->mem, MEM_SIZE);
       end_game = 1;
     }
-  if (vm->cycle_to_die <= 0)
-    end_game = 1;
+  if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
+    {
+      my_putstr("No winner, that's too bad !\n", 1, -1);
+      end_game = 1;
+    }
   return (end_game);
 }

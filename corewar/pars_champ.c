@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Mon Jan 28 20:45:19 2013 luc sinet
+** Last update Tue Jan 29 19:50:03 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -18,6 +18,7 @@
 ** (if no arguments were entered)
 ** to the next not already chosen number.
 */
+
 void	set_numval(t_arg *parg)
 {
   int	i;
@@ -48,8 +49,6 @@ void	set_numval(t_arg *parg)
 
 void	set_addrval(t_arg *parg)
 {
-  int	i;
-
   if (parg->addr_used[0] == -1)
     {
       parg->addr_used[0] = 0;
@@ -60,8 +59,6 @@ void	set_addrval(t_arg *parg)
     parg->addr_used[parg->addr_pos] = MEM_SIZE / parg->added_champ -
       parg->vm->champs[parg->added_champ]->header.prog_size;
   parg->addr_pos += 1;
-  for (i = 0; i < parg->addr_pos; i++)
-    printf("%d\n", parg->addr_used[i]);
 }
 
 void	check_value(t_arg *parg, char opt)
@@ -78,7 +75,7 @@ void	check_value(t_arg *parg, char opt)
     }
 }
 
-void	preload_champ(t_vm *vm, t_arg *parg)
+int	preload_champ(t_vm *vm, t_arg *parg)
 {
   int	i;
 
@@ -89,24 +86,36 @@ void	preload_champ(t_vm *vm, t_arg *parg)
                      up_champ_t_mem(vm, vm->champs[i], parg->addr_used[i]));
       i += 1;
     }
+  if (!vm->champs[0])
+    {
+      my_putstr("The vm can't start: There is not"
+		" at least one valid .cor file\n", 2, -1);
+      return (-1);
+    }
+  return (1);
 }
 
-int	pars_champ(char *name, t_arg *parg)
+int		pars_champ(char *name, t_arg *parg)
 {
-  int	fd;
+  int		fd;
+  t_champ	*champ;
 
   if ((fd = open(name, O_RDONLY)) == -1)
     return (-1);
   check_value(parg, 1);
-  if ((parg->vm->champs = add_champ_t_tab
-       (parg->vm->champs, load_champ
-	(fd, parg->num_used[parg->added_champ]))) == NULL)
-    return (-1);
+  if ((champ = load_champ(fd, parg->num_used[parg->added_champ])) == NULL ||
+      (parg->vm->champs = add_champ_t_tab(parg->vm->champs, champ)) == NULL)
+    {
+      my_putstr(name, 2, -1);
+      my_putstr("'s magic number isnt valid\n", 2, -1);
+      return (-1);
+    }
   check_value(parg, 2);
   parg->num = -1;
   parg->addr = -1;
   parg->added_champ += 1;
   if (parg->added_champ == parg->nb_champ)
-    preload_champ(parg->vm, parg);
+    if (preload_champ(parg->vm, parg) == -1)
+      return (-1);
   return (0);
 }

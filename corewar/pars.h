@@ -5,12 +5,13 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Mon Jan 28 14:25:12 2013 luc sinet
+** Last update Tue Jan 29 17:11:21 2013 luc sinet
 */
 
 #ifndef PARS_H_
 # define PARS_H_
 
+# define RDERROR(x) (x >= 0) ? " is empty\n" : " not accessible\n"
 # define VTEST(x) (x < 0) ? 0 : x
 
 typedef struct	s_arg

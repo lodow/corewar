@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Sat Jan 26 14:30:58 2013 luc sinet
+** Last update Tue Jan 29 23:17:06 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -30,13 +30,15 @@ int	is_a_num(char *nb)
 int	check_champ(char *name, t_arg *parg)
 {
   int	fd;
-  char	buf[1];
+  char	buf[5];
+  int	sread;
 
-  if ((fd = open(name, O_RDONLY)) == -1 || read(fd, buf, 1) == -1)
+  sread = -1;
+  if ((fd = open(name, O_RDONLY)) == -1 || (sread = read(fd, buf, 5)) <= 4)
     {
       my_putstr("File ", 2, -1);
       my_putstr(name, 2, -1);
-      my_putstr(" not accessible\n", 2, -1);
+      my_putstr(RDERROR(sread), 2, -1);
       return (-2);
     }
   if (my_strlen(name) <= 4 ||
@@ -49,6 +51,7 @@ int	check_champ(char *name, t_arg *parg)
   parg->num = -1;
   parg->addr = -1;
   parg->nb_champ += 1;
+  close(fd);
   return (1);
 }
 

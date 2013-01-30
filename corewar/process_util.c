@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 28 20:21:08 2013 luc sinet
+** Last update Tue Jan 29 19:26:33 2013 luc sinet
 */
 
 #include	"include.h"
@@ -51,7 +51,6 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
 {
   t_process	*proc;
   int		i;
-  int		j;
 
   i = 0;
   if (((proc = malloc(1 * sizeof(t_process))) == NULL) || (src == NULL))
@@ -62,17 +61,11 @@ t_process	*create_new_process(t_vm *vmstat, t_process *src, int pc)
   proc->nb_cycle_t_next = 0;
   while (i < REG_NUMBER)
     {
-      j = 0;
-      while (j < REG_SIZE)
-        {
-          proc->reg[i][j] = src->reg[i][j];
-          j++;
-        }
+      proc->reg[i] = src->reg[i];
       i++;
     }
   proc->instr = GET_INSTR;
-  if ((proc->instr >= 0) && (proc->instr <= 15))
-    proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr];
+  proc->nb_cycle_t_next = CHECK_INST_CYCLE(proc->instr);
   fill_param_struct(vmstat, proc);
   return (proc);
 }
