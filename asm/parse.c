@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Jan 30 10:52:43 2013 Welanor
+** Last update Wed Jan 30 14:11:21 2013 Welanor
 */
 
 #include "asm.h"
@@ -113,11 +113,6 @@ int		parse(char **file, char *name)
 	    my_putstr("Error : line ", 2, -1);
 	    my_put_nbr(i + 1, 2);
 	  }
-      else
-	{
-	  parsing(file[i], &cmd);
-	  changepc(file[i], &(cmd.pc));
-	}
       i++;
     }
   /*put_header(&cmd, &header)*/

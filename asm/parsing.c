@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Jan 30 13:46:25 2013 Welanor
+** Last update Wed Jan 30 13:56:21 2013 Welanor
 */
 
 #include "asm.h"
@@ -155,7 +155,7 @@ int		parsing(char *str, t_cmd *cmd)
     i++;
   param.lenght = 2;
   params(str, i, &param, cmd);
-  printf("%d\n", param.lenght);
+  printf("%X\n", param.param[0]);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
   return (0);
 }

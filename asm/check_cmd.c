@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 19:35:15 2013 maxime lavandier
-** Last update Mon Jan 28 16:39:14 2013 maxime lavandier
+** Last update Wed Jan 30 14:06:11 2013 Welanor
 */
 
 #include <stdlib.h>
@@ -40,6 +40,7 @@ void	line_to_instruction(char *line, char *instruction, int i)
 
 int	check_type(char *line, char *instruction, int i, t_param *param)
 {
+  printf("%s\n", instruction);
   if (TYPE(my_begincmp(instruction, "live"), live_ldi_lldi(line, i, param)) &&
       TYPE(my_begincmp(instruction, "ld"), ld_st_lld(line, i, param)) &&
       TYPE(my_begincmp(instruction, "st"), ld_st_lld(line, i, param)) &&
