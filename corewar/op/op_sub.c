@@ -32,6 +32,5 @@ int	op_sub(t_process *proc, t_vm *vm)
         calc_carry(proc, is_byte_zero((char*)proc->reg[reg3], sizeof(int)));
       printf("%d sub %d - %d = %d\n", proc->associated_champ->number, proc->reg[reg1], proc->reg[reg2], proc->reg[reg3]);
     }
-  return (calc_instr_len_f_param_byte
-          (proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
 }
