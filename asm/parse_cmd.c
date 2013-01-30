@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 30 14:12:44 2013 Welanor
+** Last update Wed Jan 30 14:38:26 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -45,6 +45,7 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
   line = sub_space(line);
   if (line[0] == '\0')
     return (0);
+  printf("cmd->pc = %d\n", cmd->pc);
   parsing(line, cmd);
   changepc(line, &(cmd->pc));
   return (0);

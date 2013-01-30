@@ -1,9 +1,11 @@
 /*
-** get_adresse.c for get_adresse in /home/welanor/Projet/corewar/asm
+** get_adresse.c for get_adresse in /home/dellam_a/Projet/corewar/asm
 **
-** Made by welanor** Login <welanor@welanor>
+** Made by dellam_a Login <dellam_a@epitech.eu>
 **
-** Last update Tue Jan 29 18:42:44 2013 Welanor
+** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
+** Last update Wed Jan 30 15:48:53 2013 Welanor
+**
 */
 
 #include "parse_cmd.h"
@@ -19,7 +21,7 @@ void	adress_ldlld(char *line, int *pc)
   int	i;
 
   i = 0;
-  
+
   int debug = *pc;
   printf("%s", line);
 
@@ -41,7 +43,7 @@ void	adress_ldlld(char *line, int *pc)
 void	adress_add(char *line, int *pc)
 {
   *pc += 5;
-  printf("%s || %d\n", line, 5);  
+  printf("%s || %d\n", line, 5);
 }
 
 void	adress_zjump(char *line, int *pc)
@@ -76,6 +78,6 @@ void	adress_and(char *line, int *pc)
     *pc += 1;
   else    *pc += IND_SIZE;
   *pc += 1;
-  
+
   printf(" || %d\n", *pc - debug);
 }
