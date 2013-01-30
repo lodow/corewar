@@ -81,8 +81,12 @@ void			dump_memory(t_vmmem *mem, int size)
   while (i < size)
     {
       tmp = mem[i];
+      if (tmp != 0)
+        my_putstr("\033[31m", 1, -1);
       my_putstr(&hexa[tmp / 16], 1, 1);
       my_putstr(&hexa[tmp % 16], 1, 1);
+      if (tmp != 0)
+        my_putstr("\033[00m", 1, -1);
       if (i != size - 1)
         my_putstr(" ", 1, 1);
       i++;

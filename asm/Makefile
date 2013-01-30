@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 30 10:33:33 2013 Welanor
+## Last update Wed Jan 30 15:52:22 2013 Welanor
 ##
 
 SRC= 	main.c \
@@ -16,6 +16,7 @@ SRC= 	main.c \
 	parsing.c \
 	header.c \
 	label.c \
+	func_label.c \
 	get_adresse.c\
 	get_adr.c \
 	../misc/str_func.c \
