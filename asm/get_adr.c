@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 ** 
 ** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Wed Jan 30 12:57:18 2013 Welanor
+** Last update Wed Jan 30 15:48:30 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -98,7 +98,7 @@ void	instruc(char *line, int *pc)
     *pc += DIR_SIZE;
   else if (line[i] == 'r')
     *pc += 1;
-  else 
+  else
     *pc += IND_SIZE;
 }
 

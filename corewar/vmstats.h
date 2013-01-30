@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 19:26:03 2013 luc sinet
+** Last update Wed Jan 30 16:16:12 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -68,7 +68,7 @@ void		init_instr_params(t_params *params);
 int		delete_process(void *ptr);
 t_champ		**add_champ_t_tab(t_champ **tab, t_champ *add);
 t_vm		*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm);
-t_champ		*load_champ(int fd, int number);
+t_champ		*load_champ(int fd, int number, char *name);
 int		op_param_size(char type);
 t_process	*up_champ_t_mem(t_vm *vm, t_champ *champ, int pc);
 t_process	*create_new_process(t_vm *vm, t_process *src, int pc);
