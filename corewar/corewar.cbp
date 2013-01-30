@@ -13,7 +13,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../champ/Sky.cor" />
+				<Option parameters="../champ/2000/plouf.cor" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
