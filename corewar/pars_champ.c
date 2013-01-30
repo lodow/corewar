@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Tue Jan 29 19:50:03 2013 luc sinet
+** Last update Wed Jan 30 15:33:12 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -49,16 +49,29 @@ void	set_numval(t_arg *parg)
 
 void	set_addrval(t_arg *parg)
 {
-  if (parg->addr_used[0] == -1)
+  int	i;
+  int	tsize;
+  int	inter;
+  int	addr;
+
+  i = 0;
+  tsize = 0;
+  addr = 0;
+  while (i < parg->nb_champ)
+    tsize += parg->vm->champs[i++]->header.prog_size;
+  inter = (MEM_SIZE - tsize) / parg->nb_champ;
+  i = 0;
+  while (i < parg->nb_champ)
     {
-      parg->addr_used[0] = 0;
-      parg->addr_pos = 1;
-      return ;
+      if (parg->addr_used[i] == -1)
+	if (parg->added_champ != 0)
+	  {
+	    parg->addr_used[parg->addr_pos] = addr;
+	    addr += (inter + parg->vm->champs[i]->header.prog_size);
+	    parg->addr_pos += 1;
+	  }
+      i += 1;
     }
-  if (parg->added_champ != 0)
-    parg->addr_used[parg->addr_pos] = MEM_SIZE / parg->added_champ -
-      parg->vm->champs[parg->added_champ]->header.prog_size;
-  parg->addr_pos += 1;
 }
 
 void	check_value(t_arg *parg, char opt)
@@ -80,6 +93,7 @@ int	preload_champ(t_vm *vm, t_arg *parg)
   int	i;
 
   i = 0;
+  check_value(parg, 2);
   while (vm->champs[i] != NULL)
     {
       my_add_to_list(&(vm->process_list),
@@ -110,7 +124,6 @@ int		pars_champ(char *name, t_arg *parg)
       my_putstr("'s magic number isnt valid\n", 2, -1);
       return (-1);
     }
-  check_value(parg, 2);
   parg->num = -1;
   parg->addr = -1;
   parg->added_champ += 1;
