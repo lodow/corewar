@@ -10,10 +10,16 @@
 
 #include	"operation.h"
 
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction !
+*/
 int	op_sub(t_process *proc, t_vm *vm)
 {
-  int  reg1;
-  int  reg2;
+  int	reg1;
+  int	reg2;
   int	reg3;
 
   reg1 = proc->params_next_instr.params[1] - 1;
@@ -23,9 +29,9 @@ int	op_sub(t_process *proc, t_vm *vm)
       (reg3 >= 0 && reg3 < REG_NUMBER))
     {
       if ((proc->reg[reg3] = proc->reg[reg1] - proc->reg[reg2]) == 0)
-	calc_carry(proc, is_byte_zero((char*)proc->reg[reg3], sizeof(int)));
+        calc_carry(proc, is_byte_zero((char*)proc->reg[reg3], sizeof(int)));
+      printf("%d sub %d - %d = %d\n", proc->associated_champ->number, proc->reg[reg1], proc->reg[reg2], proc->reg[reg3]);
     }
-  printf("%d sub\n", proc->associated_champ->number);
   return (calc_instr_len_f_param_byte
-	  (proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
+          (proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
 }
