@@ -5,11 +5,11 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Wed Jan 30 10:37:29 2013 Welanor
+** Last update Wed Jan 30 23:53:48 2013 Welanor
 */
 
-#ifndef PARSE_CMD
-# define PARSE_CMD
+#ifndef PARSE_CMD_H
+# define PARSE_CMD_H
 
 # include "../misc/op.h"
 # include "../misc/str_func.h"
@@ -61,5 +61,20 @@ void	fillfile(t_header *header, t_cmd *cmd, char *name);
 char	*sub_space(char *line);
 t_cmd	*recuplabel(t_cmd *cmd, char **file);
 char	*getname(char *name);
+void	registre(t_param *param, char *str, int i);
+void	direct(t_param *param, char *str, int i, t_cmd *cmd);
+void	indirect(t_param *param, char *str, int i, t_cmd *cmd);
+int	chose_func(t_param *param, char *str, int i, t_cmd *cmd);
+int	add_sub(char *str, int i, t_param *param, t_cmd *cmd);
+int	laff(char *str, int i, t_param *param, t_cmd *cmd);
+int	and_or_xor(char *str, int i, t_param *param, t_cmd *cmd);
+int	lfork(char *str, int i, t_param *param, t_cmd *cmd);
+int	ld(char *str, int i, t_param *param, t_cmd *cmd);
+int	ldi_lldi(char *str, int i, t_param *param, t_cmd *cmd);
+int	live(char *str, int i, t_param *param, t_cmd *cmd);
+int	st(char *str, int i, t_param *param, t_cmd *cmd);
+int	sti(char *str, int i, t_param *param, t_cmd *cmd);
+int	zjump(char *str, int i, t_param *param, t_cmd *cmd);
+int	next(char *str, int i);
 
 #endif

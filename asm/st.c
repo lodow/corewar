@@ -5,8 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:51:49 2013 maxime lavandier
-** Last update Wed Jan 30 16:13:46 2013 maxime lavandier
+** Last update Wed Jan 30 23:50:08 2013 Welanor
 */
+
+#include "parse_cmd.h"
 
 int	st_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
@@ -25,6 +27,7 @@ int	st_param(char *str, int i, t_param *param, t_cmd *cmd)
       indirect(param, str, i, cmd);
       param->param[1] = 0b01110000;
     }
+  return (0);
 }
 
 int	st(char *str, int i, t_param *param, t_cmd *cmd)
@@ -47,4 +50,5 @@ int	st(char *str, int i, t_param *param, t_cmd *cmd)
     return (-1);
   i++;
   st_param(str, i, param, cmd);
+  return (0);
 }

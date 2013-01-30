@@ -5,14 +5,13 @@
 ** Login   <dellam_a@epitech.eu>
 ** 
 ** Started on  Wed Jan 30 16:22:02 2013 Adrien
-** Last update Wed Jan 30 16:51:18 2013 Welanor
+** Last update Wed Jan 30 23:52:47 2013 Welanor
 */
+
+#include "parse_cmd.h"
 
 int	zjump(char *str, int i, t_param *param, t_cmd *cmd)
 {
-  int	j;
-  int	nb;
-
   param->param[0] = 0x1;
   param->lenght -= 0x1;
   while (str[i] != ' ' && str[i] != 0)
@@ -22,5 +21,6 @@ int	zjump(char *str, int i, t_param *param, t_cmd *cmd)
   i++;
   if (str[i] == DIRECT_CHAR)
     i++;
-  indirect(param, str, i);
+  indirect(param, str, i, cmd);
+  return (0);
 }
