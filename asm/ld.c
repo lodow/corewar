@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:31:06 2013 maxime lavandier
-** Last update Wed Jan 30 23:48:02 2013 Welanor
+** Last update Thu Jan 31 11:19:58 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -38,7 +38,9 @@ int	ld_param(char *str, int i, t_param *param, t_cmd *cmd)
 
 int	ld(char *str, int i, t_param *param, t_cmd *cmd)
 {
-  if (str[i] == 'l')
+  if (str[i + 1] == 'l')
+    param->param[0] = 0xd;
+  else if (str[i] == 'l')
     param->param[0] = 0x2;
   else
     return (-1);

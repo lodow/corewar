@@ -28,8 +28,8 @@ int	op_sub(t_process *proc, t_vm *vm)
   if ((reg1 >= 0 && reg1 < REG_NUMBER) && (reg2 >= 0 && reg2 < REG_NUMBER) &&
       (reg3 >= 0 && reg3 < REG_NUMBER))
     {
-      if ((proc->reg[reg3] = proc->reg[reg1] - proc->reg[reg2]) == 0)
-        calc_carry(proc, is_byte_zero((char*)proc->reg[reg3], sizeof(int)));
+      proc->reg[reg3] = proc->reg[reg1] - proc->reg[reg2];
+      calc_carry(proc, is_byte_zero((char*)proc->reg[reg3], sizeof(int)));
       printf("%d sub %d - %d = %d\n", proc->associated_champ->number, proc->reg[reg1], proc->reg[reg2], proc->reg[reg3]);
     }
   return (5);

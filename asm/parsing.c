@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Jan 31 01:59:24 2013 maxime lavandier
+** Last update Thu Jan 31 16:49:34 2013 Welanor
 */
 
 #include "asm.h"
@@ -37,12 +37,12 @@ void	direct(t_param *param, char *str, int i, t_cmd *cmd)
   int	j;
   int	nb;
 
-  if (str[i] == LABEL_CHAR)
+  if (str[i + 1] == LABEL_CHAR)
     {
       j = 0;
-      i += 1;
-      while (my_strcmp(&str[i], cmd->lab[j].label) == 0
-	     && j < cmd->lablengh)
+      i += 2;
+      while (my_cmp(&str[i], cmd->lab[j].label) != 0
+	     && j < cmd->lablengh - 1)
 	j++;
       nb = cmd->lab[j].adress - cmd->pc;
     }
@@ -73,21 +73,22 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
     {
       j = 0;
       i += 1;
-      while (my_strcmp(&str[i], cmd->lab[j].label) == 0
-	     && j < cmd->lablengh)
+      while (my_cmp(&str[i], cmd->lab[j].label) == 0
+	     && j < cmd->lablengh - 1)
 	j++;
+      printf("str = %s\n", &str[i]);
+      printf("cmd = %s\n", cmd->lab[j].label);
       nb = cmd->lab[j].adress - cmd->pc;
-      printf("label = %X\n", nb);
     }
   else
     nb = my_getnbr(&(str[i]));
   if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
     exit(0);
-  param->param[param->lenght + DIR_SIZE - 1] = 0;
-  param->param[param->lenght + DIR_SIZE - 2] = 0;
-  param->param[param->lenght + DIR_SIZE - 1] |= nb;
+  param->param[param->lenght + IND_SIZE - 1] = 0;
+  param->param[param->lenght + IND_SIZE - 2] = 0;
+  param->param[param->lenght + IND_SIZE - 1] |= nb;
   nb >>= 8;
-  param->param[param->lenght + DIR_SIZE - 2] |= nb;
+  param->param[param->lenght + IND_SIZE - 2] |= nb;
   param->lenght += IND_SIZE;
 }
 
@@ -132,32 +133,36 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
       j--;
     }
   param->param[1] <<= (2 * j);
-  printf("param =%d\n", (int) param->param[1]);
 }
 
 int		parsing(char *str, t_cmd *cmd)
 {
   int		i;
+  int		ret;
   t_param	param;
 
   if ((param.param = malloc(2)) == 0)
     exit(0);
   if (str == 0)
     return (0);
-  if (check_cmd(str, &param) == -1)
+  /*  if (check_cmd(str, &param) == -1)
     {
       my_putstr("error : le nombre de parametre est incorect", 2 , -1);
       exit(0);
-    }
+      }*/
   i = next_label(str);
   if (str[i] == ' ')
     i++;
   param.lenght = 2;
   /*params(str, i, &param, cmd);*/
-  if (chose_func(&param, str, i, cmd) == -1)
-    {   printf ("error\n");
-      exit(0);}
-  printf ("%s %d\n", str, param.lenght);
+  ret = chose_func(&param, str, i, cmd);
+  if (ret == -1)
+    {
+      printf ("error\n");
+      exit(0);
+    }
+  if (ret == -2)
+    return(0);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
   return (0);
 }
