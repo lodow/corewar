@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Jan 31 06:40:44 2013 maxime lavandier
+** Last update Thu Jan 31 09:21:50 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -77,7 +77,6 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
 	     && j < cmd->lablengh)
 	j++;
       nb = cmd->lab[j].adress - cmd->pc;
-      printf("label = %X\n", nb);
     }
   else
     nb = my_getnbr(&(str[i]));
@@ -132,7 +131,6 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
       j--;
     }
   param->param[1] <<= (2 * j);
-  printf("param =%d\n", (int) param->param[1]);
 }
 
 int		parsing(char *str, t_cmd *cmd)
@@ -156,6 +154,7 @@ int		parsing(char *str, t_cmd *cmd)
   param.lenght = 2;
   /*params(str, i, &param, cmd);*/
   ret = chose_func(&param, str, i, cmd);
+  printf ("!!!!!!!!!!! %d\n", ret);
   if (ret == -1)
     {
       printf ("error\n");
