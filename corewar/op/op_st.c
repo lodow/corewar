@@ -106,5 +106,5 @@ int	op_st(t_process * proc, t_vm * vm)
     }
   if (ch_carry)
     calc_carry(proc, carry);
-  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1));
 }
