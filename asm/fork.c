@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 17:14:12 2013 maxime lavandier
-** Last update Thu Jan 31 11:18:14 2013 maxime lavandier
+** Last update Thu Jan 31 16:31:54 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -26,6 +26,6 @@ int	lfork(char *str, int i, t_param *param, t_cmd *cmd)
   i++;
   if (str[i] == '%')
     i++;
-  indirect(param, str, i , cmd);
+  indirect(param, str, i, cmd);
   return (0);
 }

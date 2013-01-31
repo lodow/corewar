@@ -5,14 +5,13 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:21:31 2013 maxime lavandier
-** Last update Thu Jan 31 08:47:49 2013 maxime lavandier
+** Last update Thu Jan 31 11:21:50 2013 Welanor
 */
 
 #include "parse_cmd.h"
 
 int	live(char *str, int i, t_param *param, t_cmd *cmd)
 {
-  printf ("salut\n");
   param->param[0] = 0x1;
   param->lenght = 1;
   while (str[i] != 0 && str[i] != ' ')

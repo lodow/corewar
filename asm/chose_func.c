@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Thu Jan 31 09:25:58 2013 maxime lavandier
+** Last update Thu Jan 31 16:49:51 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -18,7 +18,6 @@ int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
   int	j;
   int	(*ptr[16])(char *, int, t_param *, t_cmd *);
 
-  printf ("DDDDDD\n");
   j = 0;
   ptr[0] = &live;
   ptr[1] = &ld;
@@ -41,4 +40,20 @@ int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
   if (j == 16)
     return (-2);
   return (ptr[j](str, i ,param, cmd));
+}
+
+int	my_cmp(char *str1, char *str2)
+{
+  int	i;
+
+  i = 0;
+  while (str1[i] != 0 && str2[i] != 0)
+    {
+      if (str1[i] != str2[i])
+        return (0);
+      i++;
+    }
+  if (str2[i] != 0 || (str1[i] != ' ' && str1[i] != SEPARATOR_CHAR && str1[i] != 0))
+    return (0);
+  return (1);
 }

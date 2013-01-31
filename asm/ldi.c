@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 **
 ** Started on  Wed Jan 30 16:55:04 2013 Adrien
-** Last update Thu Jan 31 11:14:42 2013 maxime lavandier
+** Last update Thu Jan 31 16:03:11 2013 Welanor
 */
 
 #include "../misc/op.h"
@@ -38,7 +38,7 @@ int	ldi_lldi_param(char *str, int i, t_param *param, t_cmd *cmd)
       param->param[1] <<= 2;
       param->param[1] += 3;
     }
-  indirect(param, &str[i], i, cmd);
+  indirect(param, str, i, cmd);
   if ((i = next(str, i)) == -1)
     return (-1);
   if (str[i] != 'r')
@@ -72,6 +72,6 @@ int	ldi_lldi(char *str, int i, t_param *param, t_cmd *cmd)
       param->param[1] <<= 2;
       param->param[1] += 3;
     }
-  indirect(param, &str[i], i, cmd);
+  indirect(param, str, i, cmd);
   return (ldi_lldi_param(str, i, param, cmd));
 }

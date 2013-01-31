@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 **
 ** Started on  Wed Jan 30 17:53:57 2013 Adrien
-** Last update Thu Jan 31 11:14:45 2013 maxime lavandier
+** Last update Thu Jan 31 15:46:20 2013 Welanor
 */
 
 #include "parse_cmd.h"
@@ -15,6 +15,30 @@ void	sti_param(char *str, int i, t_param *param, t_cmd *cmd)
   if (str[i] == 'r')
     {
       registre(param, str, i);
+      param->param[1] <<= 2;
+      param->param[1] += 1;
+    }
+  else if (str[i] == DIRECT_CHAR)
+    {
+      i++;
+      indirect(param, str, i, cmd);
+      param->param[1] <<= 2;
+      param->param[1] += 2;
+    }
+  else
+    {
+      indirect(param, str, i, cmd);
+      param->param[1] <<= 2;
+      param->param[1] += 3;
+    }
+}
+
+void	sti_last(char *str, int i, t_param *param, t_cmd *cmd)
+{
+  if (str[i] == 'r')
+    {
+      i++;
+      indirect(param, str, i, cmd);
       param->param[1] <<= 2;
       param->param[1] += 1;
     }
