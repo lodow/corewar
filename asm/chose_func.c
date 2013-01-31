@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Wed Jan 30 23:53:25 2013 Welanor
+** Last update Thu Jan 31 01:54:49 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -35,8 +35,9 @@ int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
   ptr[13] = &ldi_lldi;
   ptr[14] = &lfork;
   ptr[15] = &laff;
-  while (my_instructcmp(str, op_tab[j].mnemonique, ' ') == 0)
+  while (my_instructcmp(str, op_tab[j].mnemonique, ' ') == 0 && j < 16)
     j++;
-  ptr[j](str, i ,param, cmd);
-  return (0);
+  if (j == 16)
+    return (0);
+  return (ptr[j](str, i ,param, cmd));
 }
