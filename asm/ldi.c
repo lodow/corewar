@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 **
 ** Started on  Wed Jan 30 16:55:04 2013 Adrien
-** Last update Thu Jan 31 07:00:28 2013 maxime lavandier
+** Last update Thu Jan 31 11:14:42 2013 maxime lavandier
 */
 
 #include "../misc/op.h"
@@ -21,9 +21,39 @@ int	next(char *str, int i)
   return (i);
 }
 
+int	ldi_lldi_param(char *str, int i, t_param *param, t_cmd *cmd)
+{
+  if ((i = next(str, i)) == -1)
+    return (-1);
+  if (str[i] == 'r')
+    return (-1);
+  else if (str[i] == DIRECT_CHAR)
+    {
+      i++;
+      param->param[1] <<= 2;
+      param->param[1] += 2;
+    }
+  else
+    {
+      param->param[1] <<= 2;
+      param->param[1] += 3;
+    }
+  indirect(param, &str[i], i, cmd);
+  if ((i = next(str, i)) == -1)
+    return (-1);
+  if (str[i] != 'r')
+    return (-1);
+  param->param[1] <<= 2;
+  param->param[1] += 1;
+  param->param[1] <<= 2;
+  registre(param, str, i);
+  return (0);
+}
+
 int	ldi_lldi(char *str, int i, t_param *param, t_cmd *cmd)
 {
   param->param[0] = (str[i + 1] == 'l' ? 0xe : 0xa);
+  param->param[1] = 0;
   while (str[i] != ' ' && str[i] != 0)
     i++;
   if (str[i] == 0)
@@ -31,20 +61,17 @@ int	ldi_lldi(char *str, int i, t_param *param, t_cmd *cmd)
   i++;
   if (str[i] == 'r')
     return (-1);
-  else if (str[i] == LABEL_CHAR)
-    i++;
+  else if (str[i] == DIRECT_CHAR)
+    {
+      i++;
+      param->param[1] <<= 2;
+      param->param[1] += 2;
+    }
+  else
+    {
+      param->param[1] <<= 2;
+      param->param[1] += 3;
+    }
   indirect(param, &str[i], i, cmd);
-  if ((i = next(str, i)) == -1)
-    return (-1);
-  if (str[i] == 'r')
-    return (-1);
-  else if (str[i] == LABEL_CHAR)
-    i++;
-  indirect(param, &str[i], i, cmd);
-  if ((i = next(str, i)) == -1)
-    return (-1);
-  if (str[i] != 'r')
-    return (-1);
-  registre(param, str, i);
-  return (0);
+  return (ldi_lldi_param(str, i, param, cmd));
 }
