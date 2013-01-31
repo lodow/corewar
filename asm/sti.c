@@ -1,32 +1,40 @@
 /*
 ** sti.c for sti in /home/dellam_a/Projet/corewar/asm
-** 
+**
 ** Made by Adrien
 ** Login   <dellam_a@epitech.eu>
-** 
+**
 ** Started on  Wed Jan 30 17:53:57 2013 Adrien
-** Last update Wed Jan 30 18:03:41 2013 Welanor
+** Last update Thu Jan 31 07:00:42 2013 maxime lavandier
 */
 
-int	sti(char str, int i, t_param *param, t_cmd *cmd)
+#include "parse_cmd.h"
+
+void	sti_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
-  param.param[0] = 0xb;
-  while (str[i] != ' ' && str[i] != 0)
-    i++;
-  if (str[i] == 0)
-    return (-1);
-  i++;
   if (str[i] == 'r')
     registre(param, str, i);
   else if (str[i] == LABEL_CHAR)
     direct(param, str, i, cmd);
   else
     indirect(param, str, i, cmd);
-  if ((i = next (str, i)) == -1)
+}
+
+int	sti(char *str, int i, t_param *param, t_cmd *cmd)
+{
+  param->param[0] = 0xb;
+  while (str[i] != ' ' && str[i] != 0)
+    i++;
+  if (str[i] == 0)
     return (-1);
-  indirect(param, str, i ,cmd);
-  if ((i = next (str, i)) == -1)
+  i++;
+  sti_param(str, i, param, cmd);
+  if ((i = next(str, i)) == -1)
     return (-1);
-  indirect(param, str, i ,cmd);  
+  sti_param(str, i, param, cmd);
+  if ((i = next(str, i)) == -1)
+    return (-1);
+  sti_param(str, i, param, cmd);
+  return (0);
 }
 

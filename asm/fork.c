@@ -5,10 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 17:14:12 2013 maxime lavandier
-** Last update Wed Jan 30 17:22:30 2013 maxime lavandier
+** Last update Wed Jan 30 23:47:27 2013 Welanor
 */
 
-int	fork(t_param *param, char *str, int i, t_cmd *cmd)
+#include "parse_cmd.h"
+
+int	lfork(char *str, int i, t_param *param, t_cmd *cmd)
 {
   if (str[i] == 'f')
     param->param[0] = 0xc;
@@ -23,4 +25,5 @@ int	fork(t_param *param, char *str, int i, t_cmd *cmd)
   if (str[i] == '%')
     i++;
   indirect(param, str, i , cmd);
+  return (0);
 }

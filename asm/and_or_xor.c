@@ -5,8 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 16:32:57 2013 maxime lavandier
-** Last update Wed Jan 30 16:54:43 2013 maxime lavandier
+** Last update Wed Jan 30 23:46:24 2013 Welanor
 */
+
+#include "parse_cmd.h"
 
 int	and_or_xor(char *str, int i, t_param *param, t_cmd *cmd)
 {

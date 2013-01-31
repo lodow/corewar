@@ -5,10 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:21:31 2013 maxime lavandier
-** Last update Wed Jan 30 15:30:46 2013 maxime lavandier
+** Last update Wed Jan 30 23:43:18 2013 Welanor
 */
 
-int	live(t_param *param, char *str, int i, t_cmd *cmd)
+#include "parse_cmd.h"
+
+int	live(char *str, int i, t_param *param, t_cmd *cmd)
 {
   if (str[i] == 'l')
     param->param[0] = 0x1;
@@ -22,4 +24,5 @@ int	live(t_param *param, char *str, int i, t_cmd *cmd)
   if (str[i + 1] == '%')
     i++;
   direct(param, str, i , cmd);
+  return (0);
 }

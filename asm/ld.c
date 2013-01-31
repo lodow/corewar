@@ -5,8 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:31:06 2013 maxime lavandier
-** Last update Wed Jan 30 16:13:51 2013 maxime lavandier
+** Last update Wed Jan 30 23:48:02 2013 Welanor
 */
+
+#include "parse_cmd.h"
 
 int	ld_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
@@ -31,6 +33,7 @@ int	ld_param(char *str, int i, t_param *param, t_cmd *cmd)
       param->param[1] = 0b11010000;
       registre(param, str, i);
     }
+  return (0);
 }
 
 int	ld(char *str, int i, t_param *param, t_cmd *cmd)

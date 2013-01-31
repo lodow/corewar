@@ -5,8 +5,10 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:07:26 2013 maxime lavandier
-** Last update Wed Jan 30 15:37:32 2013 maxime lavandier
+** Last update Wed Jan 30 23:45:48 2013 Welanor
 */
+
+#include "parse_cmd.h"
 
 int	add_sub_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
@@ -30,6 +32,7 @@ int	add_sub_param(char *str, int i, t_param *param, t_cmd *cmd)
     i++;
   if (str[i] == 0)
     return (-1);
+  return (0);
 }
 
 

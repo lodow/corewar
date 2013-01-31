@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Jan 30 16:18:05 2013 maxime lavandier
+** Last update Thu Jan 31 06:40:44 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -83,11 +83,11 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
     nb = my_getnbr(&(str[i]));
   if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
     exit(0);
-  param->param[param->lenght + DIR_SIZE - 1] = 0;
-  param->param[param->lenght + DIR_SIZE - 2] = 0;
-  param->param[param->lenght + DIR_SIZE - 1] |= nb;
-  nb = nb >> 8;
-  param->param[param->lenght + DIR_SIZE - 2] |= nb;
+  param->param[param->lenght + IND_SIZE - 1] = 0;
+  param->param[param->lenght + IND_SIZE - 2] = 0;
+  param->param[param->lenght + IND_SIZE - 1] |= nb;
+  nb >>= 8;
+  param->param[param->lenght + IND_SIZE - 2] |= nb;
   param->lenght += IND_SIZE;
 }
 
@@ -138,23 +138,32 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
 int		parsing(char *str, t_cmd *cmd)
 {
   int		i;
+  int		ret;
   t_param	param;
 
   if ((param.param = malloc(2)) == 0)
     exit(0);
   if (str == 0)
     return (0);
-  if (check_cmd(str, &param) == -1)
+  /*  if (check_cmd(str, &param) == -1)
     {
       my_putstr("error : le nombre de parametre est incorect", 2 , -1);
       exit(0);
-    }
+      }*/
   i = next_label(str);
   if (str[i] == ' ')
     i++;
   param.lenght = 2;
-  params(str, i, &param, cmd);
-  printf("param.param[0] = %X\n", param.param[0]);
+  /*params(str, i, &param, cmd);*/
+  ret = chose_func(&param, str, i, cmd);
+  if (ret == -1)
+    {
+      printf ("error\n");
+      exit(0);
+    }
+  if (ret == -2)
+    return(0);
+  printf ("//////%s \\\\\\ %d\n", str, param.lenght);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
   return (0);
 }

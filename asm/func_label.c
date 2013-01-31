@@ -1,11 +1,11 @@
 /*
 ** func_label.c for func_label in /home/welanor/Projet/corewar/asm
-** 
+**
 ** Made by Welanor
 ** Login   <welanor@welanor>
-** 
+**
 ** Started on  Wed Jan 30 15:50:52 2013 Welanor
-** Last update Wed Jan 30 15:52:46 2013 Welanor
+** Last update Thu Jan 31 00:57:33 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -18,6 +18,8 @@ int	my_instructcmp(char *s1, char *s2, char sep)
   int	i;
 
   i = 0;
+  if (s1 == 0 || s2 == 0)
+    return (0);
   while (s1[i] == s2[i] && s2[i] != 0 && s1[i] != 0)
     i++;
   if (s2[i] == 0 && s1[i] == sep)

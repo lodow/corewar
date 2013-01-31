@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 30 15:52:22 2013 Welanor
+## Last update Wed Jan 30 23:36:20 2013 Welanor
 ##
 
 SRC= 	main.c \
@@ -17,8 +17,19 @@ SRC= 	main.c \
 	header.c \
 	label.c \
 	func_label.c \
+	chose_func.c \
 	get_adresse.c\
 	get_adr.c \
+	live.c \
+	add_sub.c \
+	aff.c \
+	and_or_xor.c \
+	fork.c \
+	ld.c \
+	ldi.c \
+	st.c \
+	sti.c \
+	zjump.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/endianess.c \

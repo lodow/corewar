@@ -5,11 +5,12 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Wed Jan 30 14:38:26 2013 Welanor
+** Last update Thu Jan 31 06:23:52 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
 #include "asm.h"
+
 char	*sub_space(char *str)
 {
   int	i;
@@ -20,6 +21,7 @@ char	*sub_space(char *str)
     exit(0);
   i = 0;
   j = 0;
+  res[0] = 0;
   while (str[i] != 0)
     {
       if (i > 1 && (str[i - 1] != ' ' && str[i - 1] != '\t'
@@ -40,7 +42,7 @@ char	*sub_space(char *str)
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
 {
-  if (line == NULL || header == NULL || cmd == NULL)
+  if (line == NULL || header == NULL || cmd == NULL || my_strlen(line) <= 1)
     return (-1);
   line = sub_space(line);
   if (line[0] == '\0')
