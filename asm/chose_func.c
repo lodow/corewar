@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Thu Jan 31 01:54:49 2013 maxime lavandier
+** Last update Thu Jan 31 06:41:07 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -38,6 +38,6 @@ int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
   while (my_instructcmp(str, op_tab[j].mnemonique, ' ') == 0 && j < 16)
     j++;
   if (j == 16)
-    return (0);
+    return (-2);
   return (ptr[j](str, i ,param, cmd));
 }
