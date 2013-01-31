@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Wed Jan 30 16:13:01 2013 luc sinet
+** Last update Thu Jan 31 01:33:57 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -117,7 +117,8 @@ int		pars_champ(char *name, t_arg *parg)
   if ((fd = open(name, O_RDONLY)) == -1)
     return (-1);
   check_value(parg, 1);
-  if ((champ = load_champ(fd, parg->num_used[parg->added_champ], name)) == NULL ||
+  if ((champ = load_champ(fd, parg->num_used[parg->added_champ], name)) ==
+      NULL ||
       (parg->vm->champs = add_champ_t_tab(parg->vm->champs, champ)) == NULL)
     return (-1);
   parg->num = -1;
