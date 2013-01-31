@@ -1,11 +1,11 @@
 /*
 ** get_adr.c for get_adr in /home/dellam_a/Projet/corewar/asm
-** 
+**
 ** Made by Adrien
 ** Login   <dellam_a@epitech.eu>
-** 
+**
 ** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Wed Jan 30 15:48:30 2013 Welanor
+** Last update Thu Jan 31 09:08:20 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -16,7 +16,7 @@ void	adress_ldi(char *line, int *pc)
   int	i;
 
   int debug = *pc;
-  printf("%s", line);
+  /*printf("%s", line);*/
   i = 0;
   *pc += IND_SIZE + IND_SIZE + 2;
   while (line[i] != 0 && line[i] != ' ')
@@ -37,7 +37,7 @@ void	adress_ldi(char *line, int *pc)
     *pc += 1;
   else
     *pc += IND_SIZE;
-  printf(" || %d\n", *pc - debug);
+  /*printf(" || %d\n", *pc - debug);*/
 }
 
 void	adress_sti(char *line, int *pc)
@@ -47,7 +47,7 @@ void	adress_sti(char *line, int *pc)
   i = 0;
 
   int debug = *pc;
-  printf("%s", line);
+  /*printf("%s", line);*/
 
   *pc += IND_SIZE + IND_SIZE + 2;
   while (line[i] != 0 && line[i] != ' ')
@@ -61,7 +61,7 @@ void	adress_sti(char *line, int *pc)
     *pc += 1;
   else
     *pc += IND_SIZE;
-  printf(" || %d\n", *pc - debug);
+  /*  printf(" || %d\n", *pc - debug);*/
 }
 
 void	adress_fork(char *line, int *pc)
@@ -70,7 +70,7 @@ void	adress_fork(char *line, int *pc)
   printf("%s", line);
 
   *pc += 1 + IND_SIZE;
-  printf(" || %d\n", *pc - debug);
+  /*  printf(" || %d\n", *pc - debug);*/
 }
 
 void	adress_aff(char *line, int *pc)
