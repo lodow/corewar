@@ -14,6 +14,7 @@
 # include "../include.h"
 
 # define NBPBYTE(x, y) calc_instr_len_f_param_byte((x), (y))
+# define PARAMBYTE proc->params_next_instr.params[0]
 
 int	op_add(t_process *proc, t_vm *vm);
 int	op_aff(t_process *proc, t_vm *vm);
