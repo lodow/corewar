@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Fri Feb  1 15:04:36 2013 luc sinet
+** Last update Fri Feb  1 15:25:19 2013 luc sinet
 */
 
 #include "include.h"
@@ -43,7 +43,7 @@ int	addr_opt(char **av, t_arg *parg)
   return (0);
 }
 
-int	unlimited_opt(char **av, t_arg *parg)
+int	adds_opt(char **av, t_arg *parg)
 {
   if (my_strcmp("-unlimited", av[parg->pos]) == 0)
     {
@@ -65,7 +65,7 @@ int	pars_opt(char **av, t_arg *parg)
   opt[0] = &dump_opt;
   opt[1] = &prog_num_opt;
   opt[2] = &addr_opt;
-  opt[3] = &unlimited_opt;
+  opt[3] = &adds_opt;
   opt[4] = &opt_error;
   opt_list[0] = "-dump";
   opt_list[1] = "-n";
