@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 30 00:41:58 2013 luc sinet
+** Last update Fri Feb  1 15:33:28 2013 luc sinet
 */
 
 #include	"include.h"
@@ -102,13 +102,14 @@ int	handle_game(t_vm *vm)
   vm->cycle_count++;
   if (vm->nbr_live >= NBR_LIVE)
     vm->cycle_to_die -= CYCLE_DELTA;
-  if ((vm->cycle_count % vm->cycle_to_die) == 0)
+  if (vm->flag == 0 && (vm->cycle_count % vm->cycle_to_die) == 0)
     if (check_champs_alive_a_print(vm) == 1)
       end_game = 1;
   if ((vm->cycle_to_dump != -1) && (vm->cycle_count >= vm->cycle_to_dump))
     {
       dump_memory(vm->mem, MEM_SIZE);
-      end_game = 1;
+      if (vm->flag == 0)
+	end_game = 1;
     }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
