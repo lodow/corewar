@@ -12,6 +12,5 @@
 
 int	op_lldi(t_process *proc, t_vm *vm)
 {
-  proc->carry = toggle_val(proc->carry);
   return (1);
 }

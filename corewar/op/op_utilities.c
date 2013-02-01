@@ -26,7 +26,6 @@ int	calc_instr_len_f_param_byte(char type, int nbmax)
   tmpstype = GET_TYPE_PARAMX(type, i);
   while ((i < nbmax) && (i < (MAX_ARGS_NUMBER - 1)) && (tmpstype != 0x0))
     {
-      tmpstype = GET_TYPE_PARAMX(type, i);
       if (tmpstype == T_REG)
         tsize += 1;
       else if (tmpstype == T_DIR)
@@ -34,6 +33,7 @@ int	calc_instr_len_f_param_byte(char type, int nbmax)
       else
         tsize += IND_SIZE;
       i++;
+      tmpstype = GET_TYPE_PARAMX(type, i);
     }
   return (tsize);
 }
@@ -54,17 +54,4 @@ int	is_byte_zero(char *src, int size)
         i++;
       }
   return (1);
-}
-
-void	calc_carry(t_process *proc, int is_zero)
-{
-  if (is_zero)
-    proc->carry = 1;
-  else
-    proc->carry = 0;
-}
-
-int	toggle_val(int val)
-{
-  return ((val + 1) % 2);
 }

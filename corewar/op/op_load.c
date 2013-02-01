@@ -12,16 +12,28 @@
 
 /*
 ** \param[in] proc A ptr on the process executing the instrcution !
-** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem ld the
 ** champs.
 ** \return the total size of the instruction !
 */
-int	op_load(t_process *proc, t_vm *vm)
+int	op_ld(t_process *proc, t_vm *vm)
 {
-/*Cette instruction prend 2 paramètres le deuxième est forcement
-un registre (pas le PC). Elle load la valeur du premier paramètre
-dans le registre. Cette opération modifie le carry. ld 34,r3 charge
-les REG_SIZE octets a partir de l’adresse (PC + (34 %
-IDX_MOD)) dans le registre r3.*/
-  return (1);
+  int	reg;
+  int	vtl;
+
+  vtl = 0;
+  reg = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 1) + 1] - 1;
+  if (reg >= 0 && reg < REG_NUMBER)
+    {
+      if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 1)
+        vtl = op_get_reg(proc, vm, 0);
+      else if(GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
+        vtl = op_get_dir(proc, vm, 0);
+      else
+        vtl = op_get_ind(proc, vm, 0);
+      proc->reg[reg] = vtl;
+      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+      printf("%d ld %d, reg%d\n", proc->associated_champ->number, vtl, reg + 1);
+    }
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }
