@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 30 16:16:12 2013 luc sinet
+** Last update Fri Feb  1 14:58:58 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -56,6 +56,7 @@ typedef struct	s_vm
   t_champ	**champs;
   t_list	*process_list;
   t_vmmem	*mem;
+  char		flag;
   int		cycle_count;
   int		nbr_live;
   int		cycle_to_die;

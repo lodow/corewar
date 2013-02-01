@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Fri Feb  1 14:49:08 2013 luc sinet
+** Last update Fri Feb  1 15:04:36 2013 luc sinet
 */
 
 #include "include.h"
@@ -45,6 +45,13 @@ int	addr_opt(char **av, t_arg *parg)
 
 int	unlimited_opt(char **av, t_arg *parg)
 {
+  if (my_strcmp("-unlimited", av[parg->pos]) == 0)
+    {
+      parg->opt[0] = 1;
+      parg->vm->flag = 1;
+    }
+  else
+    return (0);
   return (0);
 }
 
