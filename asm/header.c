@@ -19,19 +19,18 @@ char    *getname(char *name)
   int	i;
 
   i = my_strlen(name);
-  printf("%s\n", name);
   if ((res = malloc(i + 4)) == NULL)
     return (NULL);
   i = 0;
-  while (name[i] != '\0' && name[i] != 's')
+  while (name[i] != '\0')
     {
       res[i] = name[i];
       i++;
-    }
-  res[i++] = 'c';
-  res[i++] = 'o';
-  res[i++] = 'r';
-  res[i] = 0;
+     }
+     res[i - 1] = 'c';
+     res[i] = 'o';
+     res[i + 1] = 'r';
+     res[i + 2] = '\0';
   return (res);
 }
 

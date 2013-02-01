@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Wed Jan 30 14:01:39 2013 luc sinet
+** Last update Fri Feb  1 15:03:55 2013 luc sinet
 */
 
 #include "include.h"
@@ -13,7 +13,7 @@
 int	check_dump(char **av, t_arg *parg)
 {
   if (parg->vm->cycle_to_dump != -1 || parg->pos + 1 >= parg->nb_arg ||
-      parg->num != -1 || parg->addr != -1)
+      parg->opt[1] != -1 || parg->opt[2] != -1)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == -1)
     return (-1);
@@ -43,7 +43,7 @@ int	check_exist(char **av, t_arg *parg, int num)
 
 int	check_numproc(char **av, t_arg *parg)
 {
-  if (parg->num != -1 || (parg->pos + 1) >= parg->nb_arg)
+  if (parg->opt[1] != -1 || (parg->pos + 1) >= parg->nb_arg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
@@ -63,20 +63,42 @@ int	check_numproc(char **av, t_arg *parg)
   else
     return (0);
   parg->num_pos += 1;
-  parg->num = 1;
+  parg->opt[1] = 1;
   return (0);
 }
 
 int	check_addr(char **av, t_arg *parg)
 {
-  if (parg->addr != -1 || (parg->pos + 1) >= parg->nb_arg)
+  int	val;
+
+  if (parg->opt[2] != -1 || (parg->pos + 1) >= parg->nb_arg)
     return (-1);
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
-      parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]);
+      if ((val = my_getnbr(av[parg->pos + 1])) < 0)
+	{
+	  my_putstr("Please enter a positive value for the -a option\n", 2, -1);
+	  return (-2);
+	}
+      parg->addr_used[parg->addr_pos] = val;
       parg->addr_pos += 1;
       parg->pos += 1;
     }
-  parg->addr = 1;
+  parg->opt[2] = 1;
+  return (0);
+}
+
+int	check_unlimited(char **av, t_arg *parg)
+{
+  if (my_strcmp("-unlimited", av[parg->pos]) == 0)
+    {
+      if (parg->opt[0] != -1 || (parg->pos + 1) >= parg->nb_arg)
+	{
+	  parg->opt[0] = 1;
+	  return (-1);
+	}
+    }
+  else
+    return (0);
   return (0);
 }

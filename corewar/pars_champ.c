@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 13:30:51 2013 luc sinet
-** Last update Wed Jan 30 16:13:01 2013 luc sinet
+** Last update Fri Feb  1 14:43:06 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -78,12 +78,12 @@ void	check_value(t_arg *parg, char opt)
 {
   if (opt == 1)
     {
-      if (parg->num == -1)
+      if (parg->opt[1] == -1)
 	set_numval(parg);
     }
   else
     {
-      if (parg->addr == -1)
+      if (parg->opt[2] == -1)
 	set_addrval(parg);
     }
 }
@@ -117,11 +117,12 @@ int		pars_champ(char *name, t_arg *parg)
   if ((fd = open(name, O_RDONLY)) == -1)
     return (-1);
   check_value(parg, 1);
-  if ((champ = load_champ(fd, parg->num_used[parg->added_champ], name)) == NULL ||
+  if ((champ = load_champ(fd, parg->num_used[parg->added_champ], name)) ==
+      NULL ||
       (parg->vm->champs = add_champ_t_tab(parg->vm->champs, champ)) == NULL)
     return (-1);
-  parg->num = -1;
-  parg->addr = -1;
+  parg->opt[1] = -1;
+  parg->opt[2] = -1;
   parg->added_champ += 1;
   if (parg->added_champ == parg->nb_champ)
     if (preload_champ(parg->vm, parg) == -1)
