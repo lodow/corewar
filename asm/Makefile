@@ -5,12 +5,12 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Wed Jan 30 23:36:20 2013 Welanor
+## Last update Fri Feb  1 15:52:16 2013 maxime lavandier
 ##
 
 SRC= 	main.c \
 	parse.c \
-	check_func.c \
+	direct.c \
 	check_cmd.c \
 	parse_cmd.c \
 	parsing.c \

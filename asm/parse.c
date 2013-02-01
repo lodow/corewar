@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Thu Jan 31 13:13:11 2013 Welanor
+** Last update Fri Feb  1 15:48:09 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -84,49 +84,35 @@ int	next_the_header(char **file)
   return (i);
 }
 
+void	put_error(int line)
+{
+  my_putstr("Error : line ", 2, -1);
+  my_put_nbr(line + 1, 2);
+  my_putstr("\n", 2, 1);
+}
+
 int		parse(char **file, char *name)
 {
   int		i;
   t_header	header;
   t_cmd		cmd;
 
-  i = next_the_header(file);
+  i = next_the_header(file) - 1;
   my_memsetc(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
     return (-1);
   recuplabel(&cmd, file);
-  /*printf("%d\n", cmd.pc);*/
   header.prog_size = cmd.pc;
-  
-  /*  int	qsepo;
-  for (qsepo = 0; qsepo < cmd.lablengh; qsepo++)
-  printf("%s\n", cmd.lab[qsepo].label);*/
-
   cmd.pc = 0;
-  while (file[i])
-    {
-      if (my_begincmp(file[i], NAME_CMD_STRING))
-	recup_name(file[i], &header);
-      else if (my_begincmp(file[i], COMMENT_CMD_STRING))
-	{
-	  recup_comment(file[i], &header);
-	  cmd.fd = put_header(&header, &cmd, name);
-	}
-      else if (parse_cmd(file[i], &header, &cmd) == -1)
-	  {
-	    my_putstr("Error : line ", 2, -1);
-	    my_put_nbr(i + 1, 2);
-	  }
-      i++;
-    }
-  /*put_header(&cmd, &header)*/
-  /*printf("%d\n", cmd.pc);*/
-  /*  int	j = 0;
-  while (j < cmd.lablengh)
-    {
-      printf("%s || %d\n", (cmd.lab[j]).label, (cmd.lab[j]).adress);
-      j++;
+  while (file[++i])
+    if (my_begincmp(file[i], NAME_CMD_STRING))
+      recup_name(file[i], &header);
+    else if (my_begincmp(file[i], COMMENT_CMD_STRING))
+      {
+	recup_comment(file[i], &header);
+	cmd.fd = put_header(&header, &cmd, name);
       }
-  printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);*/
+    else if (parse_cmd(file[i], &header, &cmd) == -1)
+      put_error(i);
   return (0);
 }
