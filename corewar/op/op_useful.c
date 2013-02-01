@@ -10,63 +10,40 @@
 
 #include	"operation.h"
 
-/*
-** \param[in] vm A ptr on the vm
-** \param[in] pos The pos in vm memory wher to start to cpy
-** \param[in] size The size to be copied
-** \return res The copied memory, NULL otherwise.
-*/
-char	*cpy_mem_value(t_vm *vm, int pos, int size)
+int	op_get_dir(t_process *proc, t_vm *vm, int param)
 {
-  char	*res;
-  int	j;
-  int	i;
+  int	dir;
+  int	at;
 
-  i = size - 1;
-  j = 0;
-  if ((res = malloc(size * sizeof(char))) == NULL)
-    return (NULL);
-  while ((i >= 0) && (j < size))
-    {
-      res[j] = vm->mem[MOD_MEM(pos + i)];
-      j++;
-      i--;
-    }
-  return (res);
+  at = NBPBYTE(PARAMBYTE, param) + 1;
+  dir = *((int*)(&(proc->params_next_instr.params[at])));
+  switch_endian((char*)(&dir), sizeof(int));
+  return (dir);
 }
 
-/*
-** Retrieve
-** \param[in] vm A ptr on the vm
-** \param[in] pos The pos in vm memory wher to start to cpy
-** \param[in] pc The value relative from the adress wanted
-** \param[in] modidx Use idxmode or not !
-** \return res The copied memory from the the value at pos, NULL otherwise.
-*/
-char	*resolve_ind_value(t_vm *vm, int pos, int pc, int modidx)
+int	op_get_ind(t_process *proc, t_vm *vm, int param, int idx_mod)
 {
-  char	*res;
-  short	ind_ptr;
-  int	i;
-  int	j;
+  short	adrr;
+  int	dir;
+  int	at;
 
-  i = REG_SIZE - 1;
-  j = 0;
-  if ((res = malloc(IND_SIZE * sizeof(char))) == NULL)
-    return (NULL);
-  res[0] = vm->mem[MOD_MEM(pos + 1)];
-  res[1] = vm->mem[MOD_MEM(pos + 0)];
-  ind_ptr = (*((short*)res));
-  if (modidx)
-    ind_ptr %= IDX_MOD;
-  free(res);
-  if ((res = malloc(REG_SIZE * sizeof(char))) == NULL)
-    return (NULL);
-  while ((i >= 0) && (j < REG_SIZE))
-    {
-      res[j] = vm->mem[MOD_MEM(pc + ind_ptr + i)];
-      j++;
-      i--;
-    }
-  return (res);
+  at = NBPBYTE(PARAMBYTE, param) + 1;
+  adrr = *((short*)(&(proc->params_next_instr.params[at])));
+  switch_endian((char*)(&adrr), sizeof(short));
+  if (idx_mod)
+    dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD))]));
+  else
+    dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + (adrr))]));
+  switch_endian((char*)(&dir), sizeof(int));
+  return (dir);
+}
+
+int	op_get_reg(t_process *proc, t_vm *vm, int param)
+{
+  int	reg;
+
+  reg = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, param) + 1] - 1;
+  if (reg >= 0 && reg < REG_NUMBER)
+    return (proc->reg[reg]);
+  return (0);
 }

@@ -27,5 +27,5 @@ int	op_aff(t_process *proc, t_vm *vm)
       cara = proc->reg[reg1] % 256;
       my_putstr(&cara, 1, 1);
     }
-  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER));
+  return (3);
 }

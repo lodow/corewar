@@ -33,7 +33,7 @@ void	init_instr_c_tab(t_vm *vm)
 void	init_instr_f_tab(t_vm *vm)
 {
   vm->f[0] = &op_live;
-  vm->f[1] = &op_load;
+  vm->f[1] = &op_ld;
   vm->f[2] = &op_st;
   vm->f[3] = &op_add;
   vm->f[4] = &op_sub;

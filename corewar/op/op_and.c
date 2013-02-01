@@ -10,41 +10,6 @@
 
 #include	"operation.h"
 
-int	op_and_dir(t_process *proc, t_vm *vm, int param)
-{
-  int	dir;
-  int	at;
-
-  at = NBPBYTE(PARAMBYTE, param) + 1;
-  dir = *((int*)(&(proc->params_next_instr.params[at])));
-  switch_endian((char*)(&dir), sizeof(int));
-  return (dir);
-}
-
-int	op_and_ind(t_process *proc, t_vm *vm, int param)
-{
-  short	adrr;
-  int	dir;
-  int	at;
-
-  at = NBPBYTE(PARAMBYTE, param) + 1;
-  adrr = *((short*)(&(proc->params_next_instr.params[at])));
-  switch_endian((char*)(&adrr), sizeof(short));
-  dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + adrr)]));
-  switch_endian((char*)(&dir), sizeof(int));
-  return (dir);
-}
-
-int	op_and_reg(t_process *proc, t_vm *vm, int param)
-{
-  int	reg;
-
-  reg = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, param) + 1] - 1;
-  if (reg >= 0 && reg < REG_NUMBER)
-    return (proc->reg[reg]);
-  return (0);
-}
-
 int	op_and(t_process *proc, t_vm *vm)
 {
   int	reg3;
@@ -60,15 +25,15 @@ int	op_and(t_process *proc, t_vm *vm)
       while ((i < 2) && (GET_TYPE_PARAMX(PARAMBYTE, i) != 00))
         {
           if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
-            val[i] = op_and_reg(proc, vm, i);
+            val[i] = op_get_reg(proc, vm, i);
           else if(GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
-            val[i] = op_and_dir(proc, vm, i);
+            val[i] = op_get_dir(proc, vm, i);
           else
-            val[i] = op_and_ind(proc, vm, i);
+            val[i] = op_get_ind(proc, vm, i, 1);
           i++;
         }
       proc->reg[reg3] = val[0] & val[1];
-      calc_carry(proc, is_byte_zero((char*)&(proc->reg[reg3]), sizeof(int)));
+       proc->carry = is_byte_zero((char*)&(proc->reg[reg3]), sizeof(int));
       printf("%d and %d & %d = %d\n", proc->associated_champ->number, val[0], val[1], proc->reg[reg3]);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);

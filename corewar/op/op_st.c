@@ -96,7 +96,7 @@ int	op_st(t_process * proc, t_vm * vm)
   reg1 = proc->params_next_instr.params[1] - 1;
   if ((reg1 >= 0 && reg1 < REG_NUMBER) && (type_param2 != 0x00))
     {
-      carry = is_byte_zero((char*)&(proc->reg[reg1]), sizeof(int));
+      carry = is_byte_zero((char*) & (proc->reg[reg1]), sizeof(int));
       if (type_param2 == 0x01)
         ch_carry = op_st_reg(proc, vm, reg1);
       else if(type_param2 == 0x02)
@@ -105,6 +105,6 @@ int	op_st(t_process * proc, t_vm * vm)
         ch_carry = op_st_dir(proc, vm, reg1);
     }
   if (ch_carry)
-    calc_carry(proc, carry);
+    proc->carry = carry;
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1));
 }

@@ -33,6 +33,5 @@ int	op_lfork(t_process *proc, t_vm *vm)
       i++;
     }
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  proc->carry = toggle_val(proc->carry);
   return (3);
 }
