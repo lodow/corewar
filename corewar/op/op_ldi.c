@@ -37,4 +37,5 @@ int	op_ldi(t_process *proc, t_vm *vm)
       printf("%d and %d & %d = %d\n", proc->associated_champ->number, val[0], val[1], proc->reg[reg3]);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);*/
+  return (1);
 }

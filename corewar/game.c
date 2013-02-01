@@ -106,13 +106,12 @@ int	handle_game(t_vm *vm)
     if ((vm->cycle_to_die != 0) && (vm->cycle_count % vm->cycle_to_die) == 0)
       if (check_champs_alive_a_print(vm) == 1)
         end_game = 1;
-  if (vm->cycle_to_dump != 0)
-    if ((vm->cycle_to_dump != -1) && (vm->cycle_count %  vm->cycle_to_dump) == 0)
-      {
-	dump_memory(vm->mem, MEM_SIZE);
-	if (vm->flag == 0)
-	  end_game = 1;
-      }
+  if ((vm->cycle_to_dump > 0) && (vm->cycle_count %  vm->cycle_to_dump) == 0)
+    {
+      dump_memory(vm->mem, MEM_SIZE);
+      if (vm->flag == 0)
+        end_game = 1;
+    }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
       my_putstr("No winner, that's too bad !\n", 1, -1);
