@@ -21,7 +21,7 @@ int	op_get_dir(t_process *proc, t_vm *vm, int param)
   return (dir);
 }
 
-int	op_get_ind(t_process *proc, t_vm *vm, int param)
+int	op_get_ind(t_process *proc, t_vm *vm, int param, int idx_mod)
 {
   short	adrr;
   int	dir;
@@ -30,7 +30,10 @@ int	op_get_ind(t_process *proc, t_vm *vm, int param)
   at = NBPBYTE(PARAMBYTE, param) + 1;
   adrr = *((short*)(&(proc->params_next_instr.params[at])));
   switch_endian((char*)(&adrr), sizeof(short));
-  dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + adrr)]));
+  if (idx_mod)
+    dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD))]));
+  else
+    dir = *((int*)(&vm->mem[MOD_MEM(proc->pc + (adrr))]));
   switch_endian((char*)(&dir), sizeof(int));
   return (dir);
 }

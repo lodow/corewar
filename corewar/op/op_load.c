@@ -30,7 +30,7 @@ int	op_ld(t_process *proc, t_vm *vm)
       else if(GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
         vtl = op_get_dir(proc, vm, 0);
       else
-        vtl = op_get_ind(proc, vm, 0);
+        vtl = op_get_ind(proc, vm, 0, 1);
       proc->reg[reg] = vtl;
       proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
       printf("%d ld %d, reg%d\n", proc->associated_champ->number, vtl, reg + 1);

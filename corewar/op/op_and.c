@@ -29,7 +29,7 @@ int	op_and(t_process *proc, t_vm *vm)
           else if(GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
             val[i] = op_get_dir(proc, vm, i);
           else
-            val[i] = op_get_ind(proc, vm, i);
+            val[i] = op_get_ind(proc, vm, i, 1);
           i++;
         }
       proc->reg[reg3] = val[0] & val[1];

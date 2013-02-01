@@ -35,6 +35,8 @@ int	op_xor(t_process *proc, t_vm *vm);
 int	op_zjmp(t_process *proc, t_vm *vm);
 int	is_byte_zero(char *src, int size);
 int	op_get_dir(t_process *proc, t_vm *vm, int param);
+int	op_get_ind(t_process *proc, t_vm *vm, int param, int idx_mod);
+int	op_get_reg(t_process *proc, t_vm *vm, int param);
 char	*get_paramx(t_vm *vm, t_process *proc, char parambyte, int x);
 int	calc_instr_len_f_param_byte(char type, int nbmax);
 

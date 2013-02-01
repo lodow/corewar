@@ -2,8 +2,11 @@
 .comment "will it fail ?"
 
 label:	and %65,r1,r3
+	lld %500,r4
 	ld %500,r4
-	ld :label,r5
+	lld 999,r8
+	ld 999,r5
+	ld %500, %9
 	add r4,r4,r4
 	or %82,r1,r10
 	and r1,%65,r2
@@ -17,3 +20,5 @@ label:	and %65,r1,r3
 	aff r10
 	aff r3
 	aff r2
+	and %0,%0,r6
+jmp:	zjmp %:jmp
