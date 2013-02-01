@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Jan 31 16:49:34 2013 Welanor
+** Last update Fri Feb  1 15:21:08 2013 Adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -100,7 +100,7 @@ void	put_to_param(t_param *param, char *str, int i, t_cmd *cmd)
       param->param[1] |= 1;
       registre(param, str, i);
     }
-  else if (str[i] == '%' && str[i - 5] != 'z')
+  else if (str[i] == '%')
     {
       param->param[1] <<= 2;
       param->param[1] |= 2;
