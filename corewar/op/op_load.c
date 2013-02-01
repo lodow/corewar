@@ -27,7 +27,7 @@ int	op_ld(t_process *proc, t_vm *vm)
     {
       if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 1)
         vtl = op_get_reg(proc, vm, 0);
-      else if(GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
+      else if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
         vtl = op_get_dir(proc, vm, 0);
       else
         vtl = op_get_ind(proc, vm, 0, 1);
