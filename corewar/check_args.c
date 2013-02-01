@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Fri Feb  1 14:41:32 2013 luc sinet
+** Last update Fri Feb  1 15:24:15 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -70,7 +70,7 @@ int	opt_compare(char **av, t_arg *parg)
   args[0] = &check_dump;
   args[1] = &check_numproc;
   args[2] = &check_addr;
-  args[3] = &check_unlimited;
+  args[3] = &check_adds;
   args[4] = &opt_error;
   opt_list[0] = "-dump";
   opt_list[1] = "-n";

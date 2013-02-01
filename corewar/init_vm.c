@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Jan 27 17:13:22 2013 luc sinet
+** Last update Fri Feb  1 15:31:35 2013 luc sinet
 */
 
 #include	"include.h"
@@ -56,6 +56,7 @@ t_vm		*init_vm_stats(int cycle_t_die, int cycle_t_dump, t_vm *vm)
   vm->champs = NULL;
   vm->cycle_count = 0;
   vm->nbr_live = 0;
+  vm->flag = 0;
   vm->cycle_to_die = cycle_t_die;
   vm->cycle_to_dump = cycle_t_dump;
   if ((vm->mem = malloc(MEM_SIZE * sizeof(char))) == NULL)
