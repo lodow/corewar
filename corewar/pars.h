@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Fri Feb  1 14:15:06 2013 luc sinet
+** Last update Fri Feb  1 14:41:58 2013 luc sinet
 */
 
 #ifndef PARS_H_
@@ -18,9 +18,7 @@ typedef struct	s_arg
 {
   int		pos;
   int		nb_arg;
-  char		dump;
-  char		num;
-  char		addr;
+  char		opt[5];
   int		added_champ;
   int		nb_champ;
   int		dump_val;
@@ -36,6 +34,7 @@ int	check_dump(char **av, t_arg *parg);
 int	check_numproc(char **av, t_arg *parg);
 int	check_addr(char **av, t_arg *parg);
 int	check_unlimited(char **av, t_arg *parg);
+int	opt_error(char **av, t_arg *parg);
 int	opt_compare(char **av, t_arg *parg);
 int	check_champ(char *name, t_arg *parg);
 int	is_a_num(char *opt);
