@@ -29,7 +29,7 @@ int	op_add(t_process *proc, t_vm *vm)
       (reg3 >= 0 && reg3 < REG_NUMBER))
     {
       proc->reg[reg3] = proc->reg[reg1] + proc->reg[reg2];
-      calc_carry(proc, is_byte_zero((char*)&proc->reg[reg3], sizeof(int)));
+      proc->carry = is_byte_zero((char*)&proc->reg[reg3], sizeof(int));
       printf("%d add %d + %d = %d\n", proc->associated_champ->number, proc->reg[reg1], proc->reg[reg2], proc->reg[reg3]);
     }
   return (5);
