@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:07:26 2013 maxime lavandier
-** Last update Thu Jan 31 16:28:25 2013 Welanor
+** Last update Fri Feb  1 15:27:34 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -30,13 +30,8 @@ int	add_sub_param(char *str, int i, t_param *param, t_cmd *cmd)
     registre(param, str, i);
   else
     return (-1);
-  /*  while (str[i] != 0 && str[i] != 'r')
-    i++;
-  if (str[i] == 0)
-    return (-1);
-  */ return (0);
+  return (0);
 }
-
 
 int	add_sub(char *str, int i, t_param *param, t_cmd *cmd)
 {

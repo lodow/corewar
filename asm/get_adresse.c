@@ -4,7 +4,7 @@
 ** Made by dellam_a Login <dellam_a@epitech.eu>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Jan 31 14:59:37 2013 Welanor
+** Last update Fri Feb  1 15:30:21 2013 maxime lavandier
 **
 */
 
@@ -33,7 +33,7 @@ void	adress_ldlld(char *line, int *pc)
     *pc += DIR_SIZE;
   else if (line[i] == 'r')
     *pc += 1;
-  else    
+  else
     *pc += IND_SIZE;
   *pc += 1;
 }

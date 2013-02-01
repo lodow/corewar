@@ -26,7 +26,7 @@ int	op_and(t_process *proc, t_vm *vm)
         {
           if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
             val[i] = op_get_reg(proc, vm, i);
-          else if(GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
+          else if (GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
             val[i] = op_get_dir(proc, vm, i);
           else
             val[i] = op_get_ind(proc, vm, i, 1);

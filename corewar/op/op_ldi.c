@@ -22,11 +22,11 @@ int	op_ldi(t_process *proc, t_vm *vm)
   reg = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 2) + 1] - 1;
   if (reg >= 0 && reg3 < REG_NUMBER)
     {
-      while ((i < 2) && (GET_TYPE_PARAMX(PARAMBYTE, i) != 00))
+      while ((i < 2) && (GET_TYPE_PARAMX(PARAMBYTE, i) != 0))
         {
           if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
             val[i] = op_get_reg(proc, vm, i);
-          else if(GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
+          else if (GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
             val[i] = op_get_dir(proc, vm, i);
           else
             val[i] = op_get_ind(proc, vm, i, 1);

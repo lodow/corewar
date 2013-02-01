@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Thu Jan 31 16:49:51 2013 Welanor
+** Last update Fri Feb  1 15:38:27 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -39,7 +39,7 @@ int	chose_func(t_param *param, char *str, int i, t_cmd *cmd)
     j++;
   if (j == 16)
     return (-2);
-  return (ptr[j](str, i ,param, cmd));
+  return (ptr[j](str, i, param, cmd));
 }
 
 int	my_cmp(char *str1, char *str2)
@@ -53,7 +53,8 @@ int	my_cmp(char *str1, char *str2)
         return (0);
       i++;
     }
-  if (str2[i] != 0 || (str1[i] != ' ' && str1[i] != SEPARATOR_CHAR && str1[i] != 0))
+  if (str2[i] != 0 || (str1[i] != ' ' &&
+		       str1[i] != SEPARATOR_CHAR && str1[i] != 0))
     return (0);
   return (1);
 }

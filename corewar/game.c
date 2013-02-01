@@ -102,15 +102,15 @@ int	handle_game(t_vm *vm)
   vm->cycle_count++;
   if (vm->nbr_live >= NBR_LIVE)
     vm->cycle_to_die -= CYCLE_DELTA;
-  if (vm->cycle_to_die != 0)
-    if (vm->flag == 0 && (vm->cycle_count % vm->cycle_to_die) == 0)
+  if (vm->flag == 0)
+    if ((vm->cycle_to_die != 0) && (vm->cycle_count % vm->cycle_to_die) == 0)
       if (check_champs_alive_a_print(vm) == 1)
-	end_game = 1;
+        end_game = 1;
   if ((vm->cycle_to_dump != -1) && (vm->cycle_count >= vm->cycle_to_dump))
     {
       dump_memory(vm->mem, MEM_SIZE);
       if (vm->flag == 0)
-	end_game = 1;
+        end_game = 1;
     }
   if ((vm->cycle_to_die <= 0) || (vm->process_list == NULL))
     {
