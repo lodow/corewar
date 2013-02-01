@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Fri Feb  1 15:10:11 2013 luc sinet
+** Last update Fri Feb  1 15:19:12 2013 luc sinet
 */
 
 #include "include.h"
@@ -93,10 +93,8 @@ int	check_unlimited(char **av, t_arg *parg)
   if (my_strcmp("-unlimited", av[parg->pos]) == 0)
     {
       if (parg->opt[0] != -1)
-	{
-	  parg->opt[0] = 1;
 	  return (-1);
-	}
+      parg->opt[0] = 1;
     }
   else
     return (0);

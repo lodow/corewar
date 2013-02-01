@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Fri Feb  1 14:34:07 2013 luc sinet
+** Last update Fri Feb  1 15:17:25 2013 luc sinet
 */
 
 #include "include.h"
@@ -86,25 +86,27 @@ t_arg	*init_arg(t_arg *parg, int ac, t_vm *vm)
 int	pars(char **av, int ac, t_vm *vm)
 {
   t_arg	*parg;
+  char	error;
 
+  error = 0;
   if ((parg = malloc(sizeof(*parg))) == NULL ||
       (parg = init_arg(parg, ac, vm)) == NULL || check_args(av, parg) == -1)
-      {
-	if (parg == NULL)
-	  error_msg(2);
-	return (-1);
-      }
-  free(parg->num_used);
-  free(parg->addr_used);
-  if ((parg = init_arg(parg, ac, vm)) == NULL || pars_args(av, parg) == -1)
+    error = -1;
+  if (error == 0)
     {
-      if (parg == NULL)
-	error_msg(2);
-      return (-1);
+      free(parg->num_used);
+      free(parg->addr_used);
+      if ((parg = init_arg(parg, ac, vm)) == NULL || pars_args(av, parg) == -1)
+	error = -1;
     }
-  free(parg->num_used);
-  free(parg->addr_used);
-  free(parg);
-  return (0);
+  if (parg == NULL)
+    error_msg(2);
+  else
+    {
+      free(parg->num_used);
+      free(parg->addr_used);
+      free(parg);
+    }
+  return (error);
 }
 
