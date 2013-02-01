@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Fri Feb  1 14:42:18 2013 luc sinet
+** Last update Fri Feb  1 14:49:08 2013 luc sinet
 */
 
 #include "include.h"
@@ -52,7 +52,7 @@ int	pars_opt(char **av, t_arg *parg)
 {
   int	i;
   char	*opt_list[4];
-  int	(*opt[5])(char **av, t_arg **parg);
+  int	(*opt[5])(char **av, t_arg *parg);
 
   i = 0;
   opt[0] = &dump_opt;
