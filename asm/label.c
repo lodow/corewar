@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 ** 
 ** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Thu Jan 31 15:14:59 2013 Welanor
+** Last update Fri Feb  1 16:27:51 2013 Adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -113,11 +113,9 @@ t_cmd	*recuplabel(t_cmd *cmd, char **file)
 	  && my_begincmp(line, NAME_CMD_STRING) == 0
 	  && my_begincmp(line, COMMENT_CMD_STRING) == 0)
 	{
-	  printf("%s\n", line);
 	  if (findlabel(line) == 1)
 	    cmd = addlabel(line, cmd);
 	  changepc(line, &(cmd->pc));
-	  printf("%d\n", cmd->pc);
 	}
       free(line);
       i++;

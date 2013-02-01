@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.eu>
 **
 ** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Thu Jan 31 15:42:38 2013 Welanor
+** Last update Fri Feb  1 16:29:59 2013 Adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -42,18 +42,16 @@ void	adress_sti(char *line, int *pc)
   int	i;
 
   i = 0;
-  *pc += 2;
   while (line[i] != 0 && line[i] != ' ')
     i++;
-  if (line[i] == 0)
+  if (line[i++] == 0)
     return ;
-  i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += DIR_SIZE;
+    *pc += DIR_SIZE + 2;
   else if (line[i] == 'r')
-    *pc += 1;
+    *pc += 1 + 2;
   else
-    *pc += IND_SIZE;
+    *pc += IND_SIZE + 2;
   if ((i = next(line, i)) == -1)
     return ;
   if (line[i] == 'r')
