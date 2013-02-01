@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 30 16:15:31 2013 luc sinet
+** Last update Thu Jan 31 03:36:17 2013 luc sinet
 */
 
 #include	"include.h"
@@ -34,7 +34,7 @@ t_champ		*load_champ(int fd, int number, char *name)
   int		size;
 
   if (!(((size = get_bin_file(fd, &file)) > (int)sizeof(t_header))
-      && (champ = malloc(1 * sizeof(t_champ))) != NULL))
+      && (champ = malloc(sizeof(t_champ))) != NULL))
     return (loading_error(0, name));
   champ->freeme = file;
   if ((champ->header.magic = ((int*)switch_endian(file, sizeof(int)))[0])

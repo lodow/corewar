@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Tue Jan 29 19:10:29 2013 luc sinet
+** Last update Fri Feb  1 15:04:36 2013 luc sinet
 */
 
 #include "include.h"
@@ -24,7 +24,7 @@ int	prog_num_opt(char **av, t_arg *parg)
     {
       parg->num_used[parg->num_pos] = my_getnbr(av[parg->pos + 1]);
       parg->num_pos += 1;
-      parg->num = 1;
+      parg->opt[1] = 1;
       parg->pos += 1;
     }
   return (0);
@@ -37,29 +37,41 @@ int	addr_opt(char **av, t_arg *parg)
       parg->addr_used[parg->addr_pos] =
 	my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
       parg->addr_pos += 1;
-      parg->addr = 1;
+      parg->opt[2] = 1;
       parg->pos += 1;
     }
+  return (0);
+}
+
+int	unlimited_opt(char **av, t_arg *parg)
+{
+  if (my_strcmp("-unlimited", av[parg->pos]) == 0)
+    {
+      parg->opt[0] = 1;
+      parg->vm->flag = 1;
+    }
+  else
+    return (0);
   return (0);
 }
 
 int	pars_opt(char **av, t_arg *parg)
 {
   int	i;
-  char	*opt_list[3];
+  char	*opt_list[4];
+  int	(*opt[5])(char **av, t_arg *parg);
 
   i = 0;
+  opt[0] = &dump_opt;
+  opt[1] = &prog_num_opt;
+  opt[2] = &addr_opt;
+  opt[3] = &unlimited_opt;
+  opt[4] = &opt_error;
   opt_list[0] = "-dump";
   opt_list[1] = "-n";
   opt_list[2] = "-a";
-  while (i < 3 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
+  opt_list[3] = "-unlimited";
+  while (i < 4 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
     i++;
-  if (i == 3)
-    return (-1);
-  if (i == 0)
-    return (dump_opt(av, parg));
-  else if (i == 1)
-    return (prog_num_opt(av, parg));
-  else
-    return (addr_opt(av, parg));
+  return (opt[i](av, parg));
 }
