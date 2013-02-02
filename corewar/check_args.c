@@ -21,7 +21,7 @@ int	is_a_num(char *nb)
   while (nb[i])
     {
       if (nb[i] < '0' || nb[i] > '9')
-	return (-1);
+        return (-1);
       i += 1;
     }
   return (1);
@@ -65,7 +65,7 @@ int	opt_compare(char **av, t_arg *parg)
 {
   int	i;
   char	*opt_list[4];
-  int	(*args[5])(char **av, t_arg *parg);
+  int	(*args[5])(char **av, t_arg * parg);
 
   i = 0;
   args[0] = &check_dump;

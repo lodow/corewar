@@ -16,7 +16,7 @@ int	get_value_lldi_at_adrr(t_process *proc, t_vm *vm, int adrr)
   char	*tmp;
 
   value = 0;
-  tmp = (int*)(&(value));
+  tmp = (char*)(&(value));
   tmp[0] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 0)];
   tmp[1] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 1)];
   tmp[2] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 2)];
