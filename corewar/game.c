@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Feb  1 16:09:31 2013 luc sinet
+** Last update Sat Feb  2 08:17:46 2013 luc sinet
 */
 
 #include	"include.h"
@@ -78,6 +78,7 @@ void			dump_memory(t_vmmem *mem, int size)
 
   i = 0;
   hexa = "0123456789ABCDEF";
+  write_dump(mem, size);
   while (i < size)
     {
       tmp = mem[i];
