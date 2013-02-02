@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Feb  2 08:05:12 2013 luc sinet
-** Last update Sat Feb  2 18:07:44 2013 luc sinet
+** Last update Sat Feb  2 18:33:15 2013 luc sinet
 */
 
 #include "include.h"
@@ -38,6 +38,29 @@ void	write_in_file(t_vmmem *mem, int size, int fd, unsigned char *buf)
     }
 }
 
+int	fork_and_exec()
+{
+  pid_t	pid;
+  char	*cmd[] = {"fdf", "fdf_file.fdf", (char *)0};
+  char *env[] = { "HOME=/usr/home", "LOGNAME=home", (char *)0 };
+
+  if ((pid = fork()) == -1)
+    {
+      my_putstr("Fork error \n",2, -1);
+      return (-1);
+    }
+  if (pid == 0)
+    {
+      if (execve("fdf", cmd, env) == -1)
+	{
+	  my_putstr("execve error\n",2, -1);
+	  return (-1);
+	}
+    }
+  else
+    wait(NULL);
+}
+
 int			write_dump(t_vmmem *mem, int size)
 {
   int			fd;
@@ -47,11 +70,12 @@ int			write_dump(t_vmmem *mem, int size)
   mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
   if ((fd = open("fdf_file.fdf", O_WRONLY | O_CREAT | O_TRUNC, mode)) == -1)
     {
-      my_putstr("Can't open the file to dump memory\n", 2, -1);
+      my_putstr("Can't open the file to dump memory\n",2 , -1);
       return (-1);
     }
   buf[2] = '\0';
   write_in_file(mem, size, fd, buf);
   close(fd);
+  fork_and_exec();
   return (0);
 }
