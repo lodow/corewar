@@ -5,11 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Wed Jan 30 22:30:51 2013 luc sinet
+** Last update Sat Feb  2 17:47:03 2013 luc sinet
 */
 
 #include <stdlib.h>
 #include "str_func.h"
+#include "nb_func.h"
 
 int	my_getnbr(char *s1)
 {
@@ -39,7 +40,7 @@ int	my_getnbr(char *s1)
   return (nb * sign);
 }
 
-int	my_put_nbr(int nb, int fd)
+void	my_put_nbr(int nb, int fd)
 {
   char	res;
 
@@ -60,22 +61,55 @@ int	my_put_nbr(int nb, int fd)
   return (0);
 }
 
-void			print_hexa(char *mem, int nb)
+int	my_getnbr_base(char *calc, char *base)
 {
-  int                   i;
-  char                  *hexa;
-  unsigned char         tmp;
+  int   pic;
+  int   lenb;
+  int   lenc;
+  int   pib;
+  int   res;
 
-  i = 0;
-  hexa = "0123456789ABCDEF";
-  while (i < nb)
+  pic = 0;
+  res = 0;
+  lenb = my_strlen(base);
+  lenc = my_strlen(calc) - 1;
+  while (calc[pic])
     {
-      tmp = mem[i];
-      my_putstr("0x", 1, 2);
-      my_putstr(&hexa[tmp / 16], 1, 1);
-      my_putstr(&hexa[tmp % 16], 1, 1);
-      if (i != nb - 1)
-        my_putstr(",", 1, 1);
-      i++;
+      pib = 0;
+      while (calc[lenc - pic] != base[pib] && base[pib])
+	pib += 1;
+      res += pib * my_power_rec(lenb, pic);
+      pic += 1;
     }
+  return (res);
+}
+
+int	my_power_rec(int nb, int power)
+{
+  if (power == 0)
+    return (1);
+  else if (power > 0)
+    return (nb * my_power_rec(nb, power - 1));
+  else
+    return (0);
+}
+
+int     my_square_root(int nb)
+{
+  int   i;
+  int   count;
+  int   nb_c;
+
+  i = 1;
+  count = 1;
+  nb_c = 1;
+  while (nb_c < nb)
+    {
+      i = i + 2;
+      count = count + 1;
+      nb_c = nb_c + i;
+    }
+  if (nb_c == nb)
+    return (count);
+  return (count);
 }

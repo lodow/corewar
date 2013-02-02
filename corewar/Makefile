@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue Jan 29 23:09:04 2013 luc sinet
+## Last update Sat Feb  2 17:47:36 2013 luc sinet
 ##
 
 SRC= 	main.c \
@@ -20,6 +20,7 @@ SRC= 	main.c \
 	init_vm.c \
 	process_util.c \
 	get_param_instr.c \
+	dump_file.c \
 	op/op_useful.c \
 	op/op_utilities.c \
 	op/op_add.c \
@@ -44,7 +45,7 @@ SRC= 	main.c \
 	../misc/liste.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
-	../misc/get_next_line.c
+	../misc/get_next_line.c \
 
 OBJ= $(SRC:.c=.o)
 
