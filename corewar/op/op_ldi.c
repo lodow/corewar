@@ -10,9 +10,24 @@
 
 #include	"operation.h"
 
+int	get_value_ldi_at_adrr(t_process *proc, t_vm *vm, int adrr)
+{
+  int	value;
+  char	*tmp;
+
+  value = 0;
+  tmp = (char*)(&(value));
+  tmp[0] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 0)];
+  tmp[1] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 1)];
+  tmp[2] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 2)];
+  tmp[3] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 3)];
+  switch_endian(tmp, sizeof(int));
+  return (value);
+}
+
 int	op_ldi(t_process *proc, t_vm *vm)
 {
- /* int	reg;
+  int	reg;
   int	val[2];
   int	i;
 
@@ -20,7 +35,7 @@ int	op_ldi(t_process *proc, t_vm *vm)
   val[0] = 0;
   val[1] = 0;
   reg = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 2) + 1] - 1;
-  if (reg >= 0 && reg3 < REG_NUMBER)
+  if (reg >= 0 && reg < REG_NUMBER)
     {
       while ((i < 2) && (GET_TYPE_PARAMX(PARAMBYTE, i) != 0))
         {
@@ -32,10 +47,10 @@ int	op_ldi(t_process *proc, t_vm *vm)
             val[i] = op_get_ind(proc, vm, i, 1);
           i++;
         }
-      proc->reg[reg3] = val[0] & val[1];
-       proc->carry = is_byte_zero((char*)&(proc->reg[reg3]), sizeof(int));
-      printf("%d and %d & %d = %d\n", proc->associated_champ->number, val[0], val[1], proc->reg[reg3]);
+      val[0] += val[1] % IDX_MOD;
+      proc->reg[reg] = get_value_ldi_at_adrr(proc, vm, val[0]);
+      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+      printf("%d ldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0], val[1], val[0] + val[1], proc->reg[reg]);
     }
-  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);*/
-  return (1);
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }

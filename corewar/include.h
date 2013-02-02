@@ -27,5 +27,6 @@
 
 int	get_bin_file(int fd, char **file);
 char	*switch_endian(char *var, int varsize);
+void	set_numval(t_arg *parg);
 
 #endif
