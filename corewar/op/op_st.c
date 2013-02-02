@@ -10,71 +10,55 @@
 
 #include	"operation.h"
 
-int	op_st_reg(t_process *proc, t_vm *vm, int reg1)
+void	op_st_reg(t_process *proc, t_vm *vm, int reg)
 {
   int	reg2;
-  int	ok;
 
-  ok = 0;
   reg2 = proc->params_next_instr.params[2] - 1;
   if (reg2 >= 0 && reg2 < REG_NUMBER)
     {
-      ok = 1;
-      proc->reg[reg1] = proc->reg[reg2];
+      proc->reg[reg2] = proc->reg[reg];
+      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+      printf("st reg%d, reg%d\n", reg, reg2);
     }
-  return (ok);
 }
 
-int	op_st_dir(t_process *proc, t_vm *vm, int reg1)
+void	op_st_dir(t_process *proc, t_vm *vm, int reg)
 {
-  char	*tmp;
   int	adrr;
-  int	i;
-  int	j;
+  char	*tmp;
 
-  i = 0;
-  tmp = ((char*)(&adrr));
-  j = DIR_SIZE - 1;
-  while (i < DIR_SIZE)
-    {
-      tmp[i] = proc->params_next_instr.params[2 + j];
-      j--;
-      i++;
-    }
-  i = 0;
-  tmp = ((char*)(&(proc->reg[reg1])));
-  while (i < DIR_SIZE)
-    {
-      VM_MEM(i) = tmp[i];
-      i++;
-    }
-  return (1);
+  tmp = ((char*)(&(adrr)));
+  tmp[0] = proc->params_next_instr.params[2];
+  tmp[1] = proc->params_next_instr.params[3];
+  tmp[2] = proc->params_next_instr.params[4];
+  tmp[3] = proc->params_next_instr.params[5];
+  switch_endian(tmp, sizeof(int));
+  tmp = ((char*)(&(proc->reg[reg])));
+  vm->mem[MOD_MEM(adrr + 0)] = tmp[3];
+  vm->mem[MOD_MEM(adrr + 1)] = tmp[2];
+  vm->mem[MOD_MEM(adrr + 2)] = tmp[1];
+  vm->mem[MOD_MEM(adrr + 3)] = tmp[0];
+  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
 }
 
-int	op_st_ind(t_process *proc, t_vm *vm, int reg1)
+void	op_st_ind(t_process *proc, t_vm *vm, int reg)
 {
-  char	*tmp;
   short	adrr;
-  int	i;
-  int	j;
+  char	*tmp;
 
-  i = 0;
-  tmp = ((char*)(&adrr));
-  j = IND_SIZE - 1;
-  while (i < IND_SIZE)
-    {
-      tmp[i] = proc->params_next_instr.params[2 + j];
-      j--;
-      i++;
-    }
-  i = 0;
-  tmp = ((char*)(&(proc->reg[reg1])));
-  while (i < IND_SIZE)
-    {
-      VM_MEM(proc->pc + ((adrr + i) % IDX_MOD)) = tmp[i];
-      i++;
-    }
-  return (1);
+  tmp = ((char*)(&(adrr)));
+  tmp[0] = proc->params_next_instr.params[2];
+  tmp[1] = proc->params_next_instr.params[3];
+  switch_endian(tmp, sizeof(short));
+  adrr %= IDX_MOD;
+  tmp = ((char*)(&(proc->reg[reg])));
+  vm->mem[MOD_MEM(proc->pc + adrr + 0)] = tmp[3];
+  vm->mem[MOD_MEM(proc->pc + adrr + 1)] = tmp[2];
+  vm->mem[MOD_MEM(proc->pc + adrr + 2)] = tmp[1];
+  vm->mem[MOD_MEM(proc->pc + adrr + 3)] = tmp[0];
+  printf("st reg%d,%d\n", reg, adrr);
+  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
 }
 
 /*
@@ -83,28 +67,19 @@ int	op_st_ind(t_process *proc, t_vm *vm, int reg1)
 ** champs.
 ** \return the total size of the instruction !
 */
-int	op_st(t_process * proc, t_vm * vm)
+int	op_st(t_process *proc, t_vm *vm)
 {
-  int	reg1;
-  char	type_param2;
-  int	ch_carry;
-  int	carry;
+  int	reg;
 
-  ch_carry = 0;
-  carry = proc->carry;
-  type_param2 = GET_TYPE_PARAMX(proc->params_next_instr.params[0], 1);
-  reg1 = proc->params_next_instr.params[1] - 1;
-  if ((reg1 >= 0 && reg1 < REG_NUMBER) && (type_param2 != 0x00))
+  reg =  proc->params_next_instr.params[1] - 1;
+  if (reg >= 0 && reg < REG_NUMBER)
     {
-      carry = is_byte_zero((char*) & (proc->reg[reg1]), sizeof(int));
-      if (type_param2 == 0x01)
-        ch_carry = op_st_reg(proc, vm, reg1);
-      else if(type_param2 == 0x02)
-        ch_carry = op_st_ind(proc, vm, reg1);
+      if (GET_TYPE_PARAMX(PARAMBYTE, 1) == 1)
+        op_st_reg(proc, vm, reg);
+      else if (GET_TYPE_PARAMX(PARAMBYTE, 1) == 2)
+        op_st_dir(proc, vm, reg);
       else
-        ch_carry = op_st_dir(proc, vm, reg1);
+        op_st_ind(proc, vm, reg);
     }
-  if (ch_carry)
-    proc->carry = carry;
-  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1));
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }
