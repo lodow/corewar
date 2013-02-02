@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 17:56:59 2013 luc sinet
+** Last update Sat Feb  2 20:20:47 2013 luc sinet
 */
 
 #include	"include.h"
@@ -42,7 +42,7 @@ int		main(int argc, char **argv, char **envp)
       free_all(&vm);
       return (-1);
     }
-  while (handle_game(&vm) == 0)
+  while (handle_game(&vm, envp) == 0)
     {
       my_apply_on_list(vm.process_list, &exe_process, &vm);
       usleep(1000);

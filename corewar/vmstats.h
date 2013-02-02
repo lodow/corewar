@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Feb  1 14:58:58 2013 luc sinet
+** Last update Sat Feb  2 20:27:11 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -75,7 +75,8 @@ t_process	*create_new_process(t_vm *vm, t_process *src, int pc);
 char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
 int		exe_process(void *ptrproc, void *ptrvm);
 void		fill_param_struct(t_vm *vm, t_process *proc);
-int		handle_game(t_vm *vm);
-void		dump_memory(t_vmmem *mem, int size);
+int		handle_game(t_vm *vm, char **env);
+void		dump_memory(t_vmmem *mem, int size, char **env);
+int		write_dump(t_vmmem *mem, int size, char **env);
 
 #endif

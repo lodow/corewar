@@ -5,9 +5,11 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Feb  2 08:05:12 2013 luc sinet
-** Last update Sat Feb  2 18:33:15 2013 luc sinet
+** Last update Sat Feb  2 20:28:16 2013 luc sinet
 */
 
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "include.h"
 
 void	write_in_file(t_vmmem *mem, int size, int fd, unsigned char *buf)
@@ -38,11 +40,10 @@ void	write_in_file(t_vmmem *mem, int size, int fd, unsigned char *buf)
     }
 }
 
-int	fork_and_exec()
+int	fork_and_exec(char **env)
 {
   pid_t	pid;
   char	*cmd[] = {"fdf", "fdf_file.fdf", (char *)0};
-  char *env[] = { "HOME=/usr/home", "LOGNAME=home", (char *)0 };
 
   if ((pid = fork()) == -1)
     {
@@ -59,9 +60,10 @@ int	fork_and_exec()
     }
   else
     wait(NULL);
+  return (0);
 }
 
-int			write_dump(t_vmmem *mem, int size)
+int			write_dump(t_vmmem *mem, int size, char **env)
 {
   int			fd;
   mode_t		mode;
@@ -76,6 +78,6 @@ int			write_dump(t_vmmem *mem, int size)
   buf[2] = '\0';
   write_in_file(mem, size, fd, buf);
   close(fd);
-  fork_and_exec();
+  fork_and_exec(env);
   return (0);
 }

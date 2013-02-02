@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Feb  2 08:17:46 2013 luc sinet
+** Last update Sat Feb  2 20:19:47 2013 luc sinet
 */
 
 #include	"include.h"
@@ -70,7 +70,7 @@ int	check_champs_alive_a_print(t_vm *vm)
   return (got_a_winner);
 }
 
-void			dump_memory(t_vmmem *mem, int size)
+void			dump_memory(t_vmmem *mem, int size, char **env)
 {
   int			i;
   char			*hexa;
@@ -78,7 +78,7 @@ void			dump_memory(t_vmmem *mem, int size)
 
   i = 0;
   hexa = "0123456789ABCDEF";
-  write_dump(mem, size);
+  write_dump(mem, size, env);
   while (i < size)
     {
       tmp = mem[i];
@@ -95,7 +95,7 @@ void			dump_memory(t_vmmem *mem, int size)
   my_putstr("\n", 1, 1);
 }
 
-int	handle_game(t_vm *vm)
+int	handle_game(t_vm *vm, char **env)
 {
   int	end_game;
 
@@ -109,7 +109,7 @@ int	handle_game(t_vm *vm)
         end_game = 1;
   if ((vm->cycle_to_dump > 0) && (vm->cycle_count %  vm->cycle_to_dump) == 0)
     {
-      dump_memory(vm->mem, MEM_SIZE);
+      dump_memory(vm->mem, MEM_SIZE, env);
       if (vm->flag == 0)
         end_game = 1;
     }

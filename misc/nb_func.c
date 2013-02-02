@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Sat Feb  2 17:47:03 2013 luc sinet
+** Last update Sat Feb  2 20:23:02 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -47,7 +47,7 @@ void	my_put_nbr(int nb, int fd)
   if (nb == -2147483648)
     {
       my_putstr("-2147483648", fd, 11);
-      return (0);
+      return ;
     }
   if (nb < 0)
     {
@@ -58,7 +58,6 @@ void	my_put_nbr(int nb, int fd)
     my_put_nbr(nb / 10, fd);
   res = nb % 10 + 48;
   my_putstr(&res, fd, 1);
-  return (0);
 }
 
 int	my_getnbr_base(char *calc, char *base)
