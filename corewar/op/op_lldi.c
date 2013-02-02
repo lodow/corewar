@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:54:14 2013 luc sinet
+** Last update Sat Feb  2 20:24:03 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -47,7 +47,7 @@ int	op_lldi(t_process *proc, t_vm *vm)
             val[i] = op_get_ind(proc, vm, i, 0);
           i++;
         }
-      proc->reg[reg] = get_value_ldi_at_adrr(proc, vm, val[0] + val[1]);
+      proc->reg[reg] = get_value_lldi_at_adrr(proc, vm, val[0] + val[1]);
       proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
       printf("%d lldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0], val[1], val[0] + val[1], proc->reg[reg]);
     }
