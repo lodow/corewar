@@ -1,7 +1,9 @@
 .name "Test and"
 .comment "will it fail ?"
 
-label:	and %65,r1,r3
+label:	ldi :jmp,r1,r8
+	ldi r8,r1,r8
+	and %65,r1,r3
 	lld %500,r4
 	ld %500,r4
 	lld 999,r8
