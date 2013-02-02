@@ -17,10 +17,10 @@ int	get_value_lldi_at_adrr(t_process *proc, t_vm *vm, int adrr)
 
   value = 0;
   tmp = (char*)(&(value));
-  tmp[0] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 0)];
-  tmp[1] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 1)];
-  tmp[2] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 2)];
-  tmp[3] = vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 3)];
+  tmp[0] = vm->mem[MOD_MEM(proc->pc + adrr + 0)];
+  tmp[1] = vm->mem[MOD_MEM(proc->pc + adrr + 1)];
+  tmp[2] = vm->mem[MOD_MEM(proc->pc + adrr + 2)];
+  tmp[3] = vm->mem[MOD_MEM(proc->pc + adrr + 3)];
   switch_endian(tmp, sizeof(int));
   return (value);
 }
@@ -49,7 +49,7 @@ int	op_lldi(t_process *proc, t_vm *vm)
         }
       proc->reg[reg] = get_value_ldi_at_adrr(proc, vm, val[0] + val[1]);
       proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
-      printf("%d ldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0], val[1], val[0] + val[1], proc->reg[reg]);
+      printf("%d lldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0], val[1], val[0] + val[1], proc->reg[reg]);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }
