@@ -37,16 +37,12 @@ int		main(int argc, char **argv, char **envp)
   t_vm		vm;
 
   init_vm_stats(CYCLE_TO_DIE, -1, &vm);
-  if (pars(&(argv[1]), argc - 1, &vm) == -1)
-    {
-      free_all(&vm);
-      return (-1);
-    }
-  while (handle_game(&vm, envp) == 0)
-    {
-      my_apply_on_list(vm.process_list, &exe_process, &vm);
-      usleep(1000);
-    }
+  if (pars(&(argv[1]), argc - 1, &vm) != -1)
+    while (handle_game(&vm, envp) == 0)
+      {
+        my_apply_on_list(vm.process_list, &exe_process, &vm);
+        usleep(1000);
+      }
   free_all(&vm);
   return (0);
 }
