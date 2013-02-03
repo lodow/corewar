@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Feb  2 08:05:12 2013 luc sinet
-** Last update Sat Feb  2 20:28:16 2013 luc sinet
+** Last update Sun Feb  3 13:43:15 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -28,7 +28,7 @@ void	write_in_file(t_vmmem *mem, int size, int fd, unsigned char *buf)
       buf[0] = hexa[mem[i] / 16];
       buf[1] = hexa[mem[i] % 16];
       i++;
-      my_put_nbr(my_getnbr_base((char *)buf, hexa), fd);
+      my_put_nbr((my_getnbr_base((char *)buf, hexa)), fd);
       if (i % inter == 0)
 	{
 	  my_putstr("\n", fd, 1);
@@ -43,8 +43,11 @@ void	write_in_file(t_vmmem *mem, int size, int fd, unsigned char *buf)
 int	fork_and_exec(char **env)
 {
   pid_t	pid;
-  char	*cmd[] = {"fdf", "fdf_file.fdf", (char *)0};
+  char	*cmd[3];
 
+  cmd[0] = "fdf";
+  cmd[1] = "fdf_file.fdf";
+  cmd[2] = (char *)0;
   if ((pid = fork()) == -1)
     {
       my_putstr("Fork error \n",2, -1);
@@ -54,7 +57,7 @@ int	fork_and_exec(char **env)
     {
       if (execve("fdf", cmd, env) == -1)
 	{
-	  my_putstr("execve error\n",2, -1);
+	  my_putstr("Failed to execute fdf\n",2, -1);
 	  return (-1);
 	}
     }
