@@ -57,7 +57,7 @@ int	op_lldi(t_process *proc, t_vm *vm)
       tmp[0] = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 1) + 1];
       tmp[0] = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 1) + 2];
       proc->reg[reg] = get_value_lldi_at_adrr(proc, vm, val[0]);
-      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+      proc->carry = is_byte_zero((char*)(&(proc->reg[reg])), sizeof(int));
       printf("%d lldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0] - val[1], val[1], val[0], proc->reg[reg]);
     }
   return (7);

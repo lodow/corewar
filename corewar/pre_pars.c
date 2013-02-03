@@ -45,10 +45,10 @@ int	get_new_args(char **args, char **env, int pos, int nb_args)
   if (pid == 0)
     {
       if (execve("my_select", cmd, env) == -1)
-	{
-	  my_putstr("Failed to execute my_select\n", 2, -1);
-	  return (nb_args);
-	}
+        {
+          my_putstr("Failed to execute my_select\n", 2, -1);
+          return (nb_args);
+        }
     }
   else
     wait(NULL);
@@ -77,7 +77,7 @@ int	pre_pars(char **args, char **env, int nb_args)
   while (i < nb_args)
     {
       if (test_opt(args, i) == -1)
-	nb_args = test_folder(args, env, i, nb_args);
+        nb_args = test_folder(args, env, i, nb_args);
       i += 1;
     }
   return (nb_args);

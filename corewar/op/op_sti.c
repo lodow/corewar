@@ -10,55 +10,41 @@
 
 #include	"operation.h"
 
-void	op_sti_reg(t_process *proc, t_vm *vm, int reg)
+int	sti_get_first_val(t_process *proc, t_vm *vm)
 {
-  int	reg2;
-
-  reg2 = proc->params_next_instr.params[2] - 1;
-  if (reg2 >= 0 && reg2 < REG_NUMBER)
+  if (GET_TYPE_PARAMX(PARAMBYTE, 0) != 0)
     {
-      proc->reg[reg2] = proc->reg[reg];
-      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
-      printf("sti reg%d, reg%d\n", reg, reg2);
+      if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 1)
+        return (op_get_reg(proc, vm, 0));
+      else if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
+        return (op_get_dir(proc, vm, 0));
+      else
+        return (op_get_ind(proc, vm, 0, 1));
     }
+  return (0);
 }
 
-void	op_sti_dir(t_process *proc, t_vm *vm, int reg)
-{
-  int	adrr;
-  char	*tmp;
-
-  tmp = ((char*)(&(adrr)));
-  tmp[0] = proc->params_next_instr.params[2];
-  tmp[1] = proc->params_next_instr.params[3];
-  tmp[2] = proc->params_next_instr.params[4];
-  tmp[3] = proc->params_next_instr.params[5];
-  switch_endian(tmp, sizeof(int));
-  tmp = ((char*)(&(proc->reg[reg])));
-  vm->mem[MOD_MEM(adrr + 0)] = tmp[3];
-  vm->mem[MOD_MEM(adrr + 1)] = tmp[2];
-  vm->mem[MOD_MEM(adrr + 2)] = tmp[1];
-  vm->mem[MOD_MEM(adrr + 3)] = tmp[0];
-  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
-}
-
-void	op_sti_ind(t_process *proc, t_vm *vm, int reg)
+int	get_sti_ind_val(t_process *proc, t_vm *vm, int param)
 {
   short	adrr;
+  int	at;
+
+  at = NBPBYTE(PARAMBYTE, param) + 1;
+  adrr = *((short*)(&(proc->params_next_instr.params[at])));
+  switch_endian((char*)(&adrr), sizeof(short));
+  return (adrr);
+}
+
+void	sti_cpy_val_a_adrr(t_process *proc, t_vm *vm, int val, int adrr)
+{
   char	*tmp;
 
-  tmp = ((char*)(&(adrr)));
-  tmp[0] = proc->params_next_instr.params[2];
-  tmp[1] = proc->params_next_instr.params[3];
-  switch_endian(tmp, sizeof(short));
-  adrr %= IDX_MOD;
-  tmp = ((char*)(&(proc->reg[reg])));
-  vm->mem[MOD_MEM(proc->pc + adrr + 0)] = tmp[3];
-  vm->mem[MOD_MEM(proc->pc + adrr + 1)] = tmp[2];
-  vm->mem[MOD_MEM(proc->pc + adrr + 2)] = tmp[1];
-  vm->mem[MOD_MEM(proc->pc + adrr + 3)] = tmp[0];
-  printf("sti reg%d,%d\n", reg, adrr);
-  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+  tmp = (char*)(&(val));
+  switch_endian(tmp, sizeof(int));
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 0)] = tmp[0];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 1)] = tmp[1];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 2)] = tmp[2];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 3)] = tmp[3];
 }
 
 /*
@@ -69,17 +55,29 @@ void	op_sti_ind(t_process *proc, t_vm *vm, int reg)
 */
 int	op_sti(t_process *proc, t_vm *vm)
 {
-  int	reg;
+  int	valtstore;
+  int	i;
+  int	adrr;
+  int	tsize;
 
-  reg =  proc->params_next_instr.params[1] - 1;
-  if (reg >= 0 && reg < REG_NUMBER)
+  i = 1;
+  adrr = 0;
+  tsize = NBPBYTE(PARAMBYTE, 1) + 2;
+  valtstore = sti_get_first_val(proc, vm);
+  while (i < 3)
     {
-      if (GET_TYPE_PARAMX(PARAMBYTE, 1) == 1)
-        op_sti_reg(proc, vm, reg);
-      else if (GET_TYPE_PARAMX(PARAMBYTE, 1) == 2)
-        op_sti_dir(proc, vm, reg);
+      if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
+        adrr += op_get_reg(proc, vm, i);
       else
-        op_sti_ind(proc, vm, reg);
+        {
+          adrr += get_sti_ind_val(proc, vm, i);
+          tsize += 1;
+        }
+      tsize += 1;
+      i++;
     }
-  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
+  printf("%d sti %d adrr->%d\n", proc->associated_champ->number, valtstore, adrr);
+  proc->carry = is_byte_zero((char*)(&(valtstore)), sizeof(int));
+  sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
+  return (tsize);
 }

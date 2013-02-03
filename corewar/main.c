@@ -32,7 +32,7 @@ void	free_all(t_vm *vm)
   free(vm->mem);
 }
 
-int    	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
   t_vm	vm;
   char	**args;
