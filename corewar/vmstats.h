@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Feb  2 20:27:11 2013 luc sinet
+** Last update Sun Feb  3 13:17:19 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -20,6 +20,7 @@
 # define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - 1 - (y)) * 2)) & 3)
 # define SHORTCUT vmstat->instr_nb_cycle[(int)proc->instr]
 # define CHECK_INST_CYCLE(x) (x >= 0 && x <= 15) ? SHORTCUT : x
+# define SVAL(val) (val > 127) ? (128 - val) : val
 
 typedef struct	s_champ
 {

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Feb  2 20:20:47 2013 luc sinet
+** Last update Sun Feb  3 13:48:26 2013 luc sinet
 */
 
 #include	"include.h"
@@ -32,12 +32,15 @@ void	free_all(t_vm *vm)
   free(vm->mem);
 }
 
-int		main(int argc, char **argv, char **envp)
+int    	main(int argc, char **argv, char **envp)
 {
-  t_vm		vm;
+  t_vm	vm;
+  char	**args;
 
+  args = &(argv[1]);
+  pre_pars(args, envp, argc - 1);
   init_vm_stats(CYCLE_TO_DIE, -1, &vm);
-  if (pars(&(argv[1]), argc - 1, &vm) == -1)
+  if (pars(args, argc - 1, &vm) == -1)
     {
       free_all(&vm);
       return (-1);
