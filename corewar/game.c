@@ -101,7 +101,7 @@ int	handle_game(t_vm *vm, char **env)
 
   end_game = 0;
   vm->cycle_count++;
-  if (vm->nbr_live >= NBR_LIVE)
+  if ((vm->nbr_live % NBR_LIVE) == 0)
     vm->cycle_to_die -= CYCLE_DELTA;
   if (vm->flag == 0)
     if ((vm->cycle_to_die != 0) && (vm->cycle_count % vm->cycle_to_die) == 0)
