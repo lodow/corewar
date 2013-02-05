@@ -10,6 +10,18 @@
 
 #include	"operation.h"
 
+int	op_get_ind_as_dir(t_process *proc, t_vm *vm, int param)
+{
+  short	value;
+  int	at;
+
+  value = 0;
+  at = NBPBYTE(PARAMBYTE, param) + 1;
+  value = *((short*)(&(proc->params_next_instr.params[at])));
+  switch_endian((char*)(&value), sizeof(short));
+  return (value);
+}
+
 int	op_get_dir(t_process *proc, t_vm *vm, int param)
 {
   int	dir;

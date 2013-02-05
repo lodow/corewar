@@ -24,17 +24,6 @@ int	sti_get_first_val(t_process *proc, t_vm *vm)
   return (0);
 }
 
-int	get_sti_ind_val(t_process *proc, t_vm *vm, int param)
-{
-  short	adrr;
-  int	at;
-
-  at = NBPBYTE(PARAMBYTE, param) + 1;
-  adrr = *((short*)(&(proc->params_next_instr.params[at])));
-  switch_endian((char*)(&adrr), sizeof(short));
-  return (adrr);
-}
-
 void	sti_cpy_val_a_adrr(t_process *proc, t_vm *vm, int val, int adrr)
 {
   char	*tmp;
@@ -70,14 +59,13 @@ int	op_sti(t_process *proc, t_vm *vm)
         adrr += op_get_reg(proc, vm, i);
       else
         {
-          adrr += get_sti_ind_val(proc, vm, i);
+          adrr += op_get_ind_as_dir(proc, vm, i);
           tsize += 1;
         }
       tsize += 1;
       i++;
     }
   printf("%d sti %d adrr->%d\n", proc->associated_champ->number, valtstore, adrr);
-  proc->carry = is_byte_zero((char*)(&(valtstore)), sizeof(int));
   sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
   return (tsize);
 }

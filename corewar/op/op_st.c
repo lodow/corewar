@@ -17,8 +17,7 @@ void	op_st_reg(t_process *proc, t_vm *vm, int reg)
   reg2 = proc->params_next_instr.params[2] - 1;
   if (reg2 >= 0 && reg2 < REG_NUMBER)
     {
-      proc->reg[reg2] = proc->reg[reg];
-      proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
+      proc->reg[reg2] = proc->reg[reg];;
       printf("st reg%d, reg%d\n", reg, reg2);
     }
 }
@@ -39,7 +38,6 @@ void	op_st_dir(t_process *proc, t_vm *vm, int reg)
   vm->mem[MOD_MEM(adrr + 1)] = tmp[2];
   vm->mem[MOD_MEM(adrr + 2)] = tmp[1];
   vm->mem[MOD_MEM(adrr + 3)] = tmp[0];
-  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
 }
 
 void	op_st_ind(t_process *proc, t_vm *vm, int reg)
@@ -58,7 +56,6 @@ void	op_st_ind(t_process *proc, t_vm *vm, int reg)
   vm->mem[MOD_MEM(proc->pc + adrr + 2)] = tmp[1];
   vm->mem[MOD_MEM(proc->pc + adrr + 3)] = tmp[0];
   printf("st reg%d,%d\n", reg, adrr);
-  proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
 }
 
 /*
