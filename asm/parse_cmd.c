@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Jan 31 14:19:32 2013 Welanor
+** Last update Tue Feb 19 12:36:34 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -42,12 +42,15 @@ char	*sub_space(char *str)
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
 {
-  if (line == NULL || header == NULL || cmd == NULL || my_strlen(line) <= 1)
+  if (line == NULL || header == NULL || cmd == NULL)
     return (-1);
-  line = sub_space(line);
-  if (line[0] == '\0')
+  if (my_strlen(line) <= 1)
     return (0);
-  parsing(line, cmd);
+  line = sub_space(line);
+  if (line[0] == '\0' || line[0] == '\n' || line[0] == '#')
+    return (0);
+  if (parsing(line, cmd) != 0)
+    return (-1);
   if (line[0] != COMMENT_CHAR && line[0] != 0)
     changepc(line, &(cmd->pc));
   return (0);
