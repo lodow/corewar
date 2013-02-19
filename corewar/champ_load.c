@@ -34,21 +34,17 @@ t_champ		*load_champ(int fd, int number, char *name)
   int		size;
 
   if (!(((size = get_bin_file(fd, &file)) > (int)sizeof(t_header))
-      && (champ = malloc(sizeof(t_champ))) != NULL))
+        && (champ = malloc(sizeof(t_champ))) != NULL))
     return (loading_error(0, name));
   champ->freeme = file;
-  if ((champ->header.magic = ((int*)switch_endian(file, sizeof(int)))[0])
-      != COREWAR_EXEC_MAGIC)
+  my_strncpy((char*)(&(champ->header)), file, sizeof(t_header));
+  switch_endian((char*)(&(champ->header.magic)), sizeof(int));
+  if (champ->header.magic != COREWAR_EXEC_MAGIC)
     return (loading_error(1, name));
-  file = &(file[sizeof(int)]);
-  my_strncpy(champ->header.prog_name, file, PROG_NAME_LENGTH);
-  file = &(file[PROG_NAME_LENGTH + 4]);
-  champ->header.prog_size = ((int*)switch_endian(file, sizeof(int)))[0];
+  switch_endian((char*)(&(champ->header.prog_size)), sizeof(int));
   if (size - (int)sizeof(t_header) != champ->header.prog_size)
     return (loading_error(2, name));
-  file = &(file[sizeof(int)]);
-  my_strncpy(champ->header.comment, file, COMMENT_LENGTH);
-  file = &(file[COMMENT_LENGTH + 4]);
+  file = &(file[sizeof(t_header)]);
   champ->champcode = file;
   champ->number = number;
   champ->alive = 0;

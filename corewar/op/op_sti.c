@@ -10,7 +10,62 @@
 
 #include	"operation.h"
 
+int	sti_get_first_val(t_process *proc, t_vm *vm)
+{
+  if (GET_TYPE_PARAMX(PARAMBYTE, 0) != 0)
+    {
+      if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 1)
+        return (op_get_reg(proc, vm, 0));
+      else if (GET_TYPE_PARAMX(PARAMBYTE, 0) == 2)
+        return (op_get_dir(proc, vm, 0));
+      else
+        return (op_get_ind(proc, vm, 0, 1));
+    }
+  return (0);
+}
+
+void	sti_cpy_val_a_adrr(t_process *proc, t_vm *vm, int val, int adrr)
+{
+  char	*tmp;
+
+  tmp = (char*)(&(val));
+  switch_endian(tmp, sizeof(int));
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 0)] = tmp[0];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 1)] = tmp[1];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 2)] = tmp[2];
+  vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 3)] = tmp[3];
+}
+
+/*
+** \param[in] proc A ptr on the process executing the instrcution !
+** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
+** champs.
+** \return the total size of the instruction !
+*/
 int	op_sti(t_process *proc, t_vm *vm)
 {
-  return (1);
+  int	valtstore;
+  int	i;
+  int	adrr;
+  int	tsize;
+
+  i = 1;
+  adrr = 0;
+  tsize = NBPBYTE(PARAMBYTE, 1) + 2;
+  valtstore = sti_get_first_val(proc, vm);
+  while (i < 3)
+    {
+      if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
+        adrr += op_get_reg(proc, vm, i);
+      else
+        {
+          adrr += op_get_ind_as_dir(proc, vm, i);
+          tsize += 1;
+        }
+      tsize += 1;
+      i++;
+    }
+  printf("%d sti %d adrr->%d\n", proc->associated_champ->number, valtstore, adrr);
+  sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
+  return (tsize);
 }

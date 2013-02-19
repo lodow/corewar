@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Tue Feb 19 12:31:39 2013 maxime lavandier
+** Last update Tue Feb 19 12:39:52 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -23,7 +23,7 @@ void	registre(t_param *param, char *str, int i)
   nbr = (char) nb;
   if (nb > REG_NUMBER)
     {
-      my_putstr("registre trop grand", 2, -1);
+      my_putstr("registre trop grand\n", 2, -1);
       exit(0);
     }
   if ((param->param = realloc(param->param, param->lenght + 1)) == 0)
@@ -44,8 +44,6 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
       while (my_cmp(&str[i], cmd->lab[j].label) == 0
 	     && j < cmd->lablengh - 1)
 	j++;
-      printf("str = %s\n", &str[i]);
-      printf("cmd = %s\n", cmd->lab[j].label);
       nb = cmd->lab[j].adress - cmd->pc;
     }
   else

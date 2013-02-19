@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 23 14:20:13 2013 Welanor
+** Last update Fri Feb  1 15:38:11 2013 luc sinet
 */
 
 #ifndef _OP_H_
@@ -30,7 +30,7 @@
 ** Cycle things
 */
 # define CYCLE_TO_DIE		1536
-# define CYCLE_DELTA		5
+# define CYCLE_DELTA		1
 # define NBR_LIVE		40
 
 # define MAX_ARGS_NUMBER	4     /* this may not be changed 2^*IND_SIZE */
