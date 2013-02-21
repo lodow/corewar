@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Thu Jan 31 16:44:04 2013 Welanor
+** Last update Thu Feb 21 14:45:46 2013 Adrien dellamaggiora
 */
 
 #ifndef PARSE_CMD_H
@@ -80,5 +80,6 @@ int	sti(char *str, int i, t_param *param, t_cmd *cmd);
 int	zjump(char *str, int i, t_param *param, t_cmd *cmd);
 int	next(char *str, int i);
 int	my_cmp(char *str1, char *str2);
+void	freelabel(t_cmd cmd);
 
 #endif

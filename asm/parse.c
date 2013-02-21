@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Fri Feb  1 15:48:09 2013 maxime lavandier
+** Last update Thu Feb 21 14:35:48 2013 Adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -86,7 +86,7 @@ int	next_the_header(char **file)
 
 void	put_error(int line)
 {
-  my_putstr("Error : line ", 2, -1);
+  my_putstr("Syntax error line ", 2, -1);
   my_put_nbr(line + 1, 2);
   my_putstr("\n", 2, 1);
 }
@@ -99,7 +99,7 @@ int		parse(char **file, char *name)
 
   i = next_the_header(file) - 1;
   my_memsetc(&header, sizeof(t_header), 0);
-  if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
+  if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == NULL)
     return (-1);
   recuplabel(&cmd, file);
   header.prog_size = cmd.pc;
@@ -114,5 +114,7 @@ int		parse(char **file, char *name)
       }
     else if (parse_cmd(file[i], &header, &cmd) == -1)
       put_error(i);
+  freelabel(cmd);
+  free(cmd.file);
   return (0);
 }

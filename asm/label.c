@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 ** 
 ** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Fri Feb  1 16:27:51 2013 Adrien dellamaggiora
+** Last update Thu Feb 21 14:44:21 2013 Adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -62,10 +62,8 @@ t_cmd		*my_realloc(t_cmd *cmd, int size)
     }
   i = 0;
   while (i < cmd->lablengh)
-    {
-      free(cmd->lab[i].label);
-      i++;
-    }
+    free(cmd->lab[i++].label);
+  free(cmd->lab);
   cmd->lab = tmp;
   return (cmd);
 }

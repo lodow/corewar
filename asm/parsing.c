@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Tue Feb 19 12:39:52 2013 maxime lavandier
+** Last update Thu Feb 21 14:19:37 2013 Adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -119,7 +119,7 @@ int		parsing(char *str, t_cmd *cmd)
   return (ret);
   if (ret == -1)
     {
-      printf ("error\n");
+      printf("error\n");
       exit(0);
     }
   if (ret == -2)

@@ -5,12 +5,33 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Jan 25 11:17:23 2013 Welanor
+** Last update Thu Feb 21 14:39:24 2013 Adrien dellamaggiora
 */
 
 #include "../misc/op.h"
 #include "../misc/get_file.h"
 #include "asm.h"
+#include "parse_cmd.h"
+
+void	freelabel(t_cmd cmd)
+{
+  int	i;
+
+  i = 0;
+  while (i < cmd.lablengh)
+    free(cmd.lab[i++].label);
+  free(cmd.lab);
+}
+
+void	freefile(char **file)
+{
+  int	i;
+
+  i = 0;
+  while (file[i] != NULL)
+    free(file[i++]);
+  free(file);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -37,5 +58,6 @@ int	main(int argc, char **argv, char **envp)
     }
   else
     my_putstr("No file\n", 2, 8);
+  freefile(file);
   return (0);
 }
