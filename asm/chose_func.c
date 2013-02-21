@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 18:45:02 2013 maxime lavandier
-** Last update Tue Feb 19 12:28:57 2013 maxime lavandier
+** Last update Thu Feb 21 14:52:15 2013 Adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -54,7 +54,8 @@ int	my_cmp(char *str1, char *str2)
       i++;
     }
   if (str2[i] != 0 || (str1[i] != ' ' &&
-		       str1[i] != SEPARATOR_CHAR && str1[i] != 0))
+		       str1[i] != SEPARATOR_CHAR &&
+		       str1[i] != 0))
     return (0);
   return (1);
 }

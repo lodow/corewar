@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Feb 21 14:19:37 2013 Adrien dellamaggiora
+** Last update Thu Feb 21 14:54:48 2013 Adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -26,7 +26,7 @@ void	registre(t_param *param, char *str, int i)
       my_putstr("registre trop grand\n", 2, -1);
       exit(0);
     }
-  if ((param->param = realloc(param->param, param->lenght + 1)) == 0)
+  if ((param->param = realloc(param->param, param->lenght + 1)) == NULL)
     exit(0);
   param->param[param->lenght] = nbr;
   param->lenght += 1;
@@ -48,7 +48,7 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
     }
   else
     nb = my_getnbr(&(str[i]));
-  if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == 0)
+  if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == NULL)
     exit(0);
   param->param[param->lenght + IND_SIZE - 1] = 0;
   param->param[param->lenght + IND_SIZE - 2] = 0;
@@ -116,7 +116,6 @@ int		parsing(char *str, t_cmd *cmd)
     i++;
   param.lenght = 2;
   ret = chose_func(&param, str, i, cmd);
-  return (ret);
   if (ret == -1)
     {
       printf("error\n");
@@ -124,6 +123,7 @@ int		parsing(char *str, t_cmd *cmd)
     }
   if (ret == -2)
     return (0);
-  /*  my_putstr((char *)(param.param), cmd->fd, param.lenght);*/
+  my_putstr((char *)(param.param), cmd->fd, param.lenght);
+  free(param.param);
   return (0);
 }
