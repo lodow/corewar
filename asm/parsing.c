@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Feb 21 14:54:48 2013 Adrien dellamaggiora
+** Last update Thu Feb 21 17:16:45 2013 Adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -117,12 +117,7 @@ int		parsing(char *str, t_cmd *cmd)
   param.lenght = 2;
   ret = chose_func(&param, str, i, cmd);
   if (ret == -1)
-    {
-      printf("error\n");
-      exit(0);
-    }
-  if (ret == -2)
-    return (0);
+    return (ret);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
   free(param.param);
   return (0);
