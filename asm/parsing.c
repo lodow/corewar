@@ -117,10 +117,7 @@ int		parsing(char *str, t_cmd *cmd)
   param.lenght = 2;
   ret = chose_func(&param, str, i, cmd);
   if (ret == -1)
-    {
-      printf("error\n");
-      exit(0);
-    }
+     return (ret);
   if (ret == -2)
     return (0);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);
