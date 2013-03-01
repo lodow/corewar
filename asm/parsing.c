@@ -21,7 +21,7 @@ void	registre(t_param *param, char *str, int i)
 
   nb = my_getnbr(&(str[i + 1]));
   nbr = (char) nb;
-  if (nb > REG_NUMBER)
+  if (nb > REG_NUMBER || nb < 1)
     {
       my_putstr("registre trop grand\n", 2, -1);
       exit(0);
