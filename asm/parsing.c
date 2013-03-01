@@ -19,13 +19,13 @@ void	registre(t_param *param, char *str, int i)
   int	nb;
   char	nbr;
 
-  nb = my_getnbr(&(str[i + 1]));
-  nbr = (char) nb;
-  if (nb > REG_NUMBER)
-    {
-      my_putstr("registre trop grand\n", 2, -1);
-      exit(0);
-    }
+  /* nb = my_getnbr(&(str[i + 1])); */
+  /* nbr = (char) nb; */
+  /* if (nb > REG_NUMBER) */
+  /*   { */
+  /*     my_putstr("registre trop grand\n", 2, -1); */
+  /*     exit(0); */
+  /*   } */
   if ((param->param = realloc(param->param, param->lenght + 1)) == NULL)
     exit(0);
   param->param[param->lenght] = nbr;
