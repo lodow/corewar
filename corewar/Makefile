@@ -9,7 +9,6 @@
 ##
 
 SRC= 	main.c \
-	pre_pars.c \
 	pars.c \
 	check_args.c \
 	pars_args.c \
@@ -21,7 +20,6 @@ SRC= 	main.c \
 	init_vm.c \
 	process_util.c \
 	get_param_instr.c \
-	dump_file.c \
 	op/op_useful.c \
 	op/op_utilities.c \
 	op/op_add.c \

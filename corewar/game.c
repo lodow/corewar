@@ -78,7 +78,6 @@ void			dump_memory(t_vmmem *mem, int size, char **env)
 
   i = 0;
   hexa = "0123456789ABCDEF";
-  write_dump(mem, size, env);
   while (i < size)
     {
       tmp = mem[i];

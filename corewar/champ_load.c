@@ -10,10 +10,6 @@
 
 #include	"include.h"
 
-/*
-** Load a champ from a file filename and fill struct champ passed
-** return 0 if everything good, negatif value elsewhere
-*/
 t_champ	*loading_error(int error, char *name)
 {
   my_putstr(name, 2, -1);
