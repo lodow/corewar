@@ -76,7 +76,7 @@ int	my_getnbr_base(char *calc, char *base)
     {
       pib = 0;
       while (calc[lenc - pic] != base[pib] && base[pib])
-	pib += 1;
+        pib += 1;
       res += pib * my_power_rec(lenb, pic);
       pic += 1;
     }

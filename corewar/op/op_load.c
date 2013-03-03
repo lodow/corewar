@@ -33,7 +33,7 @@ int	op_ld(t_process *proc, t_vm *vm)
         vtl = op_get_ind(proc, vm, 0, 1);
       proc->reg[reg] = vtl;
       proc->carry = is_byte_zero((char*) & (proc->reg[reg]), sizeof(int));
-      printf("%d ld %d, reg%d\n", proc->associated_champ->number, vtl, reg + 1);
+      printf("[%10s] ld (i@pc+%d=%d -> reg%d) carry = %d\n", proc->associated_champ->header.prog_name, vtl, proc->reg[reg], reg, proc->carry);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }

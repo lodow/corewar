@@ -30,11 +30,11 @@ void	delete_champ_tab(t_champ **tab)
   i = 0;
   if (tab != NULL)
     while (tab[i] != NULL)
-    {
-      free(tab[i]->freeme);
-      free(tab[i]);
-      i++;
-    }
+      {
+        free(tab[i]->freeme);
+        free(tab[i]);
+        i++;
+      }
 }
 
 void	free_all(t_vm *vm)
@@ -50,16 +50,16 @@ int	main(int argc, char **argv, char **envp)
   t_vm	vm;
 
   if (check_define())
-  {
-    init_vm_stats(CYCLE_TO_DIE, -1, &vm);
-    if (pars(&(argv[1]), argc - 1, &vm) != -1)
-      while (handle_game(&vm, envp) == 0)
-      {
-        my_apply_on_list(vm.process_list, &exe_process, &vm);
-        /*            usleep(1000);*/
-      }
-    free_all(&vm);
-  }
+    {
+      init_vm_stats(CYCLE_TO_DIE, -1, &vm);
+      if (pars(&(argv[1]), argc - 1, &vm) != -1)
+        while (handle_game(&vm, envp) == 0)
+          {
+            my_apply_on_list(vm.process_list, &exe_process, &vm);
+            /*            usleep(1000);*/
+          }
+      free_all(&vm);
+    }
   else
     my_putstr("A define is wrong\n", 1, -1);
   return (0);

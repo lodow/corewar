@@ -21,34 +21,34 @@ int	dump_opt(char **av, t_arg *parg)
 int	prog_num_opt(char **av, t_arg *parg)
 {
   if (is_a_num(av[parg->pos + 1]) == 1)
-  {
-    parg->num_used[parg->num_pos] = my_getnbr(av[parg->pos + 1]);
-    parg->num_pos += 1;
-    parg->opt[1] = 1;
-    parg->pos += 1;
-  }
+    {
+      parg->num_used[parg->num_pos] = my_getnbr(av[parg->pos + 1]);
+      parg->num_pos += 1;
+      parg->opt[1] = 1;
+      parg->pos += 1;
+    }
   return (0);
 }
 
 int	addr_opt(char **av, t_arg *parg)
 {
   if (is_a_num(av[parg->pos + 1]) == 1)
-  {
-    parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
-    parg->addr_pos += 1;
-    parg->opt[2] = 1;
-    parg->pos += 1;
-  }
+    {
+      parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
+      parg->addr_pos += 1;
+      parg->opt[2] = 1;
+      parg->pos += 1;
+    }
   return (0);
 }
 
 int	adds_opt(char **av, t_arg *parg)
 {
   if (my_strcmp("-unlimited", av[parg->pos]) == 0)
-  {
-    parg->opt[0] = 1;
-    parg->vm->flag = 1;
-  }
+    {
+      parg->opt[0] = 1;
+      parg->vm->flag = 1;
+    }
   return (0);
 }
 

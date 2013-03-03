@@ -34,7 +34,7 @@ int	op_xor(t_process *proc, t_vm *vm)
           proc->reg[reg3] = val[0] ^ val[1];
         }
       proc->carry = is_byte_zero((char*) & (proc->reg[reg3]), sizeof(int));
-      printf("%d xor %d ^ %d = %d\n", proc->associated_champ->number, val[0], val[1], proc->reg[reg3]);
+      printf("[%10s] or (%d | %d = reg%d=%d) carry = %d\n", proc->associated_champ->header.prog_name, val[0], val[1], reg3, proc->reg[reg3], proc->carry);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }

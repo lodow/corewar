@@ -23,20 +23,17 @@ int	op_zjmp(t_process *proc, t_vm *vm)
   short	off_adrr;
   char	*tmp;
 
-  if (proc->carry == 1)
+  i = 0;
+  tmp = ((char*)(&off_adrr));
+  j = IND_SIZE - 1;
+  while (i < IND_SIZE)
     {
-      i = 0;
-      tmp = ((char*)(&off_adrr));
-      j = IND_SIZE - 1;
-      while (i < IND_SIZE)
-        {
-          tmp[i] = VM_MEM(proc->pc + 1 + j);
-          j--;
-          i++;
-        }
-        printf("zjmp %d\n", off_adrr % IDX_MOD);
-      return (off_adrr % IDX_MOD);
+      tmp[i] = VM_MEM(proc->pc + 1 + j);
+      j--;
+      i++;
     }
-    printf("zjmp fail\n");
+  printf("[%10s] zjmp (%d) carry = %d\n", proc->associated_champ->header.prog_name, off_adrr % IDX_MOD, proc->carry);
+  if (proc->carry == 1)
+    return (off_adrr % IDX_MOD);
   return (1 + IND_SIZE);
 }

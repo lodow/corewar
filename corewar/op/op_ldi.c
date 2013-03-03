@@ -59,7 +59,7 @@ int	op_ldi(t_process *proc, t_vm *vm)
       val[0] += val[1] % IDX_MOD;
       proc->reg[reg] = get_value_ldi_at_adrr(proc, vm, val[0]);
       proc->carry = is_byte_zero((char*)(&(proc->reg[reg])), sizeof(int));
-      printf("%d ldi %d,%d  adrr->%d = %d\n", proc->associated_champ->number, val[0] - val[1], val[1], val[0], proc->reg[reg]);
+      printf("[%10s] ldi (i@*(pc+%d)+%d=%d -> reg%d) carry = %d\n", proc->associated_champ->header.prog_name, val[0] - val[1], val[1], proc->reg[reg], reg, proc->carry);
     }
   return (7);
 }

@@ -27,22 +27,22 @@ void	set_numval(t_arg *parg)
 
   hit = 1;
   if (parg->num_used[0] == -1)
-  {
-    parg->num_used[0] = 1;
-    parg->num_pos = 1;
-    return ;
-  }
+    {
+      parg->num_used[0] = 1;
+      parg->num_pos = 1;
+      return ;
+    }
   num_val = parg->num_used[parg->num_pos - 1];
   while (hit == 1)
-  {
-    i = 0;
-    hit = 0;
-    num_val += 1;
-    while (parg->num_used[i] != num_val && i < parg->nb_arg - 1)
-      i += 1;
-    if (parg->num_used[i] == num_val)
-      hit = 1;
-  }
+    {
+      i = 0;
+      hit = 0;
+      num_val += 1;
+      while (parg->num_used[i] != num_val && i < parg->nb_arg - 1)
+        i += 1;
+      if (parg->num_used[i] == num_val)
+        hit = 1;
+    }
   parg->num_used[parg->num_pos] = num_val;
   parg->num_pos += 1;
 }
@@ -62,30 +62,30 @@ void	set_addrval(t_arg *parg)
   inter = (MEM_SIZE - tsize) / parg->nb_champ;
   i = 0;
   while (i < parg->nb_champ)
-  {
-    if (parg->addr_used[i] == -1)
-      if (parg->added_champ != 0)
-      {
-        parg->addr_used[parg->addr_pos] = addr;
-        addr += (inter + parg->vm->champs[i]->header.prog_size);
-        parg->addr_pos += 1;
-      }
-    i += 1;
-  }
+    {
+      if (parg->addr_used[i] == -1)
+        if (parg->added_champ != 0)
+          {
+            parg->addr_used[parg->addr_pos] = addr;
+            addr += (inter + parg->vm->champs[i]->header.prog_size);
+            parg->addr_pos += 1;
+          }
+      i += 1;
+    }
 }
 
 void	check_value(t_arg *parg, char opt)
 {
   if (opt == 1)
-  {
-    if (parg->opt[1] == -1)
-      set_numval(parg);
-  }
+    {
+      if (parg->opt[1] == -1)
+        set_numval(parg);
+    }
   else
-  {
-    if (parg->opt[2] == -1)
-      set_addrval(parg);
-  }
+    {
+      if (parg->opt[2] == -1)
+        set_addrval(parg);
+    }
 }
 
 int	preload_champ(t_vm *vm, t_arg *parg)
@@ -95,17 +95,17 @@ int	preload_champ(t_vm *vm, t_arg *parg)
   i = 0;
   check_value(parg, 2);
   while (vm->champs[i] != NULL)
-  {
-    my_add_to_list(&(vm->process_list),
-                   up_champ_t_mem(vm, vm->champs[i], parg->addr_used[i]));
-    i += 1;
-  }
+    {
+      my_add_to_list(&(vm->process_list),
+                     up_champ_t_mem(vm, vm->champs[i], parg->addr_used[i]));
+      i += 1;
+    }
   if (!vm->champs[0])
-  {
-    my_putstr("The vm can't start: There is not"
-              " at least one valid .cor file\n", 2, -1);
-    return (-1);
-  }
+    {
+      my_putstr("The vm can't start: There is not"
+                " at least one valid .cor file\n", 2, -1);
+      return (-1);
+    }
   return (1);
 }
 

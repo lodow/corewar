@@ -62,6 +62,5 @@ int	op_live(t_process *proc, t_vm *vm)
     }
   vm->nbr_live++;
   op_live_set_alive(vm, number);
-  printf("live %d\n", number);
   return (5);
 }

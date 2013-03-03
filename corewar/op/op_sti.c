@@ -65,7 +65,7 @@ int	op_sti(t_process *proc, t_vm *vm)
       tsize += 1;
       i++;
     }
-  printf("%d sti %d adrr->%d\n", proc->associated_champ->number, valtstore, adrr);
+  printf("[%10s] sti (%d -> i@pc+%d)\n", proc->associated_champ->header.prog_name, valtstore, adrr);
   sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
   return (tsize);
 }

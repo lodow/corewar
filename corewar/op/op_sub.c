@@ -30,7 +30,7 @@ int	op_sub(t_process *proc, t_vm *vm)
     {
       proc->reg[reg3] = proc->reg[reg1] - proc->reg[reg2];
       proc->carry = is_byte_zero((char*)(&(proc->reg[reg3])), sizeof(int));
-      printf("%d sub %d - %d = %d\n", proc->associated_champ->number, proc->reg[reg1], proc->reg[reg2], proc->reg[reg3]);
+      printf("[%10s] add (reg%d=%d + reg%d=%d = reg%d=%d) carry = %d\n", proc->associated_champ->header.prog_name, reg1, proc->reg[reg1], reg2, proc->reg[reg2], reg3, proc->reg[reg3], proc->carry);
     }
   return (5);
 }
