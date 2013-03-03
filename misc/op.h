@@ -30,7 +30,7 @@
 ** Cycle things
 */
 # define CYCLE_TO_DIE		1536
-# define CYCLE_DELTA		1
+# define CYCLE_DELTA		5
 # define NBR_LIVE		40
 
 # define MAX_ARGS_NUMBER	4     /* this may not be changed 2^*IND_SIZE */
