@@ -36,6 +36,30 @@ void	sti_cpy_val_a_adrr(t_process *proc, t_vm *vm, int val, int adrr)
   vm->mem[MOD_MEM(proc->pc + (adrr % IDX_MOD) + 3)] = tmp[3];
 }
 
+void	sti_re_set_param_byte(t_process *proc)
+{
+  int	i;
+  char	params[4];
+
+  i = 0;
+  while (i < 4)
+    {
+      params[i] = GET_TYPE_PARAMX(PARAMBYTE, i);
+      i++;
+    }
+  if (params[1] == 2)
+    params[1] = 3;
+  if (params[2] == 2)
+    params[2] = 3;
+  i = 0;
+  PARAMBYTE = 0;
+  while (i < 4)
+    {
+      PARAMBYTE |= params[i] << ((3 - i) * 2);
+      i++;
+    }
+}
+
 /*
 ** \param[in] proc A ptr on the process executing the instrcution !
 ** \param[in] vm A ptr on the vm useful to get the ptr on the vmmem and the
@@ -51,6 +75,7 @@ int	op_sti(t_process *proc, t_vm *vm)
 
   i = 1;
   adrr = 0;
+  sti_re_set_param_byte(proc);
   tsize = NBPBYTE(PARAMBYTE, 1) + 2;
   valtstore = sti_get_first_val(proc, vm);
   while (i < 3)
