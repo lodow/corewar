@@ -1,10 +1,6 @@
-corewar
+Corewar
 
-HEY ! ADRIEN ! LIT CA !
+Commit 400 !!!
 
-=======
-Check this depot:
-https://github.com/boubaks/Projects/tree/master/corewar/corewar/src
-=======
-reste pour ASM :
-gestion label (voir parsing.c:direct() )
+Git c'est fini, maintenant c'est l'afs ou rien !!
+
