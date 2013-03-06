@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Feb 21 14:54:48 2013 Adrien dellamaggiora
+** Last update Wed Mar  6 13:41:40 2013 Hugues
 */
 
 #include "asm.h"
@@ -21,7 +21,7 @@ void	registre(t_param *param, char *str, int i)
 
   nb = my_getnbr(&(str[i + 1]));
   nbr = (char) nb;
-  if (nb > REG_NUMBER || nb < 1)
+  if (nb > REG_NUMBER || nb < 1)
     {
       my_putstr("registre trop grand\n", 2, -1);
       exit(0);
@@ -117,7 +117,7 @@ int		parsing(char *str, t_cmd *cmd)
   param.lenght = 2;
   ret = chose_func(&param, str, i, cmd);
   if (ret == -1)
-     return (ret);
+    return (ret);
   if (ret == -2)
     return (0);
   my_putstr((char *)(param.param), cmd->fd, param.lenght);

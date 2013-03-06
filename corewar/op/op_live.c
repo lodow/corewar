@@ -61,6 +61,7 @@ int	op_live(t_process *proc, t_vm *vm)
       i++;
     }
   vm->nbr_live++;
+  printf("[%10s] live (%d)\n", proc->associated_champ->header.prog_name, number);
   op_live_set_alive(vm, number);
   return (5);
 }
