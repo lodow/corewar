@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 23 19:35:15 2013 maxime lavandier
-** Last update Fri Feb  1 15:37:11 2013 maxime lavandier
+** Last update Thu Mar  7 16:35:52 2013 Adrien
 */
 
 #include <stdlib.h>
@@ -16,11 +16,11 @@ int	next_label(char *line)
   int	i;
 
   i = 0;
-  while (line[i] != 0 && line[i] != ' ' && line[i] != ':')
+  while (line[i] != 0 && line[i] != ' ' && line[i] != LABEL_CHAR)
     i++;
   if (line[i] == ' ' || line[i] == 0)
     return (0);
-  while (line[i] == ' ' || line[i] == ':')
+  while (line[i] == ' ' || line[i] == LABEL_CHAR)
     i++;
   return (i);
 }

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Mar  6 13:41:40 2013 Hugues
+** Last update Thu Mar  7 16:31:55 2013 Adrien
 */
 
 #include "asm.h"
@@ -66,7 +66,7 @@ void	put_to_param(t_param *param, char *str, int i, t_cmd *cmd)
       param->param[1] |= 1;
       registre(param, str, i);
     }
-  else if (str[i] == '%')
+  else if (str[i] == DIRECT_CHAR)
     {
       param->param[1] <<= 2;
       param->param[1] |= 2;
@@ -92,7 +92,7 @@ void	params(char *str, int i, t_param *param, t_cmd *cmd)
   while (str[i] != 0)
     {
       put_to_param(param, str, i, cmd);
-      while (str[i] != 0 && str[i] != ',')
+      while (str[i] != 0 && str[i] != SEPARATOR_CHAR)
 	i++;
       if (str[i] != 0)
 	i++;

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 30 15:31:06 2013 maxime lavandier
-** Last update Thu Jan 31 11:19:58 2013 maxime lavandier
+** Last update Thu Mar  7 16:37:42 2013 Adrien
 */
 
 #include "parse_cmd.h"
@@ -49,7 +49,7 @@ int	ld(char *str, int i, t_param *param, t_cmd *cmd)
   if (str[i] == 0)
     return (-1);
   i++;
-  if (str[i] == '%')
+  if (str[i] == DIRECT_CHAR)
     {
       direct(param, str, i, cmd);
       while (str[i] != 'r' && str[i] != 0)

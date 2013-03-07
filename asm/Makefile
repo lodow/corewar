@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu Feb 21 14:45:23 2013 Adrien dellamaggiora
+## Last update Thu Feb 21 17:00:42 2013 Adrien dellamaggiora
 ##
 
 SRC= 	main.c \
@@ -58,4 +58,4 @@ clean:
 fclean:	clean
 	rm -f $(NAME)
 
-re:	fclean all
+re:	fclean	all
