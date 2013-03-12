@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Feb 21 14:58:26 2013 Adrien dellamaggiora
+** Last update Thu Mar  7 16:32:25 2013 Adrien
 */
 
 #include "parse_cmd.h"
@@ -47,7 +47,7 @@ int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
   if (my_strlen(line) <= 1)
     return (0);
   line = sub_space(line);
-  if (line[0] == '\0' || line[0] == '\n' || line[0] == '#')
+  if (line[0] == '\0' || line[0] == '\n' || line[0] == COMMENT_CHAR)
     {
       free(line);
       return (0);
