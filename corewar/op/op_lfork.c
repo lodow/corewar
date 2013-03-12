@@ -32,7 +32,8 @@ int	op_lfork(t_process *proc, t_vm *vm)
       j--;
       i++;
     }
+  adrr = proc->pc + adrr;
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  printf("[%10s] lfork (%d)\n", proc->associated_champ->header.prog_name, adrr);
+  printf("[%10s] lfork (%d)\n", proc->associated_champ->header.prog_name, adrr - proc->pc);
   return (3);
 }

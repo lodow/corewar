@@ -33,7 +33,8 @@ int	op_fork(t_process *proc, t_vm *vm)
       i++;
     }
   adrr %= IDX_MOD;
+  adrr = proc->pc + adrr;
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  printf("[%10s] fork (%d)\n", proc->associated_champ->header.prog_name, adrr);
+  printf("[%10s] fork (%d)\n", proc->associated_champ->header.prog_name, adrr - proc->pc);
   return (3);
 }
