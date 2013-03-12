@@ -23,7 +23,7 @@ int	my_list_size(t_list *begin)
   return (i);
 }
 
-void	my_rm_from_list(t_list **begin, int (*remove)(void*, void*),
+void		my_rm_from_list(t_list **begin, int (*remove)(void*, void*),
                       int (*f)(void*), void *arg)
 {
   t_list	*ptr;
