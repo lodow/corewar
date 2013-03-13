@@ -26,7 +26,7 @@ int	op_aff(t_process *proc, t_vm *vm)
     {
       cara = proc->reg[reg1] % 256;
       my_putstr(&cara, 1, 1);
+      printf("[%10s] aff (reg%d=%d) -> %c\n", proc->associated_champ->header.prog_name, reg1, proc->reg[reg1], cara);
     }
-  printf("[%10s] aff (reg%d=%d) -> %c\n", proc->associated_champ->header.prog_name, reg1, proc->reg[reg1], cara);
   return (3);
 }

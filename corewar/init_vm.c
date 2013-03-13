@@ -97,7 +97,8 @@ t_process	*up_champ_t_mem(t_vm *vmstat, t_champ *champ, int pc)
   int		i;
 
   i = 0;
-  if ((proc = malloc(1 * sizeof(t_process))) == NULL)
+  if (((proc = malloc(1 * sizeof(t_process))) == NULL)
+      || (champ->header.prog_size > MEM_SIZE))
     return (NULL);
   proc->pc = pc;
   proc->carry = 0;
