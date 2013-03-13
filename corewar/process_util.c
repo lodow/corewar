@@ -28,7 +28,7 @@ int		exe_process(void *ptrproc, void *ptrvm)
       else
         {
           proc->pc = MOD_MEM(proc->pc + 1);
-          printf("Operation pourrie 0x%X\n", proc->instr);
+          printf("Operation pourrie 0x%X\n", (int)((unsigned char)proc->instr));
         }
       proc->instr = GET_INSTR;
       if ((proc->instr >= 0) && (proc->instr <= 15))
