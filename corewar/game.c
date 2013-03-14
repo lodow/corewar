@@ -66,6 +66,8 @@ int	check_champs_alive_a_print(t_vm *vm)
         }
       i++;
     }
+  if (got_a_winner == 0)
+    vm->cycle_to_die = 0;
   print_winner(vm, got_a_winner);
   return (got_a_winner);
 }

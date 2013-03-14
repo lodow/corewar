@@ -18,6 +18,8 @@ int		exe_process(void *ptrproc, void *ptrvm)
 
   proc = ptrproc;
   vmstat = ptrvm;
+  if (proc == NULL)
+    return (-1);
   if (proc->nb_cycle_t_next <= 1)
     {
       if ((proc->instr >= 0) && (proc->instr <= 15))
