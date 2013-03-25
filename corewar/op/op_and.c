@@ -5,10 +5,27 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:52:51 2013 luc sinet
+** Last update Mon Mar 25 16:03:29 2013 luc sinet
 */
 
 #include	"operation.h"
+
+void	debug_and(t_process *proc, int *val, int reg3)
+{
+  my_putstr("\t", 1, 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
+  my_putstr(" and (", 1 ,-1);
+  my_put_nbr(val[0], 1);
+  my_putstr(" & ", 1, 3);
+  my_put_nbr(val[1]);
+  my_putstr(" = reg", 1, 6);
+  my_put_nbr(reg3, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg3], 1);
+  my_putstr(") carry = ", 1, 10);
+  my_put_nbr(proc->carry, 1);
+  my_putstr("\n", 1, 1);
+}
 
 int	op_and(t_process *proc, t_vm *vm)
 {
@@ -34,7 +51,6 @@ int	op_and(t_process *proc, t_vm *vm)
         }
       proc->reg[reg3] = val[0] & val[1];
       proc->carry = is_byte_zero((char*) & (proc->reg[reg3]), sizeof(int));
-      printf("[%10s] and (%d & %d = reg%d=%d) carry = %d\n", proc->associated_champ->header.prog_name, val[0], val[1], reg3, proc->reg[reg3], proc->carry);
     }
   return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
 }

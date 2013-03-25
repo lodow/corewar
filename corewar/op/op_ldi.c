@@ -5,10 +5,27 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:53:06 2013 luc sinet
+** Last update Mon Mar 25 18:35:48 2013 luc sinet
 */
 
 #include	"operation.h"
+
+void	debug_ldi(t_process *proc, int *val, int reg)
+{
+  my_putstr("\t", 1 , 1);
+  my_putstr(proc->associated_champ->header.prog_name);
+  my_putstr(" ldi (i@*(pc+", 1 , -1);
+  my_put_nbr(val[0] - val[1], 1);
+  my_putstr(")+", 1 , 2);
+  my_put_nbr(val[1]);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg]);
+  my_putstr(" -> reg");
+  my_put_nbr(reg, 1);
+  my_putstr(") carry = ", 1 , -1);
+  my_put_nbr(proc->carry);
+  my_putstr("\n", 1, 1);
+}
 
 int	get_value_ldi_at_adrr(t_process *proc, t_vm *vm, int adrr)
 {
