@@ -5,7 +5,7 @@
 ** Login   <dellam_a@epitech.net>
 **
 ** Started on  Fri Jan 18 16:00:21 2013 adrien dellamaggiora
-** Last update Tue Jan 29 14:43:51 2013 Welanor
+** Last update Mon Mar 18 15:56:48 2013 Adrien
 */
 
 #ifndef _ASM_H_
@@ -30,5 +30,6 @@ void	adress_sti(char *line, int *pc);
 void	adress_ldi(char *line, int *pc);
 void	adress_fork(char *line, int *pc);
 void	adress_aff(char *line, int *pc);
+void	label_tofar(char *str, int nb);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Thu Feb 21 14:45:46 2013 Adrien dellamaggiora
+** Last update Wed Mar 20 18:33:56 2013 Adrien
 */
 
 #ifndef PARSE_CMD_H
@@ -32,6 +32,7 @@ typedef struct	s_cmd
   void		*file;
   int		sizefile;
   int		fd;
+  int		nb;
   int		pc;
   int		lablengh;
   t_tablabel	*lab;
