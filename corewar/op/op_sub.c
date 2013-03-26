@@ -24,15 +24,15 @@ void	debug_sub(t_process *proc, int reg1, int reg2, int reg3)
   my_putstr(" sub (reg)", 1 ,-1);
   my_put_nbr(reg1, 1);
   my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg1]);
+  my_put_nbr(proc->reg[reg1], 1);
   my_putstr(" - reg", 1, 6);
   my_put_nbr(reg2, 1);
   my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg2]);
+  my_put_nbr(proc->reg[reg2], 1);
   my_putstr(" = reg", 1, 6);
   my_put_nbr(reg3, 1);
   my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg3]);
+  my_put_nbr(proc->reg[reg3], 1);
   my_putstr(") carry = ", 1, 10);
   my_put_nbr(proc->carry, 1);
   my_putstr("\n", 1, 1);

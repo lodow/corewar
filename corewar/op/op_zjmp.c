@@ -20,11 +20,11 @@
 void	debug_zjump(t_process *proc, short off_addr)
 {
   my_putstr("\t", 1, 1);
-  my_putstr(proc->associated_champ->header.prog_name);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
   my_putstr(" zjump (", 1, -1);
-  my_put_nbr(off_adrr % IDX_MOD, 1);
+  my_put_nbr(off_addr % IDX_MOD, 1);
   my_putstr(") carry = ", 1, -1);
-  my_put_nbr(proc->carry);
+  my_put_nbr(proc->carry, 1);
   my_putstr("\n", 1 , -1);
 }
 

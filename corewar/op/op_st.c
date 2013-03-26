@@ -17,7 +17,7 @@ void	debug_st(t_process *proc, int reg, int reg2, short addr)
   my_putstr(" st (reg", 1 ,-1);
   my_put_nbr(reg, 1);
   my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg]);
+  my_put_nbr(proc->reg[reg], 1);
   if (addr == -1)
     {
       my_putstr(" -> reg", 1 , -1);

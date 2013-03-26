@@ -20,13 +20,13 @@
 void	debug_aff(t_process *proc, int reg1, char cara)
 {
   my_putstr("[\t", 1, -1);
-  my_putstr(proc->associated_champ->header.prog_name);
-  my_putstr("] aff (reg", 1, 1);
-  my_put_nbr(reg1);
-  my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg1]);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("] aff (reg", 1, -1);
+  my_put_nbr(reg1, 1);
+  my_putstr("=", 1, -1);
+  my_put_nbr(proc->reg[reg1], 1);
   my_putstr(") -> ", 1, -1);
-  my_put_nbr(cara);
+  my_put_nbr(cara, 1);
   my_putstr("\n", 1 , 1);
 }
 

@@ -51,7 +51,7 @@ char	**pre_pars(char **args, char **env)
 
   i = 0;
   if ((nargs = copy_tab(args)) == NULL)
-    return (-1);
+    return (NULL);
   while (nargs[i])
     {
       if (check_if_folder(nargs[i]) == 1)

@@ -20,7 +20,7 @@
 void	debug_fork(t_process *proc, short addr)
 {
   my_putstr("\t", 1, 1);
-  my_putstr(proc->associated_champ->header.prog_name);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
   my_putstr(" fork (", 1, -1);
   my_put_nbr(addr - proc->pc, 1);
   my_putstr(")\n", 1, -1);

@@ -20,15 +20,15 @@
 void	debug_lld(t_process *proc, int *vtl, int reg)
 {
   my_putstr("\t", 1 , 1);
-  my_putstr(proc->associated_champ->header.prog_name);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
   my_putstr(" lld (i@pc+", 1 , -1);
   my_put_nbr(vtl, 1);
   my_putstr("=", 1, 1);
   my_put_nbr(proc->reg[reg], 1);
-  my_putstr(" -> reg");
+  my_putstr(" -> reg", 1, -1);
   my_put_nbr(reg, 1);
   my_putstr(") carry = ", 1 , -1);
-  my_put_nbr(proc->carry);
+  my_put_nbr(proc->carry, 1);
   my_putstr("\n", 1, 1);
 }
 

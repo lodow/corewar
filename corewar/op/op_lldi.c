@@ -10,20 +10,20 @@
 
 #include	"operation.h"
 
-void	debug_ldi(t_process *proc, int *val, int reg)
+void	debug_lldi(t_process *proc, int *val, int reg)
 {
   my_putstr("\t", 1 , 1);
-  my_putstr(proc->associated_champ->header.prog_name);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
   my_putstr(" lldi (i@*(pc+", 1 , -1);
-   my_put_nbr(val[0] - val[1], 1);
+  my_put_nbr(val[0] - val[1], 1);
   my_putstr("=", 1 , 1);
-  my_put_nbr(val[1]);
+  my_put_nbr(val[1], 1);
   my_putstr("=", 1, 1);
-  my_put_nbr(proc->reg[reg]);
-  my_putstr(" -> reg");
+  my_put_nbr(proc->reg[reg], 1);
+  my_putstr(" -> reg", 1, -1);
   my_put_nbr(reg, 1);
   my_putstr(") carry = ", 1 , -1);
-  my_put_nbr(proc->carry);
+  my_put_nbr(proc->carry, 1);
   my_putstr("\n", 1, 1);
 }
 
