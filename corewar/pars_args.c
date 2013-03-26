@@ -34,7 +34,8 @@ int	addr_opt(char **av, t_arg *parg)
 {
   if (is_a_num(av[parg->pos + 1]) == 1)
     {
-      parg->addr_used[parg->addr_pos] = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
+      parg->addr_used[parg->addr_pos]
+        = my_getnbr(av[parg->pos + 1]) % MEM_SIZE;
       parg->addr_pos += 1;
       parg->opt[2] = 1;
       parg->pos += 1;
@@ -47,7 +48,7 @@ int	adds_opt(char **av, t_arg *parg)
   if (my_strcmp("-unlimited", av[parg->pos]) == 0)
     {
       parg->opt[0] = 1;
-      SETFLAG(parg->vm->flag, UNLIMITEDOPT);
+      SETFLAG(parg->vm->flag, FLAGPOS(UNLIMITEDOPT));
     }
   else if (my_strcmp("-d", av[parg->pos]) == 0)
     {
