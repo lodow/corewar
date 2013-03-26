@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Thu Feb 21 14:35:48 2013 Adrien dellamaggiora
+** Last update Wed Mar 20 18:35:21 2013 Adrien
 */
 
 #include "asm.h"
@@ -93,27 +93,26 @@ void	put_error(int line)
 
 int		parse(char **file, char *name)
 {
-  int		i;
   t_header	header;
   t_cmd		cmd;
 
-  i = next_the_header(file) - 1;
+  cmd.nb = next_the_header(file) - 1;
   my_memsetc(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == NULL)
     return (-1);
   recuplabel(&cmd, file);
   header.prog_size = cmd.pc;
   cmd.pc = 0;
-  while (file[++i])
-    if (my_begincmp(file[i], NAME_CMD_STRING))
-      recup_name(file[i], &header);
-    else if (my_begincmp(file[i], COMMENT_CMD_STRING))
+  while (file[++cmd.nb])
+    if (my_begincmp(file[cmd.nb], NAME_CMD_STRING))
+      recup_name(file[cmd.nb], &header);
+    else if (my_begincmp(file[cmd.nb], COMMENT_CMD_STRING))
       {
-	recup_comment(file[i], &header);
+	recup_comment(file[cmd.nb], &header);
 	cmd.fd = put_header(&header, &cmd, name);
       }
-    else if (parse_cmd(file[i], &header, &cmd) == -1)
-      put_error(i);
+    else if (parse_cmd(file[cmd.nb], &header, &cmd) == -1)
+      put_error(cmd.nb);
   freelabel(cmd);
   free(cmd.file);
   return (0);

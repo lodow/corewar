@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Thu Mar  7 16:31:55 2013 Adrien
+** Last update Wed Mar 20 18:42:18 2013 Adrien
 */
 
 #include "asm.h"
@@ -41,9 +41,11 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
     {
       j = 0;
       i += 1;
-      while (my_cmp(&str[i], cmd->lab[j].label) == 0
-	     && j < cmd->lablengh - 1)
+      while (j < cmd->lablengh - 1
+	     && my_cmp(&str[i], cmd->lab[j].label) == 0)
 	j++;
+      if (j == cmd->lablengh - 1)
+	label_tofar(&str[i], cmd->nb);
       nb = cmd->lab[j].adress - cmd->pc;
     }
   else
@@ -54,7 +56,7 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
   param->param[param->lenght + IND_SIZE - 2] = 0;
   param->param[param->lenght + IND_SIZE - 1] |= nb;
   nb >>= 8;
-  param->param[param->lenght + IND_SIZE - 2] |= nb;
+  param->param[param->lenght + IND_SIZE - 2] |= (nb >> 8);
   param->lenght += IND_SIZE;
 }
 

@@ -5,13 +5,27 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Thu Feb 21 14:28:19 2013 Adrien dellamaggiora
+** Last update Wed Mar 20 18:39:42 2013 Adrien
 */
 
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
 #include "../misc/str_func.h"
+#include "../misc/nb_func.h"
+
+void	label_tofar(char *str, int nb)
+{
+  int	i;
+
+  i = 0;
+  my_putstr("Label ", 2, -1);
+  while (str[i] != 0 && str[i] != ' ' && str[i] != SEPARATOR_CHAR)
+    my_putstr(&str[i++], 2, 1);
+  my_putstr(" undefine line ", 2, -1);
+  my_put_nbr(nb, 2);
+  my_putstr("\n", 2, 1);
+}
 
 char    *getname(char *name)
 {
