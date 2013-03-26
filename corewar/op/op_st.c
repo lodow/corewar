@@ -12,8 +12,8 @@
 
 void	debug_st(t_process *proc, int reg, int reg2, short addr)
 {
-  my_putstr("\t", 1, 1);
   my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
+  my_putstr("\t", 1, 1);
   my_putstr(" st (reg", 1 ,-1);
   my_put_nbr(reg, 1);
   my_putstr("=", 1, 1);
@@ -38,8 +38,8 @@ void	op_st_reg(t_process *proc, t_vm *vm, int reg)
   reg2 = proc->params_next_instr.params[2] - 1;
   if (reg2 >= 0 && reg2 < REG_NUMBER)
     {
-      proc->reg[reg2] = proc->reg[reg];;
-      printf("[%10s] st (reg%d=%d -> reg%d)\n", proc->associated_champ->header.prog_name, reg, proc->reg[reg], reg2);
+      proc->reg[reg2] = proc->reg[reg];
+      DEBUGCALL(ISDEBUGMODE, debug_st(proc, reg, reg2, -1));
     }
 }
 
@@ -76,7 +76,7 @@ void	op_st_ind(t_process *proc, t_vm *vm, int reg)
   vm->mem[MOD_MEM(proc->pc + adrr + 1)] = tmp[2];
   vm->mem[MOD_MEM(proc->pc + adrr + 2)] = tmp[1];
   vm->mem[MOD_MEM(proc->pc + adrr + 3)] = tmp[0];
-  printf("[%10s] st (reg%d=%d -> i@pc+%d)\n", proc->associated_champ->header.prog_name, reg, proc->reg[reg], adrr);
+  DEBUGCALL(ISDEBUGMODE, debug_st(proc, reg, 0, adrr));
 }
 
 /*

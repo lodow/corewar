@@ -12,8 +12,8 @@
 
 void	debug_sti(t_process *proc, int valtstore, short addr)
 {
-  my_putstr("\t", 1 , 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1 , 1);
   my_putstr(" sti (", 1, -1);
   my_put_nbr(valtstore, 1);
   my_putstr(" -> i@pc+", 1 , -1);
@@ -101,7 +101,7 @@ int	op_sti(t_process *proc, t_vm *vm)
       tsize += 1;
       i++;
     }
-  printf("[%10s] sti (%d -> i@pc+%d)\n", proc->associated_champ->header.prog_name, valtstore, adrr);
+  DEBUGCALL(ISDEBUGMODE, debug_sti(proc, valtstore, adrr));
   sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
   return (tsize);
 }

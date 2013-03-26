@@ -16,8 +16,8 @@
 
 void	live_debug(t_process *proc, int number)
 {
-  my_putstr("\t", 1, 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1, 1);
   my_putstr(" live (", 1, -1);
   my_put_nbr(number, 1);
   my_putstr(")\n", 1, 2);
@@ -71,7 +71,7 @@ int	op_live(t_process *proc, t_vm *vm)
       i++;
     }
   vm->nbr_live++;
-  printf("[%10s] live (%d)\n", proc->associated_champ->header.prog_name, number);
+  DEBUGCALL(ISDEBUGMODE, live_debug(proc, number));
   op_live_set_alive(vm, number);
   return (5);
 }

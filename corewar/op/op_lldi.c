@@ -12,8 +12,8 @@
 
 void	debug_lldi(t_process *proc, int *val, int reg)
 {
-  my_putstr("\t", 1 , 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1 , 1);
   my_putstr(" lldi (i@*(pc+", 1 , -1);
   my_put_nbr(val[0] - val[1], 1);
   my_putstr("=", 1 , 1);
@@ -75,7 +75,7 @@ int	op_lldi(t_process *proc, t_vm *vm)
       tmp[0] = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 1) + 2];
       proc->reg[reg] = get_value_lldi_at_adrr(proc, vm, val[0]);
       proc->carry = is_byte_zero((char*)(&(proc->reg[reg])), sizeof(int));
-      printf("[%10s] lldi (i@*(pc+%d)+%d=%d -> reg%d) carry = %d\n", proc->associated_champ->header.prog_name, val[0] - val[1], val[1], proc->reg[reg], reg, proc->carry);
+      DEBUGCALL(ISDEBUGMODE, debug_lldi(proc, val, reg));
     }
   return (7);
 }

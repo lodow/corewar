@@ -19,8 +19,8 @@
 
 void	debug_zjump(t_process *proc, short off_addr)
 {
-  my_putstr("\t", 1, 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1, 1);
   my_putstr(" zjump (", 1, -1);
   my_put_nbr(off_addr % IDX_MOD, 1);
   my_putstr(") carry = ", 1, -1);
@@ -44,7 +44,7 @@ int	op_zjmp(t_process *proc, t_vm *vm)
       j--;
       i++;
     }
-  printf("[%10s] zjmp (%d) carry = %d\n", proc->associated_champ->header.prog_name, off_adrr % IDX_MOD, proc->carry);
+  DEBUGCALL(ISDEBUGMODE, debug_zjump(proc, off_adrr));
   if (proc->carry == 1)
     return (off_adrr % IDX_MOD);
   return (1 + IND_SIZE);

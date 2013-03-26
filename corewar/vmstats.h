@@ -20,7 +20,11 @@
 # define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - 1 - (y)) * 2)) & 3)
 # define SHORTCUT vmstat->instr_nb_cycle[(int)proc->instr]
 # define CHECK_INST_CYCLE(x) (x >= 0 && x <= 15) ? SHORTCUT : x
-# define SVAL(val) (val > 127) ? (128 - val) : val
+# define DEBUGCALL(x, y) ((x) ? (y) : void_func())
+# define ISDEBUGMODE GETFLAG(vm->flag, FLAGPOS(DEBUGOPT))
+
+# define UNLIMITEDOPT 0
+# define DEBUGOPT 1
 
 typedef struct	s_champ
 {

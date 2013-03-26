@@ -19,8 +19,8 @@
 
 void	debug_lfork(t_process *proc, short addr)
 {
-  my_putstr("\t", 1, 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1, 1);
   my_putstr(" lfork (", 1, -1);
   my_put_nbr(addr - proc->pc, 1);
   my_putstr(")\n", 1, -1);
@@ -44,6 +44,6 @@ int	op_lfork(t_process *proc, t_vm *vm)
     }
   adrr = proc->pc + adrr;
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  printf("[%10s] lfork (%d)\n", proc->associated_champ->header.prog_name, adrr - proc->pc);
+  DEBUGCALL(ISDEBUGMODE, debug_lfork(proc, adrr));
   return (3);
 }

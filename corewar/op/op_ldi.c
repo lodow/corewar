@@ -76,7 +76,7 @@ int	op_ldi(t_process *proc, t_vm *vm)
       val[0] += val[1] % IDX_MOD;
       proc->reg[reg] = get_value_ldi_at_adrr(proc, vm, val[0]);
       proc->carry = is_byte_zero((char*)(&(proc->reg[reg])), sizeof(int));
-      printf("[%10s] ldi (i@*(pc+%d)+%d=%d -> reg%d) carry = %d\n", proc->associated_champ->header.prog_name, val[0] - val[1], val[1], proc->reg[reg], reg, proc->carry);
+      DEBUGCALL(ISDEBUGMODE, debug_ldi(proc, val, reg));
     }
   return (7);
 }
