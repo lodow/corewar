@@ -11,10 +11,10 @@
 #ifndef PARSE_CMD_H
 # define PARSE_CMD_H
 
-# include "../misc/op.h"
-# include "../misc/str_func.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include "../misc/op.h"
+# include "../misc/str_func.h"
 
 # define TYPE(x, y) (x == 1 ? y : 1)
 

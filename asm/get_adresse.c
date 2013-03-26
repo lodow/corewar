@@ -23,29 +23,26 @@ void	adress_ldlld(char *line, int *pc)
   *pc = *pc + 2;
   while (line[i] != ' ' && line[i] != 0)
     i++;
-  if (line[0] == 0)
-    {
-      *pc -= 2;
-      return ;
-    }
+  if (line[i] == 0)
+    return ;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += DIR_SIZE;
+    *pc += T_DIR + 2;
   else if (line[i] == 'r')
-    *pc += 1;
+    *pc += T_REG + 2;
   else
-    *pc += IND_SIZE;
-  *pc += 1;
+    *pc += T_IND + 2;
+  *pc += T_REG;
 }
 
 void	adress_add(char *line, int *pc)
 {
-  *pc += 5;
+  *pc += 2 + T_REG + T_REG + T_REG;
 }
 
 void	adress_zjump(char *line, int *pc)
 {
-  *pc = *pc + 1 + IND_SIZE;
+  *pc = *pc + 1 + T_IND;
 }
 
 void	adress_and(char *line, int *pc)
@@ -58,19 +55,19 @@ void	adress_and(char *line, int *pc)
     i++;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += DIR_SIZE;
+    *pc += T_DIR;
   else if (line[i] == 'r')
-    *pc += 1;
+    *pc += T_REG;
   else
-    *pc += IND_SIZE;
+    *pc += T_IND;
   while (line[i] != SEPARATOR_CHAR && line[i] != 0)
     i++;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += DIR_SIZE;
+    *pc += T_DIR;
   else if (line[i] == 'r')
-    *pc += 1;
+    *pc += T_REG;
   else
-    *pc += IND_SIZE;
-  *pc += 1;
+    *pc += T_IND;
+  *pc += T_REG;
 }

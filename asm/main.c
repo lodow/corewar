@@ -53,14 +53,14 @@ int	main(int argc, char **argv, char **envp)
       file = get_data_ffile(fd);
       if (file == 0 || file[0] == 0)
 	{
-	  my_putstr("error file\n", 2, 11);
+	  my_putstr("Error File\n", 2, 11);
 	  return (-1);
 	}
       if (parse(file, argv[1]) == -1)
-	my_putstr("parse error\n", 2, 12);
+	my_putstr("Parse Error\n", 2, 12);
     }
   else
-    my_putstr("No file\n", 2, 8);
+    my_putstr("No File\n", 2, 8);
   freefile(file);
   return (0);
 }
