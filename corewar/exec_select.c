@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 19 18:07:33 2013 luc sinet
-** Last update Thu Mar 21 14:42:43 2013 luc sinet
+** Last update Tue Mar 26 14:18:23 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -78,13 +78,12 @@ char	**exec_child(char **args, char **env, char *folder, t_sel *spt)
 {
   char	**sel_args;
   char	*real_folder;
-  int	nb_file;
 
   close(spt->fd[0]);
   dup2(spt->fd[1], 1);
   close(spt->fd[1]);
   if ((real_folder = renew_folder(folder)) == NULL ||
-      (sel_args = get_file_form_folder(real_folder, nb_file, sel_args)) == NULL)
+      (sel_args = get_file_form_folder(real_folder, 0, NULL)) == NULL)
     exit(0);
   free(real_folder);
   if (execve("./my_select", sel_args, env) == -1)

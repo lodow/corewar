@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Dec 26 11:01:09 2012 luc sinet
-** Last update Tue Feb 19 11:15:43 2013 luc sinet
+** Last update Tue Mar 26 14:22:40 2013 luc sinet
 */
 
 #include <stdlib.h>
@@ -76,8 +76,9 @@ char	**my_str_to_wordtab(char *s1, char c1, char c2)
 {
   char	**tab;
 
-  if ((tab = count_alloc(s1, tab, c1, c2)) == NULL)
+  if ((tab = count_alloc(s1, NULL, c1, c2)) == NULL)
     return (NULL);
   if ((tab = fill_tab(s1, tab, c1, c2)) == NULL)
     return (NULL);
+  return (tab);
 }

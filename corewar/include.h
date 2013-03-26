@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Jan 27 17:02:38 2013 luc sinet
+** Last update Tue Mar 26 14:12:17 2013 luc sinet
 */
 
 #ifndef _INCLUDE_H_
@@ -18,6 +18,7 @@
 # include	"../misc/nb_func.h"
 # include	"vmstats.h"
 # include	"pars.h"
+# include	"pre_pars.h"
 # include	"op/operation.h"
 # include	"pars.h"
 
