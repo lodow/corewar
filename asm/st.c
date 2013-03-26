@@ -14,7 +14,7 @@ int	st_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
   if (str[i] == 'r')
     {
-      registre(param, str, i);
+      registre(param, str, i, cmd->nb);
       param->param[1] = 0b01010000;
     }
   else if (str[i] == DIRECT_CHAR)
@@ -43,7 +43,7 @@ int	st(char *str, int i, t_param *param, t_cmd *cmd)
   i++;
   if (str[i] != 'r')
     return (-1);
-  registre(param, str, i);
+  registre(param, str, i, cmd->nb);
   while (str[i] != SEPARATOR_CHAR && str[i] != 0)
     i++;
   if (str[i] != SEPARATOR_CHAR)

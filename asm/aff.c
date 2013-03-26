@@ -21,6 +21,6 @@ int	laff(char *str, int i, t_param *param, t_cmd *cmd)
   i++;
   if (str[i] != 'r')
     return (-1);
-  registre(param, str, i);
+  registre(param, str, i, cmd->nb);
   return (0);
 }

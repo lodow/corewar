@@ -13,21 +13,21 @@
 int	add_sub_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
   if (str[i] == 'r')
-    registre(param, str, i);
+    registre(param, str, i, cmd->nb);
   else
     return (-1);
   i++;
   while (str[i] != 0 && str[i] != 'r')
     i++;
   if (str[i] == 'r')
-    registre(param, str, i);
+    registre(param, str, i, cmd->nb);
   else
     return (-1);
   i++;
   while (str[i] != 0 && str[i] != 'r')
     i++;
   if (str[i] == 'r')
-    registre(param, str, i);
+    registre(param, str, i, cmd->nb);
   else
     return (-1);
   return (0);

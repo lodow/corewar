@@ -18,9 +18,12 @@ void	freelabel(t_cmd cmd)
   int	i;
 
   i = 0;
-  while (i < cmd.lablengh)
-    free(cmd.lab[i++].label);
-  free(cmd.lab);
+  if (cmd.lablengh != 0)
+    {
+      while (i < cmd.lablengh)
+	free(cmd.lab[i++].label);
+      free(cmd.lab);
+    }
 }
 
 void	freefile(char **file)

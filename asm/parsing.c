@@ -14,7 +14,7 @@
 #include "../misc/str_func.h"
 #include "../misc/nb_func.h"
 
-void	registre(t_param *param, char *str, int i)
+void	registre(t_param *param, char *str, int i, int line)
 {
   int	nb;
   char	nbr;
@@ -23,7 +23,9 @@ void	registre(t_param *param, char *str, int i)
   nbr = (char) nb;
   if (nb > REG_NUMBER || nb < 1)
     {
-      my_putstr("registre trop grand\n", 2, -1);
+      my_putstr("no such register line ", 2, -1);
+      my_put_nbr(line, 2);
+      my_putstr("\n", 2, 1);
       exit(0);
     }
   if ((param->param = realloc(param->param, param->lenght + 1)) == NULL)
@@ -41,10 +43,10 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
     {
       j = 0;
       i += 1;
-      while (j < cmd->lablengh - 1
+      while (j < cmd->lablengh
 	     && my_cmp(&str[i], cmd->lab[j].label) == 0)
 	j++;
-      if (j == cmd->lablengh - 1)
+      if (j == cmd->lablengh)
 	label_tofar(&str[i], cmd->nb);
       nb = cmd->lab[j].adress - cmd->pc;
     }
@@ -66,7 +68,7 @@ void	put_to_param(t_param *param, char *str, int i, t_cmd *cmd)
     {
       param->param[1] <<= 2;
       param->param[1] |= 1;
-      registre(param, str, i);
+      registre(param, str, i, cmd->nb);
     }
   else if (str[i] == DIRECT_CHAR)
     {

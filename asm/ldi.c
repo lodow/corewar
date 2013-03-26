@@ -46,7 +46,7 @@ int	ldi_lldi_param(char *str, int i, t_param *param, t_cmd *cmd)
   param->param[1] <<= 2;
   param->param[1] += 1;
   param->param[1] <<= 2;
-  registre(param, str, i);
+  registre(param, str, i, cmd->nb);
   return (0);
 }
 

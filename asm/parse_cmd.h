@@ -65,7 +65,7 @@ void	fillfile(t_header *header, t_cmd *cmd, char *name);
 char	*sub_space(char *line);
 t_cmd	*recuplabel(t_cmd *cmd, char **file);
 char	*getname(char *name);
-void	registre(t_param *param, char *str, int i);
+void	registre(t_param *param, char *str, int i, int line);
 void	direct(t_param *param, char *str, int i, t_cmd *cmd);
 void	indirect(t_param *param, char *str, int i, t_cmd *cmd);
 int	chose_func(t_param *param, char *str, int i, t_cmd *cmd);

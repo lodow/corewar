@@ -14,7 +14,7 @@ void	sti_param(char *str, int i, t_param *param, t_cmd *cmd)
 {
   if (str[i] == 'r')
     {
-      registre(param, str, i);
+      registre(param, str, i, cmd->nb);
       param->param[1] <<= 2;
       param->param[1] += 1;
     }
