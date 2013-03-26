@@ -19,9 +19,9 @@
 
 void	debug_aff(t_process *proc, int reg1, char cara)
 {
-  my_putstr("[\t", 1, -1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
-  my_putstr("] aff (reg", 1, -1);
+  my_putstr("\t", 1, -1);
+  my_putstr(" aff (reg", 1, -1);
   my_put_nbr(reg1, 1);
   my_putstr("=", 1, -1);
   my_put_nbr(proc->reg[reg1], 1);
@@ -40,6 +40,7 @@ int	op_aff(t_process *proc, t_vm *vm)
     {
       cara = proc->reg[reg1] % 256;
       my_putstr(&cara, 1, 1);
+      DEBUGCALL(ISDEBUGMODE, debug_aff(proc, reg1, cara));
     }
   return (3);
 }

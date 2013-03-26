@@ -19,8 +19,8 @@
 
 void	debug_fork(t_process *proc, short addr)
 {
-  my_putstr("\t", 1, 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1, 1);
   my_putstr(" fork (", 1, -1);
   my_put_nbr(addr - proc->pc, 1);
   my_putstr(")\n", 1, -1);
@@ -45,6 +45,6 @@ int	op_fork(t_process *proc, t_vm *vm)
   adrr %= IDX_MOD;
   adrr = proc->pc + adrr;
   my_add_to_list(&(vm->process_list), create_new_process(vm, proc, adrr));
-  printf("[%10s] fork (%d)\n", proc->associated_champ->header.prog_name, adrr - proc->pc);
+  DEBUGCALL(ISDEBUGMODE, debug_fork(proc, adrr));
   return (3);
 }

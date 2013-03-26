@@ -10,6 +10,10 @@
 
 #include	"operation.h"
 
+void	void_func()
+{
+}
+
 /*
 ** \param[in] type The params byte
 ** \param[in] nbmax  How much params take into

@@ -5,20 +5,20 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Mar 25 18:47:20 2013 luc sinet
+** Last update Tue Mar 26 16:20:40 2013 luc sinet
 */
 
 #include	"operation.h"
 
 void	debug_sti(t_process *proc, int valtstore, short addr)
 {
-  my_putstr("\t", 1 , 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1 , 1);
   my_putstr(" sti (", 1, -1);
   my_put_nbr(valtstore, 1);
   my_putstr(" -> i@pc+", 1 , -1);
   my_put_nbr(addr, 1);
-  my_putstr(")\n", 1, 1);
+  my_putstr(")\n", 1, -1);
 }
 
 int	sti_get_first_val(t_process *proc, t_vm *vm)
@@ -101,7 +101,7 @@ int	op_sti(t_process *proc, t_vm *vm)
       tsize += 1;
       i++;
     }
-  printf("[%10s] sti (%d -> i@pc+%d)\n", proc->associated_champ->header.prog_name, valtstore, adrr);
+  DEBUGCALL(ISDEBUGMODE, debug_sti(proc, valtstore, adrr));
   sti_cpy_val_a_adrr(proc, vm, valtstore, adrr);
   return (tsize);
 }

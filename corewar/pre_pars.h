@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Mar 19 18:05:46 2013 luc sinet
-** Last update Thu Mar 21 14:23:50 2013 luc sinet
+** Last update Tue Mar 26 14:11:51 2013 luc sinet
 */
 
 #ifndef PRE_H_
@@ -31,5 +31,8 @@ typedef struct	s_sel
 
 char	*renew_folder(char *folder);
 char	**change_args(char **args, char *folder, t_sel *spt);
+int	tab_size(char **tab);
+char	**launch_select(char **args, char **env, char *folder);
+char	**pre_pars(char **args, char **env);
 
 #endif
