@@ -5,10 +5,27 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Feb  2 20:24:03 2013 luc sinet
+** Last update Mon Mar 25 17:27:33 2013 luc sinet
 */
 
 #include	"operation.h"
+
+void	debug_lldi(t_process *proc, int *val, int reg)
+{
+  my_putstr("\t", 1 , 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr(" lldi (i@*(pc+", 1 , -1);
+  my_put_nbr(val[0] - val[1], 1);
+  my_putstr("=", 1 , 1);
+  my_put_nbr(val[1], 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg], 1);
+  my_putstr(" -> reg", 1, -1);
+  my_put_nbr(reg, 1);
+  my_putstr(") carry = ", 1 , -1);
+  my_put_nbr(proc->carry, 1);
+  my_putstr("\n", 1, 1);
+}
 
 int	get_value_lldi_at_adrr(t_process *proc, t_vm *vm, int adrr)
 {

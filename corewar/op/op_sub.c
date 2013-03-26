@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Jan 30 00:28:33 2013 luc sinet
+** Last update Mon Mar 25 15:18:36 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -16,6 +16,28 @@
 ** champs.
 ** \return the total size of the instruction !
 */
+
+void	debug_sub(t_process *proc, int reg1, int reg2, int reg3)
+{
+  my_putstr("\t", 1, 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
+  my_putstr(" sub (reg)", 1 ,-1);
+  my_put_nbr(reg1, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg1], 1);
+  my_putstr(" - reg", 1, 6);
+  my_put_nbr(reg2, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg2], 1);
+  my_putstr(" = reg", 1, 6);
+  my_put_nbr(reg3, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg3], 1);
+  my_putstr(") carry = ", 1, 10);
+  my_put_nbr(proc->carry, 1);
+  my_putstr("\n", 1, 1);
+}
+
 int	op_sub(t_process *proc, t_vm *vm)
 {
   int	reg1;
@@ -30,7 +52,6 @@ int	op_sub(t_process *proc, t_vm *vm)
     {
       proc->reg[reg3] = proc->reg[reg1] - proc->reg[reg2];
       proc->carry = is_byte_zero((char*)(&(proc->reg[reg3])), sizeof(int));
-      printf("[%10s] add (reg%d=%d + reg%d=%d = reg%d=%d) carry = %d\n", proc->associated_champ->header.prog_name, reg1, proc->reg[reg1], reg2, proc->reg[reg2], reg3, proc->reg[reg3], proc->carry);
     }
   return (5);
 }

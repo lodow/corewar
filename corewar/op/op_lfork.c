@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:53:34 2013 luc sinet
+** Last update Mon Mar 25 17:31:36 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -16,6 +16,16 @@
 ** champs.
 ** \return the total size of the instruction and create a new process !
 */
+
+void	debug_lfork(t_process *proc, short addr)
+{
+  my_putstr("\t", 1, 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr(" lfork (", 1, -1);
+  my_put_nbr(addr - proc->pc, 1);
+  my_putstr(")\n", 1, -1);
+}
+
 int	op_lfork(t_process *proc, t_vm *vm)
 {
   int	i;

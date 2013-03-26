@@ -28,13 +28,10 @@ int		exe_process(void *ptrproc, void *ptrvm)
           proc->pc = MOD_MEM(instrlen + proc->pc);
         }
       else
-        {
-          proc->pc = MOD_MEM(proc->pc + 1);
-          printf("Operation pourrie 0x%X\n", (int)((unsigned char)proc->instr));
-        }
+        proc->pc = MOD_MEM(proc->pc + 1);
       proc->instr = GET_INSTR;
       if ((proc->instr >= 0) && (proc->instr <= 15))
-        proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr];
+        proc->nb_cycle_t_next = vmstat->instr_nb_cycle[(int)proc->instr] + 1;
       fill_param_struct(vmstat, proc);
     }
   proc->nb_cycle_t_next--;

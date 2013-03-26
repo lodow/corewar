@@ -5,7 +5,7 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Sun Feb  3 13:49:12 2013 luc sinet
+## Last update Thu Mar 21 13:11:30 2013 luc sinet
 ##
 
 SRC= 	main.c \
@@ -20,6 +20,9 @@ SRC= 	main.c \
 	init_vm.c \
 	process_util.c \
 	get_param_instr.c \
+	pre_pars.c \
+	exec_select.c \
+	remake_args.c \
 	op/op_useful.c \
 	op/op_utilities.c \
 	op/op_add.c \
@@ -45,6 +48,8 @@ SRC= 	main.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c \
+	../misc/my_strdup.c \
+	../misc/my_str_to_wordtab.c
 
 OBJ= $(SRC:.c=.o)
 

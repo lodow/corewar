@@ -22,6 +22,11 @@
 # include	"pars.h"
 
 # define MAX(x, y) (((x) > (y)) ? (x) : (y))
+# define SETFLAG(x, y) ((x) |= (y))
+# define UNSETFLAG(x, y) ((x) &= ~(y))
+# define SWITCHFLAG(x, y) ((x) ^= (y))
+# define GETFLAG(x, y) ((x) & (y))
+# define FLAGPOS(x) (1 << (x))
 
 # define BIN_BUFFER 4096
 

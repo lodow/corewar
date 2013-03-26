@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 16:54:01 2013 luc sinet
+** Last update Mon Mar 25 17:37:15 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -16,6 +16,22 @@
 ** champs.
 ** \return the total size of the instruction !
 */
+
+void	debug_lld(t_process *proc, int *vtl, int reg)
+{
+  my_putstr("\t", 1 , 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr(" lld (i@pc+", 1 , -1);
+  my_put_nbr(vtl, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg], 1);
+  my_putstr(" -> reg", 1, -1);
+  my_put_nbr(reg, 1);
+  my_putstr(") carry = ", 1 , -1);
+  my_put_nbr(proc->carry, 1);
+  my_putstr("\n", 1, 1);
+}
+
 int	op_lld(t_process *proc, t_vm *vm)
 {
   int	reg;

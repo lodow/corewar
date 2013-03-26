@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Feb 21 15:02:05 2013 Hugues
+** Last update Mon Mar 25 13:45:19 2013 Hugues
 */
 
 #include	"include.h"
@@ -48,16 +48,16 @@ void	free_all(t_vm *vm)
 int	main(int argc, char **argv, char **envp)
 {
   t_vm	vm;
+  char	**args;
 
   if (check_define())
     {
+      if ((args = pre_pars(&argv[1], envp)) == NULL)
+        return (-1);
       init_vm_stats(CYCLE_TO_DIE, -1, &vm);
-      if (pars(&(argv[1]), argc - 1, &vm) != -1)
+      if (pars(args, tab_size(args), &vm) != -1)
         while (handle_game(&vm, envp) == 0)
-          {
-            my_apply_on_list(vm.process_list, &exe_process, &vm);
-            /*            usleep(1000);*/
-          }
+          my_apply_on_list(vm.process_list, &exe_process, &vm);
       free_all(&vm);
     }
   else

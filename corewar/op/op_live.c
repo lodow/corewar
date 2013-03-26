@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
+** Last update Mon Mar 25 18:55:51 2013 luc sinet
 */
 
 #include	"operation.h"
@@ -13,6 +13,16 @@
 /*
 ** Print that the champs is alive
 */
+
+void	live_debug(t_process *proc, int number)
+{
+  my_putstr("\t", 1, 1);
+  my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr(" live (", 1, -1);
+  my_put_nbr(number, 1);
+  my_putstr(")\n", 1, 2);
+}
+
 void	op_live_print_alive(t_champ *champ)
 {
   my_putstr("le joueur ", 1, 10);
