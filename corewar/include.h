@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Mar 26 14:12:17 2013 luc sinet
+** Last update Tue Mar 26 15:51:11 2013 luc sinet
 */
 
 #ifndef _INCLUDE_H_
@@ -29,6 +29,8 @@
 # define GETFLAG(x, y) ((x) & (y))
 # define FLAGPOS(x) (1 << (x))
 
+# define UNLIMITEDOPT 0
+# define DEBUGOPT 1
 # define BIN_BUFFER 4096
 
 int	get_bin_file(int fd, char **file);

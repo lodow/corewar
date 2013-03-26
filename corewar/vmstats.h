@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sun Feb  3 13:17:19 2013 luc sinet
+** Last update Tue Mar 26 15:51:12 2013 luc sinet
 */
 
 #ifndef _VMSTATS_H_
@@ -22,9 +22,6 @@
 # define CHECK_INST_CYCLE(x) (x >= 0 && x <= 15) ? SHORTCUT : x
 # define DEBUGCALL(x, y) ((x) ? (y) : void_func())
 # define ISDEBUGMODE GETFLAG(vm->flag, FLAGPOS(DEBUGOPT))
-
-# define UNLIMITEDOPT 0
-# define DEBUGOPT 1
 
 typedef struct	s_champ
 {

@@ -5,15 +5,15 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Mar 25 18:35:48 2013 luc sinet
+** Last update Tue Mar 26 16:22:07 2013 luc sinet
 */
 
 #include	"operation.h"
 
 void	debug_ldi(t_process *proc, int *val, int reg)
 {
-  my_putstr("\t", 1 , 1);
   my_putstr(proc->associated_champ->header.prog_name, 1, -1);
+  my_putstr("\t", 1 , 1);
   my_putstr(" ldi (i@*(pc+", 1 , -1);
   my_put_nbr(val[0] - val[1], 1);
   my_putstr(")+", 1 , 2);

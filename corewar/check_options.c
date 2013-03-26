@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Fri Feb  1 15:57:32 2013 luc sinet
+** Last update Tue Mar 26 15:46:45 2013 luc sinet
 */
 
 #include "include.h"
@@ -96,7 +96,11 @@ int	check_adds(char **av, t_arg *parg)
 	  return (-1);
       parg->opt[0] = 1;
     }
-  else
-    return (0);
+  else if (my_strcmp("-d", av[parg->pos]) == 0)
+    {
+      if (parg->opt[3] != -1)
+	return (-1);
+      parg->opt[3] = 1;
+    }
   return (0);
 }
