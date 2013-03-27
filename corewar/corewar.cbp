@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../champ.cor" />
+				<Option parameters="../champ/2011/le-rou_b.cor -dump 80 -unlimited" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -47,6 +47,9 @@
 		<Unit filename="../misc/my_memset.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../misc/my_uint64_t_strbase.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../misc/nb_func.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -63,6 +66,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="check_args.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dump.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="game.c">

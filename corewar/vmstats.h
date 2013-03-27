@@ -78,7 +78,7 @@ char		*get_value_f_param_type(char type, int off_pos, t_process *proc);
 int		exe_process(void *ptrproc, void *ptrvm);
 void		fill_param_struct(t_vm *vm, t_process *proc);
 int		handle_game(t_vm *vm, char **env);
-void		dump_memory(t_vmmem *mem, int size, char **env);
+void		dump_memory(t_vm *vm, int size, char **env);
 int		write_dump(t_vmmem *mem, int size, char **env);
 
 #endif

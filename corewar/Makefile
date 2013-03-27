@@ -17,6 +17,7 @@ SRC= 	main.c \
 	champ_load.c \
 	get_bin_file.c \
 	game.c \
+	dump.c \
 	init_vm.c \
 	process_util.c \
 	get_param_instr.c \
@@ -49,6 +50,7 @@ SRC= 	main.c \
 	../misc/get_file.c \
 	../misc/get_next_line.c \
 	../misc/my_strdup.c \
+	../misc/my_uint64_t_strbase.c \
 	../misc/my_str_to_wordtab.c
 
 OBJ= $(SRC:.c=.o)

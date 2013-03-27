@@ -37,5 +37,7 @@ int	get_bin_file(int fd, char **file);
 char	*switch_endian(char *var, int varsize);
 void	set_numval(t_arg *parg);
 void	void_func();
+char	*my_uint_strbase(unsigned int nb, char *base);
+int	my_swap_char(char *a, char *b);
 
 #endif

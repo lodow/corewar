@@ -47,8 +47,8 @@ int	adds_opt(char **av, t_arg *parg)
 {
   if (my_strcmp("-unlimited", av[parg->pos]) == 0)
     {
-      parg->opt[0] = 1;
       SETFLAG(parg->vm->flag, FLAGPOS(UNLIMITEDOPT));
+      parg->opt[0] = 1;
     }
   else if (my_strcmp("-d", av[parg->pos]) == 0)
     {
