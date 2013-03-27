@@ -12,7 +12,7 @@
 				<Option object_output="./" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../champ/2011/le-rou_b.cor -dump 80 -unlimited" />
+				<Option parameters="../rand/champ.cor -d" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>

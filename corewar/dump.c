@@ -35,7 +35,7 @@ void			dump_memory(t_vm *vm, int size, char **env)
 {
   int			i;
   char			*hexa;
-  unsigned char		tmp;
+  unsigned char	tmp;
 
   i = 0;
   hexa = "0123456789ABCDEF";
