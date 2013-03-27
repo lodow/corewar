@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Feb 21 14:39:24 2013 Adrien dellamaggiora
+** Last update Wed Mar 27 09:45:15 2013 Adrien Della Maggiora
 */
 
 #include "../misc/op.h"
@@ -36,7 +36,7 @@ void	freefile(char **file)
   free(file);
 }
 
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv)
 {
   int	fd;
   char	**file;

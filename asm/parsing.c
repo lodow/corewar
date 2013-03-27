@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Mar 20 18:42:18 2013 Adrien
+** Last update Wed Mar 27 10:27:32 2013 Adrien Della Maggiora
 */
 
 #include "asm.h"
@@ -51,14 +51,15 @@ void	indirect(t_param *param, char *str, int i, t_cmd *cmd)
       nb = cmd->lab[j].adress - cmd->pc;
     }
   else
-    nb = my_getnbr(&(str[i]));
+    if ((nb = my_getnbr(&(str[i]))) > IDX_MOD)
+      error_indir(cmd->nb);
   if ((param->param = realloc(param->param, param->lenght + IND_SIZE)) == NULL)
     exit(0);
   param->param[param->lenght + IND_SIZE - 1] = 0;
   param->param[param->lenght + IND_SIZE - 2] = 0;
   param->param[param->lenght + IND_SIZE - 1] |= nb;
   nb >>= 8;
-  param->param[param->lenght + IND_SIZE - 2] |= (nb >> 8);
+  param->param[param->lenght + IND_SIZE - 2] |= nb;
   param->lenght += IND_SIZE;
 }
 
