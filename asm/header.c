@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Wed Mar 20 18:39:42 2013 Adrien
+** Last update Wed Mar 27 10:20:23 2013 Adrien Della Maggiora
 */
 
 #include "asm.h"
@@ -13,6 +13,13 @@
 #include "../misc/op.h"
 #include "../misc/str_func.h"
 #include "../misc/nb_func.h"
+
+void	error_indir(int nb)
+{
+  my_putstr("Warning Indirection to far line ", 2, -1);
+  my_put_nbr(nb, 2);
+  my_putstr("\n", 2, 1);
+}
 
 void	label_tofar(char *str, int nb)
 {

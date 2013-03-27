@@ -4,7 +4,7 @@
 ** Made by dellam_a Login <dellam_a@epitech.eu>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Feb  1 15:30:21 2013 maxime lavandier
+** Last update Wed Mar 27 10:52:54 2013 Adrien Della Maggiora
 **
 */
 
@@ -20,29 +20,28 @@ void	adress_ldlld(char *line, int *pc)
   int	i;
 
   i = 0;
-  *pc = *pc + 2;
   while (line[i] != ' ' && line[i] != 0)
     i++;
   if (line[i] == 0)
     return ;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += T_DIR + 2;
+    *pc += DIR_SIZE + 2;
   else if (line[i] == 'r')
-    *pc += T_REG + 2;
+    *pc += 1 + 2;
   else
-    *pc += T_IND + 2;
-  *pc += T_REG;
+    *pc += IND_SIZE + 2;
+  *pc += 1;
 }
 
 void	adress_add(char *line, int *pc)
 {
-  *pc += 2 + T_REG + T_REG + T_REG;
+  *pc += 2 + 1 + 1 + 1;
 }
 
 void	adress_zjump(char *line, int *pc)
 {
-  *pc = *pc + 1 + T_IND;
+  *pc += 1 + IND_SIZE;
 }
 
 void	adress_and(char *line, int *pc)
@@ -55,19 +54,19 @@ void	adress_and(char *line, int *pc)
     i++;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += T_DIR;
+    *pc += DIR_SIZE;
   else if (line[i] == 'r')
-    *pc += T_REG;
+    *pc += 1;
   else
-    *pc += T_IND;
+    *pc += IND_SIZE;
   while (line[i] != SEPARATOR_CHAR && line[i] != 0)
     i++;
   i++;
   if (line[i] == DIRECT_CHAR)
-    *pc += T_DIR;
+    *pc += DIR_SIZE;
   else if (line[i] == 'r')
-    *pc += T_REG;
+    *pc += 1;
   else
-    *pc += T_IND;
-  *pc += T_REG;
+    *pc += IND_SIZE;
+  *pc += 1;
 }
