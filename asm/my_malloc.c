@@ -13,6 +13,6 @@
 
 void	put_malloc_error()
 {
-  my_putstr("Can’t perform malloc", 1, -1);
+  my_putstr("Can’t perform malloc", 2, -1);
   exit(0);
 }
