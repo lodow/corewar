@@ -1,11 +1,11 @@
 /*
-** parse_cmd.c for corewar in /home/lavand_m//projet/actu/corewar/asm
+** parse_cmd.c for corewar in /home/maxime/Bureau/projet/actu/corewar/asm
 **
 ** Made by maxime lavandier
 ** Login   <lavand_m@epitech.net>
 **
-** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Mar 28 16:36:02 2013 maxime lavandier
+** Started on  Thu Mar 28 16:44:45 2013 maxime lavandier
+** Last update Thu Mar 28 16:44:47 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
