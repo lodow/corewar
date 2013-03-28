@@ -5,10 +5,15 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Tue Jan 22 16:03:00 2013 adrien dellamaggiora
+<<<<<<< HEAD
+** Last update Thu Mar 28 16:33:57 2013 adrien dellamaggiora
+=======
+** Last update Thu Mar  7 16:32:25 2013 Adrien
+>>>>>>> 75b0738aa518c5eca3815f34bb4c74535b645363
 */
 
 #include "parse_cmd.h"
+#include "asm.h"
 
 char	*sub_space(char *str)
 {
@@ -16,10 +21,11 @@ char	*sub_space(char *str)
   int	j;
   char	*res;
 
-  if ((res = malloc(my_strlen(str))) == NULL)
+  if ((res = malloc(my_strlen(str) + 1)) == NULL)
     exit(0);
   i = 0;
   j = 0;
+  res[0] = 0;
   while (str[i] != 0)
     {
       if (i > 1 && (str[i - 1] != ' ' && str[i - 1] != '\t'
@@ -29,21 +35,34 @@ char	*sub_space(char *str)
 	res[j++] = str[i];
       i++;
     }
-   if (res[j - 1] == ' ')
-     res[j - 1] = 0;
-   else
-     res[j] = 0;
-   free(str);
-   return (res);
+  if (res[0] == 0)
+    return (res);
+  if (res[j - 1] == ' ')
+    res[j - 1] = 0;
+  else
+    res[j] = 0;
+  return (res);
 }
 
 int	parse_cmd(char *line, t_header *header, t_cmd *cmd)
 {
-  if (line == NULL || header == NULL)
+  if (header == NULL || cmd == NULL)
     return (-1);
-  line = sub_space(line);
-  if (line[0] == 0)
+  if (my_strlen(line) <= 1)
     return (0);
-  printf("%s\n", line);
+  line = sub_space(line);
+  if (line[0] == '\0' || line[0] == '\n' || line[0] == COMMENT_CHAR)
+    {
+      free(line);
+      return (0);
+    }
+  if (parsing(line, cmd) != 0)
+    {
+      free(line);
+      return (-1);
+    }
+  if (line[0] != COMMENT_CHAR && line[0] != 0)
+    changepc(line, &(cmd->pc));
+  free(line);
   return (0);
 }

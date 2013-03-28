@@ -1,0 +1,57 @@
+/*
+** FILE for FILE in /home/moriss_h/projet
+**
+** Made by hugues morisset
+** Login   <moriss_h@epitech.net>
+**
+** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
+** Last update Mon Mar 25 16:03:29 2013 luc sinet
+*/
+
+#include	"operation.h"
+
+void	debug_and(t_process *proc, int *val, int reg3)
+{
+  my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
+  my_putstr("\t", 1, 1);
+  my_putstr(" and (", 1 ,-1);
+  my_put_nbr(val[0], 1);
+  my_putstr(" & ", 1, 3);
+  my_put_nbr(val[1], 1);
+  my_putstr(" = reg", 1, -1);
+  my_put_nbr(reg3, 1);
+  my_putstr("=", 1, 1);
+  my_put_nbr(proc->reg[reg3], 1);
+  my_putstr(") carry = ", 1, 10);
+  my_put_nbr(proc->carry, 1);
+  my_putstr("\n", 1, 1);
+}
+
+int	op_and(t_process *proc, t_vm *vm)
+{
+  int	reg3;
+  int	val[2];
+  int	i;
+
+  i = 0;
+  val[0] = 0;
+  val[1] = 0;
+  reg3 = proc->params_next_instr.params[NBPBYTE(PARAMBYTE, 2) + 1] - 1;
+  if (reg3 >= 0 && reg3 < REG_NUMBER)
+    {
+      while ((i < 2) && (GET_TYPE_PARAMX(PARAMBYTE, i) != 0))
+        {
+          if (GET_TYPE_PARAMX(PARAMBYTE, i) == 1)
+            val[i] = op_get_reg(proc, vm, i);
+          else if (GET_TYPE_PARAMX(PARAMBYTE, i) == 2)
+            val[i] = op_get_dir(proc, vm, i);
+          else
+            val[i] = op_get_ind_as_dir(proc, vm, i);
+          i++;
+        }
+      proc->reg[reg3] = val[0] & val[1];
+      proc->carry = is_byte_zero((char*) & (proc->reg[reg3]), sizeof(int));
+      DEBUGCALL(ISDEBUGMODE, debug_and(proc, val, reg3));
+    }
+  return (NBPBYTE(proc->params_next_instr.params[0], MAX_ARGS_NUMBER - 1) + 2);
+}

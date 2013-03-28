@@ -5,16 +5,39 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Tue Jan 22 14:47:58 2013 maxime lavandier
+## Last update Thu Feb 21 17:00:42 2013 Adrien dellamaggiora
 ##
 
 SRC= 	main.c \
 	parse.c \
+	direct.c \
+	check_cmd.c \
 	parse_cmd.c \
+	parsing.c \
 	header.c \
+	label.c \
+	func_label.c \
+	chose_func.c \
+	get_adresse.c\
+	get_adr.c \
+	live.c \
+	add_sub.c \
+	aff.c \
+	and_or_xor.c \
+	fork.c \
+	ld.c \
+	ldi.c \
+	st.c \
+	sti.c \
+	zjump.c \
 	../misc/str_func.c \
 	../misc/get_file.c \
-	../misc/get_next_line.c
+	../misc/endianess.c \
+	../misc/get_next_line.c \
+	../misc/my_strdup.c \
+	../misc/my_memset.c \
+	../misc/op.c \
+	../misc/nb_func.c
 
 OBJ= $(SRC:.c=.o)
 
@@ -35,4 +58,4 @@ clean:
 fclean:	clean
 	rm -f $(NAME)
 
-re:	fclean all
+re:	fclean	all

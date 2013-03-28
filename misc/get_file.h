@@ -19,9 +19,9 @@
 # include	"get_next_line.h"
 
 # define LINEB_SIZE 2048
-# if LINEB_SIZE < 0
+# if LINEB_SIZE < 1
 #  undef LINEB_SIZE
-#  define LINEB_SIZE 0
+#  define LINEB_SIZE 1
 # endif
 # define MAFS (str = malloc((tlen + 1) * sizeof(char)))
 

@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Dec 13 13:14:01 2012 Hugues
+** Last update Sat Jan 26 21:35:42 2013 luc sinet
 */
 
 #include "liste.h"
@@ -23,19 +23,34 @@ int	my_list_size(t_list *begin)
   return (i);
 }
 
-void	my_rm_from_list(t_list **begin, t_list *trm, int (*f)(void*))
+void		my_rm_from_list(t_list **begin, int (*remove)(void*, void*),
+                      int (*f)(void*), void *arg)
 {
-  if (begin != NULL)
+  t_list	*ptr;
+  t_list	*prec;
+
+  while (((*begin) != NULL) && (remove((*begin)->data, arg)))
     {
-      if ((*begin) == trm)
-        {
-          (*begin) = (*begin)->next;
-          (*f)(trm->data);
-          free(trm);
-        }
-      else
-        my_rm_from_list(&((*begin)->next), trm, f);
+      f((*begin)->data);
+      ptr = (*begin);
+      (*begin) = ptr->next;
+      free(ptr);
     }
+  if ((prec = (*begin)) != NULL)
+    ptr = prec->next;
+  while ((prec != NULL) && (ptr != NULL))
+    if (remove(ptr->data, arg))
+      {
+        f(ptr->data);
+        prec->next = ptr->next;
+        free(ptr);
+        ptr = prec->next;
+      }
+    else
+      {
+        prec = ptr;
+        ptr = ptr->next;
+      }
 }
 
 void		my_apply_on_list(t_list *begin,
@@ -68,16 +83,16 @@ void		my_add_to_list(t_list **begin, void *data)
 
   if (*begin == NULL)
     {
-      if ((*begin = malloc(1 * sizeof(t_list))) == NULL)
+      if ((*begin = malloc(sizeof(t_list))) == NULL)
         return ;
       (*begin)->data = data;
       (*begin)->next = NULL;
       return ;
     }
   tmp = *begin;
-  while ((tmp)->next != NULL)
-    tmp = (tmp)->next;
-  (tmp)->next = malloc(1 * sizeof(t_list));
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->next = malloc(1 * sizeof(t_list));
   if ((tmp)->next != NULL)
     {
       (tmp)->next->data = data;

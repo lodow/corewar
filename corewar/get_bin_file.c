@@ -10,22 +10,21 @@
 
 #include	"include.h"
 
-int	get_bin_file(const char *filename, char **file)
+int	get_bin_file(int fd, char **file)
 {
   char	*tmp;
-  int	fd;
   int	tsize;
-  char	buff[4096];
+  char	buff[BIN_BUFFER];
   int	nbread;
 
   (*file) = NULL;
   tsize = 0;
   nbread = 1;
-  if ((filename == NULL) || ((fd = open(filename, O_RDONLY)) == -1))
-    return (-1);
+  if (fd == -1)
+    return (0);
   while (nbread > 0)
     {
-      nbread = read(fd, buff, 4096);
+      nbread = read(fd, buff, BIN_BUFFER);
       if ((tmp = malloc((tsize + nbread) * sizeof(char))) == NULL)
         return (-1);
       my_strncpy(tmp, (*file), tsize);
@@ -34,6 +33,5 @@ int	get_bin_file(const char *filename, char **file)
       my_strncpy(&((*file)[tsize]), buff, nbread);
       tsize += nbread;
     }
-  close(fd);
   return (tsize);
 }

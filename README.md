@@ -1,4 +1,6 @@
-corewar
-=======
-Check this depot:
-https://github.com/boubaks/Projects/tree/master/corewar/corewar/src
+Corewar
+
+Commit 400 !!!
+
+Git c'est fini, maintenant c'est l'afs ou rien !!
+

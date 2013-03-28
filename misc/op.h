@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 19:52:20 2013 luc sinet
+** Last update Fri Feb  1 15:38:11 2013 luc sinet
 */
 
 #ifndef _OP_H_
@@ -42,17 +42,14 @@
 
 # define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING		".name"
-# define COMMENT_CMD_STRING		".comment"
+# define NAME_CMD_STRING	".name"
+# define COMMENT_CMD_STRING	".comment"
 
 typedef char	args_type_t;
 
 # define T_REG			1	/* registre */
-# define T_DIR			2	/* directe  (ld  #1,r1  met 1 dans r1) */
-# define T_IND			4	/* indirecte toujours relatif
-					** ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
-					** dans r1 (4 octecs ))
-					*/
+# define T_DIR			2	/* directe  (ld  #1, r1  met 1 dans r1) */
+# define T_IND			4	/* indirecte toujours relatif should be 3 */
 # define T_LAB			8	/* LABEL */
 
 /*

@@ -5,46 +5,66 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 14:00:07 2013 luc sinet
+** Last update Mon Mar 25 13:45:19 2013 Hugues
 */
 
 #include	"include.h"
 
-void			print_hexa(char *mem, int nb)
+int	check_define()
 {
-  int			i;
-  char			*hexa;
-  unsigned char	tmp;
-
-  i = 0;
-  hexa = "0123456789ABCDEF";
-  while (i < nb)
-    {
-      tmp = mem[i];
-      my_putstr("0x", 1, 2);
-      my_putstr(&hexa[tmp / 16], 1, 1);
-      my_putstr(&hexa[tmp % 16], 1, 1);
-      if (i != nb - 1)
-        my_putstr(",", 1, 1);
-      i++;
-    }
+  if ((MEM_SIZE < 1) || (IDX_MOD < 1)
+      || (REG_NUMBER < 1)
+      || ((IND_SIZE != 2) || (REG_SIZE != 4) || (DIR_SIZE != 4))
+      || (MAX_ARGS_NUMBER != 4)
+      || ((T_IND != 4) || (T_REG != 1) || (T_DIR != 2))
+      || ((NBR_LIVE < 1) || (CYCLE_TO_DIE < 0) || (CYCLE_DELTA < 0))
+      || ((PROG_NAME_LENGTH < 0) || (COMMENT_LENGTH < 0)))
+    return (0);
+  return (1);
 }
 
-int		main(int argc, char **argv, char **envp)
+void	delete_champ_tab(t_champ **tab)
 {
-  t_vmmem	*vmmem;
-  t_champ	prog;
+  int	i;
 
-  if ((vmmem = malloc(MEM_SIZE * sizeof(char))) == NULL)
-    return (-1);
-  my_memset(vmmem, MEM_SIZE, 0x0);
-  if (load_champ(argv[1], &prog, 1) >= 0)
+  i = 0;
+  if (tab != NULL)
+    while (tab[i] != NULL)
+      {
+        free(tab[i]->freeme);
+        free(tab[i]);
+        i++;
+      }
+}
+
+void	free_all(t_vm *vm)
+{
+  my_rm_list(vm->process_list, &delete_process);
+  delete_champ_tab(vm->champs);
+  free(vm->champs);
+  free(vm->mem);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+  t_vm	vm;
+  char	**args;
+
+  if (check_define())
     {
-      printf("%s\n%d\n%s\nProgram Binary is :\n", prog.header.prog_name, prog.header.prog_size, prog.header.comment);
-      print_hexa(prog.champcode, prog.header.prog_size);
-      printf("\n");
-      free(prog.freeme);
+      if ((args = pre_pars(&argv[1], envp)) == NULL)
+        return (-1);
+      if (init_vm_stats(CYCLE_TO_DIE, -1, &vm) == NULL)
+        {
+          my_putstr("Can't perform malloc\n", 2, -1);
+          return (-1);
+        }
+      if (pars(args, tab_size(args), &vm) != -1)
+        while (handle_game(&vm, envp) == 0)
+          my_apply_on_list(vm.process_list, &exe_process, &vm);
+      free_all(&vm);
     }
-  free(vmmem);
+  else
+    my_putstr("A define is wrong\n", 1, -1);
   return (0);
 }

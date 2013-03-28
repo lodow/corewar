@@ -5,13 +5,14 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Tue Jan 22 16:04:52 2013 maxime lavandier
+** Last update Wed Mar 20 18:35:21 2013 Adrien
 */
 
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
 #include "../misc/str_func.h"
+#include "../misc/nb_func.h"
 
 int	recup_name(char *line, t_header *header)
 {
@@ -54,7 +55,8 @@ int	recup_comment(char *line, t_header *header)
     i_line++;
   if (line[i_line] != 0)
     i_line++;
-  while (line[i_line] != 0 && line[i_line] != '"' && i_comment < COMMENT_LENGTH)
+  while (line[i_line] != 0 && line[i_line] != '"'
+	 && i_comment < COMMENT_LENGTH)
     {
       header->comment[i_comment] = line[i_line];
       i_line++;
@@ -82,26 +84,36 @@ int	next_the_header(char **file)
   return (i);
 }
 
-int		parse(char **file)
+void	put_error(int line)
 {
-  int		i;
+  my_putstr("Syntax error line ", 2, -1);
+  my_put_nbr(line + 1, 2);
+  my_putstr("\n", 2, 1);
+}
+
+int		parse(char **file, char *name)
+{
   t_header	header;
   t_cmd		cmd;
 
-  i = next_the_header(file);
-  if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == 0)
+  cmd.nb = next_the_header(file) - 1;
+  my_memsetc(&header, sizeof(t_header), 0);
+  if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == NULL)
     return (-1);
-  while (file[i])
-    {
-      if (my_strcmp(file[i], NAME_CMD_STRING))
-	recup_name(file[i], &header);
-      else if (my_strcmp(file[i], COMMENT_CMD_STRING))
-	recup_comment(file[i], &header);
-      else
-	parse_cmd(file[i], &header, &cmd);
-      i++;
-    }
-  put_header(&cmd, &header);
-  printf ("NAME :%s\nCOMMENT :%s\n", header.prog_name, header.comment);
+  recuplabel(&cmd, file);
+  header.prog_size = cmd.pc;
+  cmd.pc = 0;
+  while (file[++cmd.nb])
+    if (my_begincmp(file[cmd.nb], NAME_CMD_STRING))
+      recup_name(file[cmd.nb], &header);
+    else if (my_begincmp(file[cmd.nb], COMMENT_CMD_STRING))
+      {
+	recup_comment(file[cmd.nb], &header);
+	cmd.fd = put_header(&header, &cmd, name);
+      }
+    else if (parse_cmd(file[cmd.nb], &header, &cmd) == -1)
+      put_error(cmd.nb);
+  freelabel(cmd);
+  free(cmd.file);
   return (0);
 }

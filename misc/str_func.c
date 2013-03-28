@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Jan 21 14:01:32 2013 maxime lavandier
+** Last update Tue Jan 29 14:54:12 2013 Welanor
 */
 
 #include	"str_func.h"
@@ -35,6 +35,13 @@ int	my_strlen(char *str)
   return (i);
 }
 
+/*
+** \param[in] str The string to output
+** \param[in] fd The file descriptor where to ouptut the string
+** \param[in] strlen If you want to override the size of str tab tpo output
+** \return nothing
+*/
+
 void	my_putstr(char *str, int fd, int strlen)
 {
   int	len;
@@ -44,14 +51,30 @@ void	my_putstr(char *str, int fd, int strlen)
     {
       if (strlen == -1)
         {
-          while (str[len++] != '\0');
+          while (str[len] != '\0')
+            len++;
           strlen = len;
         }
-      len = write(fd, str, strlen);
+      if ((len = write(fd, str, strlen)) == -1)
+        write(2, "Write error\n", 12);
     }
 }
 
-int	my_strcmp(char *str1, char *str2)
+int	my_strcmp(char *s1, char *s2)
+{
+  int	i;
+
+  i = 0;
+  while (s1[i] || s2[i])
+    {
+      if (s1[i] != s2[i])
+        return (s1[i] - s2[i]);
+      i += 1;
+    }
+  return (0);
+}
+
+int	my_begincmp(char *str1, char *str2)
 {
   int	i;
 
