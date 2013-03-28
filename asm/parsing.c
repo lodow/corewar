@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Fri Jan 25 16:45:04 2013 maxime lavandier
-** Last update Wed Mar 27 10:27:32 2013 Adrien Della Maggiora
+** Last update Thu Mar 28 16:36:25 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -113,7 +113,7 @@ int		parsing(char *str, t_cmd *cmd)
   t_param	param;
 
   if ((param.param = malloc(2)) == 0)
-    exit(0);
+    put_malloc_error();
   if (str == 0)
     return (0);
   i = next_label(str);

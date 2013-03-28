@@ -1,11 +1,11 @@
 /*
 ** label.c for label in /home/welanor/Projet/corewar/asm
-** 
+**
 ** Made by Welanor
 ** Login   <welanor@welanor>
-** 
+**
 ** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Thu Feb 21 14:44:21 2013 Adrien dellamaggiora
+** Last update Thu Mar 28 16:34:53 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -47,7 +47,7 @@ t_cmd		*my_realloc(t_cmd *cmd, int size)
   t_tablabel	*tmp;
 
   if ((tmp = malloc(size)) == NULL)
-    return (NULL);
+    put_malloc_error();
   if (cmd->lablengh == 0)
     {
       cmd->lab = tmp;
@@ -78,7 +78,7 @@ t_cmd		*addlabel(char *line, t_cmd *cmd)
   while (line[i] != LABEL_CHAR && line[i] != '\0')
     i++;
   if ((str = malloc(i + 1)) == NULL)
-    exit(0);
+    put_malloc_error();
   j = 0;
   while (j < i)
     {

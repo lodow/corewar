@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Mar 20 18:35:21 2013 Adrien
+** Last update Thu Mar 28 16:35:25 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -99,7 +99,7 @@ int		parse(char **file, char *name)
   cmd.nb = next_the_header(file) - 1;
   my_memsetc(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == NULL)
-    return (-1);
+    put_malloc_error();
   recuplabel(&cmd, file);
   header.prog_size = cmd.pc;
   cmd.pc = 0;

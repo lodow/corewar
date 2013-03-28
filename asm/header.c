@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Wed Mar 27 10:20:23 2013 Adrien Della Maggiora
+** Last update Thu Mar 28 16:39:41 2013 maxime lavandier
 */
 
 #include "asm.h"
@@ -41,7 +41,7 @@ char    *getname(char *name)
 
   i = my_strlen(name);
   if ((res = malloc(i + 4)) == NULL)
-    return (NULL);
+    put_malloc_error();
   i = 0;
   while (name[i] != '\0')
     {
