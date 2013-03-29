@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Sat Feb  2 20:23:02 2013 luc sinet
+** Last update Fri Mar 29 20:24:02 2013 adrien dellamaggiora
 */
 
 #include <stdlib.h>
@@ -21,21 +21,20 @@ int	my_getnbr(char *s1)
   nb = 0;
   i = 0;
   sign = 1;
-  if (s1 != NULL)
+  if (s1 == NULL)
+    return (0);
+  while (s1[i] == '-' || s1[i] == '+')
+    if (s1[i++] == '-')
+      sign = -sign;
+  while (s1[i] >= '0' && s1[i] <= '9')
     {
-      while (s1[i] == '-' || s1[i] == '+')
-        {
-          if (s1[i] == '-')
-            sign = -sign;
-          i++;
-        }
-      while (s1[i] >= '0' && s1[i] <= '9')
-        {
-          if (((nb * 10) / 10) != nb)
-            return (0);
-          nb = nb * 10 + (s1[i] - 48);
-          i++;
-        }
+      if (((nb * 10) / 10) != nb)
+	{
+	  my_putstr("Interger Overflow.\n", 2, -1);
+	  exit(0);
+	}
+      nb = nb * 10 + (s1[i] - 48);
+      i++;
     }
   return (nb * sign);
 }

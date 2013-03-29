@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Fri Mar 29 14:08:57 2013 adrien dellamaggiora
+** Last update Fri Mar 29 17:46:37 2013 adrien dellamaggiora
 */
 
 #include <stdlib.h>
@@ -62,11 +62,11 @@ int	my_addbuf(char *file, t_cmd *cmd, int lengh)
   int	i;
   int	j;
 
-  if ((cmd->file = realloc(cmd->file, cmd->sizefile + lengh)) == NULL)
+  if ((cmd->file = realloc(cmd->file, cmd->sizefile + lengh + 1)) == NULL)
     put_malloc_error();
   i = cmd->sizefile;
   j = 0;
-  while (j <= lengh)
+  while (j < lengh)
     {
       ((char *)cmd->file)[i] = file[j];
       ++i;
