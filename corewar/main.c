@@ -37,12 +37,21 @@ void	delete_champ_tab(t_champ **tab)
       }
 }
 
-void	free_all(t_vm *vm)
+void	free_all(t_vm *vm, char **args)
 {
+  int	i;
+
+  i = 0;
   my_rm_list(vm->process_list, &delete_process);
   delete_champ_tab(vm->champs);
   free(vm->champs);
   free(vm->mem);
+  while ((args != NULL) && (args[i] != NULL))
+    {
+      free(args[i]);
+      i++;
+    }
+  free(args);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -64,7 +73,7 @@ int	main(int argc, char **argv, char **envp)
           {
             my_apply_on_list(vm.process_list, &exe_process, &vm);
           }
-      free_all(&vm);
+      free_all(&vm, args);
     }
   else
     my_putstr("A define is wrong\n", 1, -1);
