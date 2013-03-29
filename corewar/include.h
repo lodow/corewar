@@ -67,6 +67,13 @@ typedef struct	s_init_x
   void		*data;
 }		t_init_x;
 
+typedef struct	s_3d_point
+{
+  float		x;
+  float		y;
+  float		z;
+}		t_3d_point;
+
 typedef struct	s_color
 {
   unsigned char	r;
