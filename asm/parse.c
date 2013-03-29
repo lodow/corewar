@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Thu Mar 28 17:50:02 2013 maxime lavandier
+** Last update Fri Mar 29 14:08:02 2013 adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -90,6 +90,7 @@ void	put_error(int line)
   my_putstr("Syntax error line ", 2, -1);
   my_put_nbr(line + 1, 2);
   my_putstr("\n", 2, 1);
+  exit(0);
 }
 
 int		parse(char **file, char *name)
@@ -111,10 +112,11 @@ int		parse(char **file, char *name)
     else if (my_begincmp(file[cmd.nb], COMMENT_CMD_STRING) && cmd.com == 0)
       {
 	recup_comment(file[cmd.nb], &header, &cmd);
-	cmd.fd = put_header(&header, &cmd, name);
+	put_header(&header, &cmd, name);
       }
     else if (parse_cmd(file[cmd.nb], &header, &cmd) == -1)
       put_error(cmd.nb);
+  write_infile(name, cmd.file, cmd.sizefile);
   freelabel(cmd);
   free(cmd.file);
   return (0);

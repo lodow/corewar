@@ -5,9 +5,11 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Thu Mar 28 16:39:41 2013 maxime lavandier
+** Last update Fri Mar 29 14:08:57 2013 adrien dellamaggiora
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"
@@ -55,22 +57,42 @@ char    *getname(char *name)
   return (res);
 }
 
+int	my_addbuf(char *file, t_cmd *cmd, int lengh)
+{
+  int	i;
+  int	j;
+
+  if ((cmd->file = realloc(cmd->file, cmd->sizefile + lengh)) == NULL)
+    put_malloc_error();
+  i = cmd->sizefile;
+  j = 0;
+  while (j <= lengh)
+    {
+      ((char *)cmd->file)[i] = file[j];
+      ++i;
+      ++j;
+    }
+  cmd->sizefile += lengh;
+  return (0);
+}
+
 int		put_header(t_header *header, t_cmd *cmd, char *name)
 {
-  int		fd;
-  mode_t	flag;
   int		magic;
-  char		*str;
+  int		i;
 
-  str = getname(name);
-  flag = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-  if ((fd = open(str, O_WRONLY | O_CREAT | O_TRUNC, flag)) == -1)
-    return (-1);
   magic = COREWAR_EXEC_MAGIC;
   header->magic = *((int*)switch_endian((char*)&(magic), sizeof(int)));
   header->prog_size = *((int*)switch_endian((char*)&(header->prog_size),
 					    sizeof(int)));
-  my_putstr((char*)header, fd, sizeof(t_header));
-  free(str);
-  return (fd);
+  if ((cmd->file = malloc(sizeof(t_header))) == NULL)
+    put_malloc_error();
+  i = 0;
+  while (i < sizeof(t_header))
+    {
+      ((char *) cmd->file)[i] = ((char *) header)[i];
+      ++i;
+    }
+  cmd->sizefile = sizeof(t_header);
+  return (0);
 }
