@@ -54,25 +54,41 @@ void	free_all(t_vm *vm, char **args)
   free(args);
 }
 
+char	**init_prog(t_vm *vm, char **argv, char **envp, t_init_x *win)
+{
+  char	**args;
+
+  if ((args = pre_pars(&argv[1], envp)) == NULL)
+    return (NULL);
+  if (init_vm_stats(CYCLE_TO_DIE, -1, vm) == NULL)
+    {
+      my_putstr("Can't perform malloc\n", 2, -1);
+      return (NULL);
+    }
+  if (pars(args, tab_size(args), vm) == -1)
+    return (NULL);
+  if (GETFLAG(vm->flag, FLAGPOS(USEFDFOPT)))
+    if (init_windows(win, 1024, 768, (void*)vm) == -1)
+      UNSETFLAG(vm->flag, FLAGPOS(USEFDFOPT));
+  return (args);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-  t_vm	vm;
-  char	**args;
+  t_vm		vm;
+  char		**args;
+  t_init_x	win;
 
   if (check_define())
     {
-      if ((args = pre_pars(&argv[1], envp)) == NULL)
+      if ((args = init_prog(&vm, argv, envp, &win)) == NULL)
         return (-1);
-      if (init_vm_stats(CYCLE_TO_DIE, -1, &vm) == NULL)
+      while (handle_game(&vm, envp) == 0)
         {
-          my_putstr("Can't perform malloc\n", 2, -1);
-          return (-1);
+          my_apply_on_list(vm.process_list, &exe_process, &vm);
+          if (GETFLAG(vm.flag, FLAGPOS(USEFDFOPT)))
+            expose(&win);
         }
-      if (pars(args, tab_size(args), &vm) != -1)
-        while (handle_game(&vm, envp) == 0)
-          {
-            my_apply_on_list(vm.process_list, &exe_process, &vm);
-          }
       free_all(&vm, args);
     }
   else
