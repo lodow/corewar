@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 **
 ** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Thu Mar 28 16:34:53 2013 maxime lavandier
+** Last update Fri Mar 29 23:05:47 2013 adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -88,7 +88,7 @@ t_cmd		*addlabel(char *line, t_cmd *cmd)
   str[j] = 0;
   if ((cmd = my_realloc(cmd, sizeof(t_tablabel) * (cmd->lablengh + 2)))
       == NULL)
-    exit(0);
+    put_malloc_error();
   cmd->lab[cmd->lablengh].label = str;
   cmd->lab[cmd->lablengh].adress = cmd->pc;
   cmd->lablengh += 1;

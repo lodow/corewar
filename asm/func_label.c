@@ -5,7 +5,7 @@
 ** Login   <welanor@welanor>
 **
 ** Started on  Wed Jan 30 15:50:52 2013 Welanor
-** Last update Thu Jan 31 14:54:48 2013 Welanor
+** Last update Fri Mar 29 22:13:57 2013 adrien dellamaggiora
 */
 
 #include "parse_cmd.h"
@@ -65,7 +65,7 @@ void	changepc(char *line, int *pc)
 	return ;
       i++;
     }
-  while (my_instructcmp(&line[i], op_tab[j].mnemonique, ' ') == 0 && j < 15)
+  while (my_instructcmp(&line[i], op_tab[j].mnemonique, ' ') == 0 && j < 16)
     j++;
   if (my_instructcmp(&line[i], op_tab[j].mnemonique, ' ') == 0)
     return ;

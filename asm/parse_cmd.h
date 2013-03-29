@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Fri Mar 29 00:08:00 2013 Adrien Della Maggiora
+** Last update Fri Mar 29 23:06:46 2013 adrien dellamaggiora
 */
 
 #ifndef PARSE_CMD_H
@@ -83,7 +83,7 @@ int	sti(char *str, int i, t_param *param, t_cmd *cmd);
 int	zjump(char *str, int i, t_param *param, t_cmd *cmd);
 int	next(char *str, int i);
 int	my_cmp(char *str1, char *str2);
-void	freelabel(t_cmd cmd);
+void	freelabel(t_cmd *cmd);
 int	my_addbuf(char *file, t_cmd *cmd, int lengh);
 void	write_infile(char *name, char *file, int lengh);
 
