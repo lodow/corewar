@@ -74,7 +74,7 @@ int	init_windows(t_init_x *init, int x, int y, void *data)
 
 int	expose(t_init_x *win)
 {
-/*  do calculation here;*/
+  fdf_calculations(win);
   draw_screen(win, FPS);
   return (0);
 }
