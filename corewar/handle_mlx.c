@@ -30,8 +30,8 @@ void	clear_screen(t_init_x *win, t_color *color)
       i = win->win_x;
       while (i >= 0)
         {
-	  put_pixel_img(win, i, j, color);
-	  i--;
+          put_pixel_img(win, i, j, color);
+          i--;
         }
       j--;
     }
@@ -41,9 +41,7 @@ void		draw_screen(t_init_x *win, float fps)
 {
   t_color	tmp;
 
-  tmp.r = 0;
-  tmp.g = 0;
-  tmp.b = 0;
+  init_color(0, 0, 0, &tmp);
   mlx_put_image_to_window(win->init , win->windows, win->screen, 0, 0);
   (win->expose)--;
   if ((float)fps > 0.01)
@@ -60,7 +58,7 @@ int	init_windows(t_init_x *init, int x, int y, void *data)
   init->init = mlx_init();
   if (init->init == NULL)
     return (-1);
-  init->windows = mlx_new_window(init->init, x, y, "Windows");
+  init->windows = mlx_new_window(init->init, x, y, "Corewar");
   if (init->windows == NULL)
     return (-1);
   init->win_x = x;
@@ -74,12 +72,9 @@ int	init_windows(t_init_x *init, int x, int y, void *data)
   return (0);
 }
 
-int		expose(t_init_x *win)
+int	expose(t_init_x *win)
 {
-  t_transf_data	*dat;
-
-  dat = ((t_transf_data*)(win->data));
-  qadri(win, dat);
-  draw_screen(win, 20);
+  fdf_calculations(win);
+  draw_screen(win, FPS);
   return (0);
 }
