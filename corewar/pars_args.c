@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Wed Jan 23 20:47:09 2013 luc sinet
-** Last update Fri Mar 29 22:12:43 2013 luc sinet
+** Last update Fri Mar 29 22:23:37 2013 luc sinet
 */
 
 #include "include.h"
@@ -55,7 +55,7 @@ int	adds_opt(char **av, t_arg *parg)
       parg->opt[3] = 1;
       SETFLAG(parg->vm->flag, FLAGPOS(DEBUGOPT));
     }
-  else if (my_strcmp("-fdf" av[parg->pos]) == 0)
+  else if (my_strcmp("-fdf", av[parg->pos]) == 0)
     {
       parg->opt[4] = 1;
       SETFLAG(parg->vm->flag, FLAGPOS(USEFDFOPT));
