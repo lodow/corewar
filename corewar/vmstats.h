@@ -15,7 +15,7 @@
 
 # define ABS(x) ((x) > 0 ? (x) : -(x))
 # define GET_INSTR (vmstat->mem[MOD_MEM(proc->pc)]) - 1
-# define MOD_MEM(x) ((ABS(x)) % MEM_SIZE)
+# define MOD_MEM(x) ((ABS(x + 2 * MEM_SIZE)) % MEM_SIZE)
 # define VM_MEM(x) vm->mem[MOD_MEM((x))]
 # define GET_TYPE_PARAMX(x, y) (((x) >> ((MAX_ARGS_NUMBER - 1 - (y)) * 2)) & 3)
 # define SHORTCUT vmstat->instr_nb_cycle[(int)proc->instr]

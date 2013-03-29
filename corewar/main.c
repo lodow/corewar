@@ -61,7 +61,9 @@ int	main(int argc, char **argv, char **envp)
         }
       if (pars(args, tab_size(args), &vm) != -1)
         while (handle_game(&vm, envp) == 0)
-          my_apply_on_list(vm.process_list, &exe_process, &vm);
+          {
+            my_apply_on_list(vm.process_list, &exe_process, &vm);
+          }
       free_all(&vm);
     }
   else

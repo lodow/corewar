@@ -14,7 +14,7 @@ void	debug_and(t_process *proc, int *val, int reg3)
 {
   my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
   my_putstr("\t", 1, 1);
-  my_putstr(" and (", 1 ,-1);
+  my_putstr(" and (", 1, -1);
   my_put_nbr(val[0], 1);
   my_putstr(" & ", 1, 3);
   my_put_nbr(val[1], 1);

@@ -21,7 +21,7 @@ void	debug_sub(t_process *proc, int reg1, int reg2, int reg3)
 {
   my_putstr(proc->associated_champ->header.prog_name, 1 , -1);
   my_putstr("\t", 1, 1);
-  my_putstr(" sub (reg)", 1 ,-1);
+  my_putstr(" sub (reg)", 1, -1);
   my_put_nbr(reg1, 1);
   my_putstr("=", 1, 1);
   my_put_nbr(proc->reg[reg1], 1);
