@@ -1,11 +1,11 @@
 /*
-** parse_cmd.c for corewar in /home/lavand_m//projet/actu/corewar/asm
+** parse_cmd.c for corewar in /home/maxime/Bureau/projet/actu/corewar/asm
 **
 ** Made by maxime lavandier
 ** Login   <lavand_m@epitech.net>
 **
-** Started on  Wed Jan 16 13:51:50 2013 maxime lavandier
-** Last update Thu Mar  7 16:32:25 2013 Adrien
+** Started on  Thu Mar 28 16:44:45 2013 maxime lavandier
+** Last update Thu Mar 28 16:44:47 2013 maxime lavandier
 */
 
 #include "parse_cmd.h"
@@ -18,7 +18,7 @@ char	*sub_space(char *str)
   char	*res;
 
   if ((res = malloc(my_strlen(str) + 1)) == NULL)
-    exit(0);
+    put_malloc_error();
   i = 0;
   j = 0;
   res[0] = 0;

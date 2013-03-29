@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Wed Mar 20 18:35:21 2013 Adrien
+** Last update Fri Mar 29 14:08:02 2013 adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -14,11 +14,12 @@
 #include "../misc/str_func.h"
 #include "../misc/nb_func.h"
 
-int	recup_name(char *line, t_header *header)
+int	recup_name(char *line, t_header *header, t_cmd *cmd)
 {
   int	i_line;
   int	i_name;
 
+  cmd->nom = 1;
   if (line == NULL || header == NULL)
     return (-1);
   i_name = 0;
@@ -42,13 +43,14 @@ int	recup_name(char *line, t_header *header)
   return (0);
 }
 
-int	recup_comment(char *line, t_header *header)
+void	recup_comment(char *line, t_header *header, t_cmd *cmd)
 {
   int	i_line;
   int	i_comment;
 
+  cmd->com = 1;
   if (line == NULL || header == NULL)
-    return (-1);
+    return ;
   i_comment = 0;
   i_line = my_strlen(COMMENT_CMD_STRING);
   while (line[i_line] != '"' && line[i_line] != 0)
@@ -68,7 +70,6 @@ int	recup_comment(char *line, t_header *header)
       exit(0);
     }
   header->comment[i_comment] = 0;
-  return (0);
 }
 
 int	next_the_header(char **file)
@@ -89,6 +90,7 @@ void	put_error(int line)
   my_putstr("Syntax error line ", 2, -1);
   my_put_nbr(line + 1, 2);
   my_putstr("\n", 2, 1);
+  exit(0);
 }
 
 int		parse(char **file, char *name)
@@ -96,23 +98,25 @@ int		parse(char **file, char *name)
   t_header	header;
   t_cmd		cmd;
 
+  cmd.nom = cmd.com = 0;
   cmd.nb = next_the_header(file) - 1;
   my_memsetc(&header, sizeof(t_header), 0);
   if ((cmd.file = malloc(8 + PROG_NAME_LENGTH + COMMENT_LENGTH)) == NULL)
-    return (-1);
+    put_malloc_error();
   recuplabel(&cmd, file);
   header.prog_size = cmd.pc;
   cmd.pc = 0;
   while (file[++cmd.nb])
-    if (my_begincmp(file[cmd.nb], NAME_CMD_STRING))
-      recup_name(file[cmd.nb], &header);
-    else if (my_begincmp(file[cmd.nb], COMMENT_CMD_STRING))
+    if (my_begincmp(file[cmd.nb], NAME_CMD_STRING) && cmd.nom == 0)
+      recup_name(file[cmd.nb], &header, &cmd);
+    else if (my_begincmp(file[cmd.nb], COMMENT_CMD_STRING) && cmd.com == 0)
       {
-	recup_comment(file[cmd.nb], &header);
-	cmd.fd = put_header(&header, &cmd, name);
+	recup_comment(file[cmd.nb], &header, &cmd);
+	put_header(&header, &cmd, name);
       }
     else if (parse_cmd(file[cmd.nb], &header, &cmd) == -1)
       put_error(cmd.nb);
+  write_infile(name, cmd.file, cmd.sizefile);
   freelabel(cmd);
   free(cmd.file);
   return (0);

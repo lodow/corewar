@@ -5,10 +5,11 @@
 ## Login   <moriss_h@epitech.net>
 ##
 ## Started on  Mon Oct 22 09:20:28 2012 hugues morisset
-## Last update Thu Feb 21 17:00:42 2013 Adrien dellamaggiora
+## Last update Thu Mar 28 16:37:17 2013 maxime lavandier
 ##
 
 SRC= 	main.c \
+	my_malloc.c \
 	parse.c \
 	direct.c \
 	check_cmd.c \

@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Wed Mar 20 18:33:56 2013 Adrien
+** Last update Fri Mar 29 00:08:00 2013 Adrien Della Maggiora
 */
 
 #ifndef PARSE_CMD_H
@@ -36,6 +36,8 @@ typedef struct	s_cmd
   int		pc;
   int		lablengh;
   t_tablabel	*lab;
+  char		nom;
+  char		com;
 }		t_cmd;
 
 typedef struct	s_param
@@ -82,5 +84,7 @@ int	zjump(char *str, int i, t_param *param, t_cmd *cmd);
 int	next(char *str, int i);
 int	my_cmp(char *str1, char *str2);
 void	freelabel(t_cmd cmd);
+int	my_addbuf(char *file, t_cmd *cmd, int lengh);
+void	write_infile(char *name, char *file, int lengh);
 
 #endif
