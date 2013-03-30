@@ -5,15 +5,16 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 15 12:19:58 2013 luc sinet
-** Last update Sat Mar 30 01:55:39 2013 luc sinet
+** Last update Sat Mar 30 02:00:20 2013 Hugues
 */
 
 #ifndef SEL_H_
 # define SEL_H_
 
-#include <termcap.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+# include <termcap.h>
+# include <termios.h>
+# include <sys/ioctl.h>
+# include <unistd.h>
 
 # define UP (buf[0] == 27 && buf[1] == '[' && buf[2] == 'A')
 # define DOWN (buf[0] == 27 && buf[1] == '['  && buf[2] == 'B')
@@ -53,7 +54,7 @@ typedef struct		s_all
   t_sel			*sel;
   t_dis			*dis;
   struct termios	prev;
-}		t_all;
+}			t_all;
 
 #include "nb.h"
 #include "str.h"
