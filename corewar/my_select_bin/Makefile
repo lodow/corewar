@@ -5,7 +5,7 @@
 ## Login   <sinet_l@epitech.net>
 ## 
 ## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat Mar 30 01:41:40 2013 luc sinet
+## Last update Sat Mar 30 01:52:27 2013 luc sinet
 ##
 
 SRCS	= main.c \
@@ -21,14 +21,16 @@ SRCS	= main.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-CC	= cc -lncurses
+CC	= cc
 
 RM	= rm -f
 
 NAME	= ../my_select
 
+CFLAGS	= -ltermcap
+
 $(NAME): 	$(OBJS)
-	$(CC) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
 
