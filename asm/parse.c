@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Wed Jan 16 13:02:05 2013 maxime lavandier
-** Last update Fri Mar 29 14:08:02 2013 adrien dellamaggiora
+** Last update Fri Mar 29 23:07:32 2013 adrien dellamaggiora
 */
 
 #include "asm.h"
@@ -117,7 +117,7 @@ int		parse(char **file, char *name)
     else if (parse_cmd(file[cmd.nb], &header, &cmd) == -1)
       put_error(cmd.nb);
   write_infile(name, cmd.file, cmd.sizefile);
-  freelabel(cmd);
+  freelabel(&cmd);
   free(cmd.file);
   return (0);
 }

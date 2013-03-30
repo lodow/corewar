@@ -5,7 +5,7 @@
 ** Login   <moriss_h@epitech.net>
 **
 ** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Mar 29 00:19:22 2013 Adrien Della Maggiora
+** Last update Fri Mar 29 23:07:58 2013 adrien dellamaggiora
 */
 
 #include "../misc/op.h"
@@ -13,16 +13,16 @@
 #include "asm.h"
 #include "parse_cmd.h"
 
-void	freelabel(t_cmd cmd)
+void	freelabel(t_cmd *cmd)
 {
   int	i;
 
   i = 0;
-  if (cmd.lablengh != 0)
+  if (cmd->lablengh != 0)
     {
-      while (i < cmd.lablengh)
-	free(cmd.lab[i++].label);
-      free(cmd.lab);
+      while (i < cmd->lablengh)
+	free(cmd->lab[i++].label);
+      free(cmd->lab);
     }
 }
 
