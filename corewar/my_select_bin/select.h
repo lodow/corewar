@@ -5,13 +5,12 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 15 12:19:58 2013 luc sinet
-** Last update Sun Jan 20 15:14:02 2013 luc sinet
+** Last update Sat Mar 30 01:55:39 2013 luc sinet
 */
 
 #ifndef SEL_H_
 # define SEL_H_
 
-#include <curses.h>
 #include <termcap.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
