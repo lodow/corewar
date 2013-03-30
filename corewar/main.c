@@ -54,7 +54,7 @@ void	free_all(t_vm *vm, char **args)
   free(args);
 }
 
-char	**init_prog(t_vm *vm, char **argv, char **envp, t_init_x *win)
+char	**init_prog(t_vm *vm, char **argv, char **envp)
 {
   char	**args;
 
@@ -67,9 +67,6 @@ char	**init_prog(t_vm *vm, char **argv, char **envp, t_init_x *win)
     }
   if (pars(args, tab_size(args), vm) == -1)
     return (NULL);
-  if (GETFLAG(vm->flag, FLAGPOS(USEFDFOPT)))
-    if (init_windows(win, 1024, 768, (void*)vm) == -1)
-      UNSETFLAG(vm->flag, FLAGPOS(USEFDFOPT));
   return (args);
 }
 
@@ -77,18 +74,13 @@ int	main(int argc, char **argv, char **envp)
 {
   t_vm		vm;
   char		**args;
-  t_init_x	win;
 
   if (check_define())
     {
-      if ((args = init_prog(&vm, argv, envp, &win)) == NULL)
+      if ((args = init_prog(&vm, argv, envp)) == NULL)
         return (-1);
       while (handle_game(&vm, envp) == 0)
-        {
-          my_apply_on_list(vm.process_list, &exe_process, &vm);
-          if (GETFLAG(vm.flag, FLAGPOS(USEFDFOPT)))
-            expose(&win);
-        }
+        my_apply_on_list(vm.process_list, &exe_process, &vm);
       free_all(&vm, args);
     }
   else

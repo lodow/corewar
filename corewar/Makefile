@@ -51,24 +51,18 @@ SRC= 	main.c \
 	../misc/get_next_line.c \
 	../misc/my_strdup.c \
 	../misc/my_uint64_t_strbase.c \
-	../misc/my_str_to_wordtab.c \
-	handle_mlx.c \
-	put_pixel.c \
-	graph.c \
-	draw_line.c
+	../misc/my_str_to_wordtab.c
 
 OBJ= $(SRC:.c=.o)
 
 NAME= corewar
-
-LIBS= -L/usr/lib64 -lmlx_${HOSTTYPE} -L/usr/lib64/X11 -lXext -lX11
 
 CFLAGS= -g -pg -Wall -ansi -pedantic -Wfloat-equal -Wmissing-include-dirs
 
 INVOCATION= cc
 
 $(NAME):	$(OBJ)
-		$(INVOCATION) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS)
+		$(INVOCATION) $(CFLAGS) $(OBJ) -o $(NAME)
 
 all:	$(NAME)
 

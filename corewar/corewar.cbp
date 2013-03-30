@@ -68,9 +68,6 @@
 		<Unit filename="check_args.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="draw_line.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="dump.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -81,12 +78,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="get_param_instr.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="graph.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="handle_mlx.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include.h" />
