@@ -5,7 +5,7 @@
 ** Login   <lavand_m@epitech.net>
 **
 ** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Fri Mar 29 17:46:37 2013 adrien dellamaggiora
+** Last update Fri Mar 29 22:40:43 2013 maxime lavandier
 */
 
 #include <stdlib.h>
@@ -34,6 +34,7 @@ void	label_tofar(char *str, int nb)
   my_putstr(" undefine line ", 2, -1);
   my_put_nbr(nb, 2);
   my_putstr("\n", 2, 1);
+  exit(0);
 }
 
 char    *getname(char *name)
