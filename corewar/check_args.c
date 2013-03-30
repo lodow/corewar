@@ -5,7 +5,7 @@
 ** Login   <sinet_l@epitech.net>
 **
 ** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Fri Mar 29 22:03:17 2013 luc sinet
+** Last update Sat Mar 30 01:30:14 2013 luc sinet
 */
 
 #include <sys/types.h>
@@ -64,8 +64,8 @@ int	opt_error(char **av, t_arg *parg)
 int	opt_compare(char **av, t_arg *parg)
 {
   int	i;
-  char	*opt_list[6];
-  int	(*args[7])(char **av, t_arg * parg);
+  char	*opt_list[5];
+  int	(*args[6])(char **av, t_arg * parg);
 
   i = 0;
   args[0] = &check_dump;
@@ -73,15 +73,13 @@ int	opt_compare(char **av, t_arg *parg)
   args[2] = &check_addr;
   args[3] = &check_adds;
   args[4] = &check_adds;
-  args[5] = &check_adds;
-  args[6] = &opt_error;
+  args[5] = &opt_error;
   opt_list[0] = "-dump";
   opt_list[1] = "-n";
   opt_list[2] = "-a";
   opt_list[3] = "-unlimited";
   opt_list[4] = "-d";
-  opt_list[5] = "-fdf";
-  while (i < 6 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
+  while (i < 5 && my_strcmp(opt_list[i], av[parg->pos]) != 0)
     i++;
   return (args[i](av, parg));
 }
