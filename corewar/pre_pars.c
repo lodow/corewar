@@ -1,13 +1,3 @@
-/*
-** pre_pars.c for pre_pars in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Mar 19 17:43:14 2013 luc sinet
-** Last update Thu Mar 21 13:41:10 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include "pre_pars.h"
 #include "../misc/str_func.h"

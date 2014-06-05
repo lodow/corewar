@@ -1,13 +1,3 @@
-/*
-** ld.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Wed Jan 30 15:31:06 2013 maxime lavandier
-** Last update Thu Mar  7 16:37:42 2013 Adrien
-*/
-
 #include "parse_cmd.h"
 
 int	ld_param(char *str, int i, t_param *param, t_cmd *cmd)

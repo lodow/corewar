@@ -1,13 +1,3 @@
-/*
-** match.c for match in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Fri Jan 18 14:33:14 2013 luc sinet
-** Last update Sat Jan 19 01:40:23 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include "match.h"
 

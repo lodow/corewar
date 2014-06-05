@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Feb  2 08:14:55 2013 luc sinet
-*/
-
 #include	"include.h"
 
 void	init_instr_c_tab(t_vm *vm)

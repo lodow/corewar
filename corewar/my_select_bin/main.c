@@ -1,13 +1,3 @@
-/*
-** main.c for main in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Jan 15 12:17:05 2013 luc sinet
-** Last update Sun Jan 20 15:11:40 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>

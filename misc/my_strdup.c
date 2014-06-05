@@ -1,13 +1,3 @@
-/*
-** my_str.c for my_str in /home/welanor/Projet/corewar/corewar/misc
-**
-** Made by Welanor
-** Login   <welanor@welanor>
-**
-** Started on  Thu Jan 24 13:38:20 2013 Welanor
-** Last update Wed Mar 20 14:02:33 2013 luc sinet
-*/
-
 #include "str_func.h"
 
 char	*my_strdup(char *str)

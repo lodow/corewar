@@ -1,17 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Jan 24 20:06:27 2013 Welanor
-*/
-
-/*
-** Ne pas passer ce fichier dans la moulinette de Norme.
-*/
-
 #include "op.h"
 
 t_op	op_tab[] =

@@ -1,13 +1,3 @@
-/*
-** sti.c for sti in /home/dellam_a/Projet/corewar/asm
-**
-** Made by Adrien
-** Login   <dellam_a@epitech.eu>
-**
-** Started on  Wed Jan 30 17:53:57 2013 Adrien
-** Last update Thu Jan 31 15:46:20 2013 Welanor
-*/
-
 #include "parse_cmd.h"
 
 void	sti_param(char *str, int i, t_param *param, t_cmd *cmd)
@@ -76,4 +66,3 @@ int	sti(char *str, int i, t_param *param, t_cmd *cmd)
   param->param[1] <<= 2;
   return (0);
 }
-

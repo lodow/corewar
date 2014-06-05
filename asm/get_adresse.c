@@ -1,13 +1,3 @@
-/*
-** get_adresse.c for get_adresse in /home/dellam_a/Projet/corewar/asm
-**
-** Made by dellam_a Login <dellam_a@epitech.eu>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Wed Mar 27 10:52:54 2013 Adrien Della Maggiora
-**
-*/
-
 #include "parse_cmd.h"
 
 void	adress_live(char *line, int *pc)

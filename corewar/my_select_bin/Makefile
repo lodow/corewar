@@ -1,13 +1,3 @@
-##
-## Makefile for copylib in /home/sinet_l//jour11
-## 
-## Made by luc sinet
-## Login   <sinet_l@epitech.net>
-## 
-## Started on  Mon Oct 22 10:27:19 2012 luc sinet
-## Last update Sat Mar 30 02:01:30 2013 Hugues
-##
-
 SRCS	= main.c \
 	  attr.c \
 	  cmd.c \

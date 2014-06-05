@@ -1,13 +1,3 @@
-/*
-** parse_cmd.h for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Wed Jan 16 14:20:12 2013 maxime lavandier
-** Last update Fri Mar 29 23:06:46 2013 adrien dellamaggiora
-*/
-
 #ifndef PARSE_CMD_H
 # define PARSE_CMD_H
 

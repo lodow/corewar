@@ -1,13 +1,3 @@
-/*
-** my_getnbr.c for my_getnbr in /home/sinet_l//ratrapage
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Sat Oct 20 11:27:34 2012 luc sinet
-** Last update Wed Jan 16 12:50:57 2013 luc sinet
-*/
-
 #include <stdlib.h>
 
 int	my_getnbr(char *s1)

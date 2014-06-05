@@ -1,13 +1,3 @@
-/*
-** options.c for options in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Fri Jan 18 17:59:07 2013 luc sinet
-** Last update Sat Jan 19 12:33:45 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include "select.h"
 

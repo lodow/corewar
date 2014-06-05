@@ -1,13 +1,3 @@
-/*
-** label.c for label in /home/welanor/Projet/corewar/asm
-**
-** Made by Welanor
-** Login   <welanor@welanor>
-**
-** Started on  Mon Jan 28 12:40:17 2013 Welanor
-** Last update Fri Mar 29 23:05:47 2013 adrien dellamaggiora
-*/
-
 #include "parse_cmd.h"
 #include "asm.h"
 

@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Thu Mar 21 14:26:54 2013 luc sinet
-*/
-
 #ifndef _STR_FUNC_H_
 # define _STR_FUNC_H_
 

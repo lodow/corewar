@@ -1,13 +1,3 @@
-/*
-** select.h for select in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Jan 15 12:19:58 2013 luc sinet
-** Last update Sat Mar 30 02:00:20 2013 Hugues
-*/
-
 #ifndef SEL_H_
 # define SEL_H_
 

@@ -1,13 +1,3 @@
-/*
-** calc_display.c for cacl in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Wed Jan 16 19:17:52 2013 luc sinet
-** Last update Sat Jan 19 01:46:38 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include "select.h"
 

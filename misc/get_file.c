@@ -1,13 +1,3 @@
-/*
-** get_file.c for get_file in /home/izissise/work/get_next_line
-**
-** Made by Hugues
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Sat Dec  8 14:09:50 2012 Hugues
-** Last update Sat Dec 15 17:28:23 2012 Hugues
-*/
-
 #include	"get_file.h"
 
 char	**add_line_ttab(char **tab, char **linetab, int tab_size)

@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Mar 25 17:10:32 2013 luc sinet
-*/
-
 #include	"operation.h"
 
 void	debug_xor(t_process *proc, int *val, int reg3)

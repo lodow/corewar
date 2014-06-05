@@ -1,13 +1,3 @@
-/*
-** exec_select.c for exec_s in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Mar 19 18:07:33 2013 luc sinet
-** Last update Tue Mar 26 14:18:23 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include <sys/types.h>
 #include <dirent.h>

@@ -1,13 +1,3 @@
-/*
-** pars.h for pars in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Wed Jan 23 15:40:32 2013 luc sinet
-** Last update Fri Feb  1 15:26:25 2013 luc sinet
-*/
-
 #ifndef PARS_H_
 # define PARS_H_
 

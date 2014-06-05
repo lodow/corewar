@@ -1,13 +1,3 @@
-/*
-** display.c for display in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Jan 15 13:13:59 2013 luc sinet
-** Last update Sun Jan 20 15:13:25 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include <signal.h>
 #include "select.h"

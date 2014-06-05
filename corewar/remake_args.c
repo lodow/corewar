@@ -1,13 +1,3 @@
-/*
-** remake_args.c for remake in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Thu Mar 21 11:40:33 2013 luc sinet
-** Last update Thu Mar 21 14:30:19 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include "pre_pars.h"
 #include "../misc/str_func.h"

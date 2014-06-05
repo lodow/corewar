@@ -1,13 +1,3 @@
-/*
-** asm.h for asm in /home/dellam_a//Projet/corewar/asm
-**
-** Made by adrien dellamaggiora
-** Login   <dellam_a@epitech.net>
-**
-** Started on  Fri Jan 18 16:00:21 2013 adrien dellamaggiora
-** Last update Thu Mar 28 16:38:04 2013 maxime lavandier
-*/
-
 #ifndef _ASM_H_
 # define _ASM_H_
 

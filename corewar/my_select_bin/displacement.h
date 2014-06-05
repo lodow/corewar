@@ -1,13 +1,3 @@
-/*
-** displacement.h for displa in /home/sinet_l//myselect-2017-sinet_l
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Wed Jan 16 19:51:08 2013 luc sinet
-** Last update Sat Jan 19 12:16:51 2013 luc sinet
-*/
-
 #ifndef DIS_H_
 # define DIS_H_
 

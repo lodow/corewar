@@ -1,13 +1,3 @@
-/*
-** check_cmd.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Wed Jan 23 19:35:15 2013 maxime lavandier
-** Last update Thu Mar  7 16:35:52 2013 Adrien
-*/
-
 #include <stdlib.h>
 #include "parse_cmd.h"
 

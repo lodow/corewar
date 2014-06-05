@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Sat Jan 26 21:35:42 2013 luc sinet
-*/
-
 #include "liste.h"
 
 int	my_list_size(t_list *begin)

@@ -1,13 +1,3 @@
-/*
-** my_str_to_wordtab.c for my_str_to_wordtab in /home/sinet_l//minishell
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Wed Dec 26 11:01:09 2012 luc sinet
-** Last update Tue Mar 26 14:22:40 2013 luc sinet
-*/
-
 #include <stdlib.h>
 
 int	sup_space(char *s1, int pos, char c1, char c2)

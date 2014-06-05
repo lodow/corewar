@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Mar 26 16:22:07 2013 luc sinet
-*/
-
 #include	"operation.h"
 
 void	debug_ldi(t_process *proc, int *val, int reg)
@@ -80,4 +70,3 @@ int	op_ldi(t_process *proc, t_vm *vm)
     }
   return (7);
 }
-

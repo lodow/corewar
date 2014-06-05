@@ -1,13 +1,3 @@
-/*
-** check_args.c for check_args in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Jan 22 21:57:03 2013 luc sinet
-** Last update Sat Mar 30 01:30:14 2013 luc sinet
-*/
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>

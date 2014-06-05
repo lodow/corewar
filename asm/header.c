@@ -1,13 +1,3 @@
-/*
-** header.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Tue Jan 22 14:30:06 2013 maxime lavandier
-** Last update Fri Mar 29 22:40:43 2013 maxime lavandier
-*/
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "asm.h"

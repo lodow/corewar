@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Oct  8 16:20:21 2012 hugues morisset
-*/
-
 #include <stdlib.h>
 
 int	my_swap_char(char *a, char *b);
@@ -77,4 +67,3 @@ char	*my_uint_strbase(unsigned int nb, char *base)
     }
   return (my_evil_str(res));
 }
-

@@ -1,13 +1,3 @@
-/*
-** pars for pars in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Tue Jan 22 15:41:27 2013 luc sinet
-** Last update Fri Feb  1 15:17:25 2013 luc sinet
-*/
-
 #include "include.h"
 
 void	error_msg(int type)
@@ -109,4 +99,3 @@ int	pars(char **av, int ac, t_vm *vm)
     }
   return (error);
 }
-

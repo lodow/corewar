@@ -1,13 +1,3 @@
-/*
-** direct.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Fri Feb  1 15:51:10 2013 maxime lavandier
-** Last update Fri Feb  1 15:52:02 2013 maxime lavandier
-*/
-
 #include "asm.h"
 #include "parse_cmd.h"
 #include "../misc/op.h"

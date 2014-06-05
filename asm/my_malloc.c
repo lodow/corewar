@@ -1,13 +1,3 @@
-/*
-** my_malloc.c for corewar in /home/maxime/Bureau/projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Thu Mar 28 16:32:59 2013 maxime lavandier
-** Last update Fri Mar 29 00:02:39 2013 Adrien Della Maggiora
-*/
-
 #include "parse_cmd.h"
 #include "asm.h"
 

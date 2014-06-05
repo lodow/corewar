@@ -1,13 +1,3 @@
-/*
-** function_c.c for func in /home/sinet_l//fdf
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Sat Dec  8 18:13:16 2012 luc sinet
-** Last update Fri Jan 18 21:52:13 2013 luc sinet
-*/
-
 #include <stdlib.h>
 #include <unistd.h>
 

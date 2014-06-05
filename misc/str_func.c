@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Tue Jan 29 14:54:12 2013 Welanor
-*/
-
 #include	"str_func.h"
 
 char	*my_strncpy(char *dest, char *src, int n)

@@ -1,13 +1,3 @@
-/*
-** st.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Wed Jan 30 15:51:49 2013 maxime lavandier
-** Last update Thu Mar  7 16:37:09 2013 Adrien
-*/
-
 #include "parse_cmd.h"
 
 int	st_param(char *str, int i, t_param *param, t_cmd *cmd)

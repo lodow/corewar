@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Mon Mar 25 18:51:17 2013 luc sinet
-*/
-
 #include	"operation.h"
 
 void	debug_st(t_process *proc, int reg, int reg2, short addr)

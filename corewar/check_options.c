@@ -1,13 +1,3 @@
-/*
-** check_options.c for check_options in /home/sinet_l//corewar/corewar
-**
-** Made by luc sinet
-** Login   <sinet_l@epitech.net>
-**
-** Started on  Thu Jan 24 16:55:02 2013 luc sinet
-** Last update Tue Mar 26 15:46:45 2013 luc sinet
-*/
-
 #include "include.h"
 
 int	check_dump(char **av, t_arg *parg)

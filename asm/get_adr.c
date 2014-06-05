@@ -1,13 +1,3 @@
-/*
-** get_adr.c for get_adr in /home/dellam_a/Projet/corewar/asm
-**
-** Made by Adrien
-** Login   <dellam_a@epitech.eu>
-**
-** Started on  Mon Jan 28 19:35:17 2013 Adrien
-** Last update Wed Mar 27 10:54:00 2013 Adrien Della Maggiora
-*/
-
 #include "parse_cmd.h"
 #include "../misc/op.h"
 

@@ -1,13 +1,3 @@
-/*
-** func_label.c for func_label in /home/welanor/Projet/corewar/asm
-**
-** Made by Welanor
-** Login   <welanor@welanor>
-**
-** Started on  Wed Jan 30 15:50:52 2013 Welanor
-** Last update Fri Mar 29 22:13:57 2013 adrien dellamaggiora
-*/
-
 #include "parse_cmd.h"
 #include "asm.h"
 

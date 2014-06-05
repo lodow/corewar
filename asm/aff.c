@@ -1,13 +1,3 @@
-/*
-** aff.c for corewar in /home/lavand_m//projet/actu/corewar/asm
-**
-** Made by maxime lavandier
-** Login   <lavand_m@epitech.net>
-**
-** Started on  Wed Jan 30 17:49:25 2013 maxime lavandier
-** Last update Thu Jan 31 11:17:18 2013 maxime lavandier
-*/
-
 #include "parse_cmd.h"
 
 int	laff(char *str, int i, t_param *param, t_cmd *cmd)

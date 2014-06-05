@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Feb  1 15:38:11 2013 luc sinet
-*/
-
 #ifndef _OP_H_
 # define _OP_H_
 

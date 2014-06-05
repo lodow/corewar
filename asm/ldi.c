@@ -1,13 +1,3 @@
-/*
-** ldi.c for ldi in /home/dellam_a/Projet/corewar/asm
-**
-** Made by Adrien
-** Login   <dellam_a@epitech.eu>
-**
-** Started on  Wed Jan 30 16:55:04 2013 Adrien
-** Last update Thu Jan 31 16:03:11 2013 Welanor
-*/
-
 #include "../misc/op.h"
 #include "parse_cmd.h"
 

@@ -1,13 +1,3 @@
-/*
-** FILE for FILE in /home/moriss_h/projet
-**
-** Made by hugues morisset
-** Login   <moriss_h@epitech.net>
-**
-** Started on  Mon Oct  8 09:34:29 2012 hugues morisset
-** Last update Fri Mar 29 23:07:58 2013 adrien dellamaggiora
-*/
-
 #include "../misc/op.h"
 #include "../misc/get_file.h"
 #include "asm.h"
